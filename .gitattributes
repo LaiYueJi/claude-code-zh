@@ -1,0 +1,6 @@
+# 統一以 LF 儲存文字檔，避免跨平台換行差異
+* text=auto eol=lf
+
+# 二進位檔不做換行轉換
+*.png binary
+*.vsix binary

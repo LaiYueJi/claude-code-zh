@@ -1,0 +1,2243 @@
+{
+  "version": "2.1.2",
+  "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
+  "locale": "zh-CN",
+  "updatedAt": "2026-07-05",
+  "translations": [
+    {
+      "original": "\"Rename session\"",
+      "chinese": "\"重命名会话\""
+    },
+    {
+      "original": "\"Delete session\"",
+      "chinese": "\"删除会话\""
+    },
+    {
+      "original": "\"Session paused\"",
+      "chinese": "\"会话已暂停\""
+    },
+    {
+      "original": "\"No active session\"",
+      "chinese": "\"没有活动中的会话\""
+    },
+    {
+      "original": "\"Continue a previous conversation\"",
+      "chinese": "\"继续之前的对话\""
+    },
+    {
+      "original": "\"Open a new conversation in a new tab\"",
+      "chinese": "\"在新标签页中打开新对话\""
+    },
+    {
+      "original": "\"Continue here\"",
+      "chinese": "\"在此继续\""
+    },
+    {
+      "original": "\"Accept\"",
+      "chinese": "\"接受\""
+    },
+    {
+      "original": "\"Reject\"",
+      "chinese": "\"拒绝\""
+    },
+    {
+      "original": "\"Back\"",
+      "chinese": "\"返回\""
+    },
+    {
+      "original": "\"Close\"",
+      "chinese": "\"关闭\""
+    },
+    {
+      "original": "\"Okay\"",
+      "chinese": "\"好\""
+    },
+    {
+      "original": "\"Close preview (Esc)\"",
+      "chinese": "\"关闭预览 (Esc)\""
+    },
+    {
+      "original": "\"Open folder…\"",
+      "chinese": "\"打开文件夹…\""
+    },
+    {
+      "original": "\"Type your answer…\"",
+      "chinese": "\"输入你的答案…\""
+    },
+    {
+      "original": "\"Copy code\"",
+      "chinese": "\"复制代码\""
+    },
+    {
+      "original": "\"Copy to clipboard\"",
+      "chinese": "\"复制到剪贴板\""
+    },
+    {
+      "original": "\"Screenshot\"",
+      "chinese": "\"屏幕截图\""
+    },
+    {
+      "original": "\"Remove attachment\"",
+      "chinese": "\"移除附件\""
+    },
+    {
+      "original": "\"Remove comment\"",
+      "chinese": "\"删除评论\""
+    },
+    {
+      "original": "\"Rewind to…\"",
+      "chinese": "\"回溯至…\""
+    },
+    {
+      "original": "\"Good response\"",
+      "chinese": "\"回复很好\""
+    },
+    {
+      "original": "\"Bad response\"",
+      "chinese": "\"回复很差\""
+    },
+    {
+      "original": "\"What went wrong?\"",
+      "chinese": "\"出了什么问题？\""
+    },
+    {
+      "original": "\"Tell us more (optional)\"",
+      "chinese": "\"再多告诉我们一些（选填）\""
+    },
+    {
+      "original": "\"How can I do better? We would love to hear your feedback!\"",
+      "chinese": "\"我可以如何做得更好？我们非常乐意听取你的反馈！\""
+    },
+    {
+      "original": "\"How is Claude doing this session?\"",
+      "chinese": "\"Claude 在本次会话中的表现如何？\""
+    },
+    {
+      "original": "\"Thank you very much for the feedback!\"",
+      "chinese": "\"非常感谢你的反馈！\""
+    },
+    {
+      "original": "\"Thanks for the feedback!\"",
+      "chinese": "\"感谢你的反馈！\""
+    },
+    {
+      "original": "\"Couldn't send feedback: no active session\"",
+      "chinese": "\"无法发送反馈：没有活动中的会话\""
+    },
+    {
+      "original": "\"Give feedback\"",
+      "chinese": "\"提供反馈\""
+    },
+    {
+      "original": "\"Custom agents\"",
+      "chinese": "\"自定义 Agent\""
+    },
+    {
+      "original": "\"MCP servers\"",
+      "chinese": "\"MCP 服务器\""
+    },
+    {
+      "original": "\"Memory files\"",
+      "chinese": "\"记忆文件\""
+    },
+    {
+      "original": "\"Skills\"",
+      "chinese": "\"技能 (Skills)\""
+    },
+    {
+      "original": "\"Subagents\"",
+      "chinese": "\"子代理 (Subagents)\""
+    },
+    {
+      "original": "\"Use skill\"",
+      "chinese": "\"使用技能\""
+    },
+    {
+      "original": "\"Learn your next skill →\"",
+      "chinese": "\"学习你的下一项技能 →\""
+    },
+    {
+      "original": "\"Skills, subagents, plugins, and MCP servers\"",
+      "chinese": "\"技能、子代理、插件与 MCP 服务器\""
+    },
+    {
+      "original": "\"Context usage\"",
+      "chinese": "\"上下文用量\""
+    },
+    {
+      "original": "\"Auto mode\"",
+      "chinese": "\"自动模式\""
+    },
+    {
+      "original": "\"Plan Mode\"",
+      "chinese": "\"规划模式\""
+    },
+    {
+      "original": "\"Failed to load MCP servers\"",
+      "chinese": "\"加载 MCP 服务器失败\""
+    },
+    {
+      "original": "\"Toggle fast mode\"",
+      "chinese": "\"切换快速模式\""
+    },
+    {
+      "original": "\"Toggle fast mode for faster responses (Opus only)\"",
+      "chinese": "\"开启快速模式以获得更快的响应（仅限 Opus）\""
+    },
+    {
+      "original": "\"Prompt Claude to write code\"",
+      "chinese": "\"提示 Claude 编写代码\""
+    },
+    {
+      "original": "\"Highlight code and ask for edits\"",
+      "chinese": "\"选中代码并要求进行编辑\""
+    },
+    {
+      "original": "\"Give Claude rules to remember\"",
+      "chinese": "\"给 Claude 需要记住的规则\""
+    },
+    {
+      "original": "\"Let Claude edit without stopping\"",
+      "chinese": "\"让 Claude 不间断地持续编辑\""
+    },
+    {
+      "original": "\"Use Plan mode for complex changes\"",
+      "chinese": "\"针对复杂的更改使用规划模式\""
+    },
+    {
+      "original": "\"Add browser tabs to the conversation\"",
+      "chinese": "\"将浏览器标签页添加到对话中\""
+    },
+    {
+      "original": "\"Browse the web\"",
+      "chinese": "\"浏览网页\""
+    },
+    {
+      "original": "\"Welcome to Claude Code\"",
+      "chinese": "\"欢迎使用 Claude Code\""
+    },
+    {
+      "original": "\"Learn Claude Code\"",
+      "chinese": "\"了解 Claude Code\""
+    },
+    {
+      "original": "\"Rate Claude Code\"",
+      "chinese": "\"为 Claude Code 评分\""
+    },
+    {
+      "original": "\"Hide onboarding\"",
+      "chinese": "\"隐藏新手引导\""
+    },
+    {
+      "original": "\"Restart the onboarding flow\"",
+      "chinese": "\"重新开始新手引导流程\""
+    },
+    {
+      "original": "\"Hold Shift while dragging to drop files into Claude Code\"",
+      "chinese": "\"拖动时按住 Shift，即可将文件放入 Claude Code\""
+    },
+    {
+      "original": "\"Click or drag to set effort level\"",
+      "chinese": "\"点击或拖动以设置思考投入度等级\""
+    },
+    {
+      "original": "\"Click to cycle effort level\"",
+      "chinese": "\"点击以循环切换思考投入度等级\""
+    },
+    {
+      "original": "\"Trigger Inline Edit\"",
+      "chinese": "\"触发行内编辑\""
+    },
+    {
+      "original": "\"Accept Inline Edit\"",
+      "chinese": "\"接受行内编辑\""
+    },
+    {
+      "original": "\"Reject Inline Edit\"",
+      "chinese": "\"拒绝行内编辑\""
+    },
+    {
+      "original": "\"Hide Inline Edit\"",
+      "chinese": "\"隐藏行内编辑\""
+    },
+    {
+      "original": "\"Jump To Edit\"",
+      "chinese": "\"跳转到编辑处\""
+    },
+    {
+      "original": "\"Jump to Inline Edit\"",
+      "chinese": "\"跳转到行内编辑\""
+    },
+    {
+      "original": "\"Jump Back\"",
+      "chinese": "\"跳回\""
+    },
+    {
+      "original": "\"Jump Back from Inline Edit\"",
+      "chinese": "\"从行内编辑跳回\""
+    },
+    {
+      "original": "\"Describe the change you want...\"",
+      "chinese": "\"描述你想要的更改…\""
+    },
+    {
+      "original": "\"Edit failed\"",
+      "chinese": "\"编辑失败\""
+    },
+    {
+      "original": "\"Claude will automatically choose the best permission mode for each task\"",
+      "chinese": "\"Claude 会自动为每项任务选择最合适的权限模式\""
+    },
+    {
+      "original": "\"Claude will not ask for approval before running potentially dangerous commands\"",
+      "chinese": "\"Claude 在执行具有潜在危险的命令前，将不会请求你的批准\""
+    },
+    {
+      "original": "\"In Ask before editing mode, Claude will never change files without approval.\"",
+      "chinese": "\"在「编辑前询问」模式下，Claude 绝不会在未经批准的情况下更改文件。\""
+    },
+    {
+      "original": "\"Claude’s Plan\"",
+      "chinese": "\"Claude 的计划\""
+    },
+    {
+      "original": "\"User approved the plan\"",
+      "chinese": "\"用户已批准此计划\""
+    },
+    {
+      "original": "\"Stayed in plan mode\"",
+      "chinese": "\"保持在规划模式\""
+    },
+    {
+      "original": "\"Waiting for permission…\"",
+      "chinese": "\"正在等待授权…\""
+    },
+    {
+      "original": "\"% of context remaining until auto-compact.\"",
+      "chinese": "\"% 的剩余上下文空间，用尽后将自动压缩 (auto-compact)。\""
+    },
+    {
+      "original": "\"Conversation was compacted to free up context.\"",
+      "chinese": "\"已压缩对话以释放上下文空间。\""
+    },
+    {
+      "original": "\"Disconnect notebook\"",
+      "chinese": "\"断开 Notebook 连接\""
+    },
+    {
+      "original": "\"Disconnect browser\"",
+      "chinese": "\"断开浏览器连接\""
+    },
+    {
+      "original": "\"Browser connected\"",
+      "chinese": "\"浏览器已连接\""
+    },
+    {
+      "original": "\"Open in browser\"",
+      "chinese": "\"在浏览器中打开\""
+    },
+    {
+      "original": "\"Completing authentication in browser…\"",
+      "chinese": "\"正在浏览器中完成验证…\""
+    },
+    {
+      "original": "\"Connecting to browser…\"",
+      "chinese": "\"正在连接到浏览器…\""
+    },
+    {
+      "original": "\"Connecting to claude.ai/code…\"",
+      "chinese": "\"正在连接到 claude.ai/code…\""
+    },
+    {
+      "original": "\"If the redirect page shows a connection error, paste the URL from your browser's address bar:\"",
+      "chinese": "\"若重定向页面显示连接错误，请从浏览器的地址栏复制并粘贴该 URL：\""
+    },
+    {
+      "original": "\"View and control this session from claude.ai/code\"",
+      "chinese": "\"从 claude.ai/code 查看并控制此会话\""
+    },
+    {
+      "original": "\"Remote Control connected ·\"",
+      "chinese": "\"远程控制已连接 ·\""
+    },
+    {
+      "original": "\"Remote Control disabled.\"",
+      "chinese": "\"远程控制已禁用。\""
+    },
+    {
+      "original": "\"Failed to teleport session\"",
+      "chinese": "\"传送会话失败\""
+    },
+    {
+      "original": "\"Failed to list remote sessions:\"",
+      "chinese": "\"列出远程会话失败：\""
+    },
+    {
+      "original": "\"View usage\"",
+      "chinese": "\"查看用量\""
+    },
+    {
+      "original": "\"Usage window\"",
+      "chinese": "\"用量周期\""
+    },
+    {
+      "original": "\"Manage usage on claude.ai\"",
+      "chinese": "\"在 claude.ai 上管理用量\""
+    },
+    {
+      "original": "\"Usage tracking is only available for Claude AI subscribers.\"",
+      "chinese": "\"用量跟踪仅向 Claude AI 订阅者提供。\""
+    },
+    {
+      "original": "\"No attribution data yet · accumulates as you use Claude\"",
+      "chinese": "\"尚无归因数据 · 随着你使用 Claude 会逐渐累积\""
+    },
+    {
+      "original": "\"Fable 5 now uses usage credits\"",
+      "chinese": "\"Fable 5 现在改用用量点数 (usage credits)\""
+    },
+    {
+      "original": "\"Fable 5 requires usage credits, which aren't enabled for your account — switched to your default model for this session\"",
+      "chinese": "\"Fable 5 需要用量点数 (usage credits)，但你的账户尚未启用 — 本次会话已切换为你的默认模型\""
+    },
+    {
+      "original": "\"Switched to your default model — Fable 5 requires usage credits\"",
+      "chinese": "\"已切换为你的默认模型 — Fable 5 需要用量点数 (usage credits)\""
+    },
+    {
+      "original": "\"Switched to your default model for this session — Fable 5 requires usage credits\"",
+      "chinese": "\"本次会话已切换为你的默认模型 — Fable 5 需要用量点数 (usage credits)\""
+    },
+    {
+      "original": "\"Switched to your default model, now your saved default — Fable 5 requires usage credits\"",
+      "chinese": "\"已切换为你的默认模型，并设为你保存的默认值 — Fable 5 需要用量点数 (usage credits)\""
+    },
+    {
+      "original": "\"Enter worktree name\"",
+      "chinese": "\"输入工作树 (worktree) 名称\""
+    },
+    {
+      "original": "\"e.g. my-feature\"",
+      "chinese": "\"例如：my-feature\""
+    },
+    {
+      "original": "\"Switch branch & continue\"",
+      "chinese": "\"切换分支并继续\""
+    },
+    {
+      "original": "\"Continue without switching branch\"",
+      "chinese": "\"不切换分支，直接继续\""
+    },
+    {
+      "original": "\"This session is in worktree\"",
+      "chinese": "\"此会话位于工作树 (worktree)\""
+    },
+    {
+      "original": "\"Open worktree\"",
+      "chinese": "\"打开工作树 (worktree)\""
+    },
+    {
+      "original": "\"Failed to create git worktree:\"",
+      "chinese": "\"创建 git 工作树 (worktree) 失败：\""
+    },
+    {
+      "original": "\"Failed to create worktree\"",
+      "chinese": "\"创建工作树 (worktree) 失败\""
+    },
+    {
+      "original": "\"Branch checkout skipped: \"",
+      "chinese": "\"已跳过分支检出 (checkout)：\""
+    },
+    {
+      "original": "\"Failed to rewind code\"",
+      "chinese": "\"回溯代码失败\""
+    },
+    {
+      "original": "\"Failed to rewind: no checkpoint for this message\"",
+      "chinese": "\"回溯失败：此消息没有检查点 (checkpoint)\""
+    },
+    {
+      "original": "to focus or unfocus Claude",
+      "chinese": "聚焦或取消聚焦 Claude 窗口"
+    },
+    {
+      "original": "\"Ask before edits\"",
+      "chinese": "\"编辑前询问\""
+    },
+    {
+      "original": "\"Edit automatically\"",
+      "chinese": "\"自动编辑\""
+    },
+    {
+      "original": "\"Plan mode\"",
+      "chinese": "\"规划模式\""
+    },
+    {
+      "original": "Tired of repeating yourself? Tell Claude to remember what you’ve told it using CLAUDE.md.",
+      "chinese": "厌倦了重复输入指令吗？通过 CLAUDE.md 记录已知信息，让 Claude 拥有持久记忆。"
+    },
+    {
+      "original": "\"Ready to code?\"",
+      "chinese": "\"准备好开始写代码了吗？\""
+    },
+    {
+      "original": "\"Let's write something worth deploying.\"",
+      "chinese": "\"来写出值得部署上线的代码吧。\""
+    },
+    {
+      "original": "\"// TODO: Everything. Let’s start.\"",
+      "chinese": "\"// TODO: 百废待兴。开始吧。\""
+    },
+    {
+      "original": "\"Type /model to pick the right tool for the job.\"",
+      "chinese": "\"输入 /model 为当前任务选择合适的工具。\""
+    },
+    {
+      "original": "\"Use planning mode to talk through big changes before a commit. Press\"",
+      "chinese": "\"在提交 commit 前，使用规划模式详细讨论重大更改。按下\""
+    },
+    {
+      "original": "\"to cycle between modes.\"",
+      "chinese": "\"以循环切换模式。\""
+    },
+    {
+      "original": "\"Highlight any text and press\"",
+      "chinese": "\"选中文本并按下\""
+    },
+    {
+      "original": "\"to chat about it\"",
+      "chinese": "\"来针对它进行讨论。\""
+    },
+    {
+      "original": "\"Make a CLAUDE.md file for instructions Claude will read every single time.\"",
+      "chinese": "\"创建一个 CLAUDE.md 文件，用来存放 Claude 每次都会读取的说明指示。\""
+    },
+    {
+      "original": "\"You’ve come to the absolutely right place!\"",
+      "chinese": "\"你绝对找对地方了！\""
+    },
+    {
+      "original": "\"Prefer the Terminal experience?\"",
+      "chinese": "\"更喜欢终端体验吗？\""
+    },
+    {
+      "original": "\"Switch back in Settings.\"",
+      "chinese": "\"可在「设置」中切换回来。\""
+    },
+    {
+      "original": "\"Files & Folders\"",
+      "chinese": "\"文件与文件夹\""
+    },
+    {
+      "original": "\"Remote server is not connected\"",
+      "chinese": "\"远程服务器未连接\""
+    },
+    {
+      "original": "\"Filter actions…\"",
+      "chinese": "\"筛选操作…\""
+    },
+    {
+      "original": "\"No matching commands\"",
+      "chinese": "\"没有匹配的命令\""
+    },
+    {
+      "original": "\"Attach file…\"",
+      "chinese": "\"附加文件…\""
+    },
+    {
+      "original": "\"Mention file from this project…\"",
+      "chinese": "\"引用此项目中的文件…\""
+    },
+    {
+      "original": "\"MCP status\"",
+      "chinese": "\"MCP 状态\""
+    },
+    {
+      "original": "\"Manage plugins\"",
+      "chinese": "\"管理插件\""
+    },
+    {
+      "original": "\"General config…\"",
+      "chinese": "\"常规配置…\""
+    },
+    {
+      "original": "\"Open Claude Code Extension configuration\"",
+      "chinese": "\"打开 Claude Code 扩展设置\""
+    },
+    {
+      "original": "\"View help docs\"",
+      "chinese": "\"查看帮助文档\""
+    },
+    {
+      "original": "\"Open help documentation\"",
+      "chinese": "\"打开帮助文档\""
+    },
+    {
+      "original": "\"Open Claude in Terminal\"",
+      "chinese": "\"在终端中打开 Claude\""
+    },
+    {
+      "original": "\"Open a new Claude instance in the Terminal\"",
+      "chinese": "\"在终端中打开新的 Claude 实例\""
+    },
+    {
+      "original": "\"Thinking\"",
+      "chinese": "\"深度思考\""
+    },
+    {
+      "original": "\"Thinking…\"",
+      "chinese": "\"深度思考中…\""
+    },
+    {
+      "original": "\"Extended thinking is on\"",
+      "chinese": "\"扩展思考模式已开启\""
+    },
+    {
+      "original": "\"Extended thinking is off\"",
+      "chinese": "\"扩展思考模式已关闭\""
+    },
+    {
+      "original": "\"Drop to attach as context\"",
+      "chinese": "\"拖动到此处以作为上下文引用\""
+    },
+    {
+      "original": "\"Loading…\"",
+      "chinese": "\"加载中…\""
+    },
+    {
+      "original": "\"Account & Usage\"",
+      "chinese": "\"账户与用量\""
+    },
+    {
+      "original": "\"Account & usage…\"",
+      "chinese": "\"账户与用量…\""
+    },
+    {
+      "original": "\"Switch model…\"",
+      "chinese": "\"切换模型…\""
+    },
+    {
+      "original": "\"Ask Claude for help\"",
+      "chinese": "\"向 Claude 寻求帮助\""
+    },
+    {
+      "original": "\"Queue another message…\"",
+      "chinese": "\"排队发送下一条消息…\""
+    },
+    {
+      "original": "to attach selected text",
+      "chinese": "以附加选中的文本"
+    },
+    {
+      "original": "\"Ask Claude to edit…\"",
+      "chinese": "\"请求 Claude 进行编辑…\""
+    },
+    {
+      "original": "\"Plugins\"",
+      "chinese": "\"插件\""
+    },
+    {
+      "original": "\"Continue in Terminal to manage plugins?\"",
+      "chinese": "\"是否前往终端管理插件？\""
+    },
+    {
+      "original": "\"After installing plugins, reload this extension to use them here.\"",
+      "chinese": "\"插件安装完成后，请重新加载此扩展以便在此处使用。\""
+    },
+    {
+      "original": "\"Manage MCP servers\"",
+      "chinese": "\"管理 MCP 服务器\""
+    },
+    {
+      "original": "\"Output styles\"",
+      "chinese": "\"输出样式\""
+    },
+    {
+      "original": "\"Continue in Terminal to change output style?\"",
+      "chinese": "\"是否前往终端更改输出样式？\""
+    },
+    {
+      "original": "\"After changing your output style in Terminal and reloading this extension, you'll be able to use it here.\"",
+      "chinese": "\"在终端修改输出样式并重新加载扩展后，即可在此处生效。\""
+    },
+    {
+      "original": "\"Agents\"",
+      "chinese": "\"代理\""
+    },
+    {
+      "original": "\"Continue in Terminal to configure agents?\"",
+      "chinese": "\"是否前往终端配置 Agent？\""
+    },
+    {
+      "original": "\"Once agents are configured in Terminal, you can reload this extension and ask Claude to use them here.\"",
+      "chinese": "\"在终端配置完成后，重新加载此扩展即可在此处调用 Agent。\""
+    },
+    {
+      "original": "\"Hooks\"",
+      "chinese": "\"钩子 (Hooks)\""
+    },
+    {
+      "original": "\"Continue in Terminal to configure hooks?\"",
+      "chinese": "\"是否前往终端配置 Hooks？\""
+    },
+    {
+      "original": "\"Once hooks are configured in this repository, they'll be active in your IDE, too.\"",
+      "chinese": "\"在此仓库配置 Hooks 后，它们也会在你的 IDE 中生效。\""
+    },
+    {
+      "original": "\"Memory\"",
+      "chinese": "\"记忆\""
+    },
+    {
+      "original": "\"Continue in Terminal to edit memory?\"",
+      "chinese": "\"是否前往终端编辑记忆内容？\""
+    },
+    {
+      "original": "\"Once configured, memories will be picked up by Claude Code here in your IDE.\"",
+      "chinese": "\"配置完成后，Claude Code 将会在你的 IDE 中同步这些记忆内容。\""
+    },
+    {
+      "original": "\"Permissions\"",
+      "chinese": "\"权限管理\""
+    },
+    {
+      "original": "\"Continue in Terminal to manage permissions?\"",
+      "chinese": "\"是否前往终端管理权限？\""
+    },
+    {
+      "original": "\"Permission settings are shared between Terminal and this IDE.\"",
+      "chinese": "\"权限设置会在终端与 IDE 之间共享。\""
+    },
+    {
+      "original": "\"Loading MCP servers…\"",
+      "chinese": "\"正在加载 MCP 服务器…\""
+    },
+    {
+      "original": "\"No running MCP servers.\"",
+      "chinese": "\"当前没有正在运行的 MCP 服务器。\""
+    },
+    {
+      "original": "\"Clear conversation\"",
+      "chinese": "\"清除对话\""
+    },
+    {
+      "original": "\"New conversation\"",
+      "chinese": "\"新建对话\""
+    },
+    {
+      "original": "\"Untitled\"",
+      "chinese": "\"未命名\""
+    },
+    {
+      "original": "\"Search sessions…\"",
+      "chinese": "\"搜索会话…\""
+    },
+    {
+      "original": "\"Resume conversation\"",
+      "chinese": "\"恢复对话\""
+    },
+    {
+      "original": "\"Switch account\"",
+      "chinese": "\"切换账户\""
+    },
+    {
+      "original": "\"Flag model behavior (internal)\"",
+      "chinese": "\"标记模型行为 (内部)\""
+    },
+    {
+      "original": "\"Report model issues to the research team\"",
+      "chinese": "\"向研究团队报告模型问题\""
+    },
+    {
+      "original": "\"Share with team (internal)\"",
+      "chinese": "\"与团队分享 (内部)\""
+    },
+    {
+      "original": "\"Share conversation with team members\"",
+      "chinese": "\"与团队成员分享对话\""
+    },
+    {
+      "original": "\"Reset onboarding [internal]\"",
+      "chinese": "\"重置新手引导 [内部]\""
+    },
+    {
+      "original": "\"Report a problem\"",
+      "chinese": "\"报告问题\""
+    },
+    {
+      "original": "\"Show command menu (/)\"",
+      "chinese": "\"显示命令菜单 (/)\""
+    },
+    {
+      "original": "\"Adding…\"",
+      "chinese": "\"正在添加…\""
+    },
+    {
+      "original": "\"Add\"",
+      "chinese": "\"添加\""
+    },
+    {
+      "original": "\"No marketplaces configured. Add one above to discover plugins.\"",
+      "chinese": "\"尚未配置市场。请在上方添加一个市场以发现插件。\""
+    },
+    {
+      "original": "\"Press\"",
+      "chinese": "\"按下\""
+    },
+    {
+      "original": "\"to automatically approve code edits\"",
+      "chinese": "\"以自动批准代码修改\""
+    },
+    {
+      "original": "\"Use Claude Code in the terminal to configure MCP servers. They’ll work here, too!\"",
+      "chinese": "\"在终端中使用 Claude Code 配置 MCP 服务器，配置也同样会在此处生效！\""
+    },
+    {
+      "original": "\"Past conversations\"",
+      "chinese": "\"历史对话\""
+    },
+    {
+      "original": "\"Past Conversations\"",
+      "chinese": "\"历史对话\""
+    },
+    {
+      "original": "\"New session\"",
+      "chinese": "\"新建会话\""
+    },
+    {
+      "original": "Claude is requesting permission to use",
+      "chinese": "Claude 正在请求使用权限"
+    },
+    {
+      "original": "\"User cancelled the edit\"",
+      "chinese": "\"用户取消了编辑\""
+    },
+    {
+      "original": "\"User cancelled the write\"",
+      "chinese": "\"用户取消了写入\""
+    },
+    {
+      "original": "\"Claude will edit your selected text or the whole file. Click, or press Shift+Tab, to switch modes.\"",
+      "chinese": "\"Claude 将编辑你选中的文本或整个文件。点击或按 Shift+Tab 可切换模式。\""
+    },
+    {
+      "original": "\"Claude will explore the code and present a plan before editing. Click, or press Shift+Tab, to switch modes.\"",
+      "chinese": "\"Claude 将先探索代码并在编辑前给出方案。点击或按 Shift+Tab 可切换模式。\""
+    },
+    {
+      "original": "\"Claude Code will not ask for your approval before running potentially dangerous commands.\"",
+      "chinese": "\"Claude Code 在执行具有潜在危险的命令前，将不再请求你的批准。\""
+    },
+    {
+      "original": "\"Claude will ask before each edit. Click, or press Shift+Tab, to switch modes.\"",
+      "chinese": "\"Claude 将在每次编辑前进行询问。点击或按 Shift+Tab 可切换模式。\""
+    },
+    {
+      "original": "\"Bypass permissions\"",
+      "chinese": "\"绕过权限验证\""
+    },
+    {
+      "original": "Not showing Claude your current file selection",
+      "chinese": "不向 Claude 显示当前选中的文件"
+    },
+    {
+      "original": "Showing Claude your current file selection",
+      "chinese": "正在向 Claude 显示当前选中的文件"
+    },
+    {
+      "original": ". Click to attach.",
+      "chinese": "。点击以附加。"
+    },
+    {
+      "original": "\"Concocting\"",
+      "chinese": "\"正在构思\""
+    },
+    {
+      "original": "\"Forging\"",
+      "chinese": "\"正在生成代码\""
+    },
+    {
+      "original": "\"Support\"",
+      "chinese": "\"支持\""
+    },
+    {
+      "original": "\"Settings\"",
+      "chinese": "\"设置\""
+    },
+    {
+      "original": "\"Slash Commands\"",
+      "chinese": "\"斜杠命令\""
+    },
+    {
+      "original": "\"Customize\"",
+      "chinese": "\"自定义\""
+    },
+    {
+      "original": "\"Model\"",
+      "chinese": "\"模型\""
+    },
+    {
+      "original": "\"Context\"",
+      "chinese": "\"上下文\""
+    },
+    {
+      "original": "\"View account info and usage limits\"",
+      "chinese": "\"查看账户信息与使用量限制\""
+    },
+    {
+      "original": "\"Continue in Terminal to manage MCPs?\"",
+      "chinese": "\"是否在终端中继续管理 MCP？\""
+    },
+    {
+      "original": "\"Manage MCP Servers\"",
+      "chinese": "\"管理 MCP 服务器\""
+    },
+    {
+      "original": "\"You can use the \"",
+      "chinese": "\"你可以使用 \""
+    },
+    {
+      "original": "\" command-line tool to configure system-wide or private servers.\"",
+      "chinese": "\" 命令行工具，来配置系统级或私有服务器。\""
+    },
+    {
+      "original": "\"Once configured, MCPs will be reflected in your IDE, too.\"",
+      "chinese": "\"配置完成后，MCP 也会在你的 IDE 中生效。\""
+    },
+    {
+      "original": "\"Learn more\"",
+      "chinese": "\"了解更多\""
+    },
+    {
+      "original": "\"Claude Code can be used with your Claude subscription or billed based on API usage through your Console account.\"",
+      "chinese": "\"Claude Code 可以关联你的 Claude 订阅使用，也可以通过 Console 账户按 API 使用量计费。\""
+    },
+    {
+      "original": "\"How do you want to log in?\"",
+      "chinese": "\"请选择登录方式\""
+    },
+    {
+      "original": "\"Use your Claude Pro, Team, or Enterprise subscription\"",
+      "chinese": "\"使用你的 Claude Pro、Team 或 Enterprise 订阅\""
+    },
+    {
+      "original": "\"Claude.ai Subscription\"",
+      "chinese": "\"Claude.ai 订阅\""
+    },
+    {
+      "original": "\"Anthropic Console\"",
+      "chinese": "\"Anthropic 控制台\""
+    },
+    {
+      "original": "\"Pay for API usage through your Console account\"",
+      "chinese": "\"通过你的 Console 账户按 API 使用量付费\""
+    },
+    {
+      "original": "\"Bedrock, Foundry, or Vertex\"",
+      "chinese": "\"Bedrock、Foundry 或 Vertex\""
+    },
+    {
+      "original": "\"Instructions on how to use API keys or third-party providers.\"",
+      "chinese": "\"关于如何使用 API 密钥或第三方提供商的说明。\""
+    },
+    {
+      "original": "\"Prefer the terminal experience?\"",
+      "chinese": "\"更喜欢终端的操作体验吗？\""
+    },
+    {
+      "original": "\"Run \",(.+?),\" in terminal\"",
+      "chinese": "\"在终端中执行 \", $1, \"\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Marketplaces\"",
+      "chinese": "\"市场\""
+    },
+    {
+      "original": "\"Manage Plugins\"",
+      "chinese": "\"管理插件\""
+    },
+    {
+      "original": "\"GitHub repo, URL, or path…\"",
+      "chinese": "\"GitHub 仓库、URL 或路径…\""
+    },
+    {
+      "original": "\"Refresh marketplace\"",
+      "chinese": "\"刷新市场\""
+    },
+    {
+      "original": "\"Remove marketplace\"",
+      "chinese": "\"移除市场\""
+    },
+    {
+      "original": "\"Removing…\"",
+      "chinese": "\"正在移除…\""
+    },
+    {
+      "original": "\"Install\"",
+      "chinese": "\"安装\""
+    },
+    {
+      "original": "\"Installed\"",
+      "chinese": "\"已安装\""
+    },
+    {
+      "original": "\"install_plugin\"",
+      "chinese": "\"安装插件\""
+    },
+    {
+      "original": "\"uninstall_plugin\"",
+      "chinese": "\"卸载插件\""
+    },
+    {
+      "original": "\"set_plugin_enabled\"",
+      "chinese": "\"设置插件启用状态\""
+    },
+    {
+      "original": "\"add_marketplace\"",
+      "chinese": "\"添加市场\""
+    },
+    {
+      "original": "\"remove_marketplace\"",
+      "chinese": "\"移除市场\""
+    },
+    {
+      "original": "\"refresh_marketplace\"",
+      "chinese": "\"刷新市场\""
+    },
+    {
+      "original": "\"Search plugins…\"",
+      "chinese": "\"搜索插件…\""
+    },
+    {
+      "original": "\"No plugins available. Add a marketplace to discover plugins.\"",
+      "chinese": "\"没有可用的插件。请添加市场以发现更多插件。\""
+    },
+    {
+      "original": "\"Disable plugin (stays installed but will not load)\"",
+      "chinese": "\"禁用插件（保持安装但不会加载）\""
+    },
+    {
+      "original": "\"Enable plugin (will load on next restart)\"",
+      "chinese": "\"启用插件（下次重新启动后加载）\""
+    },
+    {
+      "original": "\"Uninstall plugin\"",
+      "chinese": "\"卸载插件\""
+    },
+    {
+      "original": "\"Uninstall and remove plugin\"",
+      "chinese": "\"卸载并移除插件\""
+    },
+    {
+      "original": "\"Available\"",
+      "chinese": "\"可用\""
+    },
+    {
+      "original": "\"Official Claude Code marketplace\"",
+      "chinese": "\"官方 Claude Code 市场\""
+    },
+    {
+      "original": "\"Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change.\"",
+      "chinese": "\"在安装、更新或使用插件之前，请确保你信任该插件。Anthropic 并不控制插件中所包含的 MCP 服务器、文件或其他软件，且无法验证它们是否能按预期运行，或保证其内容不会变动。\""
+    },
+    {
+      "original": "\"Available in all your projects\"",
+      "chinese": "\"在你的所有项目中均可用\""
+    },
+    {
+      "original": "\"Install for you\"",
+      "chinese": "\"仅为你安装\""
+    },
+    {
+      "original": "\"Install for this project\"",
+      "chinese": "\"为当前项目安装\""
+    },
+    {
+      "original": "\"Shared with all collaborators\"",
+      "chinese": "\"与所有协作者共享\""
+    },
+    {
+      "original": "\"Install locally\"",
+      "chinese": "\"在本地安装\""
+    },
+    {
+      "original": "\"Only for you, only in this repo\"",
+      "chinese": "\"仅限于你，且仅在当前仓库中\""
+    },
+    {
+      "original": "\"Cancel\"",
+      "chinese": "\"取消\""
+    },
+    {
+      "original": "\"Loading marketplaces…\"",
+      "chinese": "\"正在加载市场…\""
+    },
+    {
+      "original": "\"Failed to load marketplaces: \"",
+      "chinese": "\"加载市场失败：\""
+    },
+    {
+      "original": "\"Close dialog\"",
+      "chinese": "\"关闭对话框\""
+    },
+    {
+      "original": "\"Restart Claude to apply plugin changes\"",
+      "chinese": "\"重新启动 Claude 以应用插件更改\""
+    },
+    {
+      "original": "\"Restart\"",
+      "chinese": "\"重新启动\""
+    },
+    {
+      "original": "\"Fork and rewind\"",
+      "chinese": "\"分叉并回溯\""
+    },
+    {
+      "original": "\"Rewind code\"",
+      "chinese": "\"回溯代码\""
+    },
+    {
+      "original": "\"Continue\"",
+      "chinese": "\"继续\""
+    },
+    {
+      "original": "\"Rewind\"",
+      "chinese": "\"回溯\""
+    },
+    {
+      "original": "\"Never mind\"",
+      "chinese": "\"先不要\""
+    },
+    {
+      "original": "\"A new forked conversation will be created after rewinding.\"",
+      "chinese": "\"回溯后将会创建一个新的分叉对话。\""
+    },
+    {
+      "original": "\"Checking code changes…\"",
+      "chinese": "\"正在检查代码更改…\""
+    },
+    {
+      "original": "\"Rewinding does not affect files edited manually or via bash.\"",
+      "chinese": "\"回溯不会影响手动编辑或通过 bash 编辑的文件。\""
+    },
+    {
+      "original": "\"Failed to rewind code: No file checkpoint found\"",
+      "chinese": "\"回溯代码失败：找不到文件检查点 (Checkpoint)\""
+    },
+    {
+      "original": "\"Code rewind successful\"",
+      "chinese": "\"代码回溯成功\""
+    },
+    {
+      "original": "\"Failed to fork conversation: Unknown session id\"",
+      "chinese": "\"分叉对话失败：未知的会话 (Session) ID\""
+    },
+    {
+      "original": "\"Message actions\"",
+      "chinese": "\"消息操作\""
+    },
+    {
+      "original": "\"Loading plugins…\"",
+      "chinese": "\"正在加载插件…\""
+    },
+    {
+      "original": "\"Installing plugin \\u201C\"",
+      "chinese": "\"正在安装插件 \\u201C\""
+    },
+    {
+      "original": "\"\\u201D requires adding a new marketplace source: \"",
+      "chinese": "\"\\u201D 需要添加新的市场来源：\""
+    },
+    {
+      "original": "\"Add Marketplace & Continue\"",
+      "chinese": "\"添加市场来源并继续\""
+    },
+    {
+      "original": "\"Adding marketplace…\"",
+      "chinese": "\"正在添加市场来源…\""
+    },
+    {
+      "original": "\"Loading available plugins…\"",
+      "chinese": "\"正在加载可用的插件…\""
+    },
+    {
+      "original": "\"Failed to load plugins: \"",
+      "chinese": "\"加载插件失败：\""
+    },
+    {
+      "original": "\"Select a model\"",
+      "chinese": "\"请选择一个模型\""
+    },
+    {
+      "original": "\"No models available\"",
+      "chinese": "\"没有可用的模型\""
+    },
+    {
+      "original": "\"Loading models…\"",
+      "chinese": "\"正在加载模型…\""
+    },
+    {
+      "original": "\"Account\"",
+      "chinese": "\"账户\""
+    },
+    {
+      "original": "\"Auth method\"",
+      "chinese": "\"验证方式\""
+    },
+    {
+      "original": "\"Email\"",
+      "chinese": "\"电子邮件\""
+    },
+    {
+      "original": "\"Organization\"",
+      "chinese": "\"组织\""
+    },
+    {
+      "original": "\"Plan\"",
+      "chinese": "\"套餐\""
+    },
+    {
+      "original": "\"Usage\"",
+      "chinese": "\"使用情况\""
+    },
+    {
+      "original": "\"Session (5hr)\"",
+      "chinese": "\"会话 (5 小时)\""
+    },
+    {
+      "original": "\"Weekly (7 day)\"",
+      "chinese": "\"每周 (7 天)\""
+    },
+    {
+      "original": "\"Weekly Sonnet\"",
+      "chinese": "\"每周 Sonnet 模型\""
+    },
+    {
+      "original": "\"Loading usage data…\"",
+      "chinese": "\"正在加载使用数据…\""
+    },
+    {
+      "original": "\"Continue in Terminal\"",
+      "chinese": "\"在终端继续\""
+    },
+    {
+      "original": "\"Update Todos\"",
+      "chinese": "\"更新待办事项 (Todos)\""
+    },
+    {
+      "original": "\"Allow this bash command?\"",
+      "chinese": "\"是否允许此 bash 命令？\""
+    },
+    {
+      "original": "\"Write\"",
+      "chinese": "\"写入\""
+    },
+    {
+      "original": "\"Read\"",
+      "chinese": "\"读取\""
+    },
+    {
+      "original": "\"Details\"",
+      "chinese": "\"详细信息\""
+    },
+    {
+      "original": "\"What to do first? Ask about this codebase or we can start writing code.\"",
+      "chinese": "\"接下来要做什么？你可以先询问关于此代码库的问题，或者我们可以直接开始编写代码。\""
+    },
+    {
+      "original": "\"No files found\"",
+      "chinese": "\"找不到文件\""
+    },
+    {
+      "original": "\"Today\"",
+      "chinese": "\"今天\""
+    },
+    {
+      "original": "\"Yesterday\"",
+      "chinese": "\"昨天\""
+    },
+    {
+      "original": "\"Past week\"",
+      "chinese": "\"上周\""
+    },
+    {
+      "original": "\"Past month\"",
+      "chinese": "\"上个月\""
+    },
+    {
+      "original": "\"Older\"",
+      "chinese": "\"更早以前\""
+    },
+    {
+      "original": "\"Yes, allow all edits this session\"",
+      "chinese": "\"是的，允许本次会话中的所有编辑\""
+    },
+    {
+      "original": "\"Yes, allow \",([\\w\\[\\].]+),\" for \",([\\w.]+)",
+      "chinese": "\"是的，允许 \",$1,\" 用于 \",$2",
+      "regex": true
+    },
+    {
+      "original": "\"Yes, allow \",([\\w\\[\\].]+),\" and \",([\\w\\[\\].]+),\" for\",\" \",([\\w.]+)",
+      "chinese": "\"是的，允许 \",$1,\" 和 \",$2,\" 用于 \",$3",
+      "regex": true
+    },
+    {
+      "original": "\"Yes, allow \",([\\w\\[\\].]+),\" and \",([\\w\\[\\].-]+),\" \",\"more for \",([\\w.]+)",
+      "chinese": "\"是的，允许 \",$1,\" 和另外 \",$2,\" 个项目的权限，用于 \",$3",
+      "regex": true
+    },
+    {
+      "original": "\"Yes, allow access to \",([\\w\\[\\].]+),\" for \",([\\w.]+)",
+      "chinese": "\"是的，允许访问 \",$1,\" 用于 \",$2",
+      "regex": true
+    },
+    {
+      "original": "\"Yes, allow access to \",([\\w\\[\\].]+),\" directories for\",\" \",([\\w.]+)",
+      "chinese": "\"是的，允许访问 \",$1,\" 个目录，用于 \",$2",
+      "regex": true
+    },
+    {
+      "original": "\"this project (just you)\"",
+      "chinese": "\"此项目（仅限于你）\""
+    },
+    {
+      "original": "\"all projects\"",
+      "chinese": "\"所有项目\""
+    },
+    {
+      "original": "\"this project (shared)\"",
+      "chinese": "\"此项目（共享）\""
+    },
+    {
+      "original": "\"this session\"",
+      "chinese": "\"此会话\""
+    },
+    {
+      "original": "\"Saves to .claude/settings.local.json (gitignored)\"",
+      "chinese": "\"保存到 .claude/settings.local.json（已加入 git 忽略）\""
+    },
+    {
+      "original": "\"Saves to ~/.claude/settings.json\"",
+      "chinese": "\"保存到 ~/.claude/settings.json\""
+    },
+    {
+      "original": "\"Saves to .claude/settings.json (shared with team)\"",
+      "chinese": "\"保存到 .claude/settings.json（与团队共享）\""
+    },
+    {
+      "original": "\"Only for this session (not saved)\"",
+      "chinese": "\"仅限本次会话（不保存）\""
+    },
+    {
+      "original": "\"From command line arguments\"",
+      "chinese": "\"来自命令行参数\""
+    },
+    {
+      "original": " tool output`",
+      "chinese": " 工具输出`"
+    },
+    {
+      "original": "\"Tell Claude what to do instead\"",
+      "chinese": "\"改为告诉 Claude 该做什么\""
+    },
+    {
+      "original": "\"Yes, return to normal mode\"",
+      "chinese": "\"是的，返回常规模式\""
+    },
+    {
+      "original": "\"Esc to cancel\"",
+      "chinese": "\"按 Esc 取消\""
+    },
+    {
+      "original": "\"Interrupted\"",
+      "chinese": "\"已中断\""
+    },
+    {
+      "original": "\"Tool interrupted\"",
+      "chinese": "\"工具执行已中断\""
+    },
+    {
+      "original": "\"Make this edit to\"",
+      "chinese": "\"将此编辑应用到\""
+    },
+    {
+      "original": "\"Yes\"",
+      "chinese": "\"是的\""
+    },
+    {
+      "original": "\"Yes, and auto-accept\"",
+      "chinese": "\"是的，并自动接受\""
+    },
+    {
+      "original": "\"No\"",
+      "chinese": "\"否\""
+    },
+    {
+      "original": "\"No, keep planning\"",
+      "chinese": "\"否，继续规划\""
+    },
+    {
+      "original": "\"Yes, and manually approve edits\"",
+      "chinese": "\"是的，并手动审核编辑\""
+    },
+    {
+      "original": "\"Yes, and don't ask again\"",
+      "chinese": "\"是的，且不再询问\""
+    },
+    {
+      "original": "\"No sessions found\"",
+      "chinese": "\"找不到会话记录\""
+    },
+    {
+      "original": "\"Do you want to proceed with \"",
+      "chinese": "\"是否继续执行 \""
+    },
+    {
+      "original": "\"Effort\"",
+      "chinese": "\"思考投入度\""
+    },
+    {
+      "original": "\"Toggle fast mode (Opus 4.6 only)\"",
+      "chinese": "\"切换快速模式 (仅限 Opus 4.6)\""
+    },
+    {
+      "original": "\"Toggle fast mode for faster responses (Opus 4.6 only)\"",
+      "chinese": "\"开启快速模式以获得更快的响应 (仅限 Opus 4.6)\""
+    },
+    {
+      "original": "\"Claude will ask for approval before making each edit\"",
+      "chinese": "\"Claude 在进行每项编辑前都会要求手动审核\""
+    },
+    {
+      "original": ". Click to change, or press Shift+Tab to cycle.",
+      "chinese": "。点击以修改，或按 Shift+Tab 循环切换。"
+    },
+    {
+      "original": "\"Claude will edit your selected text or the whole file\"",
+      "chinese": "\"Claude 将编辑你选中的文本或整个文件\""
+    },
+    {
+      "original": "\"Claude will explore the code and present a plan before editing\"",
+      "chinese": "\"Claude 将先探索代码并在编辑前给出方案\""
+    },
+    {
+      "original": "\" to switch\"",
+      "chinese": "\" 以切换\""
+    },
+    {
+      "original": "\"Modes\"",
+      "chinese": "\"模式\""
+    },
+    {
+      "original": "\"Session history\"",
+      "chinese": "\"对话历史记录\""
+    },
+    {
+      "original": "\"Upload from computer\"",
+      "chinese": "\"从电脑上传\""
+    },
+    {
+      "original": "\"Attach files from your computer\"",
+      "chinese": "\"从电脑上传并附加文件\""
+    },
+    {
+      "original": "\"Add context\"",
+      "chinese": "\"添加上下文\""
+    },
+    {
+      "original": "\"Add files or folders to the conversation\"",
+      "chinese": "\"向对话中添加文件或文件夹\""
+    },
+    {
+      "original": "\"Toggle extended thinking mode\"",
+      "chinese": "\"切换扩展思考模式\""
+    },
+    {
+      "original": "\"Set how hard the model tries\"",
+      "chinese": "\"设置模型的思考投入程度等级\""
+    },
+    {
+      "original": "\"Click a position to set effort level\"",
+      "chinese": "\"点击位置以设置思考投入度等级\""
+    },
+    {
+      "original": "\"Change the AI model\"",
+      "chinese": "\"更改 AI 模型\""
+    },
+    {
+      "original": "\"Upload a file to include in conversation\"",
+      "chinese": "\"上传文件并将其添加到当前对话中\""
+    },
+    {
+      "original": "\"Reference a project file with @mention\"",
+      "chinese": "\"通过 @ 提及来引用项目文件\""
+    },
+    {
+      "original": "\"Start a new conversation\"",
+      "chinese": "\"开始新对话\""
+    },
+    {
+      "original": "\"Restore code and conversation to an earlier point\"",
+      "chinese": "\"将代码与对话恢复到之前的时间点\""
+    },
+    {
+      "original": "\"Change response formatting style\"",
+      "chinese": "\"更改回复的格式化风格\""
+    },
+    {
+      "original": "\"Configure custom agents\"",
+      "chinese": "\"配置自定义 Agent\""
+    },
+    {
+      "original": "\"Set up event hooks\"",
+      "chinese": "\"配置事件钩子 (Hooks)\""
+    },
+    {
+      "original": "\"Manage Claude's memory\"",
+      "chinese": "\"管理 Claude 的记忆\""
+    },
+    {
+      "original": "\"Manage permission settings\"",
+      "chinese": "\"管理权限设置\""
+    },
+    {
+      "original": "\"Configure Model Context Protocol servers\"",
+      "chinese": "\"配置 MCP (模型上下文协议) 服务器\""
+    },
+    {
+      "original": "\"Install, enable, or disable plugins\"",
+      "chinese": "\"安装、启用或禁用插件\""
+    },
+    {
+      "original": "\"Log in with a different account\"",
+      "chinese": "\"使用其他账户登录\""
+    },
+    {
+      "original": "\"Accomplishing\"",
+      "chinese": "\"正在达成任务\""
+    },
+    {
+      "original": "\"Actioning\"",
+      "chinese": "\"正在执行操作\""
+    },
+    {
+      "original": "\"Actualizing\"",
+      "chinese": "\"正在实现想法\""
+    },
+    {
+      "original": "\"Baking\"",
+      "chinese": "\"正在烘焙\""
+    },
+    {
+      "original": "\"Booping\"",
+      "chinese": "\"正在轻触\""
+    },
+    {
+      "original": "\"Brewing\"",
+      "chinese": "\"正在筹备\""
+    },
+    {
+      "original": "\"Calculating\"",
+      "chinese": "\"正在计算\""
+    },
+    {
+      "original": "\"Cerebrating\"",
+      "chinese": "\"正在全力思考\""
+    },
+    {
+      "original": "\"Channelling\"",
+      "chinese": "\"正在调动知识\""
+    },
+    {
+      "original": "\"Churning\"",
+      "chinese": "\"正在高速运算\""
+    },
+    {
+      "original": "\"Clauding\"",
+      "chinese": "\"Claude 思考中\""
+    },
+    {
+      "original": "\"Coalescing\"",
+      "chinese": "\"正在聚合信息\""
+    },
+    {
+      "original": "\"Cogitating\"",
+      "chinese": "\"正在沉思\""
+    },
+    {
+      "original": "\"Computing\"",
+      "chinese": "\"正在计算\""
+    },
+    {
+      "original": "\"Combobulating\"",
+      "chinese": "\"正在梳理逻辑\""
+    },
+    {
+      "original": "\"Considering\"",
+      "chinese": "\"正在权衡\""
+    },
+    {
+      "original": "\"Contemplating\"",
+      "chinese": "\"正在深思\""
+    },
+    {
+      "original": "\"Cooking\"",
+      "chinese": "\"正在烹调\""
+    },
+    {
+      "original": "\"Crafting\"",
+      "chinese": "\"正在精雕细琢\""
+    },
+    {
+      "original": "\"Creating\"",
+      "chinese": "\"正在创作\""
+    },
+    {
+      "original": "\"Crunching\"",
+      "chinese": "\"正在啃数据\""
+    },
+    {
+      "original": "\"Deciphering\"",
+      "chinese": "\"正在破译逻辑\""
+    },
+    {
+      "original": "\"Deliberating\"",
+      "chinese": "\"正在深思熟虑\""
+    },
+    {
+      "original": "\"Determining\"",
+      "chinese": "\"正在判定\""
+    },
+    {
+      "original": "\"Discombobulating\"",
+      "chinese": "\"正在搅乱思路\""
+    },
+    {
+      "original": "\"Doing\"",
+      "chinese": "\"正在处理\""
+    },
+    {
+      "original": "\"Effecting\"",
+      "chinese": "\"正在落实\""
+    },
+    {
+      "original": "\"Elucidating\"",
+      "chinese": "\"正在厘清思路\""
+    },
+    {
+      "original": "\"Enchanting\"",
+      "chinese": "\"正在施展魔法\""
+    },
+    {
+      "original": "\"Envisioning\"",
+      "chinese": "\"正在构想\""
+    },
+    {
+      "original": "\"Finagling\"",
+      "chinese": "\"正在寻找对策\""
+    },
+    {
+      "original": "\"Flibbertigibbeting\"",
+      "chinese": "\"正在飞速运算\""
+    },
+    {
+      "original": "\"Forming\"",
+      "chinese": "\"正在形塑结果\""
+    },
+    {
+      "original": "\"Frolicking\"",
+      "chinese": "\"正在欢快跳跃\""
+    },
+    {
+      "original": "\"Generating\"",
+      "chinese": "\"正在生成\""
+    },
+    {
+      "original": "\"Germinating\"",
+      "chinese": "\"正在萌芽\""
+    },
+    {
+      "original": "\"Hatching\"",
+      "chinese": "\"正在孵化\""
+    },
+    {
+      "original": "\"Herding\"",
+      "chinese": "\"正在整理思路\""
+    },
+    {
+      "original": "\"Honking\"",
+      "chinese": "\"正在鸣笛\""
+    },
+    {
+      "original": "\"Ideating\"",
+      "chinese": "\"正在构思\""
+    },
+    {
+      "original": "\"Imagining\"",
+      "chinese": "\"正在联想\""
+    },
+    {
+      "original": "\"Incubating\"",
+      "chinese": "\"正在孵化方案\""
+    },
+    {
+      "original": "\"Inferring\"",
+      "chinese": "\"正在逻辑推理\""
+    },
+    {
+      "original": "\"Manifesting\"",
+      "chinese": "\"正在具体化\""
+    },
+    {
+      "original": "\"Marinating\"",
+      "chinese": "\"正在腌制入味\""
+    },
+    {
+      "original": "\"Meandering\"",
+      "chinese": "\"正在漫游探索\""
+    },
+    {
+      "original": "\"Moseying\"",
+      "chinese": "\"正在悠闲思考\""
+    },
+    {
+      "original": "\"Mulling\"",
+      "chinese": "\"正在反复思索\""
+    },
+    {
+      "original": "\"Mustering\"",
+      "chinese": "\"正在集结\""
+    },
+    {
+      "original": "\"Musing\"",
+      "chinese": "\"正在沉思\""
+    },
+    {
+      "original": "\"Noodling\"",
+      "chinese": "\"正在反复琢磨\""
+    },
+    {
+      "original": "\"Percolating\"",
+      "chinese": "\"正在渗透\""
+    },
+    {
+      "original": "\"Perusing\"",
+      "chinese": "\"正在研读\""
+    },
+    {
+      "original": "\"Philosophising\"",
+      "chinese": "\"正在思辨\""
+    },
+    {
+      "original": "\"Pontificating\"",
+      "chinese": "\"正在构建逻辑\""
+    },
+    {
+      "original": "\"Pondering\"",
+      "chinese": "\"正在思忖\""
+    },
+    {
+      "original": "\"Processing\"",
+      "chinese": "\"正在处理\""
+    },
+    {
+      "original": "\"Puttering\"",
+      "chinese": "\"正在细致打理\""
+    },
+    {
+      "original": "\"Puzzling\"",
+      "chinese": "\"正在解开谜团\""
+    },
+    {
+      "original": "\"Reticulating\"",
+      "chinese": "\"正在网格化\""
+    },
+    {
+      "original": "\"Ruminating\"",
+      "chinese": "\"正在反复咀嚼\""
+    },
+    {
+      "original": "\"Scheming\"",
+      "chinese": "\"正在策划方案\""
+    },
+    {
+      "original": "\"Schlepping\"",
+      "chinese": "\"正在费力搬运\""
+    },
+    {
+      "original": "\"Shimmying\"",
+      "chinese": "\"正在灵活调整\""
+    },
+    {
+      "original": "\"Simmering\"",
+      "chinese": "\"正在慢炖\""
+    },
+    {
+      "original": "\"Smooshing\"",
+      "chinese": "\"正在整合信息\""
+    },
+    {
+      "original": "\"Spelunking\"",
+      "chinese": "\"正在深入探寻\""
+    },
+    {
+      "original": "\"Spinning\"",
+      "chinese": "\"正在旋转\""
+    },
+    {
+      "original": "\"Stewing\"",
+      "chinese": "\"正在苦思冥想\""
+    },
+    {
+      "original": "\"Sussing\"",
+      "chinese": "\"正在摸清门路\""
+    },
+    {
+      "original": "\"Synthesizing\"",
+      "chinese": "\"正在综合汇整\""
+    },
+    {
+      "original": "\"Tinkering\"",
+      "chinese": "\"正在反复修补\""
+    },
+    {
+      "original": "\"Transmuting\"",
+      "chinese": "\"正在转换逻辑\""
+    },
+    {
+      "original": "\"Unfurling\"",
+      "chinese": "\"思路正在展开\""
+    },
+    {
+      "original": "\"Unravelling\"",
+      "chinese": "\"正在揭开逻辑\""
+    },
+    {
+      "original": "\"Vibing\"",
+      "chinese": "\"正在同步灵感\""
+    },
+    {
+      "original": "\"Wandering\"",
+      "chinese": "\"正在逻辑漫游\""
+    },
+    {
+      "original": "\"Whirring\"",
+      "chinese": "\"大脑飞速运算\""
+    },
+    {
+      "original": "\"Wibbling\"",
+      "chinese": "\"正在纠结逻辑\""
+    },
+    {
+      "original": "\"Working\"",
+      "chinese": "\"正在工作\""
+    },
+    {
+      "original": "\"Wrangling\"",
+      "chinese": "\"正在处理逻辑\""
+    },
+    {
+      "original": "\"Other\"",
+      "chinese": "\"其他\""
+    },
+    {
+      "original": "\"Submit answers\"",
+      "chinese": "\"提交答案\""
+    },
+    {
+      "original": "\"Accept this plan?\"",
+      "chinese": "\"是否接受此计划？\""
+    },
+    {
+      "original": "\"Review the plan above and decide whether to proceed\"",
+      "chinese": "\"请审核上方计划并决定是否继续\""
+    },
+    {
+      "original": "\"Bad\"",
+      "chinese": "\"不佳\""
+    },
+    {
+      "original": "\"Fine\"",
+      "chinese": "\"普通\""
+    },
+    {
+      "original": "\"Good\"",
+      "chinese": "\"良好\""
+    },
+    {
+      "original": "\"Switch models when a message is flagged\"",
+      "chinese": "\"当消息被标记时切换模型\""
+    },
+    {
+      "original": "\"When safety measures flag a message, automatically switch to a different model to keep chatting. When off, your session will pause instead.\"",
+      "chinese": "\"当安全机制标记某条消息时，自动切换到其他模型以继续对话；关闭时，则会改为暂停你的会话。\""
+    },
+    {
+      "original": "\"This model's safeguards flagged this message. This sometimes happens with safe, normal conversations.\"",
+      "chinese": "\"此模型的安全防护机制标记了这条消息。这偶尔也会发生在安全、正常的对话中。\""
+    },
+    {
+      "original": "\"Switch to the default model and continue\"",
+      "chinese": "\"切换到默认模型并继续\""
+    },
+    {
+      "original": "\"After making changes, exit Claude in Terminal, and reload the IDE extension to use them here.\"",
+      "chinese": "\"更改完成后，请在终端中退出 Claude，并重新加载 IDE 扩展，即可在此处使用。\""
+    },
+    {
+      "original": "\"All sessions share one limit. If you don't need them all at once, queueing uses it more evenly.\"",
+      "chinese": "\"所有会话共用同一个用量上限。若你不需要同时使用，改用排队方式能让用量分配得更平均。\""
+    },
+    {
+      "original": "\"Approximate, based on local sessions on this machine — does not include other devices or claude.ai\"",
+      "chinese": "\"此为估算值，依据本机上的本地会话计算 — 不含其他设备或 claude.ai。\""
+    },
+    {
+      "original": "\"Ask before editing\"",
+      "chinese": "\"编辑前询问\""
+    },
+    {
+      "original": "\"Branch switch failed\"",
+      "chinese": "\"分支切换失败\""
+    },
+    {
+      "original": "\"Buy usage credits on claude.ai\"",
+      "chinese": "\"在 claude.ai 购买用量点数\""
+    },
+    {
+      "original": "\"Can’t switch branches\"",
+      "chinese": "\"无法切换分支\""
+    },
+    {
+      "original": "\"Claude may use instructions, code, or files from this skill.\"",
+      "chinese": "\"Claude 可能会使用此技能中的指示、代码或文件。\""
+    },
+    {
+      "original": "\"Continue in browser\"",
+      "chinese": "\"在浏览器中继续\""
+    },
+    {
+      "original": "\"Continue on Fable 5 with usage credits?\"",
+      "chinese": "\"要使用用量点数继续在 Fable 5 上运行吗？\""
+    },
+    {
+      "original": "\"Create Worktree Session\"",
+      "chinese": "\"创建工作树 (worktree) 会话\""
+    },
+    {
+      "original": "\"Each subagent runs its own requests. Be deliberate about spawning them — and consider configuring a cheaper model for simpler subagents.\"",
+      "chinese": "\"每个子代理都会执行各自的请求。请审慎决定是否创建子代理 — 较简单的子代理可考虑改用更便宜的模型。\""
+    },
+    {
+      "original": "\"Edit Notebook Cell \"",
+      "chinese": "\"编辑 Notebook 单元格 \""
+    },
+    {
+      "original": "\"Edit Notebook Cell\"",
+      "chinese": "\"编辑 Notebook 单元格\""
+    },
+    {
+      "original": "\"Fable 5 requires usage credits\"",
+      "chinese": "\"Fable 5 需要用量点数\""
+    },
+    {
+      "original": "\"Fable 5 runs on usage credits, billed separately from your plan. You don't have usage credits yet.\"",
+      "chinese": "\"Fable 5 以用量点数运行，与你的套餐分开计费。你目前尚无用量点数。\""
+    },
+    {
+      "original": "\"Fable 5 was included in your plan for a limited time, and now requires usage credits.\"",
+      "chinese": "\"Fable 5 此前在限定期间内包含在你的套餐中，现在则需要用量点数。\""
+    },
+    {
+      "original": "\"Failed to load usage data\"",
+      "chinese": "\"加载用量数据失败\""
+    },
+    {
+      "original": "\"Fork conversation and rewind code\"",
+      "chinese": "\"分叉对话并回溯代码\""
+    },
+    {
+      "original": "\"Fork conversation from here\"",
+      "chinese": "\"从此处分叉对话\""
+    },
+    {
+      "original": "\"Heavy skills can be scoped down or run with a cheaper model via skill frontmatter.\"",
+      "chinese": "\"较庞大的技能可通过 skill frontmatter 缩小适用范围，或改用更便宜的模型执行。\""
+    },
+    {
+      "original": "\"If the browser didn't open, visit this URL:\"",
+      "chinese": "\"若浏览器未自动打开，请前往此 URL：\""
+    },
+    {
+      "original": "\"If this runs frequently, consider configuring its subagents with a cheaper model or tightening their prompts.\"",
+      "chinese": "\"若此项会频繁执行，可考虑为其子代理配置更便宜的模型，或精简它们的提示词。\""
+    },
+    {
+      "original": "\"Learn how we use your feedback\"",
+      "chinese": "\"了解我们如何使用你的反馈\""
+    },
+    {
+      "original": "\"Longer sessions are more expensive even when cached. /compact mid-task, /clear when switching to new tasks.\"",
+      "chinese": "\"会话越长，即使有缓存也越昂贵。任务进行到一半可用 /compact，切换到新任务时则用 /clear。\""
+    },
+    {
+      "original": "\"MCP tool results stay in context for the rest of the session. /compact to flush them, or disable servers you don't need.\"",
+      "chinese": "\"MCP 工具的结果会在本次会话的后续过程中持续占用上下文。可用 /compact 清除它们，或禁用你不需要的服务器。\""
+    },
+    {
+      "original": "\"New worktree name\"",
+      "chinese": "\"新的工作树 (worktree) 名称\""
+    },
+    {
+      "original": "\"No messages to rewind to yet.\"",
+      "chinese": "\"当前尚无可回溯的消息。\""
+    },
+    {
+      "original": "\"No web sessions yet\"",
+      "chinese": "\"尚无网页会话\""
+    },
+    {
+      "original": "\"Our newest model for complex, long-running work. Switch anytime with /model.\"",
+      "chinese": "\"我们最新的模型，专为复杂、长时间运行的任务而设计。随时可用 /model 切换。\""
+    },
+    {
+      "original": "\"Output style is set via /config. After changing it in Terminal and reloading this extension, you'll be able to use it here.\"",
+      "chinese": "\"输出样式通过 /config 设置。在终端中更改并重新加载此扩展后，即可在此处使用。\""
+    },
+    {
+      "original": "\"Review what this plugin contributes — its agents, skills, and MCP tools all count toward your limit.\"",
+      "chinese": "\"请查看此插件提供了哪些项目 — 其代理、技能与 MCP 工具都会计入你的用量上限。\""
+    },
+    {
+      "original": "\"Rewind code to here\"",
+      "chinese": "\"将代码回溯到此处\""
+    },
+    {
+      "original": "\"Select a message to restore code and fork the conversation from that point.\"",
+      "chinese": "\"选择一条消息，即可还原代码并从该处分叉出新的对话。\""
+    },
+    {
+      "original": "\"Start one at claude.ai/code\"",
+      "chinese": "\"前往 claude.ai/code 创建一个\""
+    },
+    {
+      "original": "\"These are often background/loop sessions. Continuous usage can add up quickly so make sure it is intentional.\"",
+      "chinese": "\"这些通常是后台／循环执行的会话。持续使用可能会快速累积用量，请确认这是你有意执行的。\""
+    },
+    {
+      "original": "\"This session was started on a different branch. Switch to continue with the original context.\"",
+      "chinese": "\"此会话是在另一个分支上启动的。请切换分支以沿用原本的上下文。\""
+    },
+    {
+      "original": "\"User chose to stay in plan mode and continue planning\"",
+      "chinese": "\"用户选择保持在规划模式并继续规划\""
+    },
+    {
+      "original": "\"What’s contributing to your limits usage?\"",
+      "chinese": "\"是什么正在消耗你的用量上限？\""
+    },
+    {
+      "original": "\"Manual\"",
+      "chinese": "\"手动模式\""
+    },
+    {
+      "original": "\"Claude will approve actions that pass a safety check and pause for anything risky\"",
+      "chinese": "\"Claude 会批准通过安全检查的操作，遇到有风险的操作则暂停。\""
+    },
+    {
+      "original": "% of your usage hit a >100k-token cache miss",
+      "chinese": "% 的用量发生了 >100k token 的缓存未命中"
+    },
+    {
+      "original": "% of your usage was at >150k context",
+      "chinese": "% 的用量是在 >150k 上下文下产生的"
+    },
+    {
+      "original": "% of your usage came from subagent-heavy sessions",
+      "chinese": "% 的用量来自大量使用子代理的会话"
+    },
+    {
+      "original": "% of your usage was while 4+ sessions ran in parallel",
+      "chinese": "% 的用量发生在 4+ 个会话并行运行时"
+    },
+    {
+      "original": "% of your usage came from sessions active for 8+ hours",
+      "chinese": "% 的用量来自持续活跃 8+ 小时的会话"
+    },
+    {
+      "original": "these are independent characteristics of your usage, not a breakdown",
+      "chinese": "这些是你用量的独立特征，而非逐项拆解"
+    },
+    {
+      "original": "[\"Last \",",
+      "chinese": "[\"最近 \","
+    },
+    {
+      "original": "% of your ${",
+      "chinese": "% 的${"
+    },
+    {
+      "original": "You've used ",
+      "chinese": "你已使用 "
+    },
+    {
+      "original": "You've hit your ",
+      "chinese": "你已达到你的 "
+    },
+    {
+      "original": "Approaching ",
+      "chinese": "即将达到 "
+    },
+    {
+      "original": " · continue with usage credits",
+      "chinese": " · 继续使用用量点数"
+    },
+    {
+      "original": "\"session limit\"",
+      "chinese": "\"会话用量上限\""
+    },
+    {
+      "original": "\"weekly limit\"",
+      "chinese": "\"每周用量上限\""
+    },
+    {
+      "original": "\"weekly Opus limit\"",
+      "chinese": "\"每周 Opus 用量上限\""
+    },
+    {
+      "original": "\"weekly Sonnet limit\"",
+      "chinese": "\"每周 Sonnet 用量上限\""
+    },
+    {
+      "original": "\"Fable 5 limit\"",
+      "chinese": "\"Fable 5 用量上限\""
+    },
+    {
+      "original": "\"usage credit limit\"",
+      "chinese": "\"用量点数上限\""
+    },
+    {
+      "original": "\"usage limit\"",
+      "chinese": "\"用量上限\""
+    },
+    {
+      "original": " · resets ",
+      "chinese": " · "
+    },
+    {
+      "original": "if(i<=0)return\"soon\"",
+      "chinese": "if(i<=0)return\"即将重置\""
+    },
+    {
+      "original": "if(n<1)return\"soon\"",
+      "chinese": "if(n<1)return\"即将重置\""
+    },
+    {
+      "original": "in ${n}m",
+      "chinese": "${n} 分钟后重置"
+    },
+    {
+      "original": "in ${o}h",
+      "chinese": "${o} 小时后重置"
+    },
+    {
+      "original": "in ${Math.floor(o/24)}d",
+      "chinese": "${Math.floor(o/24)} 天后重置"
+    },
+    {
+      "original": "Click to compact now.",
+      "chinese": "点击立即压缩。"
+    },
+    {
+      "original": "Tap or hold to record",
+      "chinese": "点按或长按以录音"
+    },
+    {
+      "original": "Stop recording",
+      "chinese": "停止录音"
+    },
+    {
+      "original": "Dictation error: ",
+      "chinese": "听写错误："
+    },
+    {
+      "original": "Microphone access denied — enable in ",
+      "chinese": "麦克风访问被拒 — 请前往 "
+    },
+    {
+      "original": "Show more",
+      "chinese": "显示更多"
+    },
+    {
+      "original": "Show less",
+      "chinese": "显示更少"
+    },
+    {
+      "original": "Disconnect Remote Control",
+      "chinese": "断开远程控制连接"
+    },
+    {
+      "original": "\"Thinking...\"",
+      "chinese": "\"深度思考中…\""
+    },
+    {
+      "original": "Thought for \\$\\{Math\\.round\\(r\\/1000\\)\\}s",
+      "chinese": "已思考 ${Math.round(r/1000)} 秒",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Edit\"",
+      "chinese": "\"编辑\""
+    },
+    {
+      "original": " line\\$\\{[a-z]!==1\\?\"s\":\"\"\\}",
+      "chinese": " 行",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Added ",
+      "chinese": "新增 "
+    },
+    {
+      "original": ", removed ",
+      "chinese": "，移除 "
+    },
+    {
+      "original": "`Removed ",
+      "chinese": "`移除 "
+    },
+    {
+      "original": "return\"Modified\"}",
+      "chinese": "return\"已修改\"}"
+    },
+    {
+      "original": "% of your usage came from subagents under \"",
+      "chinese": "% 的用量来自子代理 \""
+    },
+    {
+      "original": "% of your usage came from /",
+      "chinese": "% 的用量来自 /"
+    },
+    {
+      "original": "% of your usage came from plugin \"",
+      "chinese": "% 的用量来自插件 \""
+    },
+    {
+      "original": "% of your usage came from MCP server \"",
+      "chinese": "% 的用量来自 MCP 服务器 \""
+    },
+    {
+      "original": "\"Microphone access denied\"",
+      "chinese": "\"麦克风访问被拒\""
+    },
+    {
+      "original": "\"Voice dictation\"",
+      "chinese": "\"语音听写\""
+    }
+  ]
+}

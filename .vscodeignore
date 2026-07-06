@@ -1,0 +1,10 @@
+.vscode/**
+.git/**
+.gitignore
+**/*.map
+node_modules/**
+_scan_tmp/**
+**/.DS_Store
+*.vsix
+[*]index.js
+**/*index.js.bak

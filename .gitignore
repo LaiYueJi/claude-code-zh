@@ -1,0 +1,15 @@
+# 相依套件
+node_modules/
+
+# 打包產物（改由 GitHub Release 發佈）
+*.vsix
+
+# 建置暫存
+_scan_tmp/
+**/*.map
+
+# 系統/編輯器雜項
+.DS_Store
+Thumbs.db
+.vscode-test/
+*.log

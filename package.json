@@ -1,0 +1,200 @@
+{
+  "name": "claude-code-zh",
+  "displayName": "Claude Code for VS Code 繁體／簡體中文語言包",
+  "description": "Claude Code for VS Code 中文化擴充功能：繁體中文（台灣）與簡體中文（中國大陸）雙語，可自動偵測系統語言或手動切換，含狀態列快速指令選單。",
+  "version": "2.1.2",
+  "publisher": "LaiYueJi",
+  "license": "MIT",
+  "icon": "logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LaiYueJi/claude-code-zh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LaiYueJi/claude-code-zh/issues"
+  },
+  "homepage": "https://github.com/LaiYueJi/claude-code-zh#readme",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Language Packs",
+    "AI",
+    "Chat",
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "sonnet",
+    "opus",
+    "ai",
+    "mcp",
+    "agent",
+    "chinese",
+    "中文",
+    "繁體中文",
+    "繁體",
+    "台灣",
+    "正體中文",
+    "简体中文",
+    "简体",
+    "中国",
+    "大陆",
+    "汉化",
+    "zh-TW",
+    "zh-CN",
+    "i18n",
+    "漢化",
+    "繁化"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeCodeZh.showMenu",
+        "title": "開啟快速指令選單 / 打开快速命令菜单",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.applyTranslation",
+        "title": "🌏 套用中文化 / 应用中文化",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.reloadTranslation",
+        "title": "♻️ 重新套用翻譯 / 重新应用翻译",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.restoreOriginal",
+        "title": "⏪ 還原官方原版 / 还原官方原版",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.switchLanguage",
+        "title": "🔀 切換語言（繁體／簡體）/ 切换语言（繁体／简体）",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.scanUntranslated",
+        "title": "🔍 掃描未翻譯字串 / 扫描未翻译字符串",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.gotoUntranslated",
+        "title": "🧭 跳到未翻譯字串 / 跳转到未翻译字符串",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.openCommandPalette",
+        "title": "🔎 開啟指令面板 / 打开命令面板",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.openConfig",
+        "title": "⚙️ 開啟設定 / 打开设置",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.showStatus",
+        "title": "ℹ️ 檢視狀態 / 查看状态",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.reloadWindow",
+        "title": "🔄 重新載入視窗 / 重新加载窗口",
+        "category": "Claude Code 中文化"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Code 中文化",
+      "properties": {
+        "claudeCodeZh.language": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "zh-TW",
+            "zh-CN"
+          ],
+          "enumDescriptions": [
+            "跟隨系統：依 VS Code 顯示語言自動選擇繁體或簡體 / 跟随系统：按 VS Code 显示语言自动选择",
+            "繁體中文（台灣）",
+            "简体中文（中国大陆）"
+          ],
+          "default": "auto",
+          "description": "介面語言：自動偵測系統語言，或手動指定繁體／簡體 / 界面语言：自动检测系统语言，或手动指定繁体／简体"
+        },
+        "claudeCodeZh.autoApplyOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "VS Code 啟動時自動套用中文化 / VS Code 启动时自动应用中文化"
+        },
+        "claudeCodeZh.autoApplyOnUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "偵測到 Claude Code 更新時自動重新套用 / 检测到 Claude Code 更新时自动重新应用"
+        },
+        "claudeCodeZh.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "在狀態列顯示「中文化」快速選單按鈕 / 在状态栏显示「中文化」快速菜单按钮"
+        },
+        "claudeCodeZh.createBackup": {
+          "type": "boolean",
+          "default": true,
+          "description": "套用前建立備份檔（.bak，供還原使用）/ 应用前创建备份文件（.bak，供还原使用）"
+        },
+        "claudeCodeZh.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "顯示操作完成的通知訊息 / 显示操作完成的通知消息"
+        },
+        "claudeCodeZh.claudeCodeExtensionId": {
+          "type": "string",
+          "default": "Anthropic.claude-code",
+          "description": "Claude Code 擴充功能的 ID（格式：Publisher.ExtensionName）/ Claude Code 扩展的 ID"
+        },
+        "claudeCodeZh.preTranslationRules": {
+          "type": "array",
+          "default": [],
+          "description": "前置翻譯規則（在內建規則之前執行，優先權最高）/ 前置翻译规则（在内置规则之前执行，优先级最高）",
+          "items": {
+            "type": "object",
+            "properties": {
+              "original": { "type": "string", "description": "原始英文文字（可為正規表達式）/ 原始英文文本（可为正则表达式）" },
+              "chinese": { "type": "string", "description": "中文翻譯 / 中文翻译" },
+              "regex": { "type": "boolean", "default": false, "description": "是否使用正規表達式比對 / 是否使用正则表达式匹配" },
+              "flags": { "type": "string", "default": "g", "description": "正規表達式旗標（如 'gi'）/ 正则表达式标志（如 'gi'）" }
+            },
+            "required": ["original", "chinese"]
+          }
+        },
+        "claudeCodeZh.postTranslationRules": {
+          "type": "array",
+          "default": [],
+          "description": "後置翻譯規則（在內建規則之後執行，可覆蓋內建翻譯）/ 后置翻译规则（在内置规则之后执行，可覆盖内置翻译）",
+          "items": {
+            "type": "object",
+            "properties": {
+              "original": { "type": "string", "description": "原始英文文字（可為正規表達式）/ 原始英文文本（可为正则表达式）" },
+              "chinese": { "type": "string", "description": "中文翻譯 / 中文翻译" },
+              "regex": { "type": "boolean", "default": false, "description": "是否使用正規表達式比對 / 是否使用正则表达式匹配" },
+              "flags": { "type": "string", "default": "g", "description": "正規表達式旗標（如 'gi'）/ 正则表达式标志（如 'gi'）" }
+            },
+            "required": ["original", "chinese"]
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.7.1"
+  }
+}

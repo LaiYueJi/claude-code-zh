@@ -2,6 +2,21 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.1.3] - 2026-07-12
+
+### 修正（補上 2.1.207 漏翻）
+- 🈺 **自動模式標籤**：Claude 把模式標籤由 `"Auto mode"` 縮短成 `"Auto"`，舊規則對不上而漏翻。新增精準規則 `label:"Auto"` → 「自動模式」／「自动模式」（僅比對此唯一處，不動到同名的 enum 反查值 `e[e.Auto=…]="Auto"`）。
+- 🔌 **遠端控制設定**：補上 `Enable Remote Control for all sessions` →「為所有對話階段啟用遠端控制」與其說明 `Connect new sessions to claude.ai/code…`（此二字串被 minify 提取成變數 `label:dN`／`description:Cbe`，本版掃描器已能偵測，見下）。
+- 內建翻譯由 556 增至 **559 條**（繁簡各）；套用後對 2.1.207 全檔掃描為 **0 漏翻**。
+
+### 新增
+- 📋 **檢視未翻譯清單**：新增指令與選單項，直接開啟上次掃描結果，**不必重新掃描**即可看清單（本工作階段尚未掃描過時才會自動掃一次）。
+
+### 改進
+- 🔭 **掃描器補抓「變數參照」字串**：Claude 新版把較長的介面字串經 minify 提取成模組變數（如 `var dN="Enable Remote Control for all sessions"`），再以 `label:dN`／`description:Cbe` 參照，導致舊掃描（只認 `prop:"字面值"`）漏抓。改為兩階段：先建「變數→字串」對照表，再掃 `prop:變數名` 還原字串。
+  - 例：2.1.207 舊掃描只找到 `Auto`；新掃描另補抓 `Enable Remote Control for all sessions` 及其說明 `Connect new sessions to claude.ai/code…`。
+  - `description:` 僅用於「變數參照」階段並加「多字自然語言片語」過濾，**不重蹈 2.1.1 提到的 Monaco `description:"…"` 洗版問題**；在已完整翻譯的 2.1.201 上實測仍為 0 誤判。
+
 ## [2.1.2] - 2026-07-05
 
 ### 新增／修正（補上 2.1.x 新增的動態字串）

@@ -1,8 +1,8 @@
 {
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-07-05",
+  "updatedAt": "2026-07-12",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -167,6 +167,10 @@
     {
       "original": "\"Auto mode\"",
       "chinese": "\"自动模式\""
+    },
+    {
+      "original": "label:\"Auto\"",
+      "chinese": "label:\"自动模式\""
     },
     {
       "original": "\"Plan Mode\"",
@@ -363,6 +367,14 @@
     {
       "original": "\"Remote Control disabled.\"",
       "chinese": "\"远程控制已禁用。\""
+    },
+    {
+      "original": "\"Enable Remote Control for all sessions\"",
+      "chinese": "\"为所有会话启用远程控制\""
+    },
+    {
+      "original": "\"Connect new sessions to claude.ai/code automatically so you can view and control them from the web.\"",
+      "chinese": "\"自动将新会话连接至 claude.ai/code，让你可从网页查看并控制它们。\""
     },
     {
       "original": "\"Failed to teleport session\"",

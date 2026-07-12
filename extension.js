@@ -11,8 +11,11 @@ const KEY_RESTORED = 'manuallyRestored';   // 使用者手動還原成原版 →
 const KEY_LAST_VERSION = 'lastClaudeVersion';
 const KEY_LAST_TRANSLATION = 'lastTranslationSignature'; // 上次套用的翻譯包簽章
 
-// 偵測未翻譯字串時要掃描的介面屬性
-const SCAN_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading'];
+// 偵測未翻譯字串時要掃描的介面屬性（比對「prop:"字面值"」）
+const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading'];
+// 變數參照掃描（prop:變數名）額外納入 description：
+// Monaco 內嵌大量 description:"色彩說明…" 字面值會造成洪水，故 description 僅用於變數參照，靠片語過濾把關。
+const VAR_PROPS = LITERAL_PROPS.concat('description');
 // 已知非 Claude（多為內嵌 Monaco 編輯器）之誤判，掃描時略過
 const SCAN_IGNORE = new Set(['Find and Replace', 'Start Linked Editing', 'editorWorkerService', 'Go to Line/Column', 'diagnosticSubtitle']);
 
@@ -96,6 +99,9 @@ async function activate(context) {
     register('claudeCodeZh.scanUntranslated', () =>
         scanUntranslated(locator, translator, backup, config, false));
 
+    register('claudeCodeZh.viewUntranslatedList', () =>
+        viewUntranslatedList(locator, translator, backup, config));
+
     register('claudeCodeZh.gotoUntranslated', () =>
         gotoUntranslated(locator, translator, backup, config));
 
@@ -157,6 +163,7 @@ async function showQuickMenu(locator, translator, backup, config) {
         { label: s.menuSwitchLabel, description: s.menuSwitchDesc, cmd: 'claudeCodeZh.switchLanguage' },
         { label: '', kind: vscode.QuickPickItemKind.Separator },
         { label: s.menuScanLabel, description: s.menuScanDesc, cmd: 'claudeCodeZh.scanUntranslated' },
+        { label: s.menuViewListLabel, description: s.menuViewListDesc, cmd: 'claudeCodeZh.viewUntranslatedList' },
         { label: s.menuGotoLabel, description: s.menuGotoDesc, cmd: 'claudeCodeZh.gotoUntranslated' },
         { label: s.menuPaletteLabel, description: s.menuPaletteDesc, cmd: 'claudeCodeZh.openCommandPalette' },
         { label: s.menuConfigLabel, description: s.menuConfigDesc, cmd: 'claudeCodeZh.openConfig' },
@@ -351,27 +358,78 @@ async function showStatusInfo(locator, backup, translator, config) {
     else if (choice === s.siBtnRestore) vscode.commands.executeCommand('claudeCodeZh.restoreOriginal');
 }
 
+/** 判斷字串是否像「使用者看得到的介面文案」（排除識別字、路徑、程式碼片段） */
+function looksLikeUiText(str) {
+    if (/[一-鿿]/.test(str)) return false;             // 已含中文
+    if (!/[A-Za-z]/.test(str)) return false;                   // 無英文字母
+    if (/^[a-z0-9_]+$/.test(str)) return false;                // 純識別字
+    if (/^\//.test(str)) return false;                         // 斜線指令 /login…
+    if (!/\s/.test(str) && /[_]/.test(str)) return false;      // css module / 內部識別字
+    if (/^\$|[{}]|=>|;|:\/\//.test(str)) return false;
+    if (SCAN_IGNORE.has(str)) return false;
+    return true;
+}
+
 /**
- * 從「翻譯後」的內容中找出仍為英文的介面字串（偵測漏翻）
+ * 判斷是否為「多字自然語言片語」。
+ * 供變數參照掃描使用：變數對照表較容易誤收 CSS 類名／識別字（如 "ghost-text"），
+ * 但真正的使用者文案幾乎都是含空格的多字句子，故以此再收斂以避免雜訊。
+ */
+function isNaturalPhrase(str) {
+    if (!/ /.test(str)) return false;                          // 需含空格（多字）
+    if (/[{}<>$\\`=;|~^*[\]]/.test(str)) return false;         // 含程式碼字元
+    if (/=>|:\/\//.test(str)) return false;
+    const words = str.trim().split(/\s+/);
+    if (words.length < 2) return false;
+    const alpha = words.filter(w => /^[A-Za-z][A-Za-z'.,!?():;/-]*$/.test(w)).length;
+    return alpha / words.length >= 0.7;                        // 七成以上為字母詞才算自然語言
+}
+
+/**
+ * 建立「變數／常數名 → 字串字面值」對照表。
+ * minify 常把較長的字串提取成模組層級變數（如 var dN="Enable Remote Control…"），
+ * UI 再以 label:dN 參照，導致純字面值掃描抓不到。此表用來還原這類字串。
+ * 只收 ≥2 字元的識別字（單字母多為 scope-local 且會互相衝突）；同名多次賦值取第一個。
+ */
+function buildConstMap(content) {
+    const map = Object.create(null);
+    const re = /(?:^|[,;{(\s])([A-Za-z_$][A-Za-z0-9_$]+)\s*=\s*"((?:[^"\\]|\\.){2,200})"/g;
+    let m;
+    while ((m = re.exec(content))) {
+        if (!(m[1] in map)) map[m[1]] = m[2];
+    }
+    return map;
+}
+
+/**
+ * 從「翻譯後」的內容中找出仍為英文的介面字串（偵測漏翻）。
+ * 兩階段：(1) prop:"字面值"（精準）；(2) prop:變數名 → 查對照表還原（補抓被 minify 提取成變數的長字串）。
  */
 function findUntranslated(translatedContent) {
     const results = new Set();
-    for (const p of SCAN_PROPS) {
+
+    // (1) 直接字面值：prop:"文字"
+    for (const p of LITERAL_PROPS) {
         const pe = p.replace(/-/g, '\\-');
         const re = new RegExp(pe + ':"((?:[^"\\\\]|\\\\.){2,120})"', 'g');
         let m;
         while ((m = re.exec(translatedContent))) {
-            const str = m[1];
-            if (/[一-鿿]/.test(str)) continue;             // 已含中文
-            if (!/[A-Za-z]/.test(str)) continue;           // 無英文字母
-            if (/^[a-z0-9_]+$/.test(str)) continue;        // 識別字
-            if (/^\//.test(str)) continue;                 // 斜線指令 /login…
-            if (!/\s/.test(str) && /[_]/.test(str)) continue; // css module / 內部識別字
-            if (/^\$|[{}]|=>|;|:\/\//.test(str)) continue;
-            if (SCAN_IGNORE.has(str)) continue;
-            results.add(str);
+            if (looksLikeUiText(m[1])) results.add(m[1]);
         }
     }
+
+    // (2) 變數參照：prop:變數名（如 label:dN）→ 透過對照表還原其字串值
+    const constMap = buildConstMap(translatedContent);
+    for (const p of VAR_PROPS) {
+        const pe = p.replace(/-/g, '\\-');
+        const re = new RegExp(pe + ':([A-Za-z_$][A-Za-z0-9_$]+)(?![A-Za-z0-9_$:])', 'g');
+        let m;
+        while ((m = re.exec(translatedContent))) {
+            const val = constMap[m[1]];
+            if (val && looksLikeUiText(val) && isNaturalPhrase(val)) results.add(val);
+        }
+    }
+
     return [...results].sort();
 }
 
@@ -417,6 +475,22 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         console.error(error);
         return 0;
     }
+}
+
+/**
+ * 檢視未翻譯清單：直接呈現「上次掃描」的結果，不重新掃描。
+ * 僅在本工作階段從未掃描過（無快取）時，才自動掃描一次以產生清單。
+ */
+async function viewUntranslatedList(locator, translator, backup, config) {
+    const s = S(config);
+    // 尚未掃描過（例如剛重新載入視窗）→ 先掃一次，scanUntranslated 會自行輸出並提示
+    if (!lastScan.filePath) {
+        await scanUntranslated(locator, translator, backup, config, false);
+        return;
+    }
+    // 已有快取 → 直接開啟輸出頻道呈現先前清單（不重新掃描）
+    outputChannel.show(true);
+    if (!lastScan.list.length) vscode.window.showInformationMessage(s.scanClean);
 }
 
 /** 計算 needle 在 hay 中的出現次數 */

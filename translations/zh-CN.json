@@ -1,5 +1,5 @@
 {
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-07-29",
@@ -1914,6 +1914,12 @@
       "flags": "g"
     },
     {
+      "original": "`\\$\\{([A-Za-z_$][\\w$]*)\\}'s safeguards flagged this message\\. The safeguards are intentionally broad right now and may flag safe and routine coding, cybersecurity, or biology work\\. These measures let us bring you Mythos-level capabilities sooner, and we're working to refine them\\.`",
+      "chinese": "`${$1} 的安全防护机制标记了这条消息。目前防护范围刻意设得较广，可能会误标安全而例行的编程、网络安全或生物学工作。这些措施让我们能更早为你带来 Mythos 等级的能力，我们也仍在持续调校。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
       "original": " You can continue with a different model.",
       "chinese": "你可以改用其他模型继续对话。"
     },
@@ -2276,6 +2282,82 @@
     {
       "original": "\"Voice dictation\"",
       "chinese": "\"语音听写\""
+    },
+    {
+      "original": "Continue in Terminal to configure \\$\\{([A-Za-z_$][\\w$]*)\\}\\?",
+      "chinese": "是否前往终端配置 ${$1}？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Fable 5 requires usage credits — buy at \\$\\{([^{}]*)\\}\\. Switched to your default model for this session",
+      "chinese": "Fable 5 需要用量点数 (usage credits) — 可在 ${$1} 购买。本次会话已切换为你的默认模型",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Fable 5 runs on usage credits — you have \\$\\{([^{}]*)\\} in credits\\.",
+      "chinese": "Fable 5 使用用量点数 (usage credits) — 你当前有 ${$1} 的点数。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Fable 5 runs on usage credits\\$\\{([^{}]*)\\}\\. Your other models remain included in your plan\\.",
+      "chinese": "Fable 5 使用用量点数 (usage credits)${$1}。你的其他模型仍包含在方案内。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to add marketplace: \\$\\{",
+      "chinese": "添加市场来源失败：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to fork conversation: \\$\\{",
+      "chinese": "分叉对话失败：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to rewind code: \\$\\{",
+      "chinese": "回溯代码失败：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to set model: \\$\\{",
+      "chinese": "设置模型失败：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Name is required\"",
+      "chinese": "\"请输入名称\""
+    },
+    {
+      "original": "Name must be \\$\\{([A-Za-z_$][\\w$]*)\\} characters or fewer",
+      "chinese": "名称长度不可超过 ${$1} 个字符",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Only letters, numbers, dots, hyphens, and underscores\"",
+      "chinese": "\"只能使用英文字母、数字、点、连字符与下划线\""
+    },
+    {
+      "original": "'Name cannot be \".\" or \"..\" or contain \"..\"'",
+      "chinese": "'名称不可为 \".\" 或 \"..\"，也不可包含 \"..\"'"
+    },
+    {
+      "original": "'Name cannot end with \".\" or \".lock\"'",
+      "chinese": "'名称结尾不可为 \".\" 或 \".lock\"'"
+    },
+    {
+      "original": "Open \\$\\{([^{}]*)\\} in new window",
+      "chinese": "在新窗口打开 ${$1}",
+      "regex": true,
+      "flags": "g"
     }
   ]
 }

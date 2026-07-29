@@ -2,6 +2,26 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.1.5] - 2026-07-29
+
+### 新增（掃描器補上兩個盲點）
+- 🔭 **樣板字串掃描**：新增第三階段掃描，涵蓋 `` `… ${變數} …` `` 這類文案。前兩階段只認 `prop:"字面值"` 與變數參照，樣板字串一律看不見——2.1.220 的「訊息被標記」對話框整段改寫成樣板字串後，畫面明明是英文，掃描卻回報 0 漏翻，即是此盲點所致。
+  - 判斷「是文案而非程式碼」用兩層條件：**形態**（不含程式碼字元、以大寫或佔位符開頭、四個以上英文單字、佔位符內不得再包字串）與**位置**（前後 3000 字元內需有足夠中文）。後者利用「掃描對象是已套用翻譯的內容」這點：Claude 自家 UI 翻完後中文密集，內嵌的 Monaco 編輯器區段幾乎沒有中文，藉此擋掉 `Tree element not found`、`Semantic token…` 等內部訊息。
+  - 另濾除 `throw new Error(...)`／`console.warn(...)` 等診斷訊息，並保留 `TPL_IGNORE` 供少數已知誤判除名。
+  - 回歸驗證：以修正前的 v2.1.3 規則掃 2.1.220，新掃描器可抓出全部 3 條 safeguards 漏翻（舊掃描器只抓到 1 條）。
+- ⚠️ **失效規則偵測**：掃描時一併比對每條規則是否還對得上原始英文。刻意保留給舊版的規則本來就對不上（2.1.220 有 43 條），全部列出只是雜訊，因此**只回報「上次還對得上、這次忽然對不上」的規則**——這幾乎等於 Claude 改寫了那段英文。基準線存在 globalState，首次掃描僅建立不提示。
+  - 以 2.1.216 → 2.1.220 模擬：43 條失效規則中精準篩出 **2 條**新失效（即 safety measures／This model's safeguards 兩條被改寫者），無雜訊。
+
+### 修正（新掃描器找出的漏翻，繁簡各 15 條）
+- 💳 **Fable 5 用量點數**：`Fable 5 requires usage credits — buy at …`、`… you have ${…} in credits.`、`… Your other models remain included in your plan.`
+- ⚠️ **操作失敗訊息**：`Failed to add marketplace/fork conversation/rewind code/set model: ${…}`（原本只有帶固定原因的版本有翻譯，帶例外訊息的樣板版本漏翻）。
+- 📝 **對話階段命名驗證**：補齊 2.1.4「已知未涵蓋」列出的整組訊息——`Name is required`、`Name must be ${n} characters or fewer`、`Only letters, numbers, dots, hyphens, and underscores`、`Name cannot be "." or ".." or contain ".."`、`Name cannot end with "." or ".lock"`（後兩條在原始碼中為單引號字串，規則已保留其引號形式）。
+- 🧰 **其他**：`Continue in Terminal to configure ${…}?`、`Open ${工作樹} in new window`，以及 2.1.216 版的長版 safeguards 文案（`The safeguards are intentionally broad right now…`），讓 2.1.216 在新掃描器下同樣為 0 漏翻。
+- 內建翻譯由 564 增至 **579 條**（繁簡各）。以新掃描器對 **2.1.216／2.1.220 × 繁體／簡體** 四種組合實測，皆為 **0 漏翻**且翻譯後的 `webview/index.js` 均通過 JS 語法檢查。
+
+### 備註
+- 上一版所稱「2.1.220 全檔掃描 0 漏翻」是以當時的掃描器為準；本版掃描器補上樣板字串後又找出 15 條，已於本版一併補齊。2.1.4 的「已知未涵蓋」一節至此全數處理完畢。
+
 ## [2.1.4] - 2026-07-29
 
 ### 修正（補上 2.1.220 漏翻）

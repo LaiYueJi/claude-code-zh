@@ -2,6 +2,21 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.1.4] - 2026-07-29
+
+### 修正（補上 2.1.220 漏翻）
+- 🛡️ **安全防護切換設定**：Claude 2.1.220 把說明文案的 `safety measures` 改寫為 `safeguards`（`When safeguards flag a message, automatically switch to a different model to keep chatting…`），舊規則對不上而漏翻，本版補上新字串（舊字串規則保留，2.1.216 以前的版本仍可翻譯）。
+- 🚩 **訊息被標記對話框**：同一功能的對話框內文在 2.1.220 全面改成 template literal（`` `${e}'s safeguards flagged this message…` ``），模型名稱由變數帶入，原本的字面值規則 `This model's safeguards flagged this message…` 已不存在於新版，導致整段對話框顯示英文。新增三條規則補齊：
+  - 一般情形：「${模型} 的安全防護機制標記了這則訊息。這偶爾也會發生在安全、正常的對話中。」
+  - 資安／生物領域（新文案 `Our intentionally broad safeguards allow us to deliver more capabilities faster…`）：「…我們刻意把防護範圍設得較廣，好讓我們更快帶來更多功能，但有時也會誤標正當的程式開發、資訊安全與生物學工作。」
+  - 結尾句 `You can continue with a different model.` →「你可以改用其他模型繼續對話。」
+  - 這兩條 template literal 規則以正規表達式比對，變數名（minify 產生的 `e`）以擷取群組保留，Claude 之後改名也不會失效。
+- ⏪ **程式碼回溯結果**：補上 `Code rewind completed, but ${n} file(s) were skipped: …` →「程式碼回溯已完成，但有 ${n} 個檔案被略過：…」／「代码回溯已完成，但有 ${n} 个文件被跳过：…」（原本只有相鄰的 `Code rewind successful` 有翻譯）。
+- 內建翻譯由 559 增至 **564 條**（繁簡各）；套用後對 2.1.220 全檔掃描為 **0 漏翻**（繁簡皆是），翻譯後的 `webview/index.js` 亦通過 JS 語法檢查。
+
+### 已知未涵蓋
+- 對話階段命名的驗證訊息（`Name is required`、`Name must be ${n} characters or fewer`、`Only letters, numbers, dots, hyphens, and underscores`）目前尚未翻譯，需另做一輪整組補譯；此類字串不在掃描器涵蓋的屬性樣式內，故未被偵測。
+
 ## [2.1.3] - 2026-07-12
 
 ### 修正（補上 2.1.207 漏翻）

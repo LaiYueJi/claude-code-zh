@@ -1,8 +1,8 @@
 {
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-07-12",
+  "updatedAt": "2026-07-29",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -1143,6 +1143,12 @@
       "chinese": "\"程式碼回溯成功\""
     },
     {
+      "original": "Code rewind completed, but \\$\\{([A-Za-z_$][\\w$]*)\\} \\$\\{\\1===1\\?\"file was\":\"files were\"\\} skipped: ",
+      "chinese": "程式碼回溯已完成，但有 ${$1} 個檔案被略過：",
+      "regex": true,
+      "flags": "g"
+    },
+    {
       "original": "\"Failed to fork conversation: Unknown session id\"",
       "chinese": "\"分支對話失敗：未知的對話階段 (Session) ID\""
     },
@@ -1888,8 +1894,28 @@
       "chinese": "\"當安全機制標記某則訊息時，自動切換至其他模型以繼續對話；關閉時，則會改為暫停你的對話階段。\""
     },
     {
+      "original": "\"When safeguards flag a message, automatically switch to a different model to keep chatting. When off, your session will pause instead.\"",
+      "chinese": "\"當安全防護機制標記某則訊息時，自動切換至其他模型以繼續對話；關閉時，則會改為暫停你的對話階段。\""
+    },
+    {
       "original": "\"This model's safeguards flagged this message. This sometimes happens with safe, normal conversations.\"",
       "chinese": "\"此模型的安全防護機制標記了這則訊息。這偶爾也會發生在安全、正常的對話中。\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z_$][\\w$]*)\\}'s safeguards flagged this message\\. This sometimes happens with safe, normal conversations\\.`",
+      "chinese": "`${$1} 的安全防護機制標記了這則訊息。這偶爾也會發生在安全、正常的對話中。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([A-Za-z_$][\\w$]*)\\}'s safeguards flagged this message\\. Our intentionally broad safeguards allow us to deliver more capabilities faster, but can sometimes flag legitimate coding, cybersecurity, and biology tasks\\.`",
+      "chinese": "`${$1} 的安全防護機制標記了這則訊息。我們刻意把防護範圍設得較廣，好讓我們更快帶來更多功能，但有時也會誤標正當的程式開發、資訊安全與生物學工作。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " You can continue with a different model.",
+      "chinese": "你可以改用其他模型繼續對話。"
     },
     {
       "original": "\"Switch to the default model and continue\"",

@@ -1,6 +1,8 @@
 .vscode/**
 .git/**
+.github/**
 .gitignore
+.gitattributes
 **/*.map
 node_modules/**
 _scan_tmp/**

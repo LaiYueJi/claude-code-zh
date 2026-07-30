@@ -1,0 +1,77 @@
+name: Release VSIX
+
+# 推送 v* 標籤時：驗證 → 打包 .vsix → 發佈到對應的 GitHub Release。
+# 也可手動觸發（workflow_dispatch），用來重跑某個既有標籤的發佈。
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "要（重新）發佈的標籤，例如 v2.1.6"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: 由標籤推導版本號
+        id: ver
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: 安裝相依套件
+        run: npm ci
+
+      # 擋下「標籤與 package.json／翻譯檔版本對不上」「翻譯檔壞掉」等誤發佈
+      - name: 發佈前檢查
+        run: node scripts/verify-release.js "${{ steps.ver.outputs.version }}"
+
+      - name: 產生發佈說明
+        run: node scripts/release-notes.js "${{ steps.ver.outputs.version }}" > RELEASE_NOTES.md
+
+      - name: 打包 VSIX
+        run: npx @vscode/vsce package --no-dependencies -o "claude-code-zh-${{ steps.ver.outputs.version }}.vsix"
+
+      - name: 發佈 Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.ver.outputs.tag }}
+          VSIX: claude-code-zh-${{ steps.ver.outputs.version }}.vsix
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG 已存在 → 更新說明並覆蓋附件"
+            gh release edit "$TAG" --notes-file RELEASE_NOTES.md --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" \
+              --title "$TAG" \
+              --notes-file RELEASE_NOTES.md \
+              --latest \
+              --repo "$GITHUB_REPOSITORY"
+          fi
+          gh release upload "$TAG" "$VSIX" --clobber --repo "$GITHUB_REPOSITORY"
+
+      - name: 保留 VSIX 為建置產物
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-code-zh-${{ steps.ver.outputs.version }}
+          path: claude-code-zh-*.vsix
+          if-no-files-found: error

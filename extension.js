@@ -5,12 +5,18 @@ const Translator = require('./lib/translator');
 const BackupManager = require('./lib/backup');
 const ConfigManager = require('./lib/config');
 const { LANGUAGES, ALL_MARKERS, getStrings } = require('./lib/i18n');
+const { Updater, RELEASE_PAGE } = require('./lib/updater');
 
 // globalState 鍵
 const KEY_RESTORED = 'manuallyRestored';   // 使用者手動還原成原版 → 不再自動套用
 const KEY_LAST_VERSION = 'lastClaudeVersion';
 const KEY_LAST_TRANSLATION = 'lastTranslationSignature'; // 上次套用的翻譯包簽章
 const KEY_DEAD_RULES = 'deadRules';        // 上次掃描時已對不上的規則（用來只回報「新增的」）
+const KEY_LAST_UPDATE_CHECK = 'lastUpdateCheck';  // 上次線上檢查更新的時間戳
+const KEY_SKIPPED_VERSION = 'skippedExtVersion';  // 使用者選擇略過的擴充功能版本
+
+// 自動檢查更新的最小間隔：開太頻繁沒有意義（翻譯包大約隨 Claude 改版才會動）
+const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 // 偵測未翻譯字串時要掃描的介面屬性（比對「prop:"字面值"」）
 const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading'];
@@ -64,6 +70,9 @@ async function activate(context) {
     const locator = new Locator(config);
     const backup = new BackupManager(config);
     const translator = new Translator(config);
+    const updater = new Updater(config, context);
+    // 線上更新的翻譯包存在 globalStorage；比內建版新時由 Translator 自動改用
+    translator.setCacheDir(updater.getCacheDir());
 
     outputChannel = vscode.window.createOutputChannel(S(config).outputChannel);
     context.subscriptions.push(outputChannel);
@@ -120,6 +129,12 @@ async function activate(context) {
     register('claudeCodeZh.gotoUntranslated', () =>
         gotoUntranslated(locator, translator, backup, config));
 
+    register('claudeCodeZh.checkUpdate', () =>
+        checkUpdates(updater, locator, translator, backup, config, false));
+
+    register('claudeCodeZh.resetTranslationPack', () =>
+        resetTranslationPack(updater, locator, translator, backup, config));
+
     // ── 監聽 Claude Code 安裝/更新 → 自動重新套用並掃描新字串 ──
     context.subscriptions.push(vscode.extensions.onDidChange(async () => {
         const claudeExt = vscode.extensions.getExtension(
@@ -152,12 +167,143 @@ async function activate(context) {
     // ── 啟動時自動套用（除非使用者已手動還原成原版） ──
     if (config.get('autoApplyOnStartup') && !context.globalState.get(KEY_RESTORED)) {
         setTimeout(async () => {
-            // 翻譯包簽章（語言＋版本＋日期＋條數）有變 → 強制重新套用，讓更新後的翻譯生效
+            // 翻譯包簽章（語言＋版本＋日期＋條數＋來源）有變 → 強制重新套用，讓更新後的翻譯生效
             const packChanged = context.globalState.get(KEY_LAST_TRANSLATION) !== translator.getSignature();
             await applyTranslation(locator, translator, backup, config, true, packChanged);
             updateStatusBar(locator, backup, translator, config);
             await checkVersionChange(locator, translator, backup, config);
         }, 2000);
+    }
+
+    // ── 啟動後靜默檢查線上更新（翻譯包／擴充功能新版） ──
+    setTimeout(() => {
+        checkUpdates(updater, locator, translator, backup, config, true).catch(e => console.error(e));
+    }, 8000);
+}
+
+/**
+ * 線上檢查更新：翻譯包 + 擴充功能新版。
+ *
+ * 翻譯包是重點——Claude 每次改版造成的漏翻，只要作者更新了 translations/*.json，
+ * 使用者這邊就能直接拿到，不必重裝 VSIX。
+ *
+ * @param {boolean} quiet 由啟動流程呼叫時為 true：受檢查間隔節流，且沒有更新時不打擾
+ */
+async function checkUpdates(updater, locator, translator, backup, config, quiet) {
+    const s = S(config);
+    if (!extContext) return;
+
+    const wantPack = config.get('autoUpdateTranslations') !== false;
+    const wantExt = config.get('checkExtensionUpdate') !== false;
+    if (quiet && !wantPack && !wantExt) return;
+
+    if (quiet) {
+        const last = extContext.globalState.get(KEY_LAST_UPDATE_CHECK) || 0;
+        if (Date.now() - last < UPDATE_CHECK_INTERVAL_MS) return;
+        await extContext.globalState.update(KEY_LAST_UPDATE_CHECK, Date.now());
+    }
+
+    // ── 翻譯包 ──────────────────────────────
+    if (wantPack || !quiet) {
+        const lang = config.getEffectiveLanguage();
+        try {
+            const current = translator.getCurrentRules();
+            const result = await updater.updateTranslationPack(lang, current);
+            if (result.updated) {
+                translator.invalidate();          // 下次載入即改用新翻譯包
+                // 立刻重新套用，讓使用者重新載入視窗後直接看到新翻譯
+                if (!extContext.globalState.get(KEY_RESTORED)) {
+                    await applyTranslation(locator, translator, backup, config, true, true);
+                    updateStatusBar(locator, backup, translator, config);
+                }
+                const choice = await vscode.window.showInformationMessage(
+                    s.updPackUpdated(result.from, result.to), s.btnReloadNow, s.btnLater);
+                if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+            } else if (!quiet) {
+                vscode.window.showInformationMessage(s.updPackLatest(translator.getPackVersion()));
+            }
+        } catch (e) {
+            if (!quiet) vscode.window.showWarningMessage(s.updPackFailed(e.message));
+            else console.warn('翻譯包線上更新失敗：', e.message);
+        }
+    }
+
+    // ── 擴充功能新版 ─────────────────────────
+    if (wantExt || !quiet) {
+        try {
+            const currentVersion = getOwnVersion();
+            const info = await updater.checkExtensionUpdate(currentVersion);
+            if (!info) {
+                if (!quiet) vscode.window.showInformationMessage(s.updExtLatest(currentVersion));
+                return;
+            }
+            if (quiet && extContext.globalState.get(KEY_SKIPPED_VERSION) === info.version) return;
+
+            const buttons = info.vsixUrl
+                ? [s.updBtnInstall, s.updBtnOpenPage, s.updBtnSkip]
+                : [s.updBtnOpenPage, s.updBtnSkip];
+            const choice = await vscode.window.showInformationMessage(
+                s.updExtFound(currentVersion, info.version), ...buttons);
+
+            if (choice === s.updBtnSkip) {
+                await extContext.globalState.update(KEY_SKIPPED_VERSION, info.version);
+            } else if (choice === s.updBtnOpenPage) {
+                vscode.env.openExternal(vscode.Uri.parse(info.pageUrl || RELEASE_PAGE));
+            } else if (choice === s.updBtnInstall) {
+                await installExtensionUpdate(updater, info, config);
+            }
+        } catch (e) {
+            if (!quiet) vscode.window.showWarningMessage(s.updExtFailed(e.message));
+            else console.warn('檢查擴充功能新版失敗：', e.message);
+        }
+    }
+}
+
+/** 下載並安裝新版 VSIX；失敗時退回開啟 Release 頁面讓使用者手動處理 */
+async function installExtensionUpdate(updater, info, config) {
+    const s = S(config);
+    try {
+        const vsixPath = await vscode.window.withProgress(
+            { location: vscode.ProgressLocation.Notification, title: s.updDownloading(info.version) },
+            () => updater.downloadVsix(info)
+        );
+        // installExtension 接受 VSIX 的 Uri（等同「從 VSIX 安裝…」）。
+        // 這道指令並非正式公開 API，因此失敗時一律退回手動流程。
+        await vscode.commands.executeCommand('workbench.extensions.installExtension', vscode.Uri.file(vsixPath));
+        const choice = await vscode.window.showInformationMessage(
+            s.updInstalled(info.version), s.btnReloadNow, s.btnLater);
+        if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+    } catch (e) {
+        vscode.window.showWarningMessage(s.updInstallFailed(e.message));
+        vscode.env.openExternal(vscode.Uri.parse(info.pageUrl || RELEASE_PAGE));
+    }
+}
+
+/** 清除線上翻譯包快取，回到內建版本 */
+async function resetTranslationPack(updater, locator, translator, backup, config) {
+    const s = S(config);
+    if (translator.getPackSource() !== 'remote') {
+        vscode.window.showInformationMessage(s.updPackResetNone);
+        return;
+    }
+    updater.clearCache();
+    translator.invalidate();
+    if (extContext && !extContext.globalState.get(KEY_RESTORED)) {
+        await applyTranslation(locator, translator, backup, config, true, true);
+        updateStatusBar(locator, backup, translator, config);
+    }
+    const choice = await vscode.window.showInformationMessage(s.updPackReset, s.btnReloadNow, s.btnLater);
+    if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+}
+
+/** 本擴充功能自身的版本號 */
+function getOwnVersion() {
+    const ext = vscode.extensions.getExtension('LaiYueJi.claude-code-zh');
+    if (ext && ext.packageJSON && ext.packageJSON.version) return ext.packageJSON.version;
+    try {
+        return require('./package.json').version;
+    } catch (e) {
+        return '0.0.0';
     }
 }
 
@@ -180,6 +326,10 @@ async function showQuickMenu(locator, translator, backup, config) {
         { label: s.menuScanLabel, description: s.menuScanDesc, cmd: 'claudeCodeZh.scanUntranslated' },
         { label: s.menuViewListLabel, description: s.menuViewListDesc, cmd: 'claudeCodeZh.viewUntranslatedList' },
         { label: s.menuGotoLabel, description: s.menuGotoDesc, cmd: 'claudeCodeZh.gotoUntranslated' },
+        { label: '', kind: vscode.QuickPickItemKind.Separator },
+        { label: s.menuCheckUpdateLabel, description: s.menuCheckUpdateDesc, cmd: 'claudeCodeZh.checkUpdate' },
+        { label: s.menuResetPackLabel, description: s.menuResetPackDesc, cmd: 'claudeCodeZh.resetTranslationPack' },
+        { label: '', kind: vscode.QuickPickItemKind.Separator },
         { label: s.menuPaletteLabel, description: s.menuPaletteDesc, cmd: 'claudeCodeZh.openCommandPalette' },
         { label: s.menuConfigLabel, description: s.menuConfigDesc, cmd: 'claudeCodeZh.openConfig' },
         { label: s.menuStatusLabel, description: s.menuStatusDesc, cmd: 'claudeCodeZh.showStatus' },
@@ -356,6 +506,7 @@ async function showStatusInfo(locator, backup, translator, config) {
         s.siStateLabel(stateText),
         s.siLangLabel(meta.label),
         s.siPackLabel(translator.getPackVersion()),
+        s.siPackSource(translator.getPackSource()),
         s.siVersionLabel(version),
         s.siCountLabel(translator.getBuiltInCount()),
         restored ? s.siAutoOff : s.siAutoOn,

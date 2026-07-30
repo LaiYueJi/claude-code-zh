@@ -3,6 +3,8 @@
 .github/**
 .gitignore
 .gitattributes
+scripts/**
+package-lock.json
 **/*.map
 node_modules/**
 _scan_tmp/**

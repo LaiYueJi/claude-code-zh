@@ -15,7 +15,9 @@
 - 🧭 **狀態列快速指令選單**：點擊狀態列按鈕即彈出快速選單，含「切換語言」「開啟指令面板（`Ctrl+Shift+P`）」等常用動作。
 - ♻️ **冪等套用**：一律以原始英文備份（`.bak`）為基底翻譯，重複套用或切換語言都不會疊加、不會殘留舊翻譯。
 - 🔄 **自動維護**：VS Code 啟動時自動套用；偵測到 Claude Code 更新時自動重新套用。
-- 🆕 **翻譯包更新自動生效**：翻譯檔帶版本與日期（`updatedAt`），啟動時比對簽章，本擴充更新內建翻譯後會自動重新套用，無需手動操作。
+- ☁️ **翻譯包線上熱更新**：定期向 GitHub 取得最新的 `translations/*.json`，**Claude 改版造成的漏翻修正不必重裝 VSIX 就會生效**。內建版與線上版取較新者；下載的翻譯包會先驗證（JSON、locale、每條規則與正規表達式），不合格就整包不採用並回退內建版。主來源連不上時自動改用 jsDelivr 鏡像。
+- 🆕 **擴充功能新版提醒**：發現 GitHub 有新版時可直接「下載並安裝」，或開啟 Release 頁面手動處理、略過此版本。
+- 🔁 **翻譯包更新自動生效**：翻譯檔帶版本與日期（`updatedAt`），啟動時比對簽章，翻譯包一有更新就自動重新套用，無需手動操作。
 - 🧩 **可自訂**：支援 `preTranslationRules` / `postTranslationRules`，自行新增或覆蓋任何翻譯。
 - 🔍 **漏翻自動偵測**：Claude Code 更新版本後，會自動掃描並提示尚未翻譯的介面字串；也可隨時手動「掃描未翻譯字串」。掃描涵蓋三類寫法：直接字面值（`label:"…"`）、被 minify 提取成變數的字串（`label:dN`、`description:Cbe`），以及樣板字串（`` `…${變數}…` ``），連隱藏在變數或字串模板後的長句都抓得到。
 - ⚠️ **失效規則偵測**：Claude 改寫英文原文時，舊規則會靜靜失效——畫面變回英文，漏翻掃描卻未必看得出來。本擴充會記錄每次掃描的比對結果，只在「上次還對得上、這次忽然對不上」時提示，精準指出被改寫的字串。
@@ -46,6 +48,8 @@
 | 🔍 掃描未翻譯字串 | 找出目前版本尚未翻譯的介面字串 |
 | 📋 檢視未翻譯清單 | 顯示上次掃描的未翻譯清單（不重新掃描） |
 | 🧭 跳到未翻譯字串… | 在 `index.js` 中定位並開啟某個未翻譯字串 |
+| ⬆️ 檢查更新 | 向 GitHub 取得最新翻譯包，並檢查擴充功能新版本 |
+| 📦 還原為內建翻譯包 | 清除線上更新的快取，改用擴充功能內建版本 |
 | 🔎 開啟指令面板… | 等同 `Ctrl+Shift+P`，快速執行所有指令 |
 | ⚙️ 開啟設定 | 調整語言、自動套用、通知、自訂規則 |
 | ℹ️ 檢視狀態／說明 | 語言、版本、翻譯條數、檔案位置 |
@@ -62,6 +66,9 @@
 | `claudeCodeZh.createBackup` | `true` | 套用前建立 `.bak` 備份 |
 | `claudeCodeZh.showNotifications` | `true` | 顯示操作完成通知 |
 | `claudeCodeZh.claudeCodeExtensionId` | `Anthropic.claude-code` | Claude Code 擴充功能 ID |
+| `claudeCodeZh.autoUpdateTranslations` | `true` | 自動線上更新翻譯包（不必重裝 VSIX） |
+| `claudeCodeZh.checkExtensionUpdate` | `true` | 檢查擴充功能是否有新版本 |
+| `claudeCodeZh.translationSourceUrls` | `[]` | 翻譯包線上來源，留空用內建（raw → jsDelivr） |
 | `claudeCodeZh.preTranslationRules` | `[]` | 前置自訂翻譯規則（最優先） |
 | `claudeCodeZh.postTranslationRules` | `[]` | 後置自訂翻譯規則（可覆蓋內建） |
 
@@ -88,6 +95,18 @@ webview/index.js.bak（原始英文，基底）
         ▼
 webview/index.js（繁體或簡體中文）
 ```
+
+內建規則有兩個來源，載入時取**較新**者（先比 `version`，同版再比 `updatedAt`）：
+
+```
+translations/*.json（隨 VSIX 打包）
+                              ↘
+                                取較新者 → 套用
+                              ↗
+globalStorage/translations/*.json（線上更新下載，通過驗證才採用）
+```
+
+所以作者補完漏翻後只要更新 GitHub 上的 `translations/*.json`，使用者端最慢 6 小時內就會自動拿到，不必等新的 VSIX。
 
 - 語言以 `claudeCodeZh.language` 決定；`auto` 時依 VS Code 顯示語言（`zh-tw`/`zh-hant`→繁體，`zh-cn`/`zh-hans`→簡體，其餘回退繁體）。
 - 切換語言時一律從英文備份重新翻譯，因此不會有「半繁半簡」的殘留。

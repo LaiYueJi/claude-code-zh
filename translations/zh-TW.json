@@ -1,8 +1,8 @@
 {
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-07-29",
+  "updatedAt": "2026-07-30",
   "translations": [
     {
       "original": "\"Rename session\"",

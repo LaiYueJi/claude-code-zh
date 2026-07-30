@@ -2,7 +2,7 @@
   "name": "claude-code-zh",
   "displayName": "Claude Code for VS Code 繁體／簡體中文語言包",
   "description": "Claude Code for VS Code 中文化擴充功能：繁體中文（台灣）與簡體中文（中國大陸）雙語，可自動偵測系統語言或手動切換，含狀態列快速指令選單。",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "publisher": "LaiYueJi",
   "license": "MIT",
   "icon": "logo.png",
@@ -95,6 +95,16 @@
         "category": "Claude Code 中文化"
       },
       {
+        "command": "claudeCodeZh.checkUpdate",
+        "title": "⬆️ 檢查更新（翻譯包／擴充功能）/ 检查更新（翻译包／扩展）",
+        "category": "Claude Code 中文化"
+      },
+      {
+        "command": "claudeCodeZh.resetTranslationPack",
+        "title": "📦 還原為內建翻譯包 / 还原为内置翻译包",
+        "category": "Claude Code 中文化"
+      },
+      {
         "command": "claudeCodeZh.openCommandPalette",
         "title": "🔎 開啟指令面板 / 打开命令面板",
         "category": "Claude Code 中文化"
@@ -163,6 +173,24 @@
           "default": "Anthropic.claude-code",
           "description": "Claude Code 擴充功能的 ID（格式：Publisher.ExtensionName）/ Claude Code 扩展的 ID"
         },
+        "claudeCodeZh.autoUpdateTranslations": {
+          "type": "boolean",
+          "default": true,
+          "description": "自動線上更新翻譯包：向 GitHub 取得最新的 translations/*.json，Claude 改版造成的漏翻修正不必重裝 VSIX 即可生效 / 自动在线更新翻译包：从 GitHub 获取最新的 translations/*.json，无需重装 VSIX"
+        },
+        "claudeCodeZh.checkExtensionUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "檢查本擴充功能是否有新版本（讀取 GitHub Releases）/ 检查本扩展是否有新版本（读取 GitHub Releases）"
+        },
+        "claudeCodeZh.translationSourceUrls": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "翻譯包線上來源（依序嘗試）。留空則使用內建來源：raw.githubusercontent，失敗時改用 jsDelivr / 翻译包在线来源（按顺序尝试）。留空则使用内置来源"
+        },
         "claudeCodeZh.preTranslationRules": {
           "type": "array",
           "default": [],
@@ -197,7 +225,8 @@
     }
   },
   "scripts": {
-    "build": "vsce package --no-dependencies"
+    "verify": "node scripts/verify-release.js",
+    "build": "npm run verify && vsce package --no-dependencies"
   },
   "devDependencies": {
     "@vscode/vsce": "^3.7.1"

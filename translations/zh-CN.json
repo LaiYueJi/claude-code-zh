@@ -1,8 +1,8 @@
 {
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-07-30",
+  "updatedAt": "2026-08-08",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -2358,6 +2358,22 @@
       "chinese": "在新窗口打开 ${$1}",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "\"Don't ask\"",
+      "chinese": "\"不询问\""
+    },
+    {
+      "original": "\"Claude will deny actions that need approval instead of asking\"",
+      "chinese": "\"Claude 会直接拒绝需要批准的操作，而不会向你询问\""
+    },
+    {
+      "original": "\"Focus view\"",
+      "chinese": "\"专注视图\""
+    },
+    {
+      "original": "\"Show only your prompts and Claude's responses\"",
+      "chinese": "\"仅显示你的提示词与 Claude 的回复\""
     }
   ]
 }

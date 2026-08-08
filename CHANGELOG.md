@@ -2,6 +2,16 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.2.1] - 2026-08-08（翻譯包熱更新，擴充功能本體不變）
+
+### 修正（Claude Code 2.1.226 漏翻，繁簡各 4 條）
+- 🚦 **權限模式「不詢問」**：`Don't ask` 與其說明 `Claude will deny actions that need approval instead of asking`。同一份選單的 `Manual`／`Edit automatically` 早已翻譯，只有這個模式是新加的。
+- 👁️ **設定選單「專注檢視」**：`Focus view` 與其說明 `Show only your prompts and Claude's responses`。
+- 📎 兩條 `description` 是掃描器看不到的盲點——`description` 只納入「變數參照」掃描（字面值會被 Monaco 的色彩說明洪水淹沒），因此畫面上跟著標籤一起是英文，掃描卻只回報 2 條。修正時一併補上。
+
+### 備註
+- 僅 `translations/*.json` 變動（579 → **583 條**，繁簡相同），版本推進到 2.2.1 走線上熱更新；擴充功能本體仍為 2.2.0，**不必重裝 VSIX**。
+
 ## [2.2.0] - 2026-07-30
 
 ### 新增

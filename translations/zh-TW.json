@@ -1,8 +1,8 @@
 {
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-08-08",
+  "updatedAt": "2026-08-14",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -2374,6 +2374,126 @@
     {
       "original": "\"Show only your prompts and Claude's responses\"",
       "chinese": "\"只顯示你的提示詞與 Claude 的回應\""
+    },
+    {
+      "original": "\"Side question\"",
+      "chinese": "\"側邊提問\""
+    },
+    {
+      "original": "\"Ask a side question\"",
+      "chinese": "\"提出側邊提問\""
+    },
+    {
+      "original": "\"Clear side questions\"",
+      "chinese": "\"清除側邊提問\""
+    },
+    {
+      "original": "\"Send side question\"",
+      "chinese": "\"送出側邊提問\""
+    },
+    {
+      "original": "\"Answering…\"",
+      "chinese": "\"回答中…\""
+    },
+    {
+      "original": "\"Cancelled.\"",
+      "chinese": "\"已取消。\""
+    },
+    {
+      "original": "\"Failed to get an answer: \"",
+      "chinese": "\"無法取得回答：\""
+    },
+    {
+      "original": "\"Claude didn't return an answer for this side question.\"",
+      "chinese": "\"Claude 沒有針對這則側邊提問給出回答。\""
+    },
+    {
+      "original": "\"Ask a quick side question below without interrupting the conversation.\"",
+      "chinese": "\"在下方提出簡短的側邊提問，不會中斷目前的對話。\""
+    },
+    {
+      "original": "\"New group\"",
+      "chinese": "\"新群組\""
+    },
+    {
+      "original": "\"Rename group\"",
+      "chinese": "\"重新命名群組\""
+    },
+    {
+      "original": "\"Delete group\"",
+      "chinese": "\"刪除群組\""
+    },
+    {
+      "original": "\"Remove from group\"",
+      "chinese": "\"從群組移除\""
+    },
+    {
+      "original": "\"New group from session\"",
+      "chinese": "\"以此對話階段建立群組\""
+    },
+    {
+      "original": "\"Switch to session\"",
+      "chinese": "\"切換至此對話階段\""
+    },
+    {
+      "original": "\"Resume session\"",
+      "chinese": "\"恢復對話階段\""
+    },
+    {
+      "original": "New group from \\$\\{([^{}]*)\\} sessions",
+      "chinese": "以 ${$1} 個對話階段建立群組",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Move to \"\\$\\{([^{}]*)\\}\"",
+      "chinese": "移至 \"${$1}\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Expand \\$\\{([^{}()]*)\\}",
+      "chinese": "展開 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Collapse \\$\\{([^{}()]*)\\}",
+      "chinese": "收合 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Couldn't send feedback: \\$\\{([^{}]*)\\}",
+      "chinese": "無法傳送意見回饋：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Thank you for your report! Feedback ID: \\$\\{([^{}]*)\\}",
+      "chinese": "感謝你的回報！意見回饋編號：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Thank you for your report!\"",
+      "chinese": "\"感謝你的回報！\""
+    },
+    {
+      "original": "% of your usage came from the plugin \"",
+      "chinese": "% 的用量來自外掛程式 \""
+    },
+    {
+      "original": "% of your usage came from the MCP server \"",
+      "chinese": "% 的用量來自 MCP 伺服器 \""
+    },
+    {
+      "original": "\"Loading sessions…\"",
+      "chinese": "\"正在載入對話階段…\""
+    },
+    {
+      "original": "\"No sessions yet\"",
+      "chinese": "\"尚無對話階段\""
     }
   ]
 }

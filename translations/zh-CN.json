@@ -1,8 +1,8 @@
 {
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-08-08",
+  "updatedAt": "2026-08-14",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -2374,6 +2374,126 @@
     {
       "original": "\"Show only your prompts and Claude's responses\"",
       "chinese": "\"仅显示你的提示词与 Claude 的回复\""
+    },
+    {
+      "original": "\"Side question\"",
+      "chinese": "\"侧边提问\""
+    },
+    {
+      "original": "\"Ask a side question\"",
+      "chinese": "\"提出侧边提问\""
+    },
+    {
+      "original": "\"Clear side questions\"",
+      "chinese": "\"清除侧边提问\""
+    },
+    {
+      "original": "\"Send side question\"",
+      "chinese": "\"发送侧边提问\""
+    },
+    {
+      "original": "\"Answering…\"",
+      "chinese": "\"回答中…\""
+    },
+    {
+      "original": "\"Cancelled.\"",
+      "chinese": "\"已取消。\""
+    },
+    {
+      "original": "\"Failed to get an answer: \"",
+      "chinese": "\"无法获取回答：\""
+    },
+    {
+      "original": "\"Claude didn't return an answer for this side question.\"",
+      "chinese": "\"Claude 没有针对这条侧边提问给出回答。\""
+    },
+    {
+      "original": "\"Ask a quick side question below without interrupting the conversation.\"",
+      "chinese": "\"在下方提出简短的侧边提问，不会中断当前的对话。\""
+    },
+    {
+      "original": "\"New group\"",
+      "chinese": "\"新分组\""
+    },
+    {
+      "original": "\"Rename group\"",
+      "chinese": "\"重命名分组\""
+    },
+    {
+      "original": "\"Delete group\"",
+      "chinese": "\"删除分组\""
+    },
+    {
+      "original": "\"Remove from group\"",
+      "chinese": "\"从分组中移除\""
+    },
+    {
+      "original": "\"New group from session\"",
+      "chinese": "\"以此会话新建分组\""
+    },
+    {
+      "original": "\"Switch to session\"",
+      "chinese": "\"切换至此会话\""
+    },
+    {
+      "original": "\"Resume session\"",
+      "chinese": "\"恢复会话\""
+    },
+    {
+      "original": "New group from \\$\\{([^{}]*)\\} sessions",
+      "chinese": "以 ${$1} 个会话新建分组",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Move to \"\\$\\{([^{}]*)\\}\"",
+      "chinese": "移至 \"${$1}\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Expand \\$\\{([^{}()]*)\\}",
+      "chinese": "展开 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Collapse \\$\\{([^{}()]*)\\}",
+      "chinese": "收起 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Couldn't send feedback: \\$\\{([^{}]*)\\}",
+      "chinese": "无法发送反馈：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Thank you for your report! Feedback ID: \\$\\{([^{}]*)\\}",
+      "chinese": "感谢你的反馈！反馈编号：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Thank you for your report!\"",
+      "chinese": "\"感谢你的反馈！\""
+    },
+    {
+      "original": "% of your usage came from the plugin \"",
+      "chinese": "% 的用量来自插件 \""
+    },
+    {
+      "original": "% of your usage came from the MCP server \"",
+      "chinese": "% 的用量来自 MCP 服务器 \""
+    },
+    {
+      "original": "\"Loading sessions…\"",
+      "chinese": "\"正在加载会话…\""
+    },
+    {
+      "original": "\"No sessions yet\"",
+      "chinese": "\"尚无会话\""
     }
   ]
 }

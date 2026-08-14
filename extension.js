@@ -12,17 +12,22 @@ const KEY_RESTORED = 'manuallyRestored';   // 使用者手動還原成原版 →
 const KEY_LAST_VERSION = 'lastClaudeVersion';
 const KEY_LAST_TRANSLATION = 'lastTranslationSignature'; // 上次套用的翻譯包簽章
 const KEY_DEAD_RULES = 'deadRules';        // 上次掃描時已對不上的規則（用來只回報「新增的」）
+const KEY_SEEN_UNTRANSLATED = 'seenUntranslated'; // 上次掃描時已知的漏翻字串（同樣只回報「新增的」）
 const KEY_LAST_UPDATE_CHECK = 'lastUpdateCheck';  // 上次線上檢查更新的時間戳
 const KEY_SKIPPED_VERSION = 'skippedExtVersion';  // 使用者選擇略過的擴充功能版本
 
 // 自動檢查更新的最小間隔：開太頻繁沒有意義（翻譯包大約隨 Claude 改版才會動）
 const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
-// 偵測未翻譯字串時要掃描的介面屬性（比對「prop:"字面值"」）
-const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading'];
+// 偵測未翻譯字串時要掃描的介面屬性（比對「prop:值」）
+// children 於 2.3.0 納入：側邊提問面板整區文案都寫成 children:"文字"，舊版掃描一條都看不到。
+const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading', 'children'];
 // 變數參照掃描（prop:變數名）額外納入 description：
 // Monaco 內嵌大量 description:"色彩說明…" 字面值會造成洪水，故 description 僅用於變數參照，靠片語過濾把關。
 const VAR_PROPS = LITERAL_PROPS.concat('description');
+// 會把文案直接當引數傳進去的介面函式：showNotification(`…`) 這類寫法不掛在屬性上，
+// 只認 prop: 一律看不到（2.1.229 的意見回饋提示即是如此）。
+const UI_CALLS = ['showNotification'];
 // 已知非 Claude（多為內嵌 Monaco 編輯器）之誤判，掃描時略過
 const SCAN_IGNORE = new Set(['Find and Replace', 'Start Linked Editing', 'editorWorkerService', 'Go to Line/Column', 'diagnosticSubtitle']);
 
@@ -33,6 +38,13 @@ const SCAN_IGNORE = new Set(['Find and Replace', 'Start Linked Editing', 'editor
 const TPL_MIN_WORDS = 4;        // 至少幾個英文單字才視為文案
 const TPL_LOCALITY = 3000;      // 「鄰近是否有中文」的前後取樣範圍（字元）
 const TPL_LOCALITY_CJK = 20;    // 取樣範圍內至少要有幾個中文字
+
+// ── 屬性值掃描參數（2.3.0 新增）──────────────────────
+// 屬性值往後取樣的長度：children 陣列可能包住整個子元件，取太短會漏掉排在後面的文字。
+const PROP_VALUE_WINDOW = 600;
+// 掛在介面屬性上的樣板字串，門檻放寬到 1 個英文單字：
+// `Collapse ${群組名}` 只有一個單字，但既然寫在 title 上就必定是使用者看得到的文案。
+const TPL_PROP_MIN_WORDS = 1;
 // 內部診斷訊息（throw new Error(`…`)、console.warn(`…`)）不是使用者看得到的文案
 const TPL_DIAGNOSTIC_CTX = /(?:throw|Error|TypeError|RangeError|console\.\w+|assert\w*|warn|reject)\s*\(?\s*$/;
 // 少數躲過上述條件的 Monaco 內部訊息，直接列為已知誤判
@@ -582,23 +594,135 @@ function findTemplateUntranslated(translatedContent) {
     let m;
     while ((m = re.exec(translatedContent))) {
         const raw = m[1];
-        if (RE_CJK.test(raw)) continue;                              // 已翻譯
-        if (/\$\{[^{}]*[`'"][^{}]*\}/.test(raw)) continue;           // 佔位符內含字串 → 巢狀程式碼
-        const plain = raw.replace(/\$\{[^{}]*\}/g, '\u0000');        // 佔位符換成單一標記再判形態
-        if (/[<>\\/=;|~^&*+\[\]{}()#@]/.test(plain)) continue;       // 程式碼字元
-        if (/\n|\t|  /.test(plain)) continue;                        // 多行／縮排 → 程式碼或樣板
-        if (/:\S/.test(plain)) continue;                             // key:value
-        if (!/^[A-Z\u0000]/.test(plain)) continue;                   // 需以大寫或佔位符開頭（濾掉串接片段）
-        const words = plain.split(/[\u0000\s]+/).filter(Boolean);
-        const alpha = words.filter(w => /^[A-Za-z][A-Za-z'’.,!?%:;-]*$/.test(w));
-        if (alpha.length < TPL_MIN_WORDS || alpha.length / words.length < 0.8) continue;
-        if (SCAN_IGNORE.has(raw) || TPL_IGNORE.some(re2 => re2.test(raw))) continue;
+        if (!templateLooksLikeText(raw, TPL_MIN_WORDS)) continue;
         if (TPL_DIAGNOSTIC_CTX.test(translatedContent.slice(Math.max(0, m.index - 24), m.index))) continue;
         const near = translatedContent.slice(Math.max(0, m.index - TPL_LOCALITY), m.index + TPL_LOCALITY);
         if ((near.match(RE_CJK_G) || []).length < TPL_LOCALITY_CJK) continue;
         results.add(raw);
     }
     return results;
+}
+
+/**
+ * 樣板字串的「形態」判斷：把佔位符抽掉之後，看起來是不是一句人話。
+ *
+ * 兩處共用，差別只在單字數門檻：
+ *  - 全域樣板字串掃描用 TPL_MIN_WORDS（較嚴），另以「鄰近是否有中文」把關；
+ *  - 掛在介面屬性上的樣板字串用 TPL_PROP_MIN_WORDS（較寬），因為屬性本身已是夠強的證據。
+ *    Collapse ${群組名}、Move to "${群組名}" 只有一到兩個單字，舊門檻一律擋掉。
+ */
+function templateLooksLikeText(raw, minWords) {
+    if (RE_CJK.test(raw)) return false;                          // 已翻譯
+    if (/\$\{[^{}]*[`'"][^{}]*\}/.test(raw)) return false;       // 佔位符內含字串 → 巢狀程式碼
+    const plain = raw.replace(/\$\{[^{}]*\}/g, '\u0000');        // 佔位符換成單一標記再判形態
+    if (/[<>\\/=;|~^&*+\[\]{}()#@]/.test(plain)) return false;   // 程式碼字元
+    if (/\n|\t|  /.test(plain)) return false;                    // 多行／縮排 → 程式碼或樣板
+    if (/:\S/.test(plain)) return false;                         // key:value
+    if (!/^["\u0000A-Z]/.test(plain)) return false;             // 需以大寫、佔位符或引號開頭（濾掉串接片段）
+    // 外圍的引號／括號會被切成獨立「單字」，把 Move to "${名稱}" 的字母詞比例壓到 0.5，
+    // 故先剝掉外圍標點再算比例，純標點的詞不列入分母。
+    const words = plain.split(/[\u0000\s]+/)
+        .map(w => w.replace(/^["'`(\[]+|["'`)\].,!?;:]+$/g, ''))
+        .filter(Boolean);
+    if (words.length === 0) return false;
+    const alpha = words.filter(w => /^[A-Za-z][A-Za-z'’.,!?%:;-]*$/.test(w));
+    if (alpha.length < minWords || alpha.length / words.length < 0.8) return false;
+    if (SCAN_IGNORE.has(raw) || TPL_IGNORE.some(re2 => re2.test(raw))) return false;
+    return true;
+}
+
+// 屬性值的四種寫法（用途見 findPropValueStrings）
+const RE_VALUE_STR = /^"((?:[^"\\]|\\.){2,160})"/;
+const RE_VALUE_TPL = /^`((?:[^`\\]|\\.){2,300})`/;
+const RE_VALUE_TERNARY = /^[^,;{}]{0,120}?\?\s*("(?:[^"\\]|\\.){2,160}"|`(?:[^`\\]|\\.){2,300}`)\s*:\s*("(?:[^"\\]|\\.){2,160}"|`(?:[^`\\]|\\.){2,300}`)/;
+
+/** 跳過字串／樣板字面值，回傳結束引號的位置（處理跳脫字元） */
+function skipQuoted(text, i) {
+    const quote = text[i];
+    for (let j = i + 1; j < text.length; j++) {
+        if (text[j] === '\\') { j++; continue; }
+        if (text[j] === quote) return j;
+    }
+    return text.length;
+}
+
+/** 取出以括號開頭的完整範圍；字串內的括號不計入巢狀深度 */
+function readBalanced(text) {
+    let depth = 0;
+    for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '"' || ch === "'" || ch === '`') { i = skipQuoted(text, i); continue; }
+        if (ch === '[' || ch === '{' || ch === '(') depth++;
+        else if (ch === ']' || ch === '}' || ch === ')') { if (--depth === 0) return text.slice(0, i + 1); }
+    }
+    return text;
+}
+
+/**
+ * 取出陣列的「直接元素」中的字串／樣板字面值。
+ *
+ * children:[b("span",{className:…,"aria-hidden":"true"}),"Answering…"] 這種寫法裡，
+ * 真正的文案是排在子元件後面的直接元素；巢狀在 b(…) 內的 "true"、CSS 類名、
+ * aria-* 屬性名全都不是文案。不分深度一律撈的話，一次掃描會多出三百條雜訊。
+ */
+function readArrayElements(span) {
+    const out = [];
+    let depth = 0;
+    for (let i = 0; i < span.length; i++) {
+        const ch = span[i];
+        if (ch === '"' || ch === "'" || ch === '`') {
+            const end = skipQuoted(span, i);
+            if (depth === 1 && ch !== "'") out.push({ text: span.slice(i + 1, end), tpl: ch === '`' });
+            i = end;
+            continue;
+        }
+        if (ch === '[' || ch === '{' || ch === '(') depth++;
+        else if (ch === ']' || ch === '}' || ch === ')') depth--;
+    }
+    return out;
+}
+
+/**
+ * 掃描介面屬性的「值」。minify 之後同一個屬性有四種常見寫法，
+ * 舊版只認第一種，2.1.229 的側邊提問與分組功能因此一次漏掉 17 條：
+ *
+ *   label:"New group"                             ← 字面值
+ *   title:`Collapse ${群組名}`                     ← 樣板字串
+ *   label:x?"Switch to session":"Resume session"   ← 三元運算子
+ *   children:[b(圖示),"New group"]                 ← 陣列元素
+ *
+ * 一律以「屬性名」為錨點，這是雜訊壓得住的關鍵：同樣的字串出現在其他位置不看。
+ */
+function findPropValueStrings(translatedContent, results) {
+    const names = LITERAL_PROPS.map(p => p.replace(/-/g, '\\-')).join('|');
+    // 屬性名可能帶引號（"aria-label":"…"）；前方需為非識別字字元，以免 xxxLabel: 之類誤命中。
+    // 另一種錨點是介面函式的引數位置（showNotification(…)），值的寫法與屬性完全相同，共用同一套解析。
+    const re = new RegExp('(?<![A-Za-z0-9_$])(?:"?(?:' + names + ')"?\\s*:|(?:' + UI_CALLS.join('|') + ')\\s*\\()', 'g');
+    const take = (raw, isTpl) => {
+        if (isTpl) { if (templateLooksLikeText(raw, TPL_PROP_MIN_WORDS)) results.add(raw); }
+        else if (looksLikeUiText(raw)) results.add(raw);
+    };
+    let m;
+    while ((m = re.exec(translatedContent))) {
+        const from = m.index + m[0].length;
+        const tail = translatedContent.slice(from, from + PROP_VALUE_WINDOW);
+        let v;
+        if ((v = RE_VALUE_STR.exec(tail))) { take(v[1], false); continue; }
+        if ((v = RE_VALUE_TPL.exec(tail))) { take(v[1], true); continue; }
+        if ((v = RE_VALUE_TERNARY.exec(tail))) {
+            for (const branch of [v[1], v[2]]) take(branch.slice(1, -1), branch[0] === '`');
+            continue;
+        }
+        if (tail[0] === '[') {
+            for (const el of readArrayElements(readBalanced(tail))) {
+                // 陣列元素比屬性值鬆散得多，需再過一道文案門檻：
+                // 大寫開頭（Answering…／New group）或多字片語（← Back to list），
+                // 否則像 "and "、"from " 這種串接碎片會把清單灌爆。
+                if (el.tpl) take(el.text, true);
+                else if (/^[A-Z]/.test(el.text) || isNaturalPhrase(el.text)) take(el.text, false);
+            }
+        }
+    }
 }
 
 /**
@@ -627,21 +751,14 @@ function findDeadRules(baseContent, rules) {
 
 /**
  * 從「翻譯後」的內容中找出仍為英文的介面字串（偵測漏翻）。
- * 三階段：(1) prop:"字面值"（精準）；(2) prop:變數名 → 查對照表還原（補抓被 minify 提取成變數的長字串）；
+ * 三階段：(1) prop:值（字面值／樣板字串／三元運算子／陣列元素）；(2) prop:變數名 → 查對照表還原（補抓被 minify 提取成變數的長字串）；
  *        (3) 樣板字串 `… ${變數} …`（補抓改寫成 template literal 的文案）。
  */
 function findUntranslated(translatedContent) {
     const results = new Set();
 
-    // (1) 直接字面值：prop:"文字"
-    for (const p of LITERAL_PROPS) {
-        const pe = p.replace(/-/g, '\\-');
-        const re = new RegExp(pe + ':"((?:[^"\\\\]|\\\\.){2,120})"', 'g');
-        let m;
-        while ((m = re.exec(translatedContent))) {
-            if (looksLikeUiText(m[1])) results.add(m[1]);
-        }
-    }
+    // (1) 介面屬性的值：字面值／樣板字串／三元運算子／陣列元素
+    findPropValueStrings(translatedContent, results);
 
     // (2) 變數參照：prop:變數名（如 label:dN）→ 透過對照表還原其字串值
     const constMap = buildConstMap(translatedContent);
@@ -659,6 +776,25 @@ function findUntranslated(translatedContent) {
     for (const val of findTemplateUntranslated(translatedContent)) results.add(val);
 
     return [...results].sort();
+}
+
+/**
+ * 取得「這次才出現」的漏翻字串，並把最新清單存回 globalState。
+ *
+ * 與失效規則同樣的理由：掃描器涵蓋面擴大後，一次會列出近兩百條歷來未翻的字串，
+ * 那是既有債務而非改版訊號。真正需要立刻處理的是「上次沒有、這次冒出來」的那些——
+ * 幾乎都代表 Claude 這一版新增或改寫了介面。首次執行僅建立基準線，不回報。
+ */
+async function collectNewUntranslated(list, config) {
+    if (!extContext) return [];
+    const lang = config.getEffectiveLanguage();
+    const store = extContext.globalState.get(KEY_SEEN_UNTRANSLATED) || {};
+    const prev = store[lang];
+    const newly = Array.isArray(prev) ? list.filter(s => !prev.includes(s)) : [];
+
+    store[lang] = list;
+    await extContext.globalState.update(KEY_SEEN_UNTRANSLATED, store);
+    return newly;
 }
 
 /**
@@ -700,6 +836,7 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         if (base == null) base = fs.readFileSync(mainFilePath, 'utf8');
         const translated = await translator.translate(base);
         const list = findUntranslated(translated);
+        const newly = await collectNewUntranslated(list, config);
         const newlyDead = await collectNewlyDeadRules(base, translator, config);
 
         // 保存結果供「跳到字串」定位
@@ -711,6 +848,12 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         outputChannel.appendLine(s.scanHeaderTitle);
         outputChannel.appendLine(s.scanHeaderMeta(version, meta.label));
         outputChannel.appendLine(s.scanHeaderCount(list.length));
+        if (newly.length > 0) {
+            // 新增的排在最前面並另立標題：一次列兩百條時，這幾條才是要看的
+            outputChannel.appendLine(s.scanNewTitle(newly.length));
+            newly.forEach((str, i) => outputChannel.appendLine(`${String(i + 1).padStart(3, ' ')}. ${str}`));
+            outputChannel.appendLine(s.scanAllTitle(list.length));
+        }
         list.forEach((str, i) => outputChannel.appendLine(`${String(i + 1).padStart(3, ' ')}. ${str}`));
         outputChannel.appendLine(s.scanHeaderTip);
         if (newlyDead.length > 0) {
@@ -720,7 +863,8 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         }
 
         if (list.length > 0) {
-            const warn = newlyDead.length > 0 ? s.scanFoundWarnBoth(list.length, newlyDead.length) : s.scanFoundWarn(list.length);
+            const found = newly.length > 0 ? s.scanFoundWarnNew(list.length, newly.length) : s.scanFoundWarn(list.length);
+            const warn = newlyDead.length > 0 ? s.scanFoundWarnBoth(list.length, newlyDead.length) : found;
             const choice = await vscode.window.showWarningMessage(warn, s.btnGoto, s.btnViewList);
             if (choice === s.btnViewList) outputChannel.show(true);
             else if (choice === s.btnGoto) await gotoUntranslated(locator, translator, backup, config);

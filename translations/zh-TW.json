@@ -1,8 +1,8 @@
 {
-  "version": "2.2.2",
+  "version": "2.3.1",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-08-14",
+  "updatedAt": "2026-08-15",
   "translations": [
     {
       "original": "\"Rename session\"",
@@ -1079,8 +1079,10 @@
       "chinese": "\"僅限於你，且僅在目前儲存庫中\""
     },
     {
-      "original": "\"Cancel\"",
-      "chinese": "\"取消\""
+      "original": "(?<![=(])(?<!case)\"Cancel\"",
+      "chinese": "\"取消\"",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\"Loading marketplaces…\"",
@@ -1249,12 +1251,16 @@
       "chinese": "\"是否允許此 bash 命令？\""
     },
     {
-      "original": "\"Write\"",
-      "chinese": "\"寫入\""
+      "original": "(?<![=(])(?<!case)\"Write\"",
+      "chinese": "\"寫入\"",
+      "regex": true,
+      "flags": "g"
     },
     {
-      "original": "\"Read\"",
-      "chinese": "\"讀取\""
+      "original": "(?<![=(])(?<!case)\"Read\"",
+      "chinese": "\"讀取\"",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\"Details\"",
@@ -1263,10 +1269,6 @@
     {
       "original": "\"What to do first? Ask about this codebase or we can start writing code.\"",
       "chinese": "\"接下來要做什麼？你可以先詢問關於此程式碼庫的問題，或者我們可以直接開始編寫程式碼。\""
-    },
-    {
-      "original": "\"No files found\"",
-      "chinese": "\"找不到檔案\""
     },
     {
       "original": "\"Today\"",
@@ -1858,8 +1860,10 @@
       "chinese": "\"正在處理邏輯\""
     },
     {
-      "original": "\"Other\"",
-      "chinese": "\"其他\""
+      "original": "(?<![=(])(?<!case)\"Other\"",
+      "chinese": "\"其他\"",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\"Submit answers\"",
@@ -1940,8 +1944,10 @@
       "chinese": "\"此為概估值，依據本機上的本機對話階段計算 — 不含其他裝置或 claude.ai。\""
     },
     {
-      "original": "\"Ask before editing\"",
-      "chinese": "\"編輯前詢問\""
+      "original": "(?<![=(])(?<!case)\"Ask before editing\"",
+      "chinese": "\"編輯前詢問\"",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\"Branch switch failed\"",
@@ -2494,6 +2500,756 @@
     {
       "original": "\"No sessions yet\"",
       "chinese": "\"尚無對話階段\""
+    },
+    {
+      "original": "\"Connected\"",
+      "chinese": "\"已連線\""
+    },
+    {
+      "original": "case\"failed\":return\"Failed\"",
+      "chinese": "case\"failed\":return\"連線失敗\""
+    },
+    {
+      "original": "\"Needs Auth\"",
+      "chinese": "\"需要驗證\""
+    },
+    {
+      "original": "\"Connecting…\"",
+      "chinese": "\"連線中…\""
+    },
+    {
+      "original": "case\"disabled\":return\"Disabled\"",
+      "chinese": "case\"disabled\":return\"已停用\""
+    },
+    {
+      "original": "\"Project\"",
+      "chinese": "\"專案\""
+    },
+    {
+      "original": "\"Local\"",
+      "chinese": "\"本機\""
+    },
+    {
+      "original": "case\"user\":return\"User\"",
+      "chinese": "case\"user\":return\"使用者\""
+    },
+    {
+      "original": "\"Managed\"",
+      "chinese": "\"受管理\""
+    },
+    {
+      "original": "\"Enterprise\"",
+      "chinese": "\"企業\""
+    },
+    {
+      "original": "\"Reconnect\"",
+      "chinese": "\"重新連線\""
+    },
+    {
+      "original": "\"Reconnecting…\"",
+      "chinese": "\"重新連線中…\""
+    },
+    {
+      "original": "\"Clear authentication\"",
+      "chinese": "\"清除驗證\""
+    },
+    {
+      "original": "\"Clearing…\"",
+      "chinese": "\"清除中…\""
+    },
+    {
+      "original": "\"Disable\"",
+      "chinese": "\"停用\""
+    },
+    {
+      "original": "\"Disabling…\"",
+      "chinese": "\"停用中…\""
+    },
+    {
+      "original": "\"Enable\"",
+      "chinese": "\"啟用\""
+    },
+    {
+      "original": "\"Enabling…\"",
+      "chinese": "\"啟用中…\""
+    },
+    {
+      "original": "\"Authenticate\"",
+      "chinese": "\"進行驗證\""
+    },
+    {
+      "original": "\"Authenticating…\"",
+      "chinese": "\"驗證中…\""
+    },
+    {
+      "original": "\"Authenticating...\"",
+      "chinese": "\"驗證中...\""
+    },
+    {
+      "original": "\"Connect\"",
+      "chinese": "\"連線\""
+    },
+    {
+      "original": "\"Check connection\"",
+      "chinese": "\"檢查連線\""
+    },
+    {
+      "original": "\"No MCP servers configured.\"",
+      "chinese": "\"尚未設定任何 MCP 伺服器。\""
+    },
+    {
+      "original": "\"Use \"",
+      "chinese": "\"使用 \""
+    },
+    {
+      "original": "\" to add servers.\"",
+      "chinese": "\" 來新增伺服器。\""
+    },
+    {
+      "original": "\"Failed to load servers: \"",
+      "chinese": "\"載入伺服器失敗：\""
+    },
+    {
+      "original": "\"Failed to clear authentication\"",
+      "chinese": "\"清除驗證失敗\""
+    },
+    {
+      "original": "\"← Back to list\"",
+      "chinese": "\"← 返回清單\""
+    },
+    {
+      "original": "\"Signing in…\"",
+      "chinese": "\"登入中…\""
+    },
+    {
+      "original": "\"Signed in\"",
+      "chinese": "\"已登入\""
+    },
+    {
+      "original": "\"Or, paste your authorization code manually:\"",
+      "chinese": "\"或手動貼上你的授權碼：\""
+    },
+    {
+      "original": "\"Re-open authentication page\"",
+      "chinese": "\"重新開啟驗證頁面\""
+    },
+    {
+      "original": "\"View tools (\"",
+      "chinese": "\"檢視工具 (\""
+    },
+    {
+      "original": "\"Hide tools ▴\"",
+      "chinese": "\"隱藏工具 ▴\""
+    },
+    {
+      "original": "\"Learn more about MCP\"",
+      "chinese": "\"了解更多 MCP 資訊\""
+    },
+    {
+      "original": "\"Allow fetching this url?\"",
+      "chinese": "\"允許擷取此網址？\""
+    },
+    {
+      "original": "\"Allow network connection to this host?\"",
+      "chinese": "\"允許連線至此主機？\""
+    },
+    {
+      "original": "\"Allow searching for this query?\"",
+      "chinese": "\"允許搜尋此查詢？\""
+    },
+    {
+      "original": "\"Allow glob search in\"",
+      "chinese": "\"允許 glob 搜尋：\""
+    },
+    {
+      "original": "\"Allow grep in\"",
+      "chinese": "\"允許 grep 搜尋：\""
+    },
+    {
+      "original": "\"Allow reading from\"",
+      "chinese": "\"允許讀取：\""
+    },
+    {
+      "original": "\"Allow searching in\"",
+      "chinese": "\"允許搜尋：\""
+    },
+    {
+      "original": "\"Allow write to\"",
+      "chinese": "\"允許寫入：\""
+    },
+    {
+      "original": "\"Allow this \"",
+      "chinese": "\"允許執行此 \""
+    },
+    {
+      "original": "\" command?\"",
+      "chinese": "\" 命令？\""
+    },
+    {
+      "original": "\"Arguments: \"",
+      "chinese": "\"參數：\""
+    },
+    {
+      "original": "\"No questions provided\"",
+      "chinese": "\"未提供問題\""
+    },
+    {
+      "original": "\"Continue planning\"",
+      "chinese": "\"繼續規劃\""
+    },
+    {
+      "original": "\"Branch checkout failed: \"",
+      "chinese": "\"分支簽出失敗：\""
+    },
+    {
+      "original": "\"Checking working directory\"",
+      "chinese": "\"正在檢查工作目錄\""
+    },
+    {
+      "original": "\"Checkout\"",
+      "chinese": "\"簽出\""
+    },
+    {
+      "original": "\"Could not switch to \"",
+      "chinese": "\"無法切換至 \""
+    },
+    {
+      "original": "\". The branch may have been deleted or has conflicts.\"",
+      "chinese": "\"。該分支可能已被刪除或發生衝突。\""
+    },
+    {
+      "original": "\"Switch branch to \"",
+      "chinese": "\"切換分支至 \""
+    },
+    {
+      "original": "\"Switch to \"",
+      "chinese": "\"切換至 \""
+    },
+    {
+      "original": "\"Switched to \"",
+      "chinese": "\"已切換至 \""
+    },
+    {
+      "original": "\"Switching to \"",
+      "chinese": "\"正在切換至 \""
+    },
+    {
+      "original": "\"You have uncommitted changes. Commit or stash your changes before switching to \"",
+      "chinese": "\"你有尚未提交的變更。請先提交或暫存變更，再切換至 \""
+    },
+    {
+      "original": "\"git output\"",
+      "chinese": "\"git 輸出\""
+    },
+    {
+      "original": "\"A new Git worktree will be created in a sibling directory\"",
+      "chinese": "\"將在同層目錄中建立新的 Git 工作樹\""
+    },
+    {
+      "original": "\"Worktree Name\"",
+      "chinese": "\"工作樹名稱\""
+    },
+    {
+      "original": "\"Creating worktree…\"",
+      "chinese": "\"正在建立工作樹…\""
+    },
+    {
+      "original": "\"Different repository\"",
+      "chinese": "\"不同的儲存庫\""
+    },
+    {
+      "original": "\"This session was created in\"",
+      "chinese": "\"此對話階段建立於\""
+    },
+    {
+      "original": "\". Open that folder first, or continue in the current workspace.\"",
+      "chinese": "\"。請先開啟該資料夾，或在目前的工作區中繼續。\""
+    },
+    {
+      "original": "\"Agent:\"",
+      "chinese": "\"代理：\""
+    },
+    {
+      "original": "\"Read \"",
+      "chinese": "\"讀取 \""
+    },
+    {
+      "original": "\"Search tools\"",
+      "chinese": "\"搜尋工具\""
+    },
+    {
+      "original": "\"Web Fetch\"",
+      "chinese": "\"網頁擷取\""
+    },
+    {
+      "original": "\"Web Search\"",
+      "chinese": "\"網頁搜尋\""
+    },
+    {
+      "original": "\"Network Access\"",
+      "chinese": "\"網路存取\""
+    },
+    {
+      "original": "\"Fetched from \"",
+      "chinese": "\"已擷取自 \""
+    },
+    {
+      "original": "\"Published —\"",
+      "chinese": "\"已發佈 —\""
+    },
+    {
+      "original": "\"Open artifact ↗\"",
+      "chinese": "\"開啟 Artifact ↗\""
+    },
+    {
+      "original": "\" skill\"",
+      "chinese": "\" 技能\""
+    },
+    {
+      "original": "\"Explored\"",
+      "chinese": "\"已探索\""
+    },
+    {
+      "original": "\"No tools found\"",
+      "chinese": "\"找不到工具\""
+    },
+    {
+      "original": "children:s===0?\"No files found\"",
+      "chinese": "children:s===0?\"找不到檔案\""
+    },
+    {
+      "original": "return\"No files found\"}",
+      "chinese": "return\"找不到檔案\"}"
+    },
+    {
+      "original": "\"No browser tabs found\"",
+      "chinese": "\"找不到瀏覽器分頁\""
+    },
+    {
+      "original": "\"No matches found\"",
+      "chinese": "\"找不到符合項目\""
+    },
+    {
+      "original": "\"Found 1 tool\"",
+      "chinese": "\"找到 1 個工具\""
+    },
+    {
+      "original": "\"Found 1 file\"",
+      "chinese": "\"找到 1 個檔案\""
+    },
+    {
+      "original": "\"1 line of output\"",
+      "chinese": "\"1 行輸出\""
+    },
+    {
+      "original": "\"Unsupported content type: \"",
+      "chinese": "\"不支援的內容類型：\""
+    },
+    {
+      "original": "\"Error rendering content: \"",
+      "chinese": "\"內容轉譯錯誤：\""
+    },
+    {
+      "original": "\"Reason: \"",
+      "chinese": "\"原因：\""
+    },
+    {
+      "original": "\"Claude’s Plan \"",
+      "chinese": "\"Claude 的計劃 \""
+    },
+    {
+      "original": "\"Diagnostics\"",
+      "chinese": "\"診斷\""
+    },
+    {
+      "original": "\"VSCode Problems\"",
+      "chinese": "\"VS Code 問題\""
+    },
+    {
+      "original": "\"[Image]\"",
+      "chinese": "\"[圖片]\""
+    },
+    {
+      "original": "\"[Show Tab]\"",
+      "chinese": "\"[顯示分頁]\""
+    },
+    {
+      "original": "\"browser tab\"",
+      "chinese": "\"瀏覽器分頁\""
+    },
+    {
+      "original": "\"Category\"",
+      "chinese": "\"類別\""
+    },
+    {
+      "original": "\"Tokens\"",
+      "chinese": "\"Token 數\""
+    },
+    {
+      "original": "\"% of usage\"",
+      "chinese": "\"% 的用量\""
+    },
+    {
+      "original": "\"Nothing over \"",
+      "chinese": "\"沒有超過 \""
+    },
+    {
+      "original": "\"% in this period — try the other window.\"",
+      "chinese": "\"% 的項目 — 試試另一個時間範圍。\""
+    },
+    {
+      "original": "\"Loading context usage…\"",
+      "chinese": "\"正在載入上下文用量…\""
+    },
+    {
+      "original": "\"Failed to load context usage: \"",
+      "chinese": "\"載入上下文用量失敗：\""
+    },
+    {
+      "original": "\"Plan limits aren't available for this login method.\"",
+      "chinese": "\"此登入方式無法取得方案額度。\""
+    },
+    {
+      "original": "\"Included in your plan limits\"",
+      "chinese": "\"已包含在你的方案額度內\""
+    },
+    {
+      "original": "\"for a limited time\"",
+      "chinese": "\"限時\""
+    },
+    {
+      "original": "\", then switch to usage credits to continue.\"",
+      "chinese": "\"，之後將改用用量點數以繼續。\""
+    },
+    {
+      "original": "\" now runs on usage credits\"",
+      "chinese": "\" 現在改以用量點數計費\""
+    },
+    {
+      "original": "\"Now using usage credits for Fable 5\"",
+      "chinese": "\"Fable 5 目前使用用量點數\""
+    },
+    {
+      "original": "\"Meet \"",
+      "chinese": "\"認識一下 \""
+    },
+    {
+      "original": "\"Resets \"",
+      "chinese": "\"重設於 \""
+    },
+    {
+      "original": "\"Day\"",
+      "chinese": "\"日\""
+    },
+    {
+      "original": "\"Week\"",
+      "chinese": "\"週\""
+    },
+    {
+      "original": "\"Retry\"",
+      "chinese": "\"重試\""
+    },
+    {
+      "original": "\"Can I ask for a favor?\"",
+      "chinese": "\"可以請你幫個忙嗎？\""
+    },
+    {
+      "original": "\"If I've been helpful to you, I'd love a review on the\"",
+      "chinese": "\"若我幫上了忙，歡迎到\""
+    },
+    {
+      "original": "\"marketplace!\"",
+      "chinese": "\"市集留下評價！\""
+    },
+    {
+      "original": "\"Write review\"",
+      "chinese": "\"撰寫評價\""
+    },
+    {
+      "original": "\"What? No!\"",
+      "chinese": "\"什麼？不要！\""
+    },
+    {
+      "original": "\"Sure!\"",
+      "chinese": "\"好啊！\""
+    },
+    {
+      "original": "\"Thanks for your feedback\"",
+      "chinese": "\"感謝你的意見回饋\""
+    },
+    {
+      "original": "\"Send feedback\"",
+      "chinese": "\"傳送意見回饋\""
+    },
+    {
+      "original": "\"Feedback\"",
+      "chinese": "\"意見回饋\""
+    },
+    {
+      "original": "\"This report includes your feedback, environment info, and the current session transcript. We may use these to debug related issues and improve Claude Code.\"",
+      "chinese": "\"此回報會包含你的意見、環境資訊與目前的對話階段記錄。我們可能會用這些資料來排查相關問題並改進 Claude Code。\""
+    },
+    {
+      "original": "\"Learn how we use it\"",
+      "chinese": "\"了解我們如何使用\""
+    },
+    {
+      "original": "\"Dismiss survey\"",
+      "chinese": "\"關閉問卷\""
+    },
+    {
+      "original": "\"Why?\"",
+      "chinese": "\"為什麼？\""
+    },
+    {
+      "original": "\"Something went wrong\"",
+      "chinese": "\"發生錯誤\""
+    },
+    {
+      "original": "\"Re-launch the extension to continue.\"",
+      "chinese": "\"請重新啟動擴充功能以繼續。\""
+    },
+    {
+      "original": "\"Click to expand\"",
+      "chinese": "\"點擊以展開\""
+    },
+    {
+      "original": "\"Collapse\"",
+      "chinese": "\"收合\""
+    },
+    {
+      "original": "\"Close banner\"",
+      "chinese": "\"關閉橫幅\""
+    },
+    {
+      "original": "\"Dismiss\"",
+      "chinese": "\"關閉\""
+    },
+    {
+      "original": "\"Dismiss error\"",
+      "chinese": "\"關閉錯誤訊息\""
+    },
+    {
+      "original": "\"Copy Link\"",
+      "chinese": "\"複製連結\""
+    },
+    {
+      "original": "\"Copy code to clipboard\"",
+      "chinese": "\"複製程式碼到剪貼簿\""
+    },
+    {
+      "original": "\"Comments (\"",
+      "chinese": "\"留言 (\""
+    },
+    {
+      "original": "\"Select text in the preview to add comments\"",
+      "chinese": "\"在預覽中選取文字即可新增留言\""
+    },
+    {
+      "original": "\"Create\"",
+      "chinese": "\"建立\""
+    },
+    {
+      "original": "\"Skip\"",
+      "chinese": "\"略過\""
+    },
+    {
+      "original": "\"Submit\"",
+      "chinese": "\"提交\""
+    },
+    {
+      "original": "\"Source:\"",
+      "chinese": "\"來源：\""
+    },
+    {
+      "original": "\"Docs\"",
+      "chinese": "\"文件\""
+    },
+    {
+      "original": "\"Troubleshooting resources\"",
+      "chinese": "\"疑難排解資源\""
+    },
+    {
+      "original": "\"View output logs\"",
+      "chinese": "\"檢視輸出記錄\""
+    },
+    {
+      "original": "\"Message input\"",
+      "chinese": "\"訊息輸入框\""
+    },
+    {
+      "original": "\"Diff View\"",
+      "chinese": "\"差異檢視\""
+    },
+    {
+      "original": "\"Ungrouped\"",
+      "chinese": "\"未分組\""
+    },
+    {
+      "original": "\"Web\"",
+      "chinese": "\"網頁\""
+    },
+    {
+      "original": "\"Open in a tab\"",
+      "chinese": "\"在分頁中開啟\""
+    },
+    {
+      "original": "\"Open in a tab — running\"",
+      "chinese": "\"在分頁中開啟 — 執行中\""
+    },
+    {
+      "original": "\"Open in a tab — awaiting input\"",
+      "chinese": "\"在分頁中開啟 — 等待輸入\""
+    },
+    {
+      "original": "\"Resize side question panel\"",
+      "chinese": "\"調整側邊提問面板大小\""
+    },
+    {
+      "original": "\"Teleported from web\"",
+      "chinese": "\"從網頁傳送過來\""
+    },
+    {
+      "original": "\"Teleporting session…\"",
+      "chinese": "\"正在傳送對話階段…\""
+    },
+    {
+      "original": "\"Compacted chat · \"",
+      "chinese": "\"已壓縮的對話 · \""
+    },
+    {
+      "original": "\"k tokens freed\"",
+      "chinese": "\"k 個 token 已釋出\""
+    },
+    {
+      "original": "\"The code \"",
+      "chinese": "\"程式碼 \""
+    },
+    {
+      "original": "\"has not changed\"",
+      "chinese": "\"沒有變更\""
+    },
+    {
+      "original": "\", so no code will be restored.\"",
+      "chinese": "\"，因此不會還原任何程式碼。\""
+    },
+    {
+      "original": "\"Finish onboarding\"",
+      "chinese": "\"完成上手導覽\""
+    },
+    {
+      "original": "\"Try something like:\"",
+      "chinese": "\"試試這樣問：\""
+    },
+    {
+      "original": "\"Show me\"",
+      "chinese": "\"示範給我看\""
+    },
+    {
+      "original": "\"You've \"",
+      "chinese": "\"你已 \""
+    },
+    {
+      "original": "\"Remote Control error: \"",
+      "chinese": "\"遠端控制錯誤：\""
+    },
+    {
+      "original": "\"Remote Control is active · Continue here, on your phone, or at\"",
+      "chinese": "\"遠端控制使用中 · 可在此、在手機上，或於\""
+    },
+    {
+      "original": "\"Make auto mode your default permission mode?\"",
+      "chinese": "\"要將自動模式設為你的預設權限模式嗎？\""
+    },
+    {
+      "original": "\"Yes, set auto mode as my default\"",
+      "chinese": "\"好，設為我的預設\""
+    },
+    {
+      "original": "\"No, keep \"",
+      "chinese": "\"不，維持 \""
+    },
+    {
+      "original": "\"Installing plugin “\"",
+      "chinese": "\"安裝外掛程式「\""
+    },
+    {
+      "original": "\"” requires adding a new marketplace source:\"",
+      "chinese": "\"」需要新增市集來源：\""
+    },
+    {
+      "original": "\" to close\"",
+      "chinese": "\" 關閉\""
+    },
+    {
+      "original": "\" to select ·\"",
+      "chinese": "\" 選取 ·\""
+    },
+    {
+      "original": "\"Edit prompt and retry with \"",
+      "chinese": "\"編輯提示詞並改用 \""
+    },
+    {
+      "original": "Found \\$\\{([^{}]*)\\} tools",
+      "chinese": "找到 ${$1} 個工具",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Found \\$\\{([^{}]*)\\} files",
+      "chinese": "找到 ${$1} 個檔案",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} lines of output",
+      "chinese": "${$1} 行輸出",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Rate \\$\\{([^{}]*)\\} stars",
+      "chinese": "給 ${$1} 顆星",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Weekly \\$\\{([^{}]*)\\}",
+      "chinese": "每週 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Collapse \\$\\{([^{}]*)\\}",
+      "chinese": "收合 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to update \"\\$\\{([^{}]*)\\}\": \\$\\{([^{}]*)\\}",
+      "chinese": "更新 \"${$1}\" 失敗：${$2}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Plugin \"\\$\\{([^{}]*)\\}\" is already installed\\.",
+      "chinese": "外掛程式 \"${$1}\" 已安裝。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Plugin \"\\$\\{([^{}]*)\\}\" not found in the marketplace\\.",
+      "chinese": "在市集中找不到外掛程式 \"${$1}\"。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" for VS Code\"",
+      "chinese": "\"（VS Code 版）\""
+    },
+    {
+      "original": "\" extension\"",
+      "chinese": "\"（擴充功能）\""
     }
   ]
 }

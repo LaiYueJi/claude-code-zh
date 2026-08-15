@@ -835,7 +835,11 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         let base = backup.readBackup(mainFilePath);
         if (base == null) base = fs.readFileSync(mainFilePath, 'utf8');
         const translated = await translator.translate(base);
-        const list = findUntranslated(translated);
+        const all = findUntranslated(translated);
+        // 翻譯包裡列為「刻意不翻」的先濾掉，只留下真正需要處理的
+        const ignoreSet = translator.getScanIgnore();
+        const list = all.filter(str => !ignoreSet.has(str));
+        const ignoredCount = all.length - list.length;
         const newly = await collectNewUntranslated(list, config);
         const newlyDead = await collectNewlyDeadRules(base, translator, config);
 
@@ -856,6 +860,7 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         }
         list.forEach((str, i) => outputChannel.appendLine(`${String(i + 1).padStart(3, ' ')}. ${str}`));
         outputChannel.appendLine(s.scanHeaderTip);
+        if (ignoredCount > 0) outputChannel.appendLine(s.scanIgnoredNote(ignoredCount));
         if (newlyDead.length > 0) {
             outputChannel.appendLine(s.scanDeadTitle(newlyDead.length));
             newlyDead.forEach((str, i) => outputChannel.appendLine(`${String(i + 1).padStart(3, ' ')}. ${str}`));

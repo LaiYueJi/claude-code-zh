@@ -2,6 +2,28 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.3.4] - 2026-08-29
+
+### 新增（Claude Code 2.1.251 改寫了遠端控制整區，繁簡各 9 條）
+狀態列的遠端控制膠囊在這一版重做：原本「連線中膠囊＋中斷按鈕」變成一顆可點的連結，關閉改為執行 `/remote-control`。兩條舊規則因此對不上，畫面上整區回到英文。
+
+- 🔗 **膠囊本體**：`遠端控制`（`aria-label` 與兩處 `children`，共 3 處）、`遠端控制使用中 · 點按以開啟 claude.ai/code · 執行 /remote-control 即可關閉`（`title`）。
+- ⚠️ **錯誤狀態**：`遠端控制錯誤：`（樣板字串與 `children` 陣列兩種寫法共用一條）、`· 執行 /remote-control 即可清除`。
+- 💬 **插入對話的三條系統訊息**：`無法清除遠端控制錯誤：`／`無法關閉遠端控制：`／`遠端控制連線失敗：`。這三條是掃描器看不到的樣板字串（`insertSyntheticAssistantMessage(`` `…${錯誤}` ``)`），逐一比對原始碼才補上，只翻前綴以保留佔位符。
+- 🧩 **以共同前綴為錨點**：`Remote Control is active ·` 一條同時吃下膠囊 `title`、系統訊息樣板，**以及程式用來認訊息的 `startsWith("Remote Control is active ·")`**。三處一起翻，等式才成立——只翻顯示位置會讓「遠端控制已停用。」那句永遠不再插入。
+- 🔤 `遠端控制使用中 · 可在此、在手機上，或於 [claude.ai/code](…)`：原本的字串串接改寫成樣板字串並內嵌 Markdown 連結，改以「連結左括號為止」為錨點，避開會隨 minify 改名的 `${$.sessionUrl}`。
+
+### 改進（`scanIgnore` 不再因 minify 改名而失效）
+`Property 'weight' in key '${e}' must be a positive integer`（Fuse.js 模糊搜尋庫的內部錯誤）在 2.1.238 是 `${e}`、2.1.251 變成 `${$}`——變數名一改，這條刻意不翻的字串就重新回頭洗版，同一個庫的 `Missing ${$} property in key` 也跟著冒出來。
+
+- 🧷 比對前把 `${變數名}` 一律正規化成 `${}`（`normalizePlaceholders()`），**兩邊都正規化**，此後 minify 怎麼改名都認得。
+- 🚫 `scanIgnore` 同步更新為現行寫法並補上 `Missing ${$} property in key`（34 → 35 條）：這樣還沒更新擴充功能、只吃到熱更新翻譯包的使用者也能立刻生效。
+
+### 備註
+- 翻譯規則 796 → **805 條**（繁簡相同）。
+- 兩條對不上的舊規則保留給尚未更新 Claude Code 的使用者：`Disconnect Remote Control`（中斷按鈕已從介面移除）、`"Remote Control is active · Continue here, on your phone, or at"`（已改寫為樣板字串）。
+- 實測 Claude Code 2.1.251：掃出 33 條 → 需處理 **0 條**、刻意不翻 33 條；翻譯後全檔已無殘留的 `Remote Control` 英文，`/remote-control` 斜線指令原樣保留。
+
 ## [2.3.3] - 2026-08-21
 
 ### 新增（Claude Code 2.1.238 掃出的漏翻，繁簡各 4 條）

@@ -1,8 +1,8 @@
 {
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-08-21",
+  "updatedAt": "2026-08-29",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -20,10 +20,11 @@
     "IN",
     "Infinite loop on byte: ",
     "Loading...",
+    "Missing ${$} property in key",
     "OUT",
     "OpenVSX",
     "Option",
-    "Property 'weight' in key '${e}' must be a positive integer",
+    "Property 'weight' in key '${$}' must be a positive integer",
     "REPL",
     "REPL ",
     "Search",
@@ -3196,6 +3197,42 @@
     {
       "original": "\"Remote Control is active · Continue here, on your phone, or at\"",
       "chinese": "\"远程控制使用中 · 可在此、在手机上，或于\""
+    },
+    {
+      "original": "\"Remote Control\"",
+      "chinese": "\"远程控制\""
+    },
+    {
+      "original": "Remote Control is active ·",
+      "chinese": "远程控制使用中 ·"
+    },
+    {
+      "original": "Click to open claude.ai/code · Run /remote-control to turn off",
+      "chinese": "点按以打开 claude.ai/code · 运行 /remote-control 即可关闭"
+    },
+    {
+      "original": "Continue here, on your phone, or at [claude.ai/code](",
+      "chinese": "可在此、在手机上，或于 [claude.ai/code]("
+    },
+    {
+      "original": "Remote Control error: ",
+      "chinese": "远程控制错误："
+    },
+    {
+      "original": "· Run /remote-control to dismiss",
+      "chinese": "· 运行 /remote-control 即可清除"
+    },
+    {
+      "original": "Remote Control error could not be dismissed: ",
+      "chinese": "无法清除远程控制错误："
+    },
+    {
+      "original": "Remote Control could not be turned off: ",
+      "chinese": "无法关闭远程控制："
+    },
+    {
+      "original": "Remote Control failed to connect: ",
+      "chinese": "远程控制连接失败："
     },
     {
       "original": "\"Make auto mode your default permission mode?\"",

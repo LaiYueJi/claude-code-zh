@@ -779,6 +779,17 @@ function findUntranslated(translatedContent) {
 }
 
 /**
+ * 把樣板字串裡的 ${變數名} 一律正規化成 ${}，供 scanIgnore 比對使用。
+ *
+ * minify 的變數名每次改版都可能換人做——Fuse.js 那兩條內部錯誤訊息在 Claude Code 2.1.238
+ * 是 `${e}`，2.1.251 變成 `${$}`。清單若寫死變數名，Claude 一改版該條就失效，
+ * 本來判讀過「刻意不翻」的字串又回頭洗版。比對前兩邊都正規化即可免疫於改名。
+ */
+function normalizePlaceholders(str) {
+    return str.replace(/\$\{[^{}]*\}/g, '${}');
+}
+
+/**
  * 取得「這次才出現」的漏翻字串，並把最新清單存回 globalState。
  *
  * 與失效規則同樣的理由：掃描器涵蓋面擴大後，一次會列出近兩百條歷來未翻的字串，
@@ -837,8 +848,8 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         const translated = await translator.translate(base);
         const all = findUntranslated(translated);
         // 翻譯包裡列為「刻意不翻」的先濾掉，只留下真正需要處理的
-        const ignoreSet = translator.getScanIgnore();
-        const list = all.filter(str => !ignoreSet.has(str));
+        const ignoreSet = new Set([...translator.getScanIgnore()].map(normalizePlaceholders));
+        const list = all.filter(str => !ignoreSet.has(normalizePlaceholders(str)));
         const ignoredCount = all.length - list.length;
         const newly = await collectNewUntranslated(list, config);
         const newlyDead = await collectNewlyDeadRules(base, translator, config);

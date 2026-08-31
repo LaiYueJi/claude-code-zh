@@ -2,6 +2,36 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.4.0] - 2026-08-31
+
+### 新增（一鍵重載介面：修掉「重開 VS Code 後對話變回英文」）
+**症狀**：關掉 VS Code 再開，還原的 Claude 對話是英文；或翻譯還沒套用時點左側 Claude 圖示，介面也是英文。
+
+**原因**：翻譯改的是磁碟上的 `webview/index.js`，但 Claude 的三個 webview 檢視（`claudeVSCodeSidebar`／`…Secondary`／`…SessionsList`）與編輯器面板（`claudeVSCodePanel`）**全都設了 `retainContextWhenHidden`**——載入後就不再重建，隱藏再顯示也沒用。視窗還原時 webview 先載入了套用前的檔案，本擴充功能才在 `onStartupFinished` 之後套用，這一版的畫面自然還是英文。Claude Code 自動更新後的第一次啟動最容易撞上（新版資料夾是乾淨英文的）。
+
+- 🈶 **新指令「重載 Claude 介面」**：重新套用翻譯後就地重載 webview，**不必重新載入整個視窗**，開著的對話與編輯器狀態都保留。
+- 🔘 **兩處按鈕**：Claude 側邊欄標題列（`view/title`）與 Claude 編輯器分頁標題列（`editor/title`）各一顆 🌏 圖示按鈕——就在英文介面旁邊，不用先去翻選單。快速選單與指令面板同樣可用。
+- 🔔 **啟動時主動詢問**：只在「這次真的寫入了翻譯」時才問（`applyTranslation()` 現在會回報是否寫入），也就是恰好是畫面會顯示英文的那些場合；平常已套用則完全安靜。Claude Code 更新後自動重新套用時同樣詢問。
+- ⚠️ **狀態列看得出來**：已套用但介面尚未重載時，狀態列改顯示 **待重載介面**，快速選單也把「重載 Claude 介面」排到第一項。
+- ⚙️ **新設定 `claudeCodeZh.autoReloadClaudeUi`**（預設 `false`）：改成 `true` 則套用後直接重載、不再詢問。預設保守是因為 VS Code 只有「重載全部 webview」這道開發者動作（`workbench.action.webview.reloadWebviewAction`），其他擴充功能開著的 webview 面板會一併重載；該指令不是正式 API，不可用時退回「重新載入視窗」。
+
+### 改進（指令標題不再一次並列繁簡兩種）
+`package.json` 裡的指令標題與設定說明原本是硬寫的「繁體 / 简体」雙語字串。在指令面板還能忍，但新按鈕的滑鼠提示會整條顯示「重載 Claude 介面（重新套用並就地生效）/ 重载 Claude 界面（重新应用并就地生效）」，實在不像話。
+
+- 🌐 **改用 VS Code 原生 NLS**：新增 `package.nls.json`（預設＝繁體）／`package.nls.zh-tw.json`／`package.nls.zh-cn.json`，`package.json` 內一律改成 `%key%` 佔位符（36 個 key，含 15 條指令標題與全部設定說明）。VS Code 依顯示語言自動挑一份，不再兩種並列。
+- 🔖 **按鈕另給 `shortTitle`**：`view/title` 與 `editor/title` 這兩處選單在 VS Code 內部都帶 `renderShortTitle`，會優先取短標題，因此按鈕提示只剩「重載 Claude 介面」，指令面板仍顯示完整標題。
+- ⚠️ NLS 跟的是 **VS Code 的顯示語言**（`argv.json` 的 `locale`），不是本擴充功能的 `claudeCodeZh.language`；VS Code 是英文介面時會看到預設那份（繁體）。狀態列、快速選單、通知等執行期文案仍由 `lib/i18n.js` 依 `claudeCodeZh.language` 切換，不受影響。
+
+### 新增（螢幕報讀公告，繁簡各 4 條）
+`Claude is working.`／`Ready for your input.`／`Compacting conversation.`／`Claude is waiting for your decision.`——**注意結尾有句點**，跟 2.3.3 翻過的那兩條（無句點、在 `visuallyHidden` 的 `children` 上）是不同字串。這組是丟給 aria-live 報讀器的公告，寫成裸 `var` 常數（`Xx0`／`Qx0`／`Zx0`／`Gx0`）後只當函式引數傳，不符合掃描器的 `prop:` 錨點，所以一直沒被回報，是這次逐行核對時撈到的。四個常數各只被引用一次、不參與任何比較，翻譯無副作用。
+
+### 修改（一句措辭）
+`遠端控制使用中 · 可在此、在手機上，或於 [claude.ai/code](…)` → `…可在此繼續，或改用手機、開啟 [claude.ai/code](…)`。原本沿用舊版譯法直譯英文的 `or at`，句尾吊著一個「或於」再接連結，中文讀起來不成句。
+
+### 備註
+- 翻譯規則 805 → **809 條**（繁簡相同）。
+- 「套用成功」與「翻譯包已更新」的通知都多了「重載 Claude 介面」按鈕，可直接就地生效。
+
 ## [2.3.4] - 2026-08-29
 
 ### 新增（Claude Code 2.1.251 改寫了遠端控制整區，繁簡各 9 條）

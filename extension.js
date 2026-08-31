@@ -57,6 +57,10 @@ let outputChannel = null;
 let extContext = null;
 // 最近一次掃描結果（供「跳到字串」使用）
 let lastScan = { list: [], filePath: null };
+// 檔案已寫入新翻譯，但 Claude 的 webview 仍是套用前載入的那份（畫面還是英文）。
+// Claude 的三個 webview 檢視與編輯器面板全都是 retainContextWhenHidden，
+// 隱藏再顯示不會重建，因此非得重載 webview 或重新載入視窗才看得到改動。
+let webviewStale = false;
 
 /** 取得目前生效語言的 UI 字串包 */
 function S(config) {
@@ -114,6 +118,9 @@ async function activate(context) {
         updateStatusBar(locator, backup, translator, config);
     });
 
+    register('claudeCodeZh.reloadClaudeUi', () =>
+        reloadClaudeUi(locator, translator, backup, config));
+
     register('claudeCodeZh.restoreOriginal', async () => {
         await restoreOriginal(locator, backup, config);
         updateStatusBar(locator, backup, translator, config);
@@ -155,9 +162,10 @@ async function activate(context) {
         if (!claudeExt) return;
         if (config.get('autoApplyOnUpdate') && !context.globalState.get(KEY_RESTORED)) {
             setTimeout(async () => {
-                await applyTranslation(locator, translator, backup, config, true, true);
+                const applied = await applyTranslation(locator, translator, backup, config, true, true);
                 updateStatusBar(locator, backup, translator, config);
                 await checkVersionChange(locator, translator, backup, config);
+                if (applied) await offerUiReload(locator, translator, backup, config);
             }, 1500);
         }
     }));
@@ -181,9 +189,11 @@ async function activate(context) {
         setTimeout(async () => {
             // 翻譯包簽章（語言＋版本＋日期＋條數＋來源）有變 → 強制重新套用，讓更新後的翻譯生效
             const packChanged = context.globalState.get(KEY_LAST_TRANSLATION) !== translator.getSignature();
-            await applyTranslation(locator, translator, backup, config, true, packChanged);
+            const applied = await applyTranslation(locator, translator, backup, config, true, packChanged);
             updateStatusBar(locator, backup, translator, config);
             await checkVersionChange(locator, translator, backup, config);
+            // 這一刻才寫入檔案 → 視窗還原時載入的 Claude 介面必定還是套用前那份
+            if (applied) await offerUiReload(locator, translator, backup, config);
         }, 2000);
     }
 
@@ -329,9 +339,13 @@ async function showQuickMenu(locator, translator, backup, config) {
         ? s.menuStateTranslated
         : (state.hasFile ? s.menuStateOriginal : s.menuStateNotFound);
 
+    const reloadUi = { label: s.menuReloadUiLabel, description: s.menuReloadUiDesc, cmd: 'claudeCodeZh.reloadClaudeUi' };
     const items = [
+        // 介面尚未重載（畫面還是套用前的內容）時排到第一項，這時它才是使用者要找的東西
+        ...(webviewStale ? [reloadUi] : []),
         { label: s.menuApplyLabel, description: s.menuApplyDesc, cmd: 'claudeCodeZh.applyTranslation' },
         { label: s.menuReloadLabel, description: s.menuReloadDesc, cmd: 'claudeCodeZh.reloadTranslation' },
+        ...(webviewStale ? [] : [reloadUi]),
         { label: s.menuRestoreLabel, description: s.menuRestoreDesc, cmd: 'claudeCodeZh.restoreOriginal' },
         { label: s.menuSwitchLabel, description: s.menuSwitchDesc, cmd: 'claudeCodeZh.switchLanguage' },
         { label: '', kind: vscode.QuickPickItemKind.Separator },
@@ -381,6 +395,7 @@ async function updateStatusBar(locator, backup, translator, config) {
     const s = S(config);
     const state = await getState(locator, backup);
     if (!state.hasFile) statusBarItem.text = s.sbNotFound;
+    else if (state.translated && webviewStale) statusBarItem.text = s.sbStale;
     else if (state.translated) statusBarItem.text = s.sbTranslated;
     else statusBarItem.text = s.sbUntranslated;
 
@@ -390,7 +405,9 @@ async function updateStatusBar(locator, backup, translator, config) {
     const md = new vscode.MarkdownString(undefined, true);
     md.isTrusted = true;
     md.appendMarkdown(s.ttTitle);
-    md.appendMarkdown(state.translated ? s.ttStateTranslated : s.ttStateOriginal);
+    md.appendMarkdown(state.translated
+        ? (webviewStale ? s.ttStateStale : s.ttStateTranslated)
+        : s.ttStateOriginal);
     md.appendMarkdown(s.ttLanguage(meta.label));
     md.appendMarkdown(s.ttVersion(version));
     md.appendMarkdown(s.ttCount(translator.getBuiltInCount()));
@@ -407,12 +424,12 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
         const claudePath = await locator.findClaudeCodeExtension();
         if (!claudePath) {
             if (!silent) vscode.window.showErrorMessage(s.errNoExt);
-            return;
+            return false;
         }
         const mainFilePath = locator.findMainFile(claudePath);
         if (!mainFilePath) {
             if (!silent) vscode.window.showErrorMessage(s.errNoFile);
-            return;
+            return false;
         }
 
         const hasExistingBackup = backup.hasBackup(mainFilePath);
@@ -421,7 +438,7 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
         if (silent && !forceReapply) {
             const content = fs.readFileSync(mainFilePath, 'utf8');
             const meta = config.getLanguageMeta();
-            if (meta.markers.some(m => content.includes(m))) return;
+            if (meta.markers.some(m => content.includes(m))) return false;
         }
 
         // 建立備份（原始英文）。若無備份，以目前檔案內容為基底建立。
@@ -439,15 +456,82 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
         // 記錄本次套用的翻譯包簽章，供下次啟動判斷是否需因翻譯包更新而重新套用
         if (extContext) extContext.globalState.update(KEY_LAST_TRANSLATION, translator.getSignature());
 
+        // 寫入的是磁碟上的檔案，已載入的 webview 仍是舊內容 → 標記待重載
+        webviewStale = true;
+
         if (config.get('showNotifications') !== false && !silent) {
             const choice = await vscode.window.showInformationMessage(
-                s.applySuccess, s.btnReloadNow, s.btnLater
+                s.applySuccess, s.btnReloadUi, s.btnReloadNow, s.btnLater
             );
             if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+            else if (choice === s.btnReloadUi) await reloadWebviews(config);
         }
+        return true;
     } catch (error) {
         if (!silent) vscode.window.showErrorMessage(s.errApplyFail(error.message));
         console.error(error);
+        return false;
+    }
+}
+
+/**
+ * 就地重載所有 webview，讓已載入的 Claude 介面吃到磁碟上的新內容。
+ *
+ * 翻譯改的是 webview/index.js，但 Claude 的檢視與編輯器面板都設了 retainContextWhenHidden，
+ * 一旦載入就不再重建——這正是「關掉 VS Code 重開、對話還在卻是英文」的原因：
+ * 視窗還原時 webview 先載入了套用前的檔案，之後才輪到本擴充功能套用翻譯。
+ *
+ * VS Code 沒有公開 API 可以只重載某一個 webview，只有開發者動作
+ * `workbench.action.webview.reloadWebviewAction`（會重載視窗內全部 webview）。
+ * 它不是正式 API，因此失敗時退回「重新載入視窗」。
+ */
+async function reloadWebviews(config) {
+    const s = S(config);
+    try {
+        await vscode.commands.executeCommand('workbench.action.webview.reloadWebviewAction');
+        webviewStale = false;
+        return true;
+    } catch (error) {
+        console.warn('就地重載 webview 失敗：', error);
+        const choice = await vscode.window.showWarningMessage(s.errWebviewReload, s.btnReloadNow, s.btnLater);
+        if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+        return false;
+    }
+}
+
+/**
+ * 重新套用翻譯並就地重載 Claude 介面（Claude 側邊欄標題列按鈕與快速選單皆指向此）。
+ * 一路靜默，成功後只給一句結果——中途再彈「要不要重新載入」反而多一步。
+ */
+async function reloadClaudeUi(locator, translator, backup, config) {
+    const s = S(config);
+    if (extContext) await extContext.globalState.update(KEY_RESTORED, false);
+    await applyTranslation(locator, translator, backup, config, true, true);
+    const ok = await reloadWebviews(config);
+    updateStatusBar(locator, backup, translator, config);
+    if (ok && config.get('showNotifications') !== false) {
+        vscode.window.showInformationMessage(s.uiReloaded);
+    }
+}
+
+/**
+ * 啟動／更新後剛套用完 → 已開著的 Claude 介面仍是英文，這裡問一次要不要就地重載。
+ * 設定 autoReloadClaudeUi 為 true 則直接重載不再詢問。
+ */
+async function offerUiReload(locator, translator, backup, config) {
+    const s = S(config);
+    if (config.get('autoReloadClaudeUi')) {
+        await reloadWebviews(config);
+        updateStatusBar(locator, backup, translator, config);
+        return;
+    }
+    if (config.get('showNotifications') === false) return;
+    const choice = await vscode.window.showInformationMessage(s.uiApplyPending, s.btnReloadUi, s.btnReloadNow, s.btnLater);
+    if (choice === s.btnReloadUi) {
+        await reloadWebviews(config);
+        updateStatusBar(locator, backup, translator, config);
+    } else if (choice === s.btnReloadNow) {
+        vscode.commands.executeCommand('workbench.action.reloadWindow');
     }
 }
 

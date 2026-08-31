@@ -1,8 +1,8 @@
 {
-  "version": "2.3.4",
+  "version": "2.4.0",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-08-29",
+  "updatedAt": "2026-08-31",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -3212,7 +3212,7 @@
     },
     {
       "original": "Continue here, on your phone, or at [claude.ai/code](",
-      "chinese": "可在此、在手机上，或于 [claude.ai/code]("
+      "chinese": "可在此继续，或改用手机、打开 [claude.ai/code]("
     },
     {
       "original": "Remote Control error: ",
@@ -3331,6 +3331,22 @@
     {
       "original": "\"Compacting conversation\"",
       "chinese": "\"正在压缩对话\""
+    },
+    {
+      "original": "\"Claude is working.\"",
+      "chinese": "\"Claude 运行中。\""
+    },
+    {
+      "original": "\"Ready for your input.\"",
+      "chinese": "\"可以输入了。\""
+    },
+    {
+      "original": "\"Compacting conversation.\"",
+      "chinese": "\"正在压缩对话。\""
+    },
+    {
+      "original": "\"Claude is waiting for your decision.\"",
+      "chinese": "\"Claude 正在等待你的决定。\""
     },
     {
       "original": "\" for VS Code\"",

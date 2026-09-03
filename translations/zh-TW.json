@@ -1,8 +1,8 @@
 {
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-08-31",
+  "updatedAt": "2026-09-03",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -3347,6 +3347,184 @@
     {
       "original": "\"Claude is waiting for your decision.\"",
       "chinese": "\"Claude 正在等待你的決定。\""
+    },
+    {
+      "original": "Continue on \\$\\{([^{}]*)\\} with usage credits\\?",
+      "chinese": "要使用用量點數繼續在 ${$1} 上運作嗎？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits, billed separately from your plan\\. You don't have usage credits yet\\.",
+      "chinese": "${$1} 以用量點數運作，與你的方案分開計費。你目前尚無用量點數。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits — you have \\$\\{([^{}]*)\\} in credits\\.",
+      "chinese": "${$1} 使用用量點數 — 你目前有 ${$2} 的點數。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits\\$\\{([^{}]*)\\}\\. Your other models remain included in your plan\\.",
+      "chinese": "${$1} 使用用量點數${$2}。你的其他模型仍包含在方案內。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} requires usage credits — buy at \\$\\{([^{}]*)\\}\\. Switched to your default model for this session",
+      "chinese": "${$1} 需要用量點數 — 可於 ${$2} 購買。本次對話階段已切換為你的預設模型",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model, now your saved default — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "已切換為你的預設模型，並設為你儲存的預設值 — ${$1} 需要用量點數",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model for this session — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "本次對話階段已切換為你的預設模型 — ${$1} 需要用量點數",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "已切換為你的預設模型 — ${$1} 需要用量點數",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "${$1} 需要用量點數",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Continue with \\$\\{([^{}]*)\\}",
+      "chinese": "繼續使用 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Now using usage credits for Fable\"",
+      "chinese": "\"Fable 現在改用用量點數\""
+    },
+    {
+      "original": "\"Account & usage\"",
+      "chinese": "\"帳戶與用量\""
+    },
+    {
+      "original": "\"Expand account & usage\"",
+      "chinese": "\"展開帳戶與用量\""
+    },
+    {
+      "original": "\"Collapse account & usage\"",
+      "chinese": "\"收合帳戶與用量\""
+    },
+    {
+      "original": "\"View details\"",
+      "chinese": "\"檢視詳情\""
+    },
+    {
+      "original": "\"Session manager\"",
+      "chinese": "\"對話階段管理\""
+    },
+    {
+      "original": "\"Expand session manager\"",
+      "chinese": "\"展開對話階段管理\""
+    },
+    {
+      "original": "\"Collapse session manager\"",
+      "chinese": "\"收合對話階段管理\""
+    },
+    {
+      "original": "\"Archive session\"",
+      "chinese": "\"封存對話階段\""
+    },
+    {
+      "original": "\"Unarchive session\"",
+      "chinese": "\"取消封存對話階段\""
+    },
+    {
+      "original": "\"Add to group\"",
+      "chinese": "\"加入群組\""
+    },
+    {
+      "original": "\"Mark as read\"",
+      "chinese": "\"標示為已讀\""
+    },
+    {
+      "original": "\"Mark as unread\"",
+      "chinese": "\"標示為未讀\""
+    },
+    {
+      "original": "\"Start new session in this group\"",
+      "chinese": "\"在此群組開新對話階段\""
+    },
+    {
+      "original": "\"Unread\"",
+      "chinese": "\"未讀\""
+    },
+    {
+      "original": "\"Slash commands\"",
+      "chinese": "\"斜線指令\""
+    },
+    {
+      "original": "\"Filter commands…\"",
+      "chinese": "\"篩選指令…\""
+    },
+    {
+      "original": "\"Filter servers…\"",
+      "chinese": "\"篩選伺服器…\""
+    },
+    {
+      "original": "\"No matching servers.\"",
+      "chinese": "\"沒有符合的伺服器。\""
+    },
+    {
+      "original": "\"No matching commands.\"",
+      "chinese": "\"沒有符合的指令。\""
+    },
+    {
+      "original": "\"No slash commands available.\"",
+      "chinese": "\"沒有可用的斜線指令。\""
+    },
+    {
+      "original": "\"Loading output styles…\"",
+      "chinese": "\"正在載入輸出風格…\""
+    },
+    {
+      "original": "\"No output styles available\"",
+      "chinese": "\"沒有可用的輸出風格\""
+    },
+    {
+      "original": "\"Select an output style\"",
+      "chinese": "\"選擇輸出風格\""
+    },
+    {
+      "original": "\"Switch model\"",
+      "chinese": "\"切換模型\""
+    },
+    {
+      "original": "\"More models\"",
+      "chinese": "\"更多模型\""
+    },
+    {
+      "original": "\" More models\"",
+      "chinese": "\" 更多模型\""
+    },
+    {
+      "original": "\"Connect all sessions to claude.ai/code automatically so you can view and control them from the web.\"",
+      "chinese": "\"自動將所有對話階段連線至 claude.ai/code，讓你可從網頁檢視並控制它們。\""
+    },
+    {
+      "original": "Failed to set output style: \\$\\{([^{}]*)\\}",
+      "chinese": "設定輸出風格失敗：${$1}",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

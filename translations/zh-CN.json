@@ -1,8 +1,8 @@
 {
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-08-31",
+  "updatedAt": "2026-09-03",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -3347,6 +3347,184 @@
     {
       "original": "\"Claude is waiting for your decision.\"",
       "chinese": "\"Claude 正在等待你的决定。\""
+    },
+    {
+      "original": "Continue on \\$\\{([^{}]*)\\} with usage credits\\?",
+      "chinese": "要使用用量点数继续在 ${$1} 上运行吗？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits, billed separately from your plan\\. You don't have usage credits yet\\.",
+      "chinese": "${$1} 以用量点数运行，与你的套餐分开计费。你目前尚无用量点数。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits — you have \\$\\{([^{}]*)\\} in credits\\.",
+      "chinese": "${$1} 使用用量点数 — 你当前有 ${$2} 的点数。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} runs on usage credits\\$\\{([^{}]*)\\}\\. Your other models remain included in your plan\\.",
+      "chinese": "${$1} 使用用量点数${$2}。你的其他模型仍包含在方案内。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} requires usage credits — buy at \\$\\{([^{}]*)\\}\\. Switched to your default model for this session",
+      "chinese": "${$1} 需要用量点数 — 可在 ${$2} 购买。本次会话已切换为你的默认模型",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model, now your saved default — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "已切换为你的默认模型，并设为你保存的默认值 — ${$1} 需要用量点数",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model for this session — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "本次会话已切换为你的默认模型 — ${$1} 需要用量点数",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Switched to your default model — \\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "已切换为你的默认模型 — ${$1} 需要用量点数",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} requires usage credits",
+      "chinese": "${$1} 需要用量点数",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Continue with \\$\\{([^{}]*)\\}",
+      "chinese": "继续使用 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Now using usage credits for Fable\"",
+      "chinese": "\"Fable 现在改用用量点数\""
+    },
+    {
+      "original": "\"Account & usage\"",
+      "chinese": "\"账户与用量\""
+    },
+    {
+      "original": "\"Expand account & usage\"",
+      "chinese": "\"展开账户与用量\""
+    },
+    {
+      "original": "\"Collapse account & usage\"",
+      "chinese": "\"收起账户与用量\""
+    },
+    {
+      "original": "\"View details\"",
+      "chinese": "\"查看详情\""
+    },
+    {
+      "original": "\"Session manager\"",
+      "chinese": "\"会话管理\""
+    },
+    {
+      "original": "\"Expand session manager\"",
+      "chinese": "\"展开会话管理\""
+    },
+    {
+      "original": "\"Collapse session manager\"",
+      "chinese": "\"收起会话管理\""
+    },
+    {
+      "original": "\"Archive session\"",
+      "chinese": "\"归档会话\""
+    },
+    {
+      "original": "\"Unarchive session\"",
+      "chinese": "\"取消归档会话\""
+    },
+    {
+      "original": "\"Add to group\"",
+      "chinese": "\"加入分组\""
+    },
+    {
+      "original": "\"Mark as read\"",
+      "chinese": "\"标记为已读\""
+    },
+    {
+      "original": "\"Mark as unread\"",
+      "chinese": "\"标记为未读\""
+    },
+    {
+      "original": "\"Start new session in this group\"",
+      "chinese": "\"在此分组新建会话\""
+    },
+    {
+      "original": "\"Unread\"",
+      "chinese": "\"未读\""
+    },
+    {
+      "original": "\"Slash commands\"",
+      "chinese": "\"斜杠命令\""
+    },
+    {
+      "original": "\"Filter commands…\"",
+      "chinese": "\"筛选命令…\""
+    },
+    {
+      "original": "\"Filter servers…\"",
+      "chinese": "\"筛选服务器…\""
+    },
+    {
+      "original": "\"No matching servers.\"",
+      "chinese": "\"没有匹配的服务器。\""
+    },
+    {
+      "original": "\"No matching commands.\"",
+      "chinese": "\"没有匹配的命令。\""
+    },
+    {
+      "original": "\"No slash commands available.\"",
+      "chinese": "\"没有可用的斜杠命令。\""
+    },
+    {
+      "original": "\"Loading output styles…\"",
+      "chinese": "\"正在加载输出风格…\""
+    },
+    {
+      "original": "\"No output styles available\"",
+      "chinese": "\"没有可用的输出风格\""
+    },
+    {
+      "original": "\"Select an output style\"",
+      "chinese": "\"选择输出风格\""
+    },
+    {
+      "original": "\"Switch model\"",
+      "chinese": "\"切换模型\""
+    },
+    {
+      "original": "\"More models\"",
+      "chinese": "\"更多模型\""
+    },
+    {
+      "original": "\" More models\"",
+      "chinese": "\" 更多模型\""
+    },
+    {
+      "original": "\"Connect all sessions to claude.ai/code automatically so you can view and control them from the web.\"",
+      "chinese": "\"自动将所有会话连接至 claude.ai/code，让你可从网页查看并控制它们。\""
+    },
+    {
+      "original": "Failed to set output style: \\$\\{([^{}]*)\\}",
+      "chinese": "设置输出风格失败：${$1}",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

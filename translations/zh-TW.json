@@ -1,5 +1,5 @@
 {
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
   "updatedAt": "2026-09-03",
@@ -3525,6 +3525,32 @@
       "chinese": "設定輸出風格失敗：${$1}",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "\"Active · \"",
+      "chinese": "\"進行中 · \""
+    },
+    {
+      "original": "\"Filter by status\"",
+      "chinese": "\"依狀態篩選\""
+    },
+    {
+      "original": "Filter by status, \\$\\{([^{}]*)\\} selected",
+      "chinese": "依狀態篩選，已選取 ${$1} 項",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Show only sessions that need input, are working, or are unread\"",
+      "chinese": "\"只顯示需要輸入、正在工作或未讀的對話階段\""
+    },
+    {
+      "original": "needs_input:\"Needs input\"",
+      "chinese": "needs_input:\"需要輸入\""
+    },
+    {
+      "original": "completed:\"Completed\"",
+      "chinese": "completed:\"已完成\""
     },
     {
       "original": "\" for VS Code\"",

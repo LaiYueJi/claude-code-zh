@@ -1,5 +1,5 @@
 {
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-09-03",
@@ -3525,6 +3525,32 @@
       "chinese": "设置输出风格失败：${$1}",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "\"Active · \"",
+      "chinese": "\"进行中 · \""
+    },
+    {
+      "original": "\"Filter by status\"",
+      "chinese": "\"按状态筛选\""
+    },
+    {
+      "original": "Filter by status, \\$\\{([^{}]*)\\} selected",
+      "chinese": "按状态筛选，已选 ${$1} 项",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Show only sessions that need input, are working, or are unread\"",
+      "chinese": "\"仅显示需要输入、正在工作或未读的会话\""
+    },
+    {
+      "original": "needs_input:\"Needs input\"",
+      "chinese": "needs_input:\"需要输入\""
+    },
+    {
+      "original": "completed:\"Completed\"",
+      "chinese": "completed:\"已完成\""
     },
     {
       "original": "\" for VS Code\"",

@@ -1,8 +1,8 @@
 {
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-03",
+  "updatedAt": "2026-09-07",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -1150,8 +1150,10 @@
       "chinese": "\"回溯程式碼\""
     },
     {
-      "original": "\"Continue\"",
-      "chinese": "\"繼續\""
+      "original": "(?<!,)\"Continue\"",
+      "chinese": "\"繼續\"",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\"Rewind\"",
@@ -1288,16 +1290,8 @@
       "chinese": "\"是否允許此 bash 命令？\""
     },
     {
-      "original": "(?<![=(])(?<!case)\"Write\"",
-      "chinese": "\"寫入\"",
-      "regex": true,
-      "flags": "g"
-    },
-    {
-      "original": "(?<![=(])(?<!case)\"Read\"",
-      "chinese": "\"讀取\"",
-      "regex": true,
-      "flags": "g"
+      "original": "toolNameText,children:\"Read\"",
+      "chinese": "toolNameText,children:\"讀取\""
     },
     {
       "original": "\"Details\"",
@@ -1897,10 +1891,8 @@
       "chinese": "\"正在處理邏輯\""
     },
     {
-      "original": "(?<![=(])(?<!case)\"Other\"",
-      "chinese": "\"其他\"",
-      "regex": true,
-      "flags": "g"
+      "original": "optionLabel,children:\"Other\"",
+      "chinese": "optionLabel,children:\"其他\""
     },
     {
       "original": "\"Submit answers\"",
@@ -2275,10 +2267,6 @@
       "chinese": "已思考 ${Math.round(r/1000)} 秒",
       "regex": true,
       "flags": "g"
-    },
-    {
-      "original": "\"Edit\"",
-      "chinese": "\"編輯\""
     },
     {
       "original": " line\\$\\{[a-z]!==1\\?\"s\":\"\"\\}",

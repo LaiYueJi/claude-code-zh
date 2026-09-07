@@ -1,5 +1,5 @@
 {
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-09-07",
@@ -30,10 +30,12 @@
     "Search",
     "Shift",
     "Tab",
+    "URL",
     "Unknown",
     "VS Code",
     "claude mcp add",
     "claude.ai/code",
+    "example-tools",
     "git checkout ",
     "read-only",
     "will be added across ",
@@ -3539,6 +3541,336 @@
     {
       "original": "completed:\"Completed\"",
       "chinese": "completed:\"已完成\""
+    },
+    {
+      "original": "\"Add MCP server\"",
+      "chinese": "\"添加 MCP 服务器\""
+    },
+    {
+      "original": "\"Add server\"",
+      "chinese": "\"添加服务器\""
+    },
+    {
+      "original": "mcp-add-name\",children:\"Name\"",
+      "chinese": "mcp-add-name\",children:\"名称\""
+    },
+    {
+      "original": "formLabel,children:\"Transport\"",
+      "chinese": "formLabel,children:\"传输方式\""
+    },
+    {
+      "original": "\"aria-label\":\"Transport\"",
+      "chinese": "\"aria-label\":\"传输方式\""
+    },
+    {
+      "original": "mcp-add-command\",children:\"Command\"",
+      "chinese": "mcp-add-command\",children:\"命令\""
+    },
+    {
+      "original": "\"Arguments (one per line)\"",
+      "chinese": "\"参数（一行一个）\""
+    },
+    {
+      "original": "\"Environment variables (KEY=value, one per line)\"",
+      "chinese": "\"环境变量（KEY=value，一行一个）\""
+    },
+    {
+      "original": "\"Headers (Header-Name: value, one per line)\"",
+      "chinese": "\"请求头（Header-Name: value，一行一个）\""
+    },
+    {
+      "original": "formLabel,children:\"Scope\"",
+      "chinese": "formLabel,children:\"范围\""
+    },
+    {
+      "original": "\"aria-label\":\"Scope\"",
+      "chinese": "\"aria-label\":\"范围\""
+    },
+    {
+      "original": "\"Local command (stdio)\"",
+      "chinese": "\"本地命令（stdio）\""
+    },
+    {
+      "original": "\"HTTP (remote)\"",
+      "chinese": "\"HTTP（远程）\""
+    },
+    {
+      "original": "\"SSE (remote, legacy)\"",
+      "chinese": "\"SSE（远程，旧版）\""
+    },
+    {
+      "original": "\"Runs a command on your machine\"",
+      "chinese": "\"在你的电脑上运行命令\""
+    },
+    {
+      "original": "\"Connects to a server by URL\"",
+      "chinese": "\"以网址连接到服务器\""
+    },
+    {
+      "original": "\"Older remote protocol; prefer HTTP\"",
+      "chinese": "\"较旧的远程协议，建议改用 HTTP\""
+    },
+    {
+      "original": "{value:\"user\",label:\"User\"",
+      "chinese": "{value:\"user\",label:\"用户\""
+    },
+    {
+      "original": "\"Private to you in this project\"",
+      "chinese": "\"仅你在此项目中可见\""
+    },
+    {
+      "original": "\"Shared via .mcp.json in this project\"",
+      "chinese": "\"通过此项目的 .mcp.json 共享\""
+    },
+    {
+      "original": "\"Confirm remove\"",
+      "chinese": "\"确认移除\""
+    },
+    {
+      "original": "\"Remove\"",
+      "chinese": "\"移除\""
+    },
+    {
+      "original": "children:[\"Remove \",",
+      "chinese": "children:[\"移除 \","
+    },
+    {
+      "original": ",\" from \",",
+      "chinese": ",\"（\","
+    },
+    {
+      "original": ",\" config?\"]",
+      "chinese": ",\" 配置）？\"]"
+    },
+    {
+      "original": "\"Server name is required.\"",
+      "chinese": "\"请输入服务器名称。\""
+    },
+    {
+      "original": "Invalid name \\$\\{([^{}]*)\\}\\. Names can only contain letters, numbers, hyphens, and underscores.",
+      "chinese": "名称 ${$1} 不合法。名称只能包含英文字母、数字、连字符与下划线。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"claude-vscode is reserved for the extension itself.\"",
+      "chinese": "\"claude-vscode 是扩展本身保留的名称。\""
+    },
+    {
+      "original": "\"Build a custom style\"",
+      "chinese": "\"创建自定义风格\""
+    },
+    {
+      "original": "Step \\$\\{([^{}]*)\\} of \\$\\{([^{}]*)\\}",
+      "chinese": "第 ${$1} 步，共 ${$2} 步",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "next:\"Next\"",
+      "chinese": "next:\"下一步\""
+    },
+    {
+      "original": "saveButton:\"Save\"",
+      "chinese": "saveButton:\"保存\""
+    },
+    {
+      "original": "replace:\"Replace\"",
+      "chinese": "replace:\"替换\""
+    },
+    {
+      "original": "done:\"Done\"",
+      "chinese": "done:\"完成\""
+    },
+    {
+      "original": "name:{label:\"Name\"",
+      "chinese": "name:{label:\"名称\""
+    },
+    {
+      "original": "\"Diagrams first\"",
+      "chinese": "\"先上图再说明\""
+    },
+    {
+      "original": "\"Shows in the Output styles menu and becomes the file name\"",
+      "chinese": "\"会显示在输出风格菜单中，并作为文件名\""
+    },
+    {
+      "original": "\"Enter a name\"",
+      "chinese": "\"请输入名称\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is already a style name. Choose another.",
+      "chinese": "${$1} 已经是某个风格的名称，请换一个。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "A name can't contain / \\\\ : * ? \" < > | or ---",
+      "chinese": "名称不能包含 / \\\\ : * ? \" < > | 或 ---"
+    },
+    {
+      "original": "description:{label:\"Description\"",
+      "chinese": "description:{label:\"说明\""
+    },
+    {
+      "original": "\"Lead every explanation with a diagram\"",
+      "chinese": "\"每次说明都先附一张图\""
+    },
+    {
+      "original": "\"Optional. One line about what the style does\"",
+      "chinese": "\"选填。用一句话说明这个风格的作用\""
+    },
+    {
+      "original": "\"A description can't contain ---\"",
+      "chinese": "\"说明不能包含 ---\""
+    },
+    {
+      "original": "instructions:{label:\"Instructions\"",
+      "chinese": "instructions:{label:\"指示\""
+    },
+    {
+      "original": "\"When explaining code, architecture, or data flow, start with a diagram, then explain in prose.\"",
+      "chinese": "\"说明代码、架构或数据流时，先给一张图，再用文字解释。\""
+    },
+    {
+      "original": "\"新增 to Claude's system prompt whenever this style is active\"",
+      "chinese": "\"只要启用这个风格，就会加进 Claude 的系统提示\""
+    },
+    {
+      "original": "\"Enter the instructions\"",
+      "chinese": "\"请输入指示内容\""
+    },
+    {
+      "original": "\"Include the coding instructions\"",
+      "chinese": "\"一并保留代码编写指示\""
+    },
+    {
+      "original": "\"Keeps the default coding instructions alongside your style. Turn off for styles that are not about writing code.\"",
+      "chinese": "\"在你的风格之外保留默认的代码编写指示。与写代码无关的风格请关闭。\""
+    },
+    {
+      "original": "save:{label:\"Save to\"",
+      "chinese": "save:{label:\"保存到\""
+    },
+    {
+      "original": "\"This project only\"",
+      "chinese": "\"仅限这个项目\""
+    },
+    {
+      "original": "user:{label:\"User\"",
+      "chinese": "user:{label:\"用户\""
+    },
+    {
+      "original": "\"All your projects\"",
+      "chinese": "\"你的所有项目\""
+    },
+    {
+      "original": "\"Switch to this style now\"",
+      "chinese": "\"立即切换到这个风格\""
+    },
+    {
+      "original": "A style file named \\$\\{([^{}]*)\\} already exists here.",
+      "chinese": "这里已经有名为 ${$1} 的风格文件。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Couldn't save the style. \\$\\{([^{}]*)\\}",
+      "chinese": "无法保存这个风格。${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Saved. The style will appear in the Output styles menu in new sessions.\"",
+      "chinese": "\"已保存。新的会话就能在输出风格菜单看到它。\""
+    },
+    {
+      "original": "\"Clear search\"",
+      "chinese": "\"清除搜索\""
+    },
+    {
+      "original": "\"Search sessions\"",
+      "chinese": "\"搜索会话\""
+    },
+    {
+      "original": "folded?\"Expand\"",
+      "chinese": "folded?\"展开\""
+    },
+    {
+      "original": "Archive \\$\\{([^{}]*)\\} sessions",
+      "chinese": "归档 ${$1} 个会话",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Unarchive \\$\\{([^{}]*)\\} sessions",
+      "chinese": "取消归档 ${$1} 个会话",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Command is required.\"",
+      "chinese": "\"请输入命令。\""
+    },
+    {
+      "original": "\"URL is required.\"",
+      "chinese": "\"请输入网址。\""
+    },
+    {
+      "original": "\"Failed to add server\"",
+      "chinese": "\"添加服务器失败\""
+    },
+    {
+      "original": "\"Failed to enable server\"",
+      "chinese": "\"启用服务器失败\""
+    },
+    {
+      "original": "\"Failed to disable server\"",
+      "chinese": "\"禁用服务器失败\""
+    },
+    {
+      "original": "\"Failed to remove server\"",
+      "chinese": "\"移除服务器失败\""
+    },
+    {
+      "original": "\"Failed to reconnect\"",
+      "chinese": "\"重新连接失败\""
+    },
+    {
+      "original": "\"Authenticated successfully\"",
+      "chinese": "\"验证成功\""
+    },
+    {
+      "original": "\"Authentication failed\"",
+      "chinese": "\"验证失败\""
+    },
+    {
+      "original": "Cleared authentication for \\$\\{([^{}]*)\\}",
+      "chinese": "已清除 ${$1} 的验证信息",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Disabled \\$\\{([^{}]*)\\}",
+      "chinese": "已禁用 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Enabled \\$\\{([^{}]*)\\}",
+      "chinese": "已启用 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Reconnected to \\$\\{([^{}]*)\\}",
+      "chinese": "已重新连接到 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Saved to .mcp.json and shared with everyone who opens this project. In IDE sessions, project servers connect without a separate approval step. If no folder is open, this writes to your home directory.\"",
+      "chinese": "\"会保存到 .mcp.json，并与打开此项目的所有人共享。在 IDE 会话中，项目服务器无需另行批准即可连接。若没有打开任何文件夹，则会写入你的主目录。\""
     },
     {
       "original": "\" for VS Code\"",

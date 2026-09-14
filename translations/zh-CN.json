@@ -1,12 +1,15 @@
 {
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-09-07",
+  "updatedAt": "2026-09-15",
   "scanIgnore": [
     " new problem",
     "Alt",
     "Artifact",
+    "Bash",
+    "Bash(git *)",
+    "Bash(ls *)",
     "Claude in Chrome [",
     "Ctrl",
     "Ctrl+D",
@@ -16,6 +19,7 @@
     "Found ",
     "Glob",
     "Grep",
+    "HTTP",
     "Hide",
     "IN",
     "Infinite loop on byte: ",
@@ -24,20 +28,25 @@
     "OUT",
     "OpenVSX",
     "Option",
+    "PowerShell",
     "Property 'weight' in key '${$}' must be a positive integer",
     "REPL",
     "REPL ",
     "Search",
+    "Shell",
     "Shift",
     "Tab",
     "URL",
     "Unknown",
     "VS Code",
+    "WebFetch",
     "claude mcp add",
     "claude.ai/code",
+    "disableAllHooks",
     "example-tools",
     "git checkout ",
     "read-only",
+    "settings.json",
     "will be added across ",
     "will be removed and",
     "⌘D"
@@ -3871,6 +3880,1034 @@
     {
       "original": "\"Saved to .mcp.json and shared with everyone who opens this project. In IDE sessions, project servers connect without a separate approval step. If no folder is open, this writes to your home directory.\"",
       "chinese": "\"会保存到 .mcp.json，并与打开此项目的所有人共享。在 IDE 会话中，项目服务器无需另行批准即可连接。若没有打开任何文件夹，则会写入你的主目录。\""
+    },
+    {
+      "original": "Updating \\$\\{([^{}]*)\\} is taking too long",
+      "chinese": "更新 ${$1} 耗时过长",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"It didn't finish in the time allowed.\"",
+      "chinese": "\"未能在时限内完成。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} can't be updated here",
+      "chinese": "无法在这里更新 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Your organization's settings block updating this plugin.\"",
+      "chinese": "\"你的组织设置禁止更新此插件。\""
+    },
+    {
+      "original": "closeLabel:\"OK\"",
+      "chinese": "closeLabel:\"确定\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is turned off",
+      "chinese": "${$1} 已禁用",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Turn it on to update it.\"",
+      "chinese": "\"请先启用才能更新。\""
+    },
+    {
+      "original": "\"Turn on and update\"",
+      "chinese": "\"启用并更新\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} installs by running a command on your machine",
+      "chinese": "${$1} 需要在你的电脑上运行命令来安装",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"It can't be accepted from here yet.\"",
+      "chinese": "\"目前还无法在这里同意。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is no longer installed here",
+      "chinese": "${$1} 已不再安装于此",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The list is out of date.\"",
+      "chinese": "\"列表已过时。\""
+    },
+    {
+      "original": "\"Refresh list\"",
+      "chinese": "\"刷新列表\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} isn't in your copy of \\$\\{([^{}]*)\\}",
+      "chinese": "你的 ${$2} 副本中没有 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Refresh the marketplace, then try the update again.\"",
+      "chinese": "\"请刷新市场，然后再试一次更新。\""
+    },
+    {
+      "original": "\"Refresh the marketplace and retry\"",
+      "chinese": "\"刷新市场并重试\""
+    },
+    {
+      "original": "Something went wrong while updating \\$\\{([^{}]*)\\}",
+      "chinese": "更新 ${$1} 时出错",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The marketplace could not be reached.\"",
+      "chinese": "\"无法连接到市场。\""
+    },
+    {
+      "original": "\"The update did not finish.\"",
+      "chinese": "\"更新未完成。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is already at the latest version\\.",
+      "chinese": "${$1} 已是最新版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} may already be at the latest version; the marketplace couldn't be checked\\.",
+      "chinese": "${$1} 可能已是最新版本；无法检查市场。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} was not updated because another plugin needs the version it has\\.",
+      "chinese": "${$1} 未更新，因为另一个插件需要它当前的版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Try again\"",
+      "chinese": "\"重试\""
+    },
+    {
+      "original": "\"Copy error\"",
+      "chinese": "\"复制错误信息\""
+    },
+    {
+      "original": "\"Reload plugins\"",
+      "chinese": "\"重新加载插件\""
+    },
+    {
+      "original": "\"This session couldn't reload its plugins.\"",
+      "chinese": "\"此会话无法重新加载插件。\""
+    },
+    {
+      "original": "\"Enable plugin\"",
+      "chinese": "\"启用插件\""
+    },
+    {
+      "original": "\"Update plugin\"",
+      "chinese": "\"更新插件\""
+    },
+    {
+      "original": "\"Update plugin to the latest version\"",
+      "chinese": "\"将插件更新到最新版本\""
+    },
+    {
+      "original": "\"Updating…\"",
+      "chinese": "\"正在更新…\""
+    },
+    {
+      "original": "\"Yes, allow \"",
+      "chinese": "\"是的，允许 \""
+    },
+    {
+      "original": "\"Yes, allow access to \"",
+      "chinese": "\"是的，允许访问 \""
+    },
+    {
+      "original": "\"Yes, allow access to\"",
+      "chinese": "\"是的，允许访问\""
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" and\",\" \",([A-Za-z0-9_$]+\\(\"span\",\\{title:)",
+      "chinese": "$1,\" 以及另外\",\" \",$2",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" and\",\" \",",
+      "chinese": "$1,\" 和\",\" \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" for \",",
+      "chinese": "$1,\" 用于 \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" for\",\" \",",
+      "chinese": "$1,\" 用于\",\" \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.length-1),\" more\"\\]",
+      "chinese": "$1,\" 项\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" directories\"]",
+      "chinese": "\" 个目录\"]"
+    },
+    {
+      "original": "\\),\" \",\"for \",([A-Za-z0-9_$]+)\\]",
+      "chinese": "),\" \",\"用于 \",$1]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "cliArg:\"startup options\"",
+      "chinese": "cliArg:\"启动选项\""
+    },
+    {
+      "original": "\"From options set when the session started\"",
+      "chinese": "\"来自会话启动时设置的选项\""
+    },
+    {
+      "original": "\"replies to comments on artifacts\"",
+      "chinese": "\"回复 Artifact 上的评论\""
+    },
+    {
+      "original": "\"Permission rules\"",
+      "chinese": "\"权限规则\""
+    },
+    {
+      "original": "\"Loading permission rules…\"",
+      "chinese": "\"正在加载权限规则…\""
+    },
+    {
+      "original": "\"Couldn’t load permission rules from this session:\"",
+      "chinese": "\"无法从此会话加载权限规则：\""
+    },
+    {
+      "original": "\"This session runs on another machine, so its permission rules can be viewed here but not changed.\"",
+      "chinese": "\"此会话在另一台机器上运行，因此只能在这里查看权限规则，无法修改。\""
+    },
+    {
+      "original": "\"Rules and workspace directories come from the running session, including approvals made for this session only and rules set when the session started.\"",
+      "chinese": "\"规则与工作区目录取自运行中的会话，包括仅限本次会话的批准，以及会话启动时设置的规则。\""
+    },
+    {
+      "original": "\"Rules you add or remove here are written to the settings file you choose. \"",
+      "chinese": "\"你在这里添加或移除的规则，会写入你选择的设置文件。\""
+    },
+    {
+      "original": "\"Workspace directories are listed here for reference.\"",
+      "chinese": "\"工作区目录仅列出供参考。\""
+    },
+    {
+      "original": "\"Settings file failed to load:\"",
+      "chinese": "\"设置文件加载失败：\""
+    },
+    {
+      "original": "\". Its settings, including permission rules, are not in effect.\"",
+      "chinese": "\"。其中的设置（包括权限规则）目前不会生效。\""
+    },
+    {
+      "original": "\"Enterprise managed settings allow only managed permission rules. Rules from other settings files are shown below but are not in effect.\"",
+      "chinese": "\"企业托管设置只允许托管的权限规则。其他设置文件的规则会列在下方，但不会生效。\""
+    },
+    {
+      "original": "\"No permission rules are saved.\"",
+      "chinese": "\"尚未保存任何权限规则。\""
+    },
+    {
+      "original": "\"Choosing an “Always” option on a permission prompt saves a rule here\"",
+      "chinese": "\"在权限提示中选择“始终”选项时，会在这里保存规则\""
+    },
+    {
+      "original": "\", or add one below\":\"\",\".\"]",
+      "chinese": "\"，你也可以在下方添加\":\"\",\"。\"]"
+    },
+    {
+      "original": "{allow:\"Allow\",ask:\"Ask\",deny:\"Deny\"}",
+      "chinese": "{allow:\"允许\",ask:\"询问\",deny:\"拒绝\"}"
+    },
+    {
+      "original": "\"Add rule…\"",
+      "chinese": "\"添加规则…\""
+    },
+    {
+      "original": "\"Add rule\"",
+      "chinese": "\"添加规则\""
+    },
+    {
+      "original": "\\[\"Add \",([A-Za-z0-9_$]+\\[\\$\\]\\.toLowerCase\\(\\)),\" rule\"\\]",
+      "chinese": "[\"添加\",$1,\"规则\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"A permission rule is a tool name, optionally followed by a specifier in parentheses, e.g. \"",
+      "chinese": "\"权限规则是工具名称，后面可以加上用括号括起的限定条件，例如 \""
+    },
+    {
+      "original": "children:\"WebFetch\"}),\" or \",",
+      "chinese": "children:\"WebFetch\"}),\"、\","
+    },
+    {
+      "original": "children:\"Bash(ls *)\"}),\".\"]",
+      "chinese": "children:\"Bash(ls *)\"}),\"。\"]"
+    },
+    {
+      "original": "\"Enter permission rule…\"",
+      "chinese": "\"输入权限规则…\""
+    },
+    {
+      "original": "\"Save for\"",
+      "chinese": "\"适用于\""
+    },
+    {
+      "original": "\"Couldn’t add the rule: \"",
+      "chinese": "\"无法添加规则：\""
+    },
+    {
+      "original": "\"Not saved in a settings file.\"",
+      "chinese": "\"未保存在设置文件中。\""
+    },
+    {
+      "original": "\"Approved for this session only; not saved in a settings file.\"",
+      "chinese": "\"仅批准本次会话；未保存在设置文件中。\""
+    },
+    {
+      "original": "\"Managed by enterprise settings.\"",
+      "chinese": "\"由企业设置管理。\""
+    },
+    {
+      "original": "\"From a settings file given at startup.\"",
+      "chinese": "\"来自启动时指定的设置文件。\""
+    },
+    {
+      "original": "\"Granted by a command; change it in the command.\"",
+      "chinese": "\"由命令授予，请在该命令中修改。\""
+    },
+    {
+      "original": "\"Read-only.\"",
+      "chinese": "\"只读。\""
+    },
+    {
+      "original": "From (\\$\\{[^{}]*\\.source[^{}]*\\})",
+      "chinese": "来自 $1",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} \\(not in effect\\)",
+      "chinese": "${$1}（未生效）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} \\(this session only\\)",
+      "chinese": "${$1}（仅限本次会话）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "ruleSource,children:[\"From \",",
+      "chinese": "ruleSource,children:[\"来自 \","
+    },
+    {
+      "original": "sender,children:[\"From \",",
+      "chinese": "sender,children:[\"来自 \","
+    },
+    {
+      "original": "\"Original working directory\"",
+      "chinese": "\"原始工作目录\""
+    },
+    {
+      "original": "children:[\"Workspace (\",",
+      "chinese": "children:[\"工作区 (\","
+    },
+    {
+      "original": "\\[\"(?:Remove|移除) \",\\$\\.behavior,\" rule\\?\"\\]",
+      "chinese": "[\"移除「\",$.behavior,\"」规则？\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The rule is deleted from its settings file and stops applying to this session once Claude Code has re-read its settings.\"",
+      "chinese": "\"规则会从其设置文件中删除，并在 Claude Code 重新读取设置后，不再应用于此会话。\""
+    },
+    {
+      "original": "\"Couldn’t remove the rule: \"",
+      "chinese": "\"无法移除规则：\""
+    },
+    {
+      "original": "\"Remove rule\"",
+      "chinese": "\"移除规则\""
+    },
+    {
+      "original": "\"Left or Right arrow changes where this is saved\"",
+      "chinese": "\"按左右方向键可切换保存位置\""
+    },
+    {
+      "original": "\"View and edit hooks\"",
+      "chinese": "\"查看并编辑钩子\""
+    },
+    {
+      "original": "\"View and edit permission rules\"",
+      "chinese": "\"查看并编辑权限规则\""
+    },
+    {
+      "original": "\"Browse slash commands\"",
+      "chinese": "\"浏览斜杠命令\""
+    },
+    {
+      "original": "\"Add hook\"",
+      "chinese": "\"添加钩子\""
+    },
+    {
+      "original": "\"Edit hook\"",
+      "chinese": "\"编辑钩子\""
+    },
+    {
+      "original": "\"Save hook\"",
+      "chinese": "\"保存钩子\""
+    },
+    {
+      "original": "\"Saving…\"",
+      "chinese": "\"正在保存…\""
+    },
+    {
+      "original": "\"Failed to save hook\"",
+      "chinese": "\"保存钩子失败\""
+    },
+    {
+      "original": "\"Failed to remove hook\"",
+      "chinese": "\"移除钩子失败\""
+    },
+    {
+      "original": "\"This hook contains hidden characters. They are invisible in these fields; the list shows them as codes.\"",
+      "chinese": "\"此钩子含有隐藏字符。它们在这些字段中不可见，列表会以代码显示。\""
+    },
+    {
+      "original": "\"Waiting for settings from Claude Code…\"",
+      "chinese": "\"正在等待 Claude Code 的设置…\""
+    },
+    {
+      "original": "\"A settings file\"",
+      "chinese": "\"1 个设置文件\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} settings files",
+      "chinese": "${$1} 个设置文件",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"could not be parsed, so hooks defined there are not shown and will not run.\"",
+      "chinese": "\"无法解析，因此其中定义的钩子不会显示，也不会运行。\""
+    },
+    {
+      "original": "\"Safe mode: hooks from settings files are suspended and will not run this session\"",
+      "chinese": "\"安全模式：设置文件中的钩子已暂停，本次会话不会运行\""
+    },
+    {
+      "original": "\" (managed policy hooks still apply)\"",
+      "chinese": "\"（托管策略的钩子仍会生效）\""
+    },
+    {
+      "original": "\"; session hooks created by /goal, agents, and skills still run. Settings edits save but don't load until safe mode is off.\"",
+      "chinese": "\"；由 /goal、代理与技能创建的会话钩子仍会运行。设置的修改会保存，但要等关闭安全模式后才会加载。\""
+    },
+    {
+      "original": "\" to re-enable.\"",
+      "chinese": "\" 即可重新启用。\""
+    },
+    {
+      "original": "\"Bare mode: hooks from settings files, plugins, and managed policies are disabled and will not run this session; session hooks created by /goal, agents, and skills still run. \"",
+      "chinese": "\"精简模式：来自设置文件、插件与托管策略的钩子已禁用，本次会话不会运行；由 /goal、代理与技能创建的会话钩子仍会运行。\""
+    },
+    {
+      "original": "\"All hooks are currently disabled by a managed settings file. You have\"",
+      "chinese": "\"目前所有钩子都已被托管设置文件禁用。你设置的\""
+    },
+    {
+      "original": "\" configured that will not run.\"",
+      "chinese": "\" 将不会运行。\""
+    },
+    {
+      "original": "\"Only hooks from managed settings can run. Hooks from user, project, local, and flag settings are blocked, and managed hooks are not shown here.\"",
+      "chinese": "\"只有托管设置中的钩子可以运行。来自用户、项目、本地与启动参数设置的钩子会被阻止，托管钩子也不会显示在这里。\""
+    },
+    {
+      "original": "\"Your organization restricts hooks to managed and plugin sources. Hooks from user, project, local, and flag settings will not run, and managed hooks are not shown here.\"",
+      "chinese": "\"你的组织限制钩子只能来自托管设置与插件。来自用户、项目、本地与启动参数设置的钩子不会运行，托管钩子也不会显示在这里。\""
+    },
+    {
+      "original": "\"All hooks are currently disabled by the \"",
+      "chinese": "\"目前所有钩子都已被 \""
+    },
+    {
+      "original": "\"setting. You have \"",
+      "chinese": "\"设置禁用。你设置的 \""
+    },
+    {
+      "original": "\"Hooks from managed settings still run —\"",
+      "chinese": "\"托管设置中的钩子仍会运行 —\""
+    },
+    {
+      "original": "?\"hook\":\"hooks\"}",
+      "chinese": "?\"个钩子\":\"个钩子\"}"
+    },
+    {
+      "original": "\"No hooks configured\"",
+      "chinese": "\"尚未配置任何钩子\""
+    },
+    {
+      "original": "\"Hooks run your commands, prompts, or HTTP calls in response to Claude Code events like tool calls and prompt submission.\"",
+      "chinese": "\"钩子会在工具调用、提交提示词等 Claude Code 事件发生时，运行你的命令、提示词或 HTTP 调用。\""
+    },
+    {
+      "original": "\" Configure them in \"",
+      "chinese": "\" 请在 \""
+    },
+    {
+      "original": "(\\?null:[A-Za-z0-9_$]+\\(\"code\",\\{children:\"settings\\.json\"\\}\\),[A-Za-z0-9_$]+\\?\"\"):\"\\.\"",
+      "chinese": "$1:\" 中配置。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Hooks are locked by a managed settings file, so this one cannot be edited here.\"",
+      "chinese": "\"钩子已被托管设置文件锁定，因此无法在此编辑。\""
+    },
+    {
+      "original": "\"This hook type cannot be edited here.\"",
+      "chinese": "\"此类型的钩子无法在此编辑。\""
+    },
+    {
+      "original": "\"Disabled: this hook will not run this session.\"",
+      "chinese": "\"已禁用：本次会话不会运行此钩子。\""
+    },
+    {
+      "original": "Remove this hook from \\$\\{([^{}]*)\\} settings\\?",
+      "chinese": "要从${$1}设置中移除此钩子吗？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Saved to \\$\\{([^{}]*)\\} settings\\. If the change is not shown yet, Claude Code is still re-reading its settings; reopen this dialog to check\\.",
+      "chinese": "已保存到${$1}设置。若尚未看到变更，表示 Claude Code 仍在重新读取设置；请重新打开此对话框确认。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([A-Za-z0-9_$]+\\.toLowerCase\\(\\))\\} settings",
+      "chinese": "${$1}设置",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude Code did not answer in time.\"",
+      "chinese": "\"Claude Code 未及时响应。\""
+    },
+    {
+      "original": "\"Claude Code is not running, so the hook cannot be saved.\"",
+      "chinese": "\"Claude Code 未在运行，因此无法保存钩子。\""
+    },
+    {
+      "original": "\"Learn more about hooks\"",
+      "chinese": "\"进一步了解钩子\""
+    },
+    {
+      "original": "\"Click a hook to view, edit, or remove it. Managed, plugin, session, and built-in hooks are read-only.\"",
+      "chinese": "\"点击钩子即可查看、编辑或移除。托管、插件、会话与内置的钩子为只读。\""
+    },
+    {
+      "original": "\"To add or modify hooks, edit \"",
+      "chinese": "\"若要添加或修改钩子，请直接编辑 \""
+    },
+    {
+      "original": "\" directly or ask Claude.\"",
+      "chinese": "\"，或请 Claude 协助。\""
+    },
+    {
+      "original": "Remove \\$\\{([^{}]*)\\} from \\$\\{([^{}]*)\\} config\\?",
+      "chinese": "移除 ${$1}（${$2} 配置）？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"runs once\"",
+      "chinese": "\"只运行一次\""
+    },
+    {
+      "original": "\"runs in background\"",
+      "chinese": "\"在后台运行\""
+    },
+    {
+      "original": "\"dt\",{children:\"Event\"}",
+      "chinese": "\"dt\",{children:\"事件\"}"
+    },
+    {
+      "original": "\"Matcher\"",
+      "chinese": "\"匹配条件\""
+    },
+    {
+      "original": "\"(all)\"",
+      "chinese": "\"（全部）\""
+    },
+    {
+      "original": "children:\"Type\"",
+      "chinese": "children:\"类型\""
+    },
+    {
+      "original": "children:\"Source\"",
+      "chinese": "children:\"来源\""
+    },
+    {
+      "original": "children:\"Plugin\"",
+      "chinese": "children:\"插件\""
+    },
+    {
+      "original": "children:\"If\"",
+      "chinese": "children:\"条件\""
+    },
+    {
+      "original": "children:\"Timeout\"",
+      "chinese": "children:\"超时\""
+    },
+    {
+      "original": "\"Status message\"",
+      "chinese": "\"状态消息\""
+    },
+    {
+      "original": "children:\"Flags\"",
+      "chinese": "children:\"标志\""
+    },
+    {
+      "original": "\"Matcher:\"",
+      "chinese": "\"匹配条件：\""
+    },
+    {
+      "original": "disabledBadge,children:\"Disabled\"",
+      "chinese": "disabledBadge,children:\"已禁用\""
+    },
+    {
+      "original": "\"Set by your organization in managed settings.\"",
+      "chinese": "\"由你的组织在托管设置中设置。\""
+    },
+    {
+      "original": "\"Set for this session by the --settings startup option.\"",
+      "chinese": "\"由 --settings 启动选项为此会话设置。\""
+    },
+    {
+      "original": "\"Defined by a plugin; change it in the plugin.\"",
+      "chinese": "\"由插件定义，请在该插件中修改。\""
+    },
+    {
+      "original": "\"Registered for this session by a skill, an agent, or a goal.\"",
+      "chinese": "\"由技能、代理或目标为此会话注册。\""
+    },
+    {
+      "original": "\"Built into Claude Code.\"",
+      "chinese": "\"内置于 Claude Code。\""
+    },
+    {
+      "original": "Defined by the \\$\\{([^{}]*)\\} plugin; change it in the plugin\\.",
+      "chinese": "由 ${$1} 插件定义，请在该插件中修改。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "badge:\"User\"",
+      "chinese": "badge:\"用户\""
+    },
+    {
+      "original": "\"User settings (~/.claude/settings.json)\"",
+      "chinese": "\"用户设置（~/.claude/settings.json）\""
+    },
+    {
+      "original": "\"Project settings (.claude/settings.json)\"",
+      "chinese": "\"项目设置（.claude/settings.json）\""
+    },
+    {
+      "original": "\"Local settings (.claude/settings.local.json)\"",
+      "chinese": "\"本地设置（.claude/settings.local.json）\""
+    },
+    {
+      "original": "badge:\"Flag\"",
+      "chinese": "badge:\"启动参数\""
+    },
+    {
+      "original": "\"Startup settings (--settings option)\"",
+      "chinese": "\"启动设置（--settings 选项）\""
+    },
+    {
+      "original": "\"Managed settings (set by your organization)\"",
+      "chinese": "\"托管设置（由你的组织设置）\""
+    },
+    {
+      "original": "userSettings:\"User\"",
+      "chinese": "userSettings:\"用户\""
+    },
+    {
+      "original": "flagSettings:\"Flag\"",
+      "chinese": "flagSettings:\"启动参数\""
+    },
+    {
+      "original": "sessionHook:\"Session\"",
+      "chinese": "sessionHook:\"会话\""
+    },
+    {
+      "original": "pluginHook:\"Plugin\"",
+      "chinese": "pluginHook:\"插件\""
+    },
+    {
+      "original": "builtinHook:\"Built-in\"",
+      "chinese": "builtinHook:\"内置\""
+    },
+    {
+      "original": "case\"command\":return\"Command\"",
+      "chinese": "case\"command\":return\"命令\""
+    },
+    {
+      "original": "case\"agent\":return\"Prompt\"",
+      "chinese": "case\"agent\":return\"提示词\""
+    },
+    {
+      "original": "case\"mcp_tool\":return\"MCP tool\"",
+      "chinese": "case\"mcp_tool\":return\"MCP 工具\""
+    },
+    {
+      "original": "?\"Script file\":\"Script\";return\"Definition\"",
+      "chinese": "?\"脚本文件\":\"脚本\";return\"定义\""
+    },
+    {
+      "original": "label:\"Save to\",options:",
+      "chinese": "label:\"保存到\",options:"
+    },
+    {
+      "original": "htmlFor:\"hook-event\",children:\"Event\"",
+      "chinese": "htmlFor:\"hook-event\",children:\"事件\""
+    },
+    {
+      "original": "\"Matcher (leave empty to match everything)\"",
+      "chinese": "\"匹配条件（留空则匹配全部）\""
+    },
+    {
+      "original": "label:\"Type\"",
+      "chinese": "label:\"类型\""
+    },
+    {
+      "original": "value:\"command\",label:\"Command\"",
+      "chinese": "value:\"command\",label:\"命令\""
+    },
+    {
+      "original": "\"Runs a shell command\"",
+      "chinese": "\"运行 shell 命令\""
+    },
+    {
+      "original": "value:\"prompt\",label:\"Prompt\"",
+      "chinese": "value:\"prompt\",label:\"提示词\""
+    },
+    {
+      "original": "\"Asks a model to evaluate a prompt\"",
+      "chinese": "\"请模型评估一段提示词\""
+    },
+    {
+      "original": "value:\"agent\",label:\"Agent\"",
+      "chinese": "value:\"agent\",label:\"代理\""
+    },
+    {
+      "original": "\"Runs an agent to verify something\"",
+      "chinese": "\"运行代理来验证某件事\""
+    },
+    {
+      "original": "\"Posts the hook input to a URL\"",
+      "chinese": "\"将钩子输入以 POST 发送到网址\""
+    },
+    {
+      "original": "value:\"mcp_tool\",label:\"MCP tool\"",
+      "chinese": "value:\"mcp_tool\",label:\"MCP 工具\""
+    },
+    {
+      "original": "\"Calls a tool on a configured MCP server\"",
+      "chinese": "\"调用已配置 MCP 服务器上的工具\""
+    },
+    {
+      "original": "value:\"userSettings\",label:\"User\"",
+      "chinese": "value:\"userSettings\",label:\"用户\""
+    },
+    {
+      "original": "\"Private to you in this project (.claude/settings.local.json)\"",
+      "chinese": "\"仅你在此项目中可见（.claude/settings.local.json）\""
+    },
+    {
+      "original": "\"Available in all your projects (~/.claude/settings.json)\"",
+      "chinese": "\"在你的所有项目中均可用（~/.claude/settings.json）\""
+    },
+    {
+      "original": "\"Shared via .claude/settings.json in this project\"",
+      "chinese": "\"通过此项目的 .claude/settings.json 共享\""
+    },
+    {
+      "original": "key:\"command\",label:\"Command\"",
+      "chinese": "key:\"command\",label:\"命令\""
+    },
+    {
+      "original": "\"Arguments (JSON array, optional; no shell when set)\"",
+      "chinese": "\"参数（JSON 数组，可选；设置后不经过 shell）\""
+    },
+    {
+      "original": "label:\"Default\",description:\"bash where available",
+      "chinese": "label:\"默认\",description:\"bash where available"
+    },
+    {
+      "original": "\"bash where available, PowerShell on Windows without Git Bash\"",
+      "chinese": "\"可用时使用 bash；Windows 未安装 Git Bash 时使用 PowerShell\""
+    },
+    {
+      "original": "\"Run in background\"",
+      "chinese": "\"在后台运行\""
+    },
+    {
+      "original": "key:\"prompt\",label:\"Prompt\"",
+      "chinese": "key:\"prompt\",label:\"提示词\""
+    },
+    {
+      "original": "\"Model (optional)\"",
+      "chinese": "\"模型（可选）\""
+    },
+    {
+      "original": "\"Keep going when this prompt blocks, instead of ending the turn\"",
+      "chinese": "\"此提示词阻止时继续进行，而不是结束本轮\""
+    },
+    {
+      "original": "\"Headers (Header-Name: value, one per line; stored values are kept unless you retype them)\"",
+      "chinese": "\"请求头（Header-Name: value，一行一个；已保存的值会保留，除非重新输入）\""
+    },
+    {
+      "original": "\"Environment variables allowed in headers (one per line)\"",
+      "chinese": "\"请求头中允许使用的环境变量（一行一个）\""
+    },
+    {
+      "original": "\"MCP server\"",
+      "chinese": "\"MCP 服务器\""
+    },
+    {
+      "original": "key:\"tool\",label:\"Tool\"",
+      "chinese": "key:\"tool\",label:\"工具\""
+    },
+    {
+      "original": "\"Input (JSON object, optional)\"",
+      "chinese": "\"输入（JSON 对象，可选）\""
+    },
+    {
+      "original": "\"Only when the tool call matches (optional)\"",
+      "chinese": "\"仅在工具调用匹配时（可选）\""
+    },
+    {
+      "original": "\"Timeout in seconds (optional)\"",
+      "chinese": "\"超时秒数（可选）\""
+    },
+    {
+      "original": "\"Status message while running (optional)\"",
+      "chinese": "\"运行时的状态消息（可选）\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is required\\.",
+      "chinese": "请填写${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} must be a number above 0\\.",
+      "chinese": "${$1}必须是大于 0 的数字。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Header name \\$\\{([^{}]*)\\} is not allowed\\.",
+      "chinese": "不允许使用请求头名称 ${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} must be a JSON \\$\\{([^{}]*)\\}\\.",
+      "chinese": "${$1}必须是 JSON ${$2}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Agent map\"",
+      "chinese": "\"代理关系图\""
+    },
+    {
+      "original": "`\\+\\$\\{([^{}]*)\\} more \\$\\{[A-Za-z0-9_$]{1,4}\\([A-Za-z0-9_$]+,\"agent\"\\)\\}`",
+      "chinese": "`另有 ${$1} 个代理`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(?<![A-Za-z0-9_$.])[A-Za-z0-9_$]{1,4}\\([A-Za-z0-9_$.]+,\"agent\"\\)",
+      "chinese": "\"个代理\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" · click an agent for details\"",
+      "chinese": "\" · 点击代理可查看详情\""
+    },
+    {
+      "original": "\"Waiting for your permission\"",
+      "chinese": "\"正在等待你的许可\""
+    },
+    {
+      "original": "finished:\"Finished\"",
+      "chinese": "finished:\"已完成\""
+    },
+    {
+      "original": "failed:\"Failed\"",
+      "chinese": "failed:\"失败\""
+    },
+    {
+      "original": "stopped:\"Stopped\"",
+      "chinese": "stopped:\"已停止\""
+    },
+    {
+      "original": "\"This session\"",
+      "chinese": "\"本次会话\""
+    },
+    {
+      "original": "(?<!=)\"Idle\"",
+      "chinese": "\"空闲\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Spawned by \"",
+      "chinese": "\"创建者：\""
+    },
+    {
+      "original": "\"the main agent\"",
+      "chinese": "\"主代理\""
+    },
+    {
+      "original": "children:\"Now\"",
+      "chinese": "children:\"当前\""
+    },
+    {
+      "original": "` to run \\$\\{([^{}]*)\\}`",
+      "chinese": "`，以运行 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\". Answer it in the session's permission card.\"",
+      "chinese": "\"。请在该会话的权限卡片中响应。\""
+    },
+    {
+      "original": "\\(([A-Za-z0-9_$]+),\\{\\}\\),\"Prompt\"\\]",
+      "chinese": "($1,{}),\"提示词\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Tool calls (\"",
+      "chinese": "\"工具调用 (\""
+    },
+    {
+      "original": "\"Open transcript\"",
+      "chinese": "\"打开对话记录\""
+    },
+    {
+      "original": "\"Stopping…\"",
+      "chinese": "\"正在停止…\""
+    },
+    {
+      "original": "\"Stop agent\"",
+      "chinese": "\"停止代理\""
+    },
+    {
+      "original": "\"The agent could not be stopped. It may have finished already.\"",
+      "chinese": "\"无法停止此代理，它可能已经结束。\""
+    },
+    {
+      "original": "\"Actions\"",
+      "chinese": "\"操作\""
+    },
+    {
+      "original": "\"Suggestions\"",
+      "chinese": "\"建议\""
+    },
+    {
+      "original": "\"Switch branch\"",
+      "chinese": "\"切换分支\""
+    },
+    {
+      "original": "\"Remove from message\"",
+      "chinese": "\"从消息中移除\""
+    },
+    {
+      "original": "label:\"Output\",text",
+      "chinese": "label:\"输出\",text"
+    },
+    {
+      "original": "label:\"Error output\"",
+      "chinese": "label:\"错误输出\""
+    },
+    {
+      "original": "label:\"Exit code\"",
+      "chinese": "label:\"退出代码\""
+    },
+    {
+      "original": "Failed to get an answer: \\$\\{([^{}]*)\\}",
+      "chinese": "无法获取回答：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Show me: \\$\\{([^{}]*)\\}",
+      "chinese": "演示给我看：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"just now\"",
+      "chinese": "\"刚刚\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}m ago",
+      "chinese": "${$1} 分钟前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}h ago",
+      "chinese": "${$1} 小时前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}d ago",
+      "chinese": "${$1} 天前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" to navigate · \"",
+      "chinese": "\" 浏览 · \""
     },
     {
       "original": "\" for VS Code\"",

@@ -1,12 +1,15 @@
 {
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-07",
+  "updatedAt": "2026-09-15",
   "scanIgnore": [
     " new problem",
     "Alt",
     "Artifact",
+    "Bash",
+    "Bash(git *)",
+    "Bash(ls *)",
     "Claude in Chrome [",
     "Ctrl",
     "Ctrl+D",
@@ -16,6 +19,7 @@
     "Found ",
     "Glob",
     "Grep",
+    "HTTP",
     "Hide",
     "IN",
     "Infinite loop on byte: ",
@@ -24,20 +28,25 @@
     "OUT",
     "OpenVSX",
     "Option",
+    "PowerShell",
     "Property 'weight' in key '${$}' must be a positive integer",
     "REPL",
     "REPL ",
     "Search",
+    "Shell",
     "Shift",
     "Tab",
     "URL",
     "Unknown",
     "VS Code",
+    "WebFetch",
     "claude mcp add",
     "claude.ai/code",
+    "disableAllHooks",
     "example-tools",
     "git checkout ",
     "read-only",
+    "settings.json",
     "will be added across ",
     "will be removed and",
     "⌘D"
@@ -3871,6 +3880,1034 @@
     {
       "original": "\"Saved to .mcp.json and shared with everyone who opens this project. In IDE sessions, project servers connect without a separate approval step. If no folder is open, this writes to your home directory.\"",
       "chinese": "\"會存到 .mcp.json，並與開啟此專案的所有人共用。在 IDE 對話階段中，專案伺服器不需另外核准即可連線。若沒有開啟任何資料夾，則會寫入你的家目錄。\""
+    },
+    {
+      "original": "Updating \\$\\{([^{}]*)\\} is taking too long",
+      "chinese": "更新 ${$1} 花了太久",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"It didn't finish in the time allowed.\"",
+      "chinese": "\"未能在時限內完成。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} can't be updated here",
+      "chinese": "無法在這裡更新 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Your organization's settings block updating this plugin.\"",
+      "chinese": "\"你的組織設定禁止更新此外掛程式。\""
+    },
+    {
+      "original": "closeLabel:\"OK\"",
+      "chinese": "closeLabel:\"確定\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is turned off",
+      "chinese": "${$1} 已停用",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Turn it on to update it.\"",
+      "chinese": "\"請先啟用才能更新。\""
+    },
+    {
+      "original": "\"Turn on and update\"",
+      "chinese": "\"啟用並更新\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} installs by running a command on your machine",
+      "chinese": "${$1} 需要在你的電腦上執行指令來安裝",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"It can't be accepted from here yet.\"",
+      "chinese": "\"目前還無法在這裡同意。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is no longer installed here",
+      "chinese": "${$1} 已不再安裝於此",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The list is out of date.\"",
+      "chinese": "\"清單已過時。\""
+    },
+    {
+      "original": "\"Refresh list\"",
+      "chinese": "\"重新整理清單\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} isn't in your copy of \\$\\{([^{}]*)\\}",
+      "chinese": "你的 ${$2} 副本中沒有 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Refresh the marketplace, then try the update again.\"",
+      "chinese": "\"請重新整理市集，然後再試一次更新。\""
+    },
+    {
+      "original": "\"Refresh the marketplace and retry\"",
+      "chinese": "\"重新整理市集並重試\""
+    },
+    {
+      "original": "Something went wrong while updating \\$\\{([^{}]*)\\}",
+      "chinese": "更新 ${$1} 時發生錯誤",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The marketplace could not be reached.\"",
+      "chinese": "\"無法連線到市集。\""
+    },
+    {
+      "original": "\"The update did not finish.\"",
+      "chinese": "\"更新未完成。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is already at the latest version\\.",
+      "chinese": "${$1} 已是最新版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} may already be at the latest version; the marketplace couldn't be checked\\.",
+      "chinese": "${$1} 可能已是最新版本；無法檢查市集。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} was not updated because another plugin needs the version it has\\.",
+      "chinese": "${$1} 未更新，因為另一個外掛程式需要它目前的版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Try again\"",
+      "chinese": "\"再試一次\""
+    },
+    {
+      "original": "\"Copy error\"",
+      "chinese": "\"複製錯誤訊息\""
+    },
+    {
+      "original": "\"Reload plugins\"",
+      "chinese": "\"重新載入外掛程式\""
+    },
+    {
+      "original": "\"This session couldn't reload its plugins.\"",
+      "chinese": "\"此對話階段無法重新載入外掛程式。\""
+    },
+    {
+      "original": "\"Enable plugin\"",
+      "chinese": "\"啟用外掛程式\""
+    },
+    {
+      "original": "\"Update plugin\"",
+      "chinese": "\"更新外掛程式\""
+    },
+    {
+      "original": "\"Update plugin to the latest version\"",
+      "chinese": "\"將外掛程式更新到最新版本\""
+    },
+    {
+      "original": "\"Updating…\"",
+      "chinese": "\"正在更新…\""
+    },
+    {
+      "original": "\"Yes, allow \"",
+      "chinese": "\"是的，允許 \""
+    },
+    {
+      "original": "\"Yes, allow access to \"",
+      "chinese": "\"是的，允許存取 \""
+    },
+    {
+      "original": "\"Yes, allow access to\"",
+      "chinese": "\"是的，允許存取\""
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" and\",\" \",([A-Za-z0-9_$]+\\(\"span\",\\{title:)",
+      "chinese": "$1,\" 以及另外\",\" \",$2",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" and\",\" \",",
+      "chinese": "$1,\" 和\",\" \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" for \",",
+      "chinese": "$1,\" 用於 \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\{grant:[A-Za-z0-9_$]+\\}\\)),\" for\",\" \",",
+      "chinese": "$1,\" 用於\",\" \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.length-1),\" more\"\\]",
+      "chinese": "$1,\" 項\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" directories\"]",
+      "chinese": "\" 個目錄\"]"
+    },
+    {
+      "original": "\\),\" \",\"for \",([A-Za-z0-9_$]+)\\]",
+      "chinese": "),\" \",\"用於 \",$1]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "cliArg:\"startup options\"",
+      "chinese": "cliArg:\"啟動選項\""
+    },
+    {
+      "original": "\"From options set when the session started\"",
+      "chinese": "\"來自對話階段啟動時設定的選項\""
+    },
+    {
+      "original": "\"replies to comments on artifacts\"",
+      "chinese": "\"回覆 Artifact 上的留言\""
+    },
+    {
+      "original": "\"Permission rules\"",
+      "chinese": "\"權限規則\""
+    },
+    {
+      "original": "\"Loading permission rules…\"",
+      "chinese": "\"正在載入權限規則…\""
+    },
+    {
+      "original": "\"Couldn’t load permission rules from this session:\"",
+      "chinese": "\"無法從此對話階段載入權限規則：\""
+    },
+    {
+      "original": "\"This session runs on another machine, so its permission rules can be viewed here but not changed.\"",
+      "chinese": "\"此對話階段在另一台機器上執行，因此只能在這裡檢視權限規則，無法修改。\""
+    },
+    {
+      "original": "\"Rules and workspace directories come from the running session, including approvals made for this session only and rules set when the session started.\"",
+      "chinese": "\"規則與工作區目錄取自執行中的對話階段，包含僅限本次對話階段的核准，以及對話階段啟動時設定的規則。\""
+    },
+    {
+      "original": "\"Rules you add or remove here are written to the settings file you choose. \"",
+      "chinese": "\"你在這裡新增或移除的規則，會寫入你選擇的設定檔。\""
+    },
+    {
+      "original": "\"Workspace directories are listed here for reference.\"",
+      "chinese": "\"工作區目錄僅列出供參考。\""
+    },
+    {
+      "original": "\"Settings file failed to load:\"",
+      "chinese": "\"設定檔載入失敗：\""
+    },
+    {
+      "original": "\". Its settings, including permission rules, are not in effect.\"",
+      "chinese": "\"。其中的設定（包含權限規則）目前不會生效。\""
+    },
+    {
+      "original": "\"Enterprise managed settings allow only managed permission rules. Rules from other settings files are shown below but are not in effect.\"",
+      "chinese": "\"企業受管理設定只允許受管理的權限規則。其他設定檔的規則會列在下方，但不會生效。\""
+    },
+    {
+      "original": "\"No permission rules are saved.\"",
+      "chinese": "\"尚未儲存任何權限規則。\""
+    },
+    {
+      "original": "\"Choosing an “Always” option on a permission prompt saves a rule here\"",
+      "chinese": "\"在權限提示中選擇「一律」選項時，會在這裡儲存規則\""
+    },
+    {
+      "original": "\", or add one below\":\"\",\".\"]",
+      "chinese": "\"，你也可以在下方新增\":\"\",\"。\"]"
+    },
+    {
+      "original": "{allow:\"Allow\",ask:\"Ask\",deny:\"Deny\"}",
+      "chinese": "{allow:\"允許\",ask:\"詢問\",deny:\"拒絕\"}"
+    },
+    {
+      "original": "\"Add rule…\"",
+      "chinese": "\"新增規則…\""
+    },
+    {
+      "original": "\"Add rule\"",
+      "chinese": "\"新增規則\""
+    },
+    {
+      "original": "\\[\"Add \",([A-Za-z0-9_$]+\\[\\$\\]\\.toLowerCase\\(\\)),\" rule\"\\]",
+      "chinese": "[\"新增\",$1,\"規則\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"A permission rule is a tool name, optionally followed by a specifier in parentheses, e.g. \"",
+      "chinese": "\"權限規則是工具名稱，後面可以加上以括號包住的限定條件，例如 \""
+    },
+    {
+      "original": "children:\"WebFetch\"}),\" or \",",
+      "chinese": "children:\"WebFetch\"}),\"、\","
+    },
+    {
+      "original": "children:\"Bash(ls *)\"}),\".\"]",
+      "chinese": "children:\"Bash(ls *)\"}),\"。\"]"
+    },
+    {
+      "original": "\"Enter permission rule…\"",
+      "chinese": "\"輸入權限規則…\""
+    },
+    {
+      "original": "\"Save for\"",
+      "chinese": "\"適用於\""
+    },
+    {
+      "original": "\"Couldn’t add the rule: \"",
+      "chinese": "\"無法新增規則：\""
+    },
+    {
+      "original": "\"Not saved in a settings file.\"",
+      "chinese": "\"未儲存在設定檔中。\""
+    },
+    {
+      "original": "\"Approved for this session only; not saved in a settings file.\"",
+      "chinese": "\"僅核准本次對話階段；未儲存在設定檔中。\""
+    },
+    {
+      "original": "\"Managed by enterprise settings.\"",
+      "chinese": "\"由企業設定管理。\""
+    },
+    {
+      "original": "\"From a settings file given at startup.\"",
+      "chinese": "\"來自啟動時指定的設定檔。\""
+    },
+    {
+      "original": "\"Granted by a command; change it in the command.\"",
+      "chinese": "\"由指令授予，請在該指令中修改。\""
+    },
+    {
+      "original": "\"Read-only.\"",
+      "chinese": "\"唯讀。\""
+    },
+    {
+      "original": "From (\\$\\{[^{}]*\\.source[^{}]*\\})",
+      "chinese": "來自 $1",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} \\(not in effect\\)",
+      "chinese": "${$1}（未生效）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} \\(this session only\\)",
+      "chinese": "${$1}（僅限本次對話階段）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "ruleSource,children:[\"From \",",
+      "chinese": "ruleSource,children:[\"來自 \","
+    },
+    {
+      "original": "sender,children:[\"From \",",
+      "chinese": "sender,children:[\"來自 \","
+    },
+    {
+      "original": "\"Original working directory\"",
+      "chinese": "\"原始工作目錄\""
+    },
+    {
+      "original": "children:[\"Workspace (\",",
+      "chinese": "children:[\"工作區 (\","
+    },
+    {
+      "original": "\\[\"(?:Remove|移除) \",\\$\\.behavior,\" rule\\?\"\\]",
+      "chinese": "[\"移除「\",$.behavior,\"」規則？\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The rule is deleted from its settings file and stops applying to this session once Claude Code has re-read its settings.\"",
+      "chinese": "\"規則會從其設定檔中刪除，並在 Claude Code 重新讀取設定後，不再套用於此對話階段。\""
+    },
+    {
+      "original": "\"Couldn’t remove the rule: \"",
+      "chinese": "\"無法移除規則：\""
+    },
+    {
+      "original": "\"Remove rule\"",
+      "chinese": "\"移除規則\""
+    },
+    {
+      "original": "\"Left or Right arrow changes where this is saved\"",
+      "chinese": "\"按左右方向鍵可切換儲存位置\""
+    },
+    {
+      "original": "\"View and edit hooks\"",
+      "chinese": "\"檢視並編輯勾點\""
+    },
+    {
+      "original": "\"View and edit permission rules\"",
+      "chinese": "\"檢視並編輯權限規則\""
+    },
+    {
+      "original": "\"Browse slash commands\"",
+      "chinese": "\"瀏覽斜線指令\""
+    },
+    {
+      "original": "\"Add hook\"",
+      "chinese": "\"新增勾點\""
+    },
+    {
+      "original": "\"Edit hook\"",
+      "chinese": "\"編輯勾點\""
+    },
+    {
+      "original": "\"Save hook\"",
+      "chinese": "\"儲存勾點\""
+    },
+    {
+      "original": "\"Saving…\"",
+      "chinese": "\"正在儲存…\""
+    },
+    {
+      "original": "\"Failed to save hook\"",
+      "chinese": "\"儲存勾點失敗\""
+    },
+    {
+      "original": "\"Failed to remove hook\"",
+      "chinese": "\"移除勾點失敗\""
+    },
+    {
+      "original": "\"This hook contains hidden characters. They are invisible in these fields; the list shows them as codes.\"",
+      "chinese": "\"此勾點含有隱藏字元。它們在這些欄位中看不見，清單會以代碼顯示。\""
+    },
+    {
+      "original": "\"Waiting for settings from Claude Code…\"",
+      "chinese": "\"正在等待 Claude Code 的設定…\""
+    },
+    {
+      "original": "\"A settings file\"",
+      "chinese": "\"1 個設定檔\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} settings files",
+      "chinese": "${$1} 個設定檔",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"could not be parsed, so hooks defined there are not shown and will not run.\"",
+      "chinese": "\"無法解析，因此其中定義的勾點不會顯示，也不會執行。\""
+    },
+    {
+      "original": "\"Safe mode: hooks from settings files are suspended and will not run this session\"",
+      "chinese": "\"安全模式：設定檔中的勾點已暫停，本次對話階段不會執行\""
+    },
+    {
+      "original": "\" (managed policy hooks still apply)\"",
+      "chinese": "\"（受管理原則的勾點仍會套用）\""
+    },
+    {
+      "original": "\"; session hooks created by /goal, agents, and skills still run. Settings edits save but don't load until safe mode is off.\"",
+      "chinese": "\"；由 /goal、代理與技能建立的對話階段勾點仍會執行。設定的修改會儲存，但要等關閉安全模式後才會載入。\""
+    },
+    {
+      "original": "\" to re-enable.\"",
+      "chinese": "\" 即可重新啟用。\""
+    },
+    {
+      "original": "\"Bare mode: hooks from settings files, plugins, and managed policies are disabled and will not run this session; session hooks created by /goal, agents, and skills still run. \"",
+      "chinese": "\"精簡模式：來自設定檔、外掛程式與受管理原則的勾點已停用，本次對話階段不會執行；由 /goal、代理與技能建立的對話階段勾點仍會執行。\""
+    },
+    {
+      "original": "\"All hooks are currently disabled by a managed settings file. You have\"",
+      "chinese": "\"目前所有勾點都已被受管理的設定檔停用。你設定的\""
+    },
+    {
+      "original": "\" configured that will not run.\"",
+      "chinese": "\" 將不會執行。\""
+    },
+    {
+      "original": "\"Only hooks from managed settings can run. Hooks from user, project, local, and flag settings are blocked, and managed hooks are not shown here.\"",
+      "chinese": "\"只有受管理設定中的勾點可以執行。來自使用者、專案、本機與啟動參數設定的勾點會被封鎖，受管理的勾點也不會顯示在這裡。\""
+    },
+    {
+      "original": "\"Your organization restricts hooks to managed and plugin sources. Hooks from user, project, local, and flag settings will not run, and managed hooks are not shown here.\"",
+      "chinese": "\"你的組織限制勾點只能來自受管理設定與外掛程式。來自使用者、專案、本機與啟動參數設定的勾點不會執行，受管理的勾點也不會顯示在這裡。\""
+    },
+    {
+      "original": "\"All hooks are currently disabled by the \"",
+      "chinese": "\"目前所有勾點都已被 \""
+    },
+    {
+      "original": "\"setting. You have \"",
+      "chinese": "\"設定停用。你設定的 \""
+    },
+    {
+      "original": "\"Hooks from managed settings still run —\"",
+      "chinese": "\"受管理設定中的勾點仍會執行 —\""
+    },
+    {
+      "original": "?\"hook\":\"hooks\"}",
+      "chinese": "?\"個勾點\":\"個勾點\"}"
+    },
+    {
+      "original": "\"No hooks configured\"",
+      "chinese": "\"尚未設定任何勾點\""
+    },
+    {
+      "original": "\"Hooks run your commands, prompts, or HTTP calls in response to Claude Code events like tool calls and prompt submission.\"",
+      "chinese": "\"勾點會在工具呼叫、送出提示詞等 Claude Code 事件發生時，執行你的指令、提示詞或 HTTP 呼叫。\""
+    },
+    {
+      "original": "\" Configure them in \"",
+      "chinese": "\" 請在 \""
+    },
+    {
+      "original": "(\\?null:[A-Za-z0-9_$]+\\(\"code\",\\{children:\"settings\\.json\"\\}\\),[A-Za-z0-9_$]+\\?\"\"):\"\\.\"",
+      "chinese": "$1:\" 中設定。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Hooks are locked by a managed settings file, so this one cannot be edited here.\"",
+      "chinese": "\"勾點已被受管理的設定檔鎖定，因此無法在此編輯。\""
+    },
+    {
+      "original": "\"This hook type cannot be edited here.\"",
+      "chinese": "\"此類型的勾點無法在此編輯。\""
+    },
+    {
+      "original": "\"Disabled: this hook will not run this session.\"",
+      "chinese": "\"已停用：本次對話階段不會執行此勾點。\""
+    },
+    {
+      "original": "Remove this hook from \\$\\{([^{}]*)\\} settings\\?",
+      "chinese": "要從${$1}設定中移除此勾點嗎？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Saved to \\$\\{([^{}]*)\\} settings\\. If the change is not shown yet, Claude Code is still re-reading its settings; reopen this dialog to check\\.",
+      "chinese": "已儲存到${$1}設定。若尚未看到變更，表示 Claude Code 仍在重新讀取設定；請重新開啟此對話框確認。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([A-Za-z0-9_$]+\\.toLowerCase\\(\\))\\} settings",
+      "chinese": "${$1}設定",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude Code did not answer in time.\"",
+      "chinese": "\"Claude Code 未及時回應。\""
+    },
+    {
+      "original": "\"Claude Code is not running, so the hook cannot be saved.\"",
+      "chinese": "\"Claude Code 未在執行，因此無法儲存勾點。\""
+    },
+    {
+      "original": "\"Learn more about hooks\"",
+      "chinese": "\"進一步了解勾點\""
+    },
+    {
+      "original": "\"Click a hook to view, edit, or remove it. Managed, plugin, session, and built-in hooks are read-only.\"",
+      "chinese": "\"點選勾點即可檢視、編輯或移除。受管理、外掛程式、對話階段與內建的勾點為唯讀。\""
+    },
+    {
+      "original": "\"To add or modify hooks, edit \"",
+      "chinese": "\"若要新增或修改勾點，請直接編輯 \""
+    },
+    {
+      "original": "\" directly or ask Claude.\"",
+      "chinese": "\"，或請 Claude 協助。\""
+    },
+    {
+      "original": "Remove \\$\\{([^{}]*)\\} from \\$\\{([^{}]*)\\} config\\?",
+      "chinese": "移除 ${$1}（${$2} 設定）？",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"runs once\"",
+      "chinese": "\"只執行一次\""
+    },
+    {
+      "original": "\"runs in background\"",
+      "chinese": "\"在背景執行\""
+    },
+    {
+      "original": "\"dt\",{children:\"Event\"}",
+      "chinese": "\"dt\",{children:\"事件\"}"
+    },
+    {
+      "original": "\"Matcher\"",
+      "chinese": "\"比對條件\""
+    },
+    {
+      "original": "\"(all)\"",
+      "chinese": "\"（全部）\""
+    },
+    {
+      "original": "children:\"Type\"",
+      "chinese": "children:\"類型\""
+    },
+    {
+      "original": "children:\"Source\"",
+      "chinese": "children:\"來源\""
+    },
+    {
+      "original": "children:\"Plugin\"",
+      "chinese": "children:\"外掛程式\""
+    },
+    {
+      "original": "children:\"If\"",
+      "chinese": "children:\"條件\""
+    },
+    {
+      "original": "children:\"Timeout\"",
+      "chinese": "children:\"逾時\""
+    },
+    {
+      "original": "\"Status message\"",
+      "chinese": "\"狀態訊息\""
+    },
+    {
+      "original": "children:\"Flags\"",
+      "chinese": "children:\"旗標\""
+    },
+    {
+      "original": "\"Matcher:\"",
+      "chinese": "\"比對條件：\""
+    },
+    {
+      "original": "disabledBadge,children:\"Disabled\"",
+      "chinese": "disabledBadge,children:\"已停用\""
+    },
+    {
+      "original": "\"Set by your organization in managed settings.\"",
+      "chinese": "\"由你的組織在受管理設定中設定。\""
+    },
+    {
+      "original": "\"Set for this session by the --settings startup option.\"",
+      "chinese": "\"由 --settings 啟動選項為此對話階段設定。\""
+    },
+    {
+      "original": "\"Defined by a plugin; change it in the plugin.\"",
+      "chinese": "\"由外掛程式定義，請在該外掛程式中修改。\""
+    },
+    {
+      "original": "\"Registered for this session by a skill, an agent, or a goal.\"",
+      "chinese": "\"由技能、代理或目標為此對話階段註冊。\""
+    },
+    {
+      "original": "\"Built into Claude Code.\"",
+      "chinese": "\"內建於 Claude Code。\""
+    },
+    {
+      "original": "Defined by the \\$\\{([^{}]*)\\} plugin; change it in the plugin\\.",
+      "chinese": "由 ${$1} 外掛程式定義，請在該外掛程式中修改。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "badge:\"User\"",
+      "chinese": "badge:\"使用者\""
+    },
+    {
+      "original": "\"User settings (~/.claude/settings.json)\"",
+      "chinese": "\"使用者設定（~/.claude/settings.json）\""
+    },
+    {
+      "original": "\"Project settings (.claude/settings.json)\"",
+      "chinese": "\"專案設定（.claude/settings.json）\""
+    },
+    {
+      "original": "\"Local settings (.claude/settings.local.json)\"",
+      "chinese": "\"本機設定（.claude/settings.local.json）\""
+    },
+    {
+      "original": "badge:\"Flag\"",
+      "chinese": "badge:\"啟動參數\""
+    },
+    {
+      "original": "\"Startup settings (--settings option)\"",
+      "chinese": "\"啟動設定（--settings 選項）\""
+    },
+    {
+      "original": "\"Managed settings (set by your organization)\"",
+      "chinese": "\"受管理設定（由你的組織設定）\""
+    },
+    {
+      "original": "userSettings:\"User\"",
+      "chinese": "userSettings:\"使用者\""
+    },
+    {
+      "original": "flagSettings:\"Flag\"",
+      "chinese": "flagSettings:\"啟動參數\""
+    },
+    {
+      "original": "sessionHook:\"Session\"",
+      "chinese": "sessionHook:\"對話階段\""
+    },
+    {
+      "original": "pluginHook:\"Plugin\"",
+      "chinese": "pluginHook:\"外掛程式\""
+    },
+    {
+      "original": "builtinHook:\"Built-in\"",
+      "chinese": "builtinHook:\"內建\""
+    },
+    {
+      "original": "case\"command\":return\"Command\"",
+      "chinese": "case\"command\":return\"指令\""
+    },
+    {
+      "original": "case\"agent\":return\"Prompt\"",
+      "chinese": "case\"agent\":return\"提示詞\""
+    },
+    {
+      "original": "case\"mcp_tool\":return\"MCP tool\"",
+      "chinese": "case\"mcp_tool\":return\"MCP 工具\""
+    },
+    {
+      "original": "?\"Script file\":\"Script\";return\"Definition\"",
+      "chinese": "?\"指令碼檔案\":\"指令碼\";return\"定義\""
+    },
+    {
+      "original": "label:\"Save to\",options:",
+      "chinese": "label:\"儲存到\",options:"
+    },
+    {
+      "original": "htmlFor:\"hook-event\",children:\"Event\"",
+      "chinese": "htmlFor:\"hook-event\",children:\"事件\""
+    },
+    {
+      "original": "\"Matcher (leave empty to match everything)\"",
+      "chinese": "\"比對條件（留空則全部比對）\""
+    },
+    {
+      "original": "label:\"Type\"",
+      "chinese": "label:\"類型\""
+    },
+    {
+      "original": "value:\"command\",label:\"Command\"",
+      "chinese": "value:\"command\",label:\"指令\""
+    },
+    {
+      "original": "\"Runs a shell command\"",
+      "chinese": "\"執行 shell 指令\""
+    },
+    {
+      "original": "value:\"prompt\",label:\"Prompt\"",
+      "chinese": "value:\"prompt\",label:\"提示詞\""
+    },
+    {
+      "original": "\"Asks a model to evaluate a prompt\"",
+      "chinese": "\"請模型評估一段提示詞\""
+    },
+    {
+      "original": "value:\"agent\",label:\"Agent\"",
+      "chinese": "value:\"agent\",label:\"代理\""
+    },
+    {
+      "original": "\"Runs an agent to verify something\"",
+      "chinese": "\"執行代理來驗證某件事\""
+    },
+    {
+      "original": "\"Posts the hook input to a URL\"",
+      "chinese": "\"將勾點輸入以 POST 傳送到網址\""
+    },
+    {
+      "original": "value:\"mcp_tool\",label:\"MCP tool\"",
+      "chinese": "value:\"mcp_tool\",label:\"MCP 工具\""
+    },
+    {
+      "original": "\"Calls a tool on a configured MCP server\"",
+      "chinese": "\"呼叫已設定 MCP 伺服器上的工具\""
+    },
+    {
+      "original": "value:\"userSettings\",label:\"User\"",
+      "chinese": "value:\"userSettings\",label:\"使用者\""
+    },
+    {
+      "original": "\"Private to you in this project (.claude/settings.local.json)\"",
+      "chinese": "\"僅你在此專案中可見（.claude/settings.local.json）\""
+    },
+    {
+      "original": "\"Available in all your projects (~/.claude/settings.json)\"",
+      "chinese": "\"在你的所有專案中皆可用（~/.claude/settings.json）\""
+    },
+    {
+      "original": "\"Shared via .claude/settings.json in this project\"",
+      "chinese": "\"透過此專案的 .claude/settings.json 共用\""
+    },
+    {
+      "original": "key:\"command\",label:\"Command\"",
+      "chinese": "key:\"command\",label:\"指令\""
+    },
+    {
+      "original": "\"Arguments (JSON array, optional; no shell when set)\"",
+      "chinese": "\"引數（JSON 陣列，選填；設定後不經過 shell）\""
+    },
+    {
+      "original": "label:\"Default\",description:\"bash where available",
+      "chinese": "label:\"預設\",description:\"bash where available"
+    },
+    {
+      "original": "\"bash where available, PowerShell on Windows without Git Bash\"",
+      "chinese": "\"可用時使用 bash；Windows 未安裝 Git Bash 時使用 PowerShell\""
+    },
+    {
+      "original": "\"Run in background\"",
+      "chinese": "\"在背景執行\""
+    },
+    {
+      "original": "key:\"prompt\",label:\"Prompt\"",
+      "chinese": "key:\"prompt\",label:\"提示詞\""
+    },
+    {
+      "original": "\"Model (optional)\"",
+      "chinese": "\"模型（選填）\""
+    },
+    {
+      "original": "\"Keep going when this prompt blocks, instead of ending the turn\"",
+      "chinese": "\"此提示詞阻擋時繼續進行，而不是結束這一輪\""
+    },
+    {
+      "original": "\"Headers (Header-Name: value, one per line; stored values are kept unless you retype them)\"",
+      "chinese": "\"標頭（Header-Name: value，一行一個；已儲存的值會保留，除非重新輸入）\""
+    },
+    {
+      "original": "\"Environment variables allowed in headers (one per line)\"",
+      "chinese": "\"標頭中允許使用的環境變數（一行一個）\""
+    },
+    {
+      "original": "\"MCP server\"",
+      "chinese": "\"MCP 伺服器\""
+    },
+    {
+      "original": "key:\"tool\",label:\"Tool\"",
+      "chinese": "key:\"tool\",label:\"工具\""
+    },
+    {
+      "original": "\"Input (JSON object, optional)\"",
+      "chinese": "\"輸入（JSON 物件，選填）\""
+    },
+    {
+      "original": "\"Only when the tool call matches (optional)\"",
+      "chinese": "\"僅在工具呼叫符合時（選填）\""
+    },
+    {
+      "original": "\"Timeout in seconds (optional)\"",
+      "chinese": "\"逾時秒數（選填）\""
+    },
+    {
+      "original": "\"Status message while running (optional)\"",
+      "chinese": "\"執行時的狀態訊息（選填）\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} is required\\.",
+      "chinese": "請填寫${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} must be a number above 0\\.",
+      "chinese": "${$1}必須是大於 0 的數字。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Header name \\$\\{([^{}]*)\\} is not allowed\\.",
+      "chinese": "不允許使用標頭名稱 ${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} must be a JSON \\$\\{([^{}]*)\\}\\.",
+      "chinese": "${$1}必須是 JSON ${$2}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Agent map\"",
+      "chinese": "\"代理關係圖\""
+    },
+    {
+      "original": "`\\+\\$\\{([^{}]*)\\} more \\$\\{[A-Za-z0-9_$]{1,4}\\([A-Za-z0-9_$]+,\"agent\"\\)\\}`",
+      "chinese": "`另有 ${$1} 個代理`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(?<![A-Za-z0-9_$.])[A-Za-z0-9_$]{1,4}\\([A-Za-z0-9_$.]+,\"agent\"\\)",
+      "chinese": "\"個代理\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" · click an agent for details\"",
+      "chinese": "\" · 點選代理可查看詳情\""
+    },
+    {
+      "original": "\"Waiting for your permission\"",
+      "chinese": "\"正在等待你的許可\""
+    },
+    {
+      "original": "finished:\"Finished\"",
+      "chinese": "finished:\"已完成\""
+    },
+    {
+      "original": "failed:\"Failed\"",
+      "chinese": "failed:\"失敗\""
+    },
+    {
+      "original": "stopped:\"Stopped\"",
+      "chinese": "stopped:\"已停止\""
+    },
+    {
+      "original": "\"This session\"",
+      "chinese": "\"本次對話階段\""
+    },
+    {
+      "original": "(?<!=)\"Idle\"",
+      "chinese": "\"閒置\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Spawned by \"",
+      "chinese": "\"建立者：\""
+    },
+    {
+      "original": "\"the main agent\"",
+      "chinese": "\"主代理\""
+    },
+    {
+      "original": "children:\"Now\"",
+      "chinese": "children:\"目前\""
+    },
+    {
+      "original": "` to run \\$\\{([^{}]*)\\}`",
+      "chinese": "`，以執行 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\". Answer it in the session's permission card.\"",
+      "chinese": "\"。請在該對話階段的權限卡片中回應。\""
+    },
+    {
+      "original": "\\(([A-Za-z0-9_$]+),\\{\\}\\),\"Prompt\"\\]",
+      "chinese": "($1,{}),\"提示詞\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Tool calls (\"",
+      "chinese": "\"工具呼叫 (\""
+    },
+    {
+      "original": "\"Open transcript\"",
+      "chinese": "\"開啟對話紀錄\""
+    },
+    {
+      "original": "\"Stopping…\"",
+      "chinese": "\"正在停止…\""
+    },
+    {
+      "original": "\"Stop agent\"",
+      "chinese": "\"停止代理\""
+    },
+    {
+      "original": "\"The agent could not be stopped. It may have finished already.\"",
+      "chinese": "\"無法停止此代理，它可能已經結束。\""
+    },
+    {
+      "original": "\"Actions\"",
+      "chinese": "\"動作\""
+    },
+    {
+      "original": "\"Suggestions\"",
+      "chinese": "\"建議\""
+    },
+    {
+      "original": "\"Switch branch\"",
+      "chinese": "\"切換分支\""
+    },
+    {
+      "original": "\"Remove from message\"",
+      "chinese": "\"從訊息中移除\""
+    },
+    {
+      "original": "label:\"Output\",text",
+      "chinese": "label:\"輸出\",text"
+    },
+    {
+      "original": "label:\"Error output\"",
+      "chinese": "label:\"錯誤輸出\""
+    },
+    {
+      "original": "label:\"Exit code\"",
+      "chinese": "label:\"結束代碼\""
+    },
+    {
+      "original": "Failed to get an answer: \\$\\{([^{}]*)\\}",
+      "chinese": "無法取得回答：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Show me: \\$\\{([^{}]*)\\}",
+      "chinese": "示範給我看：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"just now\"",
+      "chinese": "\"剛剛\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}m ago",
+      "chinese": "${$1} 分鐘前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}h ago",
+      "chinese": "${$1} 小時前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}d ago",
+      "chinese": "${$1} 天前",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" to navigate · \"",
+      "chinese": "\" 瀏覽 · \""
     },
     {
       "original": "\" for VS Code\"",

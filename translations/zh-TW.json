@@ -1,8 +1,8 @@
 {
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-09-17",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -4908,6 +4908,86 @@
     {
       "original": "\" to navigate · \"",
       "chinese": "\" 瀏覽 · \""
+    },
+    {
+      "original": "the \\$\\{([^{}]*)\\} settings file",
+      "chinese": "${$1}設定檔",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}\\$\\{([^{}]*)\\} could not be loaded, so the hook could not be saved\\.",
+      "chinese": "${$1}${$2} 無法載入，因此無法儲存勾點。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This hook lives in this folder's own settings.local.json, which the dialog cannot edit.\"",
+      "chinese": "\"此勾點位於這個資料夾自己的 settings.local.json 中，對話框無法編輯。\""
+    },
+    {
+      "original": "More than one identical hook is in \\$\\{([^{}]*)\\}, so the dialog cannot tell which one to change\\.",
+      "chinese": "${$1}中有不只一個相同的勾點，因此對話框無法判斷要修改哪一個。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "The \\$\\{([^{}]*)\\} entry in \\$\\{([^{}]*)\\} is not a list, so the hook could not be saved\\.",
+      "chinese": "${$2}中的 ${$1} 項目不是清單，因此無法儲存勾點。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Open settings file\"",
+      "chinese": "\"開啟設定檔\""
+    },
+    {
+      "original": "\"Copied\"",
+      "chinese": "\"已複製\""
+    },
+    {
+      "original": "\"Copy failed\"",
+      "chinese": "\"複製失敗\""
+    },
+    {
+      "original": "\"Your organization's managed settings could not be read, so hooks cannot be edited here.\"",
+      "chinese": "\"無法讀取你組織的受管理設定，因此無法在這裡編輯勾點。\""
+    },
+    {
+      "original": "\"Remote Control turned off. It can't be turned back on while your organization's lock is in place.\"",
+      "chinese": "\"遠端控制已關閉。在組織的鎖定解除之前，無法重新開啟。\""
+    },
+    {
+      "original": "Couldn't re-check the Remote Control policy \\(\\$\\{([^{}]*)\\}\\)\\. Try again once the session is running\\.",
+      "chinese": "無法重新檢查遠端控制原則（${$1}）。請等對話階段開始執行後再試一次。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Remote Control is available again. You can turn it on now.\"",
+      "chinese": "\"遠端控制已恢復可用，現在可以開啟。\""
+    },
+    {
+      "original": "Review \\(\\$\\{([^{}]*)\\}\\)",
+      "chinese": "檢閱（${$1}）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% context used — click to compact",
+      "chinese": "已使用 ${$1}% 上下文 — 點一下即可壓縮",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% of context remaining until auto-compact\\.",
+      "chinese": "${$1}% 的剩餘上下文空間，用盡後將自動壓縮 (auto-compact)。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Show sessions that need input, are working, or are unread\"",
+      "chinese": "\"顯示需要輸入、正在工作或未讀的對話階段\""
     },
     {
       "original": "\" for VS Code\"",

@@ -1,5 +1,5 @@
 {
-  "version": "2.4.6",
+  "version": "2.4.7",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-09-17",
@@ -4988,6 +4988,74 @@
     {
       "original": "\"Show sessions that need input, are working, or are unread\"",
       "chinese": "\"显示需要输入、正在工作或未读的会话\""
+    },
+    {
+      "original": "setting:\"autoMemoryEnabled\",label:\"Auto-memory\"",
+      "chinese": "setting:\"autoMemoryEnabled\",label:\"自动记忆\""
+    },
+    {
+      "original": "setting:\"autoDreamEnabled\",label:\"Auto-dream\"",
+      "chinese": "setting:\"autoDreamEnabled\",label:\"自动梦境\""
+    },
+    {
+      "original": "\\?\"(?:Memory|記憶|记忆)\":\"Instructions\"",
+      "chinese": "?\"记忆\":\"指示\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "label:\"Instructions\",description:",
+      "chinese": "label:\"指示\",description:"
+    },
+    {
+      "original": "\"Edit CLAUDE.md files\"",
+      "chinese": "\"编辑 CLAUDE.md 文件\""
+    },
+    {
+      "original": "\"No memories saved for this project yet.\"",
+      "chinese": "\"这个项目还没有保存任何记忆。\""
+    },
+    {
+      "original": "Claude reads \\$\\{([^{}]*)\\} when a session starts\\. After editing, reload to apply changes to the current session\\.",
+      "chinese": "Claude 会在会话开始时读取 ${$1}。编辑后请重新加载，让更改应用到当前会话。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Reload Claude\"",
+      "chinese": "\"重新加载 Claude\""
+    },
+    {
+      "original": "Failed to open the file: \\$\\{([^{}]*)\\}",
+      "chinese": "无法打开文件：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Failed to restart Claude: \\$\\{([^{}]*)\\}",
+      "chinese": "无法重新启动 Claude：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Enable \\$\\{([^{}]*)\\}",
+      "chinese": "启用 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Uninstall \\$\\{([^{}]*)\\}",
+      "chinese": "卸载 ${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ",\"to close\"]",
+      "chinese": ",\"关闭\"]"
+    },
+    {
+      "original": "\" to select · \"",
+      "chinese": "\" 选择 · \""
     },
     {
       "original": "\" for VS Code\"",

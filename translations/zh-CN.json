@@ -1,8 +1,8 @@
 {
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Claude Code for VS Code 简体中文（中国大陆）翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-22",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -10,6 +10,7 @@
     "Bash",
     "Bash(git *)",
     "Bash(ls *)",
+    "Claude Design",
     "Claude in Chrome [",
     "Ctrl",
     "Ctrl+D",
@@ -29,6 +30,7 @@
     "OpenVSX",
     "Option",
     "PowerShell",
+    "Private Key",
     "Property 'weight' in key '${$}' must be a positive integer",
     "REPL",
     "REPL ",
@@ -5056,6 +5058,522 @@
     {
       "original": "\" to select · \"",
       "chinese": "\" 选择 · \""
+    },
+    {
+      "original": "\"Claude Design sync is not available in this session.\"",
+      "chinese": "\"此会话无法使用 Claude Design 同步。\""
+    },
+    {
+      "original": "\"The sign-in cannot complete from this session.\"",
+      "chinese": "\"无法从此会话完成登录。\""
+    },
+    {
+      "original": "\"Design-system access authorized.\"",
+      "chinese": "\"已授权访问设计系统。\""
+    },
+    {
+      "original": "\"The sign-in did not complete.\"",
+      "chinese": "\"登录未完成。\""
+    },
+    {
+      "original": "\"Authorize design-system access with your claude.ai account. This is separate from this session's sign-in and changes nothing else. The authorization is stored on this machine and used by every session on it.\"",
+      "chinese": "\"使用你的 claude.ai 账户授权访问设计系统。这与此会话的登录是分开的，不会更改其他任何设置。授权会保存在这台电脑上，供这台电脑上的所有会话使用。\""
+    },
+    {
+      "original": "\"Authorize design-system access with your claude.ai account\"",
+      "chinese": "\"使用你的 claude.ai 账户授权访问设计系统\""
+    },
+    {
+      "original": "children:[\"Status:\",\" \",",
+      "chinese": "children:[\"状态：\","
+    },
+    {
+      "original": "?\"Authorized\":\"Not authorized\"",
+      "chinese": "?\"已授权\":\"未授权\""
+    },
+    {
+      "original": "\"Waiting for the sign-in in your browser…\"",
+      "chinese": "\"正在等待你在浏览器中完成登录…\""
+    },
+    {
+      "original": "\"Sign in again\"",
+      "chinese": "\"重新登录\""
+    },
+    {
+      "original": "\"Sign in with your claude.ai account\"",
+      "chinese": "\"使用 claude.ai 账户登录\""
+    },
+    {
+      "original": "\"Signing in again replaces the stored authorization.\"",
+      "chinese": "\"重新登录会替换已保存的授权。\""
+    },
+    {
+      "original": "\"Complete the sign-in in the browser window that opened; it ends on a page that shows a code to paste below. You have five minutes; closing this dialog cancels it.\"",
+      "chinese": "\"请在打开的浏览器窗口中完成登录，最后会出现一个显示授权码的页面，请将授权码粘贴到下方。你有五分钟的时间；关闭此对话框会取消登录。\""
+    },
+    {
+      "original": "\"Complete the sign-in in the browser window that opened. You have five minutes; closing this dialog cancels it.\"",
+      "chinese": "\"请在打开的浏览器窗口中完成登录。你有五分钟的时间；关闭此对话框会取消登录。\""
+    },
+    {
+      "original": "\" \",\"If no window opened,\",\" \",",
+      "chinese": "\"如果没有打开窗口，请\","
+    },
+    {
+      "original": "children:\"open the sign-in page\"}),\".\"]",
+      "chinese": "children:\"打开登录页面\"}),\"。\"]"
+    },
+    {
+      "original": "\"Paste the code here:\"",
+      "chinese": "\"请将授权码粘贴到这里：\""
+    },
+    {
+      "original": "[\"Or\",\" \",",
+      "chinese": "[\"或\","
+    },
+    {
+      "original": "\"sign in on a page that shows a code\"",
+      "chinese": "\"改用会显示授权码的页面登录\""
+    },
+    {
+      "original": "\", and paste the code here:\"",
+      "chinese": "\"，再将授权码粘贴到这里：\""
+    },
+    {
+      "original": "\"Authorization code\"",
+      "chinese": "\"授权码\""
+    },
+    {
+      "original": "\"The sign-in returned no state\"",
+      "chinese": "\"登录没有返回状态\""
+    },
+    {
+      "original": "\"The sign-in did not start\"",
+      "chinese": "\"无法开始登录\""
+    },
+    {
+      "original": "\"The sign-in returned no result\"",
+      "chinese": "\"登录没有返回结果\""
+    },
+    {
+      "original": "\"No session is waiting for a code\"",
+      "chinese": "\"没有正在等待授权码的会话\""
+    },
+    {
+      "original": "?\"Reload and keep my edits\":\"Reload\"",
+      "chinese": "?\"重新加载并保留我的编辑\":\"重新加载\""
+    },
+    {
+      "original": "\"aria-label\":`\\$\\{([^{}]*)\\} text`",
+      "chinese": "\"aria-label\":`${$1} 内容`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This memory contains hidden characters. They are spelled out above and kept in the file.\"",
+      "chinese": "\"这条记忆含有隐藏字符，已在上方逐一标示出来，并会保留在文件中。\""
+    },
+    {
+      "original": "\"This file is not plain text, so it can only be edited in the editor.\"",
+      "chinese": "\"这个文件不是纯文本，只能在编辑器中编辑。\""
+    },
+    {
+      "original": "(===\"saving\"\\?\"[^\"]*\"):\"Save\"\\}",
+      "chinese": "$1:\"保存\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.editable\\|\\|[A-Za-z0-9_$]+!==null,children:)\"Edit\"\\}",
+      "chinese": "$1\"编辑\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "children:\"Open in editor\"",
+      "chinese": "children:\"在编辑器中打开\""
+    },
+    {
+      "original": "{label:\"Delete\",confirmLabel:\"Confirm delete\",busyLabel:\"Deleting…\",",
+      "chinese": "{label:\"删除\",confirmLabel:\"确认删除\",busyLabel:\"正在删除…\","
+    },
+    {
+      "original": "Delete \\$\\{([^{}]*)\\}\\? This cannot be undone\\.",
+      "chinese": "要删除“${$1}”吗？此操作无法撤销。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "?\"to stop editing\":\"to go back\"]",
+      "chinese": "?\"停止编辑\":\"返回\"]"
+    },
+    {
+      "original": "Claude reads \\$\\{([^{}]*)\\} when a session starts\\. \\$\\{([^{}]*)\\} to apply changes to the current session\\.",
+      "chinese": "Claude 会在会话开始时读取${$1}。${$2}，让更改应用到当前会话。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"its memory index\",\"Reload\")",
+      "chinese": "\"记忆索引\",\"请重新加载\")"
+    },
+    {
+      "original": "\"its memory index\"",
+      "chinese": "\"记忆索引\""
+    },
+    {
+      "original": "\"instruction files\"",
+      "chinese": "\"指示文件\""
+    },
+    {
+      "original": "\"After editing, reload\"",
+      "chinese": "\"编辑后请重新加载\""
+    },
+    {
+      "original": "label:\"Restore code and conversation\"",
+      "chinese": "label:\"回溯代码与对话\""
+    },
+    {
+      "original": "label:\"Restore conversation\"",
+      "chinese": "label:\"只回溯对话\""
+    },
+    {
+      "original": "label:\"Restore code\"",
+      "chinese": "label:\"只回溯代码\""
+    },
+    {
+      "original": "\"The conversation will be forked.\"",
+      "chinese": "\"将会创建一个新的分叉对话。\""
+    },
+    {
+      "original": "\"The conversation will be forked. The code will be unchanged.\"",
+      "chinese": "\"将会创建一个新的分叉对话，代码保持不变。\""
+    },
+    {
+      "original": "\"The conversation will be unchanged.\"",
+      "chinese": "\"对话保持不变。\""
+    },
+    {
+      "original": "(label:[A-Za-z0-9_$]+\\?)\"Restore\":",
+      "chinese": "$1\"回溯\":",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"aria-label\":\"What to restore\"",
+      "chinese": "\"aria-label\":\"要回溯的内容\""
+    },
+    {
+      "original": "\"Select a message to restore the code and/or conversation from that point.\"",
+      "chinese": "\"选择一条消息，将代码和/或对话回溯到该时间点。\""
+    },
+    {
+      "original": "(subsectionTitle,children:)\"Session\"",
+      "chinese": "$1\"会话\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "label:\"Total cost\"",
+      "chinese": "label:\"总费用\""
+    },
+    {
+      "original": "label:\"Total duration (API)\"",
+      "chinese": "label:\"总耗时（API）\""
+    },
+    {
+      "original": "label:\"Total duration (wall)\"",
+      "chinese": "label:\"总耗时（实际经过）\""
+    },
+    {
+      "original": "label:\"Total code changes\"",
+      "chinese": "label:\"代码变更总计\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{[A-Za-z0-9_$]+\\([^{}]*,\"line\"\\)\\} added, \\$\\{([^{}]*)\\} \\$\\{[A-Za-z0-9_$]+\\([^{}]*,\"line\"\\)\\} removed`",
+      "chinese": "`新增 ${$1} 行，删除 ${$2} 行`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Usage by model\"",
+      "chinese": "\"各模型用量\""
+    },
+    {
+      "original": "\"costs may be inaccurate due to usage of unknown models\"",
+      "chinese": "\"使用了未知模型，费用可能不准确\""
+    },
+    {
+      "original": "\"at your organization's configured rates\"",
+      "chinese": "\"按你的组织配置的费率计算\""
+    },
+    {
+      "original": "\\[\"\\(\",([A-Za-z0-9_$]+)\\.join\\(\"; \"\\),\"\\)\"\\]",
+      "chinese": "[\"（\",$1.join(\"；\"),\"）\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} input, \\$\\{([^{}]*)\\} output, \\$\\{([^{}]*)\\} cache read, \\$\\{([^{}]*)\\} cache write",
+      "chinese": "输入 ${$1}、输出 ${$2}、缓存读取 ${$3}、缓存写入 ${$4}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ", \\$\\{([^{}]*)\\} web search`",
+      "chinese": "、网页搜索 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"View and manage everything running in the background\"",
+      "chinese": "\"查看并管理所有在后台运行的项目\""
+    },
+    {
+      "original": "([A-Za-z0-9_$.]+),\" background \",[A-Za-z0-9_$]+\\(\\1,\"task\"\\),\" · click a task for details\"",
+      "chinese": "$1,\" 个后台任务 · 点击任务即可查看详细信息\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(:[A-Za-z0-9_$]+\\?)\"Running\":([A-Za-z0-9_$]+===void 0\\?)\"Ended\":",
+      "chinese": "$1\"运行中\":$2\"已结束\":",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(children:[A-Za-z0-9_$]+\\?\"[^\"]*\"):\"Stop\"\\}",
+      "chinese": "$1:\"停止\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The task could not be stopped. It may have finished already.\"",
+      "chinese": "\"无法停止此任务，它可能已经结束。\""
+    },
+    {
+      "original": "local_agent:\"subagent\"",
+      "chinese": "local_agent:\"子代理\""
+    },
+    {
+      "original": "local_workflow:\"workflow\"",
+      "chinese": "local_workflow:\"工作流\""
+    },
+    {
+      "original": "monitor_mcp:\"monitor\"",
+      "chinese": "monitor_mcp:\"监控\""
+    },
+    {
+      "original": "monitor_ws:\"monitor\"",
+      "chinese": "monitor_ws:\"监控\""
+    },
+    {
+      "original": "mcp_task:\"MCP task\"",
+      "chinese": "mcp_task:\"MCP 任务\""
+    },
+    {
+      "original": "in_process_teammate:\"teammate\"",
+      "chinese": "in_process_teammate:\"队友\""
+    },
+    {
+      "original": ",dream:\"dream\"",
+      "chinese": ",dream:\"梦境\""
+    },
+    {
+      "original": "auto_mode_scan:\"auto-mode scan\"",
+      "chinese": "auto_mode_scan:\"自动模式扫描\""
+    },
+    {
+      "original": "remote_agent:\"cloud session\"",
+      "chinese": "remote_agent:\"云端会话\""
+    },
+    {
+      "original": "(in [A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+\\[\\$\\]:)\"task\"\\}",
+      "chinese": "$1\"任务\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Copy Claude's last response to clipboard (or /copy N for the Nth-latest)\"",
+      "chinese": "\"将 Claude 的最新回复复制到剪贴板（或用 /copy N 复制倒数第 N 条）\""
+    },
+    {
+      "original": "\"No assistant message to copy\"",
+      "chinese": "\"没有可复制的 Claude 回复\""
+    },
+    {
+      "original": "Usage: /copy \\[N\\] where N is 1 \\(latest\\), 2, 3, … Got: \\$\\{([^{}]*)\\}",
+      "chinese": "用法：/copy [N]，N 为 1（最新）、2、3…；收到的是：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Only \\$\\{([^{}]*)\\} assistant \\$\\{[^{}]*\\} available to copy",
+      "chinese": "只有 ${$1} 条 Claude 回复可以复制",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Copied to clipboard \\(\\$\\{([^{}]*)\\} characters, \\$\\{([^{}]*)\\} \\$\\{[^{}]*\\}\\)",
+      "chinese": "已复制到剪贴板（${$1} 个字符，${$2} 行）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Copying once the reply finishes\"",
+      "chinese": "\"回复完成后就会复制\""
+    },
+    {
+      "original": "\"The reply is ready; run /copy to copy it\"",
+      "chinese": "\"回复已完成；运行 /copy 即可复制\""
+    },
+    {
+      "original": "\"Could not copy to clipboard\"",
+      "chinese": "\"无法复制到剪贴板\""
+    },
+    {
+      "original": "label:\"Copy response\"",
+      "chinese": "label:\"复制回复\""
+    },
+    {
+      "original": "\"aria-label\":`\\$\\{([^{}]*)\\} to clipboard`",
+      "chinese": "\"aria-label\":`${$1}到剪贴板`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "label:\"Sign out\",description:",
+      "chinese": "label:\"退出登录\",description:"
+    },
+    {
+      "original": "\"Sign out of Claude on this computer\"",
+      "chinese": "\"在这台电脑上退出 Claude 登录\""
+    },
+    {
+      "original": "Failed to sign out: \\$\\{([^{}]*)\\}",
+      "chinese": "退出登录失败：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Retrying…\"",
+      "chinese": "\"正在重试…\""
+    },
+    {
+      "original": "\"The page didn't open. Try again.\"",
+      "chinese": "\"页面没有打开，请再试一次。\""
+    },
+    {
+      "original": "Unarchive all \\$\\{([^{}]*)\\} sessions",
+      "chinese": "取消归档全部 ${$1} 个会话",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Usage limit reached · wrapping up\"",
+      "chinese": "\"已达用量上限 · 正在收尾\""
+    },
+    {
+      "original": "\"Usage limit reached · brief included wrap-up, then usage credits\"",
+      "chinese": "\"已达用量上限 · 先完成包含的简短收尾，之后改用用量点数\""
+    },
+    {
+      "original": "(\\.stopIcon\\}\\),[A-Za-z0-9_$]+=)\"Stop\"",
+      "chinese": "$1\"停止\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Send message\"",
+      "chinese": "\"发送消息\""
+    },
+    {
+      "original": "\"Open a new conversation in a new tab or the sidebar\"",
+      "chinese": "\"在新标签页或侧边栏中打开新对话\""
+    },
+    {
+      "original": "\"Channeling\"",
+      "chinese": "\"正在调动知识\""
+    },
+    {
+      "original": "\"Philosophizing\"",
+      "chinese": "\"正在思辨\""
+    },
+    {
+      "original": "\"Unraveling\"",
+      "chinese": "\"正在揭开逻辑\""
+    },
+    {
+      "original": "userSettings:\"user settings\"",
+      "chinese": "userSettings:\"用户设置\""
+    },
+    {
+      "original": "projectSettings:\"shared project settings\"",
+      "chinese": "projectSettings:\"共享项目设置\""
+    },
+    {
+      "original": "localSettings:\"project local settings\"",
+      "chinese": "localSettings:\"项目本地设置\""
+    },
+    {
+      "original": "flagSettings:\"settings given at startup\"",
+      "chinese": "flagSettings:\"启动时指定的设置\""
+    },
+    {
+      "original": "policySettings:\"enterprise managed settings\"",
+      "chinese": "policySettings:\"企业托管设置\""
+    },
+    {
+      "original": "command:\"a command's configuration\"",
+      "chinese": "command:\"命令的设置\""
+    },
+    {
+      "original": "session:\"current session\"",
+      "chinese": "session:\"当前会话\""
+    },
+    {
+      "original": "toolsNarrowing:\"a limited tool set\"",
+      "chinese": "toolsNarrowing:\"受限的工具集\""
+    },
+    {
+      "original": "mcpServerPolicy:\"MCP server policy\"",
+      "chinese": "mcpServerPolicy:\"MCP 服务器策略\""
+    },
+    {
+      "original": "hostCredential:\"cloud-session credential guard\"",
+      "chinese": "hostCredential:\"云端会话凭据防护\""
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the removal. If the rule is still shown after you reopen this dialog, try again.\"",
+      "chinese": "\"Claude Code 未能及时确认移除。如果重新打开此对话框后仍看到该规则，请再试一次。\""
+    },
+    {
+      "original": "`(?:Removed|移除) from \\$\\{([^{}]*)\\}\\. If the rule is still shown, Claude Code is still re-reading its settings; reopen this dialog to check\\.`",
+      "chinese": "`已从${$1}移除。如果仍看到该规则，说明 Claude Code 仍在重新读取设置；请重新打开此对话框确认。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the save. If the rule is not shown after you reopen this dialog, try again.\"",
+      "chinese": "\"Claude Code 未能及时确认保存。如果重新打开此对话框后仍未看到该规则，请再试一次。\""
+    },
+    {
+      "original": "Saved to \\$\\{([^{}]*)\\}\\. Not listed yet: this session is still re-reading its settings \\(reopen this dialog to check\\)",
+      "chinese": "已保存到${$1}。尚未列出：此会话仍在重新读取设置（请重新打开此对话框确认）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "?\", or it ignores this rule (in auto permission mode, allow rules for risky commands are not applied).\":\".\"",
+      "chinese": "?\"，或者此会话忽略了这条规则（在自动权限模式下，针对高风险命令的允许规则不会生效）。\":\"。\""
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the removal. Try again, or go back to the list to see whether the hook was removed.\"",
+      "chinese": "\"Claude Code 未能及时确认移除。请再试一次，或返回列表查看钩子是否已移除。\""
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the save. Try again, or go back to the list to see whether the hook was saved.\"",
+      "chinese": "\"Claude Code 未能及时确认保存。请再试一次，或返回列表查看钩子是否已保存。\""
     },
     {
       "original": "\" for VS Code\"",

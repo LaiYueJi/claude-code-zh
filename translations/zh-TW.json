@@ -1,8 +1,8 @@
 {
-  "version": "2.4.8",
+  "version": "2.4.9",
   "description": "Claude Code for VS Code 繁體中文（台灣）翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-23",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -11,6 +11,7 @@
     "Bash(git *)",
     "Bash(ls *)",
     "Claude Design",
+    "Claude in Chrome",
     "Claude in Chrome [",
     "Ctrl",
     "Ctrl+D",
@@ -5574,6 +5575,662 @@
     {
       "original": "\"Claude Code took too long to confirm the save. Try again, or go back to the list to see whether the hook was saved.\"",
       "chinese": "\"Claude Code 未能及時確認儲存。請再試一次，或回到清單查看勾點是否已儲存。\""
+    },
+    {
+      "original": "{title:\"Sandbox\",onClose:",
+      "chinese": "{title:\"沙箱\",onClose:"
+    },
+    {
+      "original": "label:\"Sandbox commands, with auto-allow\"",
+      "chinese": "label:\"在沙箱中執行指令，並自動允許\""
+    },
+    {
+      "original": "\"Sandboxed commands run without a permission prompt; your ask and deny rules still apply\"",
+      "chinese": "\"沙箱中的指令不會跳出權限提示；你的詢問與拒絕規則仍然適用\""
+    },
+    {
+      "original": "\"Sandbox commands, with regular permissions\"",
+      "chinese": "\"在沙箱中執行指令，權限照常\""
+    },
+    {
+      "original": ":\"Sandbox commands\"",
+      "chinese": ":\"在沙箱中執行指令\""
+    },
+    {
+      "original": "\"Commands run inside the sandbox; the usual permission prompts apply\"",
+      "chinese": "\"指令會在沙箱中執行，並照常跳出權限提示\""
+    },
+    {
+      "original": "label:\"No sandbox\"",
+      "chinese": "label:\"不使用沙箱\""
+    },
+    {
+      "original": "\"Commands run outside the sandbox\"",
+      "chinese": "\"指令會在沙箱外執行\""
+    },
+    {
+      "original": "\"Sandboxing needs WSL2; it is not available on WSL1.\"",
+      "chinese": "\"沙箱需要 WSL2，在 WSL1 無法使用。\""
+    },
+    {
+      "original": "\"Sandboxing is turned off for this platform by your organization's settings.\"",
+      "chinese": "\"你的組織設定已在此平台關閉沙箱。\""
+    },
+    {
+      "original": "\"Sandboxing is not available on this platform.\"",
+      "chinese": "\"此平台無法使用沙箱。\""
+    },
+    {
+      "original": "\"These settings are set by a higher-priority configuration and cannot be changed here.\"",
+      "chinese": "\"這些設定由優先權較高的設定決定，無法在這裡變更。\""
+    },
+    {
+      "original": "\"The sandbox cannot run until the missing dependencies below are installed.\"",
+      "chinese": "\"要先安裝下方缺少的相依項目，沙箱才能執行。\""
+    },
+    {
+      "original": "The sandbox is on in the settings but cannot run: \\$\\{([^{}]*)\\}",
+      "chinese": "設定中已開啟沙箱，但無法執行：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The sandbox is on in the settings but did not start in this session; start a new session to try again.\"",
+      "chinese": "\"設定中已開啟沙箱，但此對話階段沒有啟動沙箱；請開啟新的對話階段再試一次。\""
+    },
+    {
+      "original": "\"The sandbox settings can't be shown or changed here while this session runs in the cloud.\"",
+      "chinese": "\"此對話階段在雲端執行，無法在這裡檢視或變更沙箱設定。\""
+    },
+    {
+      "original": "\"The sandbox dialog reply was not in the expected shape\"",
+      "chinese": "\"沙箱對話框收到的回應格式不正確\""
+    },
+    {
+      "original": "formLabel,children:\"Mode\"",
+      "chinese": "formLabel,children:\"模式\""
+    },
+    {
+      "original": "\"aria-label\":\"Mode\"",
+      "chinese": "\"aria-label\":\"模式\""
+    },
+    {
+      "original": "formLabel,children:\"Overrides\"",
+      "chinese": "formLabel,children:\"覆寫設定\""
+    },
+    {
+      "original": "toggleLabel,children:\"Allow unsandboxed fallback\"",
+      "chinese": "toggleLabel,children:\"允許退回沙箱外執行\""
+    },
+    {
+      "original": "\"When a command fails because of a sandbox restriction, Claude may retry it outside the sandbox, with the usual permission prompts.\"",
+      "chinese": "\"當指令因沙箱限制而失敗時，Claude 可以改在沙箱外重試，並照常跳出權限提示。\""
+    },
+    {
+      "original": "\"Every command Claude runs must run in the sandbox, unless its pattern is excluded below.\"",
+      "chinese": "\"Claude 執行的每個指令都必須在沙箱中執行，除非其樣式列在下方的排除清單中。\""
+    },
+    {
+      "original": "\" Turn the sandbox on to change this.\"",
+      "chinese": "\"　請先開啟沙箱才能變更此項。\""
+    },
+    {
+      "original": "\" Set by a higher-priority configuration.\"",
+      "chinese": "\"　由優先權較高的設定決定。\""
+    },
+    {
+      "original": "formLabel,children:\"Excluded commands\"",
+      "chinese": "formLabel,children:\"排除的指令\""
+    },
+    {
+      "original": "\"Commands matching these patterns run outside the sandbox.\"",
+      "chinese": "\"符合這些樣式的指令會在沙箱外執行。\""
+    },
+    {
+      "original": "children:\"None\"})",
+      "chinese": "children:\"無\"})"
+    },
+    {
+      "original": "placeholder:\"Command pattern, for example npm run test:*\"",
+      "chinese": "placeholder:\"指令樣式，例如 npm run test:*\""
+    },
+    {
+      "original": "\"aria-label\":\"Command pattern to exclude\"",
+      "chinese": "\"aria-label\":\"要排除的指令樣式\""
+    },
+    {
+      "original": "children:\"Exclude\"})",
+      "chinese": "children:\"排除\"})"
+    },
+    {
+      "original": "formLabel,children:\"Dependencies\"",
+      "chinese": "formLabel,children:\"相依項目\""
+    },
+    {
+      "original": "\"The allowed domains are set by a higher-priority configuration.\"",
+      "chinese": "\"允許的網域由優先權較高的設定決定。\""
+    },
+    {
+      "original": "formLabel,children:\"Restrictions\"",
+      "chinese": "formLabel,children:\"限制\""
+    },
+    {
+      "original": "[\"Denied reads\",",
+      "chinese": "[\"拒絕讀取\","
+    },
+    {
+      "original": "[\"Allowed within denied reads\",",
+      "chinese": "[\"拒絕讀取中的例外\","
+    },
+    {
+      "original": "[\"Allowed writes\",",
+      "chinese": "[\"允許寫入\","
+    },
+    {
+      "original": "[\"Denied within allowed writes\",",
+      "chinese": "[\"允許寫入中的例外\","
+    },
+    {
+      "original": "?\"Allowed domains (managed)\":\"Allowed domains\"",
+      "chinese": "?\"允許的網域（受管理）\":\"允許的網域\""
+    },
+    {
+      "original": "[\"Denied domains\",",
+      "chinese": "[\"拒絕的網域\","
+    },
+    {
+      "original": "[\"Allowed Unix sockets\",",
+      "chinese": "[\"允許的 Unix socket\","
+    },
+    {
+      "original": "[\"Patterns ignored on Linux\",",
+      "chinese": "[\"在 Linux 上忽略的樣式\","
+    },
+    {
+      "original": "Claude Code took too long to confirm that \"\\$\\{([^{}]*)\\}\" was added to the excluded commands; check the Sandbox dialog",
+      "chinese": "Claude Code 未能及時確認「${$1}」已加入排除的指令；請開啟沙箱對話框確認",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`(?:Added|新增) \"\\$\\{([^{}]*)\\}\" to the excluded commands; this session has not picked the change up yet`",
+      "chinese": "`已將「${$1}」加入排除的指令；此對話階段尚未套用這項變更`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`(?:Added|新增) \"\\$\\{([^{}]*)\\}\" to the excluded commands`",
+      "chinese": "`已將「${$1}」加入排除的指令`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Couldn\\'t exclude \"\\$\\{([^{}]*)\\}\": \\$\\{([^{}]*)\\}",
+      "chinese": "無法排除「${$1}」：${$2}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The sandbox setting was not saved\"",
+      "chinese": "\"沙箱設定未儲存\""
+    },
+    {
+      "original": "\"No sandbox dialog was returned\"",
+      "chinese": "\"沒有傳回沙箱對話框\""
+    },
+    {
+      "original": "\"No browsers are connected. Open Chrome with the Claude extension and make sure you're signed in to the same claude.ai account.\"",
+      "chinese": "\"尚未連線任何瀏覽器。請開啟已安裝 Claude 擴充功能的 Chrome，並確認登入的是同一個 claude.ai 帳戶。\""
+    },
+    {
+      "original": "\"One browser is connected:\"",
+      "chinese": "\"已連線 1 個瀏覽器：\""
+    },
+    {
+      "original": "Choose which browser to use \\(\\$\\{([^{}]*)\\} connected\\):",
+      "chinese": "請選擇要使用的瀏覽器（已連線 ${$1} 個）：",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude in Chrome is turned off by your organization.\"",
+      "chinese": "\"你的組織已關閉 Claude in Chrome。\""
+    },
+    {
+      "original": "\"Claude in Chrome is not supported in WSL at this time.\"",
+      "chinese": "\"目前在 WSL 中不支援 Claude in Chrome。\""
+    },
+    {
+      "original": "\"Claude in Chrome requires a claude.ai subscription.\"",
+      "chinese": "\"Claude in Chrome 需要 claude.ai 訂閱。\""
+    },
+    {
+      "original": "\"Claude in Chrome can't be set up from here while this session runs in the cloud.\"",
+      "chinese": "\"此對話階段在雲端執行，無法從這裡設定 Claude in Chrome。\""
+    },
+    {
+      "original": "Now using browser \"\\$\\{([^{}]*)\\}\" for Chrome actions\\.",
+      "chinese": "Chrome 操作現在會使用瀏覽器「${$1}」。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Couldn\\'t switch browser: \\$\\{([^{}]*)\\}",
+      "chinese": "無法切換瀏覽器：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude in Chrome works with the Chrome extension to let you control your browser directly from Claude Code. Navigate websites, fill forms, capture screenshots, record GIFs, and debug with console logs and network requests.\"",
+      "chinese": "\"Claude in Chrome 會搭配 Chrome 擴充功能，讓你直接從 Claude Code 控制瀏覽器：瀏覽網站、填寫表單、擷取畫面、錄製 GIF，並透過主控台記錄與網路請求進行偵錯。\""
+    },
+    {
+      "original": "formLabel,children:\"Status\"",
+      "chinese": "formLabel,children:\"狀態\""
+    },
+    {
+      "original": "\"Claude in Chrome in this session:\"",
+      "chinese": "\"此對話階段的 Claude in Chrome：\""
+    },
+    {
+      "original": "?\"Enabled\":\"Disabled\"",
+      "chinese": "?\"已啟用\":\"已停用\""
+    },
+    {
+      "original": "\"Extension:\"",
+      "chinese": "\"擴充功能：\""
+    },
+    {
+      "original": "\\?\"(?:Installed|已安裝|已安装)\":\"Not detected\"",
+      "chinese": "?\"已安裝\":\"未偵測到\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Browser:\"",
+      "chinese": "\"瀏覽器：\""
+    },
+    {
+      "original": "formLabel,children:\"Extension\"",
+      "chinese": "formLabel,children:\"擴充功能\""
+    },
+    {
+      "original": "children:\"Install Chrome extension\"",
+      "chinese": "children:\"安裝 Chrome 擴充功能\""
+    },
+    {
+      "original": "children:[\"Manage permissions\",",
+      "chinese": "children:[\"管理權限\","
+    },
+    {
+      "original": "children:[\"Reconnect extension\",",
+      "chinese": "children:[\"重新連線擴充功能\","
+    },
+    {
+      "original": "\" (requires extension)\"",
+      "chinese": "\"（需要擴充功能）\""
+    },
+    {
+      "original": "children:'Once installed, choose \"Reconnect extension\" to connect.'",
+      "chinese": "children:'安裝完成後，請選擇「重新連線擴充功能」來連線。'"
+    },
+    {
+      "original": "formLabel,children:\"Browser\"",
+      "chinese": "formLabel,children:\"瀏覽器\""
+    },
+    {
+      "original": "\"Looking for connected browsers…\"",
+      "chinese": "\"正在尋找已連線的瀏覽器…\""
+    },
+    {
+      "original": "formLabel,children:\"Setting\"",
+      "chinese": "formLabel,children:\"設定\""
+    },
+    {
+      "original": "toggleLabel,children:\"Enabled by default\"",
+      "chinese": "toggleLabel,children:\"預設啟用\""
+    },
+    {
+      "original": "\"Applies to Claude Code sessions started outside this editor: they connect to the Chrome extension without being asked. In this editor, Claude in Chrome connects when you use @browser.\"",
+      "chinese": "\"適用於在此編輯器之外啟動的 Claude Code 對話階段：它們會直接連線 Chrome 擴充功能，不會另外詢問。在此編輯器中，則是使用 @browser 時才會連線。\""
+    },
+    {
+      "original": "\"Site-level permissions are inherited from the Chrome extension. Manage permissions in the Chrome extension settings to control which sites Claude can browse, click, and type on.\"",
+      "chinese": "\"網站層級的權限沿用 Chrome 擴充功能的設定。請在 Chrome 擴充功能設定中管理權限，決定 Claude 可以在哪些網站瀏覽、點擊與輸入。\""
+    },
+    {
+      "original": "children:\"Learn more about Claude in Chrome\"",
+      "chinese": "children:\"進一步了解 Claude in Chrome\""
+    },
+    {
+      "original": "\"unknown OS\"",
+      "chinese": "\"未知的作業系統\""
+    },
+    {
+      "original": "\" · current\"",
+      "chinese": "\" · 目前使用中\""
+    },
+    {
+      "original": "\" · switching…\"",
+      "chinese": "\" · 正在切換…\""
+    },
+    {
+      "original": "\"No Claude in Chrome state was returned\"",
+      "chinese": "\"沒有傳回 Claude in Chrome 的狀態\""
+    },
+    {
+      "original": "\"No browsers were returned\"",
+      "chinese": "\"沒有傳回瀏覽器清單\""
+    },
+    {
+      "original": "\"The setting was not saved\"",
+      "chinese": "\"設定未儲存\""
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the change, and this session still shows the previous value. Try again, or reopen this dialog to check.\"",
+      "chinese": "\"Claude Code 未能及時確認變更，此對話階段仍顯示先前的值。請再試一次，或重新開啟此對話框確認。\""
+    },
+    {
+      "original": "\"Saved, but this session still shows the previous value. It may not have picked the change up yet; reopen this dialog to check.\"",
+      "chinese": "\"已儲存，但此對話階段仍顯示先前的值，可能尚未套用這項變更；請重新開啟此對話框確認。\""
+    },
+    {
+      "original": "\"Saved, but this session still shows the previous value. A higher-priority setting may be overriding it, or the session hasn't picked the change up yet.\"",
+      "chinese": "\"已儲存，但此對話階段仍顯示先前的值。可能有優先權較高的設定覆寫了它，或是此對話階段尚未套用這項變更。\""
+    },
+    {
+      "original": "\"Claude Code took too long to confirm the change, and this session still shows the previous state. Try again, or reopen this dialog to check.\"",
+      "chinese": "\"Claude Code 未能及時確認變更，此對話階段仍顯示先前的狀態。請再試一次，或重新開啟此對話框確認。\""
+    },
+    {
+      "original": "\"Saved, but this session still shows the previous state. It may not have picked the change up yet; reopen this dialog to check.\"",
+      "chinese": "\"已儲存，但此對話階段仍顯示先前的狀態，可能尚未套用這項變更；請重新開啟此對話框確認。\""
+    },
+    {
+      "original": "{on:\"On\",\"name-only\":\"Name only\",\"user-invocable-only\":\"User only\",off:\"Off\"}",
+      "chinese": "{on:\"開啟\",\"name-only\":\"僅名稱\",\"user-invocable-only\":\"僅限你\",off:\"關閉\"}"
+    },
+    {
+      "original": "{on:\"Listed for Claude, and yours to invoke\",\"name-only\":\"Listed for Claude by name only, without its description\",\"user-invocable-only\":\"Yours to invoke; Claude does not see it\",off:\"Hidden from Claude and from the command list\"}",
+      "chinese": "{on:\"會列給 Claude，你也可以自行呼叫\",\"name-only\":\"只把名稱列給 Claude，不含說明\",\"user-invocable-only\":\"只有你可以呼叫，Claude 看不到\",off:\"對 Claude 與指令清單都隱藏\"}"
+    },
+    {
+      "original": "{plugin:\"Managed with its plugin\",author:\"Set in the skill's own file\",policy:\"Set by a higher-priority configuration\",flag:\"Set by a higher-priority configuration\",\"reserved-name\":\"Settings can't store an entry with this name; rename the skill's folder or file to configure it\"}",
+      "chinese": "{plugin:\"由所屬外掛程式管理\",author:\"在技能自己的檔案中設定\",policy:\"由優先權較高的設定決定\",flag:\"由優先權較高的設定決定\",\"reserved-name\":\"設定無法儲存這個名稱的項目；請將技能的資料夾或檔案改名後再設定\"}"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}: \\$\\{([^{}]*)\\}, locked\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1}：${$2}，已鎖定。${$3}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" · locked\"",
+      "chinese": "\" · 已鎖定\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\. Click to change\\.`",
+      "chinese": "`${$1}。點一下即可變更。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} · \\$\\{([^{}]*)\\} tokens`",
+      "chinese": "`${$1} · ${$2} 個 token`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"No skills were returned\"",
+      "chinese": "\"沒有傳回技能清單\""
+    },
+    {
+      "original": "\"The skill state was not saved\"",
+      "chinese": "\"技能狀態未儲存\""
+    },
+    {
+      "original": "description:\"List available skills\"",
+      "chinese": "description:\"列出可用的技能\""
+    },
+    {
+      "original": "{title:\"Export conversation\",onClose:",
+      "chinese": "{title:\"匯出對話\",onClose:"
+    },
+    {
+      "original": "label:\"Export conversation\"",
+      "chinese": "label:\"匯出對話\""
+    },
+    {
+      "original": "\"Copied to clipboard\"",
+      "chinese": "\"已複製到剪貼簿\""
+    },
+    {
+      "original": "{label:\"Save to file\"",
+      "chinese": "{label:\"儲存成檔案\""
+    },
+    {
+      "original": "\"Opened in the editor; choose where to save it\"",
+      "chinese": "\"已在編輯器中開啟，請選擇儲存位置\""
+    },
+    {
+      "original": "Could not save the file: \\$\\{([^{}]*)\\}",
+      "chinese": "無法儲存檔案：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Preparing the conversation…\"",
+      "chinese": "\"正在準備對話…\""
+    },
+    {
+      "original": "Could not prepare the conversation: \\$\\{([^{}]*)\\}",
+      "chinese": "無法準備對話：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "The whole conversation as plain text, \\$\\{([^{}]*)\\} characters\\.",
+      "chinese": "整段對話的純文字，共 ${$1} 個字元。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "children:[\"Save to file offers the name\",\" \",",
+      "chinese": "children:[\"「儲存成檔案」會使用的檔名：\",\" \","
+    },
+    {
+      "original": "description:\"Export the current conversation to a file or clipboard\"",
+      "chinese": "description:\"將目前的對話匯出成檔案或複製到剪貼簿\""
+    },
+    {
+      "original": "description:\"Copy the conversation as plain text or save it to a file\"",
+      "chinese": "description:\"將對話複製成純文字或儲存成檔案\""
+    },
+    {
+      "original": "\"Conversation opened in the editor; choose where to save it\"",
+      "chinese": "\"已在編輯器中開啟對話，請選擇儲存位置\""
+    },
+    {
+      "original": "\"Saving a file is not available here; Export conversation copies it instead\"",
+      "chinese": "\"這裡無法儲存檔案；「匯出對話」會改為複製內容\""
+    },
+    {
+      "original": "Failed to export conversation: \\$\\{([^{}]*)\\}",
+      "chinese": "匯出對話失敗：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"No export was returned\"",
+      "chinese": "\"沒有傳回匯出內容\""
+    },
+    {
+      "original": "{title:\"Status\",onClose:",
+      "chinese": "{title:\"狀態\",onClose:"
+    },
+    {
+      "original": "\"Loading status…\"",
+      "chinese": "\"正在載入狀態…\""
+    },
+    {
+      "original": "children:[\"Could not load status: \",",
+      "chinese": "children:[\"無法載入狀態：\","
+    },
+    {
+      "original": "{cwd:\"Working folder\",\"Peer address\":\"Messaging address\",\"Session kind\":\"Session type\"}",
+      "chinese": "{cwd:\"工作資料夾\",\"Peer address\":\"訊息位址\",\"Session kind\":\"對話階段類型\"}"
+    },
+    {
+      "original": "\"No status was returned\"",
+      "chinese": "\"沒有傳回狀態\""
+    },
+    {
+      "original": "description:\"Show Claude Code status including version, model, account, API connectivity, and tool statuses\"",
+      "chinese": "description:\"顯示 Claude Code 狀態，包含版本、模型、帳戶、API 連線與各項工具狀態\""
+    },
+    {
+      "original": "id:\"status\",label:\"Status\",description:\"Version, session, account, model and server details\"",
+      "chinese": "id:\"status\",label:\"狀態\",description:\"版本、對話階段、帳戶、模型與伺服器的詳細資訊\""
+    },
+    {
+      "original": "label:\"Sandbox\",description:\"View and change how commands are sandboxed\"",
+      "chinese": "label:\"沙箱\",description:\"檢視並變更指令在沙箱中的執行方式\""
+    },
+    {
+      "original": "Couldn\\'t switch to plan mode; not sent: \\$\\{([^{}]*)\\}",
+      "chinese": "無法切換到規劃模式，訊息未送出：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Couldn't switch to plan mode\"",
+      "chinese": "\"無法切換到規劃模式\""
+    },
+    {
+      "original": "\"Couldn't show the plan\"",
+      "chinese": "\"無法顯示計畫\""
+    },
+    {
+      "original": "\"Already in plan mode. No plan written yet.\"",
+      "chinese": "\"已經在規劃模式，但還沒有寫下任何計畫。\""
+    },
+    {
+      "original": "description:\"Enable plan mode or view the current session plan\"",
+      "chinese": "description:\"啟用規劃模式，或檢視目前對話階段的計畫\""
+    },
+    {
+      "original": "{bio:\"Our intentionally broad safeguards allow us to deliver more capabilities faster, but can sometimes flag legitimate biology tasks.\",cyber:\"Our intentionally broad safeguards allow us to deliver more capabilities faster, but can sometimes flag legitimate coding and cybersecurity tasks.\"}",
+      "chinese": "{bio:\"我們刻意把防護範圍設得較廣，好讓我們更快帶來更多功能，但有時也會誤標正當的生物學工作。\",cyber:\"我們刻意把防護範圍設得較廣，好讓我們更快帶來更多功能，但有時也會誤標正當的程式開發與資訊安全工作。\"}"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\'s safeguards flagged this message\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} 的安全防護機制標記了這則訊息。${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\'s safeguards flagged \\$\\{([^{}]*)\\}\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} 的安全防護機制標記了${$2}。${$3}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "You may be seeing this for the first time on an Opus model: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result, which can sometimes flag non-cybersecurity work\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次在 Opus 模型上遇到這種情況：${$1} 能力更強，防護機制也因此更嚴格，有時會誤標與資訊安全無關的工作。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "You may be seeing this for the first time on an Opus model: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result, which can sometimes flag biology-research-adjacent work\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次在 Opus 模型上遇到這種情況：${$1} 能力更強，防護機制也因此更嚴格，有時會誤標與生物研究相關的工作。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "You may be seeing this for the first time on an Opus model: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次在 Opus 模型上遇到這種情況：${$1} 能力更強，防護機制也因此更嚴格。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is answering instead, or you can edit and retry with \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`已改由 ${$1} 回答，你也可以編輯後改用 ${$2} 重試。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Edit and retry, or continue with \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`請編輯後重試，或改用 ${$1} 繼續。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"You can continue with a different model.\"",
+      "chinese": "\"你可以改用其他模型繼續。\""
+    },
+    {
+      "original": "\"Removed 1 invisible character\"",
+      "chinese": "\"已移除 1 個隱藏字元\""
+    },
+    {
+      "original": "`(?:Removed|移除) \\$\\{([^{}]*)\\} invisible characters`",
+      "chinese": "`已移除 ${$1} 個隱藏字元`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} · review and press \\$\\{([^{}]*)\\} to send`",
+      "chinese": "`${$1} · 請檢查後按 ${$2} 送出`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} · nothing left to send`",
+      "chinese": "`${$1} · 沒有可送出的內容`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} from the launch prompt before sending it`",
+      "chinese": "`${$1}（來自啟動提示詞）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} from the pasted text`",
+      "chinese": "`${$1}（來自貼上的文字）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Yes, and use auto mode\"",
+      "chinese": "\"是的，並使用自動模式\""
+    },
+    {
+      "original": "\"May use excessive tokens resulting in long response times or overthinking. Use sparingly for the hardest tasks.\"",
+      "chinese": "\"可能耗用過多 token，導致回應時間拉長或過度思考。請僅在最困難的任務偶爾使用。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} - xhigh \\+ workflows`",
+      "chinese": "`${$1} - xhigh + 工作流程`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "closeTooltip:\"Dismiss notice\"",
+      "chinese": "closeTooltip:\"關閉通知\""
+    },
+    {
+      "original": "description:\"View and manage what Claude remembers about this project\"",
+      "chinese": "description:\"檢視並管理 Claude 對這個專案記住的內容\""
+    },
+    {
+      "original": "description:\"Ask a quick side question without interrupting the main conversation\"",
+      "chinese": "description:\"不中斷主對話，快速問一個題外話\""
+    },
+    {
+      "original": "\"Open Claude in Chrome settings\"",
+      "chinese": "\"開啟 Claude in Chrome 設定\""
     },
     {
       "original": "\" for VS Code\"",

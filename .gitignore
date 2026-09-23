@@ -13,3 +13,6 @@ _scan_tmp/
 Thumbs.db
 .vscode-test/
 *.log
+
+# 論壇／社群貼文草稿（本機用，不進版控）
+posts/

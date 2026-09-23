@@ -12,3 +12,4 @@ _scan_tmp/**
 *.vsix
 [*]index.js
 **/*index.js.bak
+posts/**

@@ -25,7 +25,7 @@ const counts = (() => {
 })();
 
 const out = [];
-out.push('繁體中文（台灣）與簡體中文（中國大陸）雙語語言包' + (counts ? `，內建翻譯 **各 ${counts} 條**。` : '。'));
+out.push('繁體中文與簡體中文雙語語言包' + (counts ? `，內建翻譯 **各 ${counts} 條**。` : '。'));
 out.push('');
 out.push('## 📦 安裝');
 out.push('');

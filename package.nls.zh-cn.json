@@ -26,7 +26,7 @@
   "cfg.showNotifications": "显示操作完成的通知消息",
   "cfg.claudeCodeExtensionId": "Claude Code 扩展的 ID",
   "cfg.autoUpdateTranslations": "自动在线更新翻译包：从 GitHub 获取最新的 translations/*.json，无需重装 VSIX",
-  "cfg.checkExtensionUpdate": "检查本扩展是否有新版本（读取 GitHub Releases）",
+  "cfg.checkExtensionUpdate": "检查本扩展是否有新版本（读取 GitHub Releases）；从市场安装时会交给 VS Code 自动更新，启动时不再重复提醒",
   "cfg.translationSourceUrls": "翻译包在线来源（按顺序尝试）。留空则使用内置来源",
   "cfg.preTranslationRules": "前置翻译规则（在内置规则之前执行，优先级最高）",
   "cfg.rules.original": "原始英文文本（可为正则表达式）",

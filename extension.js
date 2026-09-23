@@ -5,7 +5,7 @@ const Translator = require('./lib/translator');
 const BackupManager = require('./lib/backup');
 const ConfigManager = require('./lib/config');
 const { LANGUAGES, ALL_MARKERS, getStrings } = require('./lib/i18n');
-const { Updater, RELEASE_PAGE } = require('./lib/updater');
+const { Updater, RELEASE_PAGE, MARKETPLACE_PAGE } = require('./lib/updater');
 
 // globalState 鍵
 const KEY_RESTORED = 'manuallyRestored';   // 使用者手動還原成原版 → 不再自動套用
@@ -251,7 +251,10 @@ async function checkUpdates(updater, locator, translator, backup, config, quiet)
     }
 
     // ── 擴充功能新版 ─────────────────────────
-    if (wantExt || !quiet) {
+    // 從市集裝的話，VS Code 自己就會更新擴充功能，這裡再去問 GitHub 只會重複提醒；
+    // 手動檢查時仍然回報，但不提供「下載並安裝 VSIX」——那會把安裝來源換成 VSIX，反而斷掉自動更新。
+    const fromGallery = getInstallSource() === 'gallery';
+    if ((wantExt || !quiet) && !(quiet && fromGallery)) {
         try {
             const currentVersion = getOwnVersion();
             const info = await updater.checkExtensionUpdate(currentVersion);
@@ -261,14 +264,19 @@ async function checkUpdates(updater, locator, translator, backup, config, quiet)
             }
             if (quiet && extContext.globalState.get(KEY_SKIPPED_VERSION) === info.version) return;
 
-            const buttons = info.vsixUrl
-                ? [s.updBtnInstall, s.updBtnOpenPage, s.updBtnSkip]
-                : [s.updBtnOpenPage, s.updBtnSkip];
+            const buttons = fromGallery
+                ? [s.updBtnOpenMarketplace, s.updBtnOpenPage, s.updBtnSkip]
+                : info.vsixUrl
+                    ? [s.updBtnInstall, s.updBtnOpenPage, s.updBtnSkip]
+                    : [s.updBtnOpenPage, s.updBtnSkip];
             const choice = await vscode.window.showInformationMessage(
-                s.updExtFound(currentVersion, info.version), ...buttons);
+                fromGallery ? s.updExtFoundGallery(currentVersion, info.version) : s.updExtFound(currentVersion, info.version),
+                ...buttons);
 
             if (choice === s.updBtnSkip) {
                 await extContext.globalState.update(KEY_SKIPPED_VERSION, info.version);
+            } else if (choice === s.updBtnOpenMarketplace) {
+                vscode.env.openExternal(vscode.Uri.parse(MARKETPLACE_PAGE));
             } else if (choice === s.updBtnOpenPage) {
                 vscode.env.openExternal(vscode.Uri.parse(info.pageUrl || RELEASE_PAGE));
             } else if (choice === s.updBtnInstall) {
@@ -318,9 +326,30 @@ async function resetTranslationPack(updater, locator, translator, backup, config
     if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
+/** 本擴充功能自身在 VS Code 中的擴充功能物件 */
+function getOwnExtension() {
+    return (extContext && extContext.extension) || vscode.extensions.getExtension('LaiYueJi.claude-code-zh');
+}
+
+/**
+ * 判斷本擴充功能是怎麼裝上來的：`gallery`（市集）／`vsix`（手動安裝）／`unknown`。
+ *
+ * VS Code 會把安裝來源寫進擴充功能 package.json 的 `__metadata`：市集安裝帶有 `publisherId`
+ * 與 `id`（GUID），較新的版本另有 `source` 欄位；手動安裝的 VSIX 沒有 publisherId。
+ * 判不出來時回 `unknown`，呼叫端一律當成 VSIX 處理——寧可多提醒一次，也不要讓人漏掉更新。
+ */
+function getInstallSource() {
+    const meta = getOwnExtension()?.packageJSON?.__metadata;
+    if (!meta) return 'unknown';
+    if (meta.source === 'gallery') return 'gallery';
+    if (meta.source === 'vsix' || meta.source === 'resource') return 'vsix';
+    if (meta.publisherId || meta.id) return 'gallery';
+    return 'unknown';
+}
+
 /** 本擴充功能自身的版本號 */
 function getOwnVersion() {
-    const ext = vscode.extensions.getExtension('LaiYueJi.claude-code-zh');
+    const ext = getOwnExtension();
     if (ext && ext.packageJSON && ext.packageJSON.version) return ext.packageJSON.version;
     try {
         return require('./package.json').version;

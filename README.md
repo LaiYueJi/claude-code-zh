@@ -11,12 +11,17 @@ Claude Code 的側邊欄、對話框、按鈕、通知原本全是英文。安�
 
 ## 🚀 安裝
 
-1. 先確定已安裝官方的 **Claude Code for VS Code** 擴充功能。
-2. 到 [**Releases**](https://github.com/LaiYueJi/claude-code-zh/releases/latest) 下載最新的 `.vsix`。
-3. VS Code → `擴充功能` 面板 → 右上角 `⋯` → **從 VSIX 安裝…** → 選剛下載的檔案。
-4. 依提示 **重新載入視窗**，中文介面就出現了。
+先確定已安裝官方的 **Claude Code for VS Code** 擴充功能，然後選一種方式：
 
-之後不用再管它：VS Code 啟動時會自動套用，Claude Code 更新後也會自動重新翻譯。
+**從市集安裝（推薦）**
+
+在 VS Code 的 `擴充功能` 面板搜尋 **Claude Code 中文**，或直接開 [市集頁面](https://marketplace.visualstudio.com/items?itemName=LaiYueJi.claude-code-zh) 按安裝。這種方式之後由 VS Code 自動更新。
+
+**手動安裝 VSIX**
+
+到 [Releases](https://github.com/LaiYueJi/claude-code-zh/releases/latest) 下載 `.vsix` → `擴充功能` 面板 → 右上角 `⋯` → **從 VSIX 安裝…**。
+
+裝好後依提示 **重新載入視窗**，中文介面就出現了。之後不用再管它：VS Code 啟動時會自動套用，Claude Code 更新後也會自動重新翻譯。
 
 ## 💡 日常使用
 
@@ -35,6 +40,9 @@ A：Claude 的視窗在 VS Code 還原時會比本擴充功能早一步載入，
 
 **Q：Claude Code 更新後會不會又變英文？**
 A：不會。本擴充功能偵測到 Claude Code 版本變動時會自動重新套用。
+
+**Q：語言包自己怎麼更新？**
+A：從市集安裝的話，VS Code 會自動更新，不必理它。手動裝 VSIX 的話，會在有新版時提醒你，可以直接按「下載並安裝」。另外翻譯檔還有獨立的線上熱更新，兩種安裝方式都一樣有效。
 
 **Q：Claude 改版後出現沒翻到的英文怎麼辦？**
 A：翻譯包支援線上熱更新——每隔 6 小時會向 GitHub 取一次最新翻譯檔，**補完的漏翻不必重裝 VSIX 就會自動生效**。想立刻拿到就點狀態列選單的 **⬆️ 檢查更新**。急著自己補也行，見下方「自訂翻譯」。

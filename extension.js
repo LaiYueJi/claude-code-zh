@@ -514,8 +514,39 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
  * `workbench.action.webview.reloadWebviewAction`（會重載視窗內全部 webview）。
  * 它不是正式 API，因此失敗時退回「重新載入視窗」。
  */
-async function reloadWebviews(config) {
+/**
+ * 視窗裡是否有 Claude 開在編輯器分頁的對話（webview panel，viewType 形如 mainThreadWebview-claudeVSCodePanel）。
+ *
+ * 「就地重載 webview」走的是 VS Code 的 reloadWebviewAction，它會把視窗內所有 webview 一起重載。
+ * Claude 的側邊欄檢視可以正常重建，但開在編輯器分頁的對話重載後不會重新初始化——畫面整片空白、
+ * 連載入中都不會顯示，只能關掉分頁重開。因此只要有這種分頁存在，就改走整個視窗重新載入：
+ * 慢一點，但 Claude 有註冊 webview 序列化器（claudeVSCodePanel），對話會原封不動回來。
+ */
+function hasClaudePanelTabs() {
+    try {
+        for (const group of vscode.window.tabGroups.all) {
+            for (const tab of group.tabs) {
+                const viewType = tab && tab.input && tab.input.viewType;
+                if (typeof viewType === 'string' && /claude/i.test(viewType)) return true;
+            }
+        }
+    } catch (e) {
+        // tabGroups 在舊版 VS Code 可能不存在；判不出來就當作沒有，維持原本的就地重載
+    }
+    return false;
+}
+
+async function reloadWebviews(config, auto = false) {
     const s = S(config);
+    if (hasClaudePanelTabs()) {
+        // 自動重載（autoReloadClaudeUi）不打斷使用者，直接換成視窗重新載入；手動按的則說明一句再問
+        if (!auto) {
+            const choice = await vscode.window.showWarningMessage(s.uiPanelNeedsWindow, s.btnReloadNow, s.btnLater);
+            if (choice !== s.btnReloadNow) return false;
+        }
+        vscode.commands.executeCommand('workbench.action.reloadWindow');
+        return false;
+    }
     try {
         await vscode.commands.executeCommand('workbench.action.webview.reloadWebviewAction');
         webviewStale = false;
@@ -550,7 +581,7 @@ async function reloadClaudeUi(locator, translator, backup, config) {
 async function offerUiReload(locator, translator, backup, config) {
     const s = S(config);
     if (config.get('autoReloadClaudeUi')) {
-        await reloadWebviews(config);
+        await reloadWebviews(config, true);
         updateStatusBar(locator, backup, translator, config);
         return;
     }

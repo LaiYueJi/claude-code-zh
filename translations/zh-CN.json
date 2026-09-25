@@ -1,8 +1,8 @@
 {
-  "version": "2.4.14",
+  "version": "2.4.15",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-09-25",
+  "updatedAt": "2026-09-26",
   "scanIgnore": [
     " new problem",
     "Alt",

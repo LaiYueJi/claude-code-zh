@@ -909,15 +909,19 @@ function normalizePlaceholders(str) {
  * 那是既有債務而非改版訊號。真正需要立刻處理的是「上次沒有、這次冒出來」的那些——
  * 幾乎都代表 Claude 這一版新增或改寫了介面。首次執行僅建立基準線，不回報。
  */
-async function collectNewUntranslated(list, config) {
+async function collectNewUntranslated(list, config, persist = true) {
     if (!extContext) return [];
     const lang = config.getEffectiveLanguage();
     const store = extContext.globalState.get(KEY_SEEN_UNTRANSLATED) || {};
     const prev = store[lang];
     const newly = Array.isArray(prev) ? list.filter(s => !prev.includes(s)) : [];
 
-    store[lang] = list;
-    await extContext.globalState.update(KEY_SEEN_UNTRANSLATED, store);
+    // 手動掃描（persist=false）刻意不推進基準線：否則使用者在自動掃描後再按一次「掃描未翻譯字串」，
+    // 「這次才出現」與「失效規則」兩段就永遠看不到了——基準線已經被前一次掃描吃掉。
+    if (persist) {
+        store[lang] = list;
+        await extContext.globalState.update(KEY_SEEN_UNTRANSLATED, store);
+    }
     return newly;
 }
 
@@ -929,7 +933,7 @@ async function collectNewUntranslated(list, config) {
  * 代表 Claude 動了那段英文，才是需要人工確認的訊號。
  * 首次執行僅建立基準線，不回報。
  */
-async function collectNewlyDeadRules(baseContent, translator, config) {
+async function collectNewlyDeadRules(baseContent, translator, config, persist = true) {
     if (!extContext) return [];
     const lang = config.getEffectiveLanguage();
     const rules = (translator.getCurrentRules().translations) || [];
@@ -939,8 +943,11 @@ async function collectNewlyDeadRules(baseContent, translator, config) {
     const prev = store[lang];
     const newly = Array.isArray(prev) ? dead.filter(d => !prev.includes(d)) : [];
 
-    store[lang] = dead;
-    await extContext.globalState.update(KEY_DEAD_RULES, store);
+    // 與漏翻字串同樣的理由：手動掃描不推進基準線，報告才能重看
+    if (persist) {
+        store[lang] = dead;
+        await extContext.globalState.update(KEY_DEAD_RULES, store);
+    }
     return newly;
 }
 
@@ -964,8 +971,8 @@ async function scanUntranslated(locator, translator, backup, config, quiet) {
         const ignoreSet = new Set([...translator.getScanIgnore()].map(normalizePlaceholders));
         const list = all.filter(str => !ignoreSet.has(normalizePlaceholders(str)));
         const ignoredCount = all.length - list.length;
-        const newly = await collectNewUntranslated(list, config);
-        const newlyDead = await collectNewlyDeadRules(base, translator, config);
+        const newly = await collectNewUntranslated(list, config, quiet);
+        const newlyDead = await collectNewlyDeadRules(base, translator, config, quiet);
 
         // 保存結果供「跳到字串」定位
         lastScan = { list, filePath: mainFilePath };

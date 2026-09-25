@@ -1,8 +1,8 @@
 {
-  "version": "2.4.13",
+  "version": "2.4.14",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-09-25",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -6257,6 +6257,38 @@
     {
       "original": "\"Claude Code is responding again in this tab, and the message box is back.\"",
       "chinese": "\"Claude Code 在這個分頁恢復回應了，輸入框也回來了。\""
+    },
+    {
+      "original": "(:\"\"\\}) \\$\\{([A-Za-z0-9_$]+)\\?([A-Za-z0-9_$]+):\"If this notice is still here",
+      "chinese": "$1${$2?$3:\"If this notice is still here",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude Code stopped responding in this tab, usually because the editor restarted its extensions.\"",
+      "chinese": "\"Claude Code 在這個分頁停止回應了，通常是因為編輯器重新啟動了擴充功能。\""
+    },
+    {
+      "original": "\"If this notice is still here after a minute, close this tab and reopen the conversation from the session list in the Claude Code sidebar.\"",
+      "chinese": "\"如果一分鐘後這則提示還在，請關閉這個分頁，再從 Claude Code 側邊欄的對話階段清單重新開啟這個對話。\""
+    },
+    {
+      "original": "\"If this notice is still here after a minute, close this tab and sign in from the Claude Code sidebar.\"",
+      "chinese": "\"如果一分鐘後這則提示還在，請關閉這個分頁，再從 Claude Code 側邊欄登入。\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} Your most recent messages may not have reached Claude\\. \\$\\{([A-Za-z0-9_$]+)\\}`",
+      "chinese": "`${$1}你最近送出的訊息可能沒有送達 Claude。${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" Your sign-in may not have gone through.\"",
+      "chinese": "\"你的登入可能沒有完成。\""
+    },
+    {
+      "original": "\"Claude Code is responding again in this tab, and the sign-in screen is back.\"",
+      "chinese": "\"Claude Code 在這個分頁恢復回應了，登入畫面也回來了。\""
     },
     {
       "original": "\" for VS Code\"",

@@ -2,6 +2,29 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.4.16] - 2026-09-29
+
+### 新增（Claude Code 2.1.284，繁簡各 83 條）
+- 🧩 **外掛程式載入失敗的說明整組**：plugin.json 無效、檔案不存在、MCP 伺服器設定不正確、勾點／元件／市集無法載入、相依項目關閉或未安裝、版本不符、語言伺服器的五種狀況、套件包下載／解壓／清單無效等，加上「它無法載入。」這個預設說明。
+- 🧩 **「部分沒有執行」的說明**：資料夾被 plugin.json 蓋過、MCP 伺服器重複、外掛改名或已移除、claude.ai 版本被同名外掛取代、組織只允許受管理的勾點、被設定關閉或被另一個設定檔開啟、連結指向不存在的技能。
+- 🔗 **從連結安裝外掛程式時的市集錯誤**：六種情境的標題與說明（版本太舊、已有同一市集、已有同名市集、來源不同、檔案已在資料夾中、無法自動選取），以及「安裝外掛程式 … 需要加入新的市集來源：」與解除安裝相關文字。
+- 🛡️ **安全防護標記訊息**：2.1.284 把「on an Opus model」改成變數帶入，三句的規則因此重寫，並翻譯新的片語「在 Sonnet 模型上」。
+- 📝 **意見回饋改成存檔**：「儲存報告」按鈕、存檔失敗訊息，以及「已將報告儲存到 …，請寄給你的 Anthropic 客戶代表」。
+- 🌐 **Claude in Chrome 開分頁失敗**的四種原因與整句提示。
+- 📁 **對話階段清單的「已封存的對話階段」**分組標題，以及顯示資料夾、未記錄寄件者、已達用量上限、雲端閘道等零星字串。
+
+### 修正
+- 🔍 **掃描器納入 `name` 屬性**：「已封存的對話階段」寫成 `name:"Archived sessions"`，掛在 title／label／children 上的掃描一條都看不到。納入後 Monaco 與 markdown 的內部識別字（`blockQuote`、`cmd.id`…）也會跟著冒出來，因此 `name` 的值必須是詞組（含空白）才算文案，剩下 6 條 Monaco 引數說明列入刻意不翻。
+
+### 刻意不翻
+- 送給模型的合成工具結果（`[Tool call did not complete: …]`、`[Request interrupted by user]`、「The user doesn't want to take this action right now. STOP…」）：它們不是介面文案，而是會送進對話的內容，翻了等於改動送給模型的訊息。
+- 訊息協定標記 `Monitor event:`、以及 `startsWith()` 與正規表達式用來比對 CLI 原文的字串（`Browser extension is not connected:`、`Marketplace `、`Plugin "`、`Dependency "…" is disabled` 等）。
+- Amazon Bedrock／Google Vertex AI／Microsoft Foundry 是品牌名。
+
+### 備註
+- 翻譯規則 1474 → **1557 條**（繁簡相同）；`scanIgnore` 49 → 55 條。
+- 實測 2.1.284 繁簡：漏翻掃描皆為需處理 **0 條**；五套行為不變式全數通過。
+
 ## [2.4.15] - 2026-09-26
 
 ### 修正

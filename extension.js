@@ -21,7 +21,10 @@ const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 // 偵測未翻譯字串時要掃描的介面屬性（比對「prop:值」）
 // children 於 2.3.0 納入：側邊提問面板整區文案都寫成 children:"文字"，舊版掃描一條都看不到。
-const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading', 'children'];
+const LITERAL_PROPS = ['title', 'placeholder', 'aria-label', 'ariaLabel', 'label', 'tooltip', 'heading', 'subheading', 'children', 'name'];
+// name 於 2.4.16 納入：對話階段清單的分組標題寫成 name:"Archived sessions"，掛在其他屬性上的掃描一條都看不到。
+// 代價是 Monaco 與 markdown 的內部識別字（blockQuote、cmd.id…）也掛在 name 上，因此 name 的值必須是詞組（含空白）才算文案。
+const PHRASE_ONLY_PROPS = new Set(['name']);
 // 變數參照掃描（prop:變數名）額外納入 description：
 // Monaco 內嵌大量 description:"色彩說明…" 字面值會造成洪水，故 description 僅用於變數參照，靠片語過濾把關。
 const VAR_PROPS = LITERAL_PROPS.concat('description');
@@ -841,13 +844,16 @@ function findPropValueStrings(translatedContent, results) {
     const names = LITERAL_PROPS.map(p => p.replace(/-/g, '\\-')).join('|');
     // 屬性名可能帶引號（"aria-label":"…"）；前方需為非識別字字元，以免 xxxLabel: 之類誤命中。
     // 另一種錨點是介面函式的引數位置（showNotification(…)），值的寫法與屬性完全相同，共用同一套解析。
-    const re = new RegExp('(?<![A-Za-z0-9_$])(?:"?(?:' + names + ')"?\\s*:|(?:' + UI_CALLS.join('|') + ')\\s*\\()', 'g');
+    const re = new RegExp('(?<![A-Za-z0-9_$])(?:"?(' + names + ')"?\\s*:|(?:' + UI_CALLS.join('|') + ')\\s*\\()', 'g');
+    let phraseOnly = false;
     const take = (raw, isTpl) => {
+        if (phraseOnly && !/\s/.test(raw)) return;
         if (isTpl) { if (templateLooksLikeText(raw, TPL_PROP_MIN_WORDS)) results.add(raw); }
         else if (looksLikeUiText(raw)) results.add(raw);
     };
     let m;
     while ((m = re.exec(translatedContent))) {
+        phraseOnly = PHRASE_ONLY_PROPS.has(m[1]);
         const from = m.index + m[0].length;
         const tail = translatedContent.slice(from, from + PROP_VALUE_WINDOW);
         let v;

@@ -1,8 +1,8 @@
 {
-  "version": "2.4.15",
+  "version": "2.4.16",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-09-26",
+  "updatedAt": "2026-09-29",
   "scanIgnore": [
     " new problem",
     "Alt",
@@ -15,9 +15,12 @@
     "Claude in Chrome [",
     "Ctrl",
     "Ctrl+D",
+    "Cursor move argument object",
+    "Editor scroll argument object",
     "Enter",
     "Esc",
     "Fable 5",
+    "Fold editor argument",
     "Found ",
     "Glob",
     "Grep",
@@ -28,6 +31,7 @@
     "Loading...",
     "Missing ${$} property in key",
     "OUT",
+    "Open a new In-Editor Find Widget args",
     "OpenVSX",
     "Option",
     "PowerShell",
@@ -35,11 +39,13 @@
     "Property 'weight' in key '${$}' must be a positive integer",
     "REPL",
     "REPL ",
+    "Reveal line argument object",
     "Search",
     "Shell",
     "Shift",
     "Tab",
     "URL",
+    "Unfold editor argument",
     "Unknown",
     "VS Code",
     "WebFetch",
@@ -6289,6 +6295,408 @@
     {
       "original": "\"Claude Code is responding again in this tab, and the sign-in screen is back.\"",
       "chinese": "\"Claude Code 在這個分頁恢復回應了，登入畫面也回來了。\""
+    },
+    {
+      "original": "\"Its plugin.json isn't valid JSON.\"",
+      "chinese": "\"它的 plugin.json 不是有效的 JSON。\""
+    },
+    {
+      "original": "\"Its plugin.json has settings that aren't valid.\"",
+      "chinese": "\"它的 plugin.json 裡有無效的設定。\""
+    },
+    {
+      "original": "A file it lists is missing: \\$\\{([^{}]*)\\}\\.",
+      "chinese": "它列出的檔案不存在：${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its MCP server \\$\\{([^{}]*)\\} isn\\'t set up correctly\\.",
+      "chinese": "它的 MCP 伺服器 ${$1} 設定不正確。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Its hooks couldn't be loaded.\"",
+      "chinese": "\"它的勾點無法載入。\""
+    },
+    {
+      "original": "Its \\$\\{([^{}]*)\\} couldn\\'t be loaded\\.",
+      "chinese": "它的 ${$1} 無法載入。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, couldn\\'t be loaded\\.",
+      "chinese": "它的市集 ${$1} 無法載入。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, isn\\'t added\\.",
+      "chinese": "它的市集 ${$1} 尚未加入。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It is no longer in the \\$\\{([^{}]*)\\} marketplace\\.",
+      "chinese": "它已經不在 ${$1} 市集裡。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, isn\\'t allowed by your organization\\.",
+      "chinese": "你的組織不允許它的市集 ${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It needs \\$\\{([^{}]*)\\}, which is turned off\\.",
+      "chinese": "它需要 ${$1}，但該項目已關閉。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It needs \\$\\{([^{}]*)\\}, which isn\\'t installed\\.",
+      "chinese": "它需要 ${$1}，但該項目尚未安裝。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It needs \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\}, and a different version is installed\\.",
+      "chinese": "它需要 ${$1} ${$2}，但安裝的是其他版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Its files aren't downloaded.\"",
+      "chinese": "\"它的檔案尚未下載。\""
+    },
+    {
+      "original": "\"It is turned on for this project but isn't installed.\"",
+      "chinese": "\"這個專案已啟用它，但它尚未安裝。\""
+    },
+    {
+      "original": "Its language server \\$\\{([^{}]*)\\} isn\\'t set up correctly\\.",
+      "chinese": "它的語言伺服器 ${$1} 設定不正確。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its language server \\$\\{([^{}]*)\\} couldn\\'t start\\.",
+      "chinese": "它的語言伺服器 ${$1} 無法啟動。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its language server \\$\\{([^{}]*)\\} stopped unexpectedly\\.",
+      "chinese": "它的語言伺服器 ${$1} 意外停止。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its language server \\$\\{([^{}]*)\\} isn\\'t responding\\.",
+      "chinese": "它的語言伺服器 ${$1} 沒有回應。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its language server \\$\\{([^{}]*)\\} isn\\'t used for \\$\\{([^{}]*)\\} files; another plugin\\'s is\\.",
+      "chinese": "它的語言伺服器 ${$1} 沒有用於 ${$2} 檔案，改用了其他外掛程式的。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Its bundle couldn't be downloaded.\"",
+      "chinese": "\"它的套件包無法下載。\""
+    },
+    {
+      "original": "\"Its bundle couldn't be unpacked.\"",
+      "chinese": "\"它的套件包無法解開。\""
+    },
+    {
+      "original": "\"Its bundle's manifest isn't valid.\"",
+      "chinese": "\"它的套件包資訊清單無效。\""
+    },
+    {
+      "original": "\"It couldn't be loaded.\"",
+      "chinese": "\"它無法載入。\""
+    },
+    {
+      "original": "Its \\$\\{([^{}]*)\\} folder is ignored because its plugin\\.json lists \\$\\{([^{}]*)\\} files itself\\.",
+      "chinese": "它的 ${$1} 資料夾被忽略，因為它的 plugin.json 自行列出了 ${$2} 檔案。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its MCP server \\$\\{([^{}]*)\\} is already provided by \\$\\{([^{}]*)\\}, so this copy is skipped\\.",
+      "chinese": "它的 MCP 伺服器 ${$1} 已由 ${$2} 提供，因此略過這一份。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its MCP server \\$\\{([^{}]*)\\} is already set up elsewhere, so this copy is skipped\\.",
+      "chinese": "它的 MCP 伺服器 ${$1} 已在其他地方設定過，因此略過這一份。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It is now called \\$\\{([^{}]*)\\} in the \\$\\{([^{}]*)\\} marketplace\\.",
+      "chinese": "它在 ${$2} 市集中已改名為 ${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "It was removed from the \\$\\{([^{}]*)\\} marketplace\\.",
+      "chinese": "它已從 ${$1} 市集移除。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Its copy from claude.ai isn't loaded; a plugin on this machine with the same name takes its place.\"",
+      "chinese": "\"來自 claude.ai 的版本沒有載入，改用了這台電腦上同名的外掛程式。\""
+    },
+    {
+      "original": "\"Its hooks aren't running, because your organization only allows hooks from plugins it manages.\"",
+      "chinese": "\"它的勾點沒有執行，因為你的組織只允許由組織管理的外掛程式提供勾點。\""
+    },
+    {
+      "original": "\"It is turned off by your settings, so it is not running.\"",
+      "chinese": "\"你的設定已關閉它，因此沒有執行。\""
+    },
+    {
+      "original": "\"It is turned off in your user settings, but another settings file turns it on, so it still runs.\"",
+      "chinese": "\"你的使用者設定關閉了它，但另一個設定檔又開啟它，所以它仍在執行。\""
+    },
+    {
+      "original": "\"One of its links points to a skill that does not exist.\"",
+      "chinese": "\"它的其中一個連結指向不存在的技能。\""
+    },
+    {
+      "original": "\"Part of it may not be running.\"",
+      "chinese": "\"它可能有一部分沒有執行。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} couldn\\'t be loaded`",
+      "chinese": "`${$1} 無法載入`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} There are \\$\\{([^{}]*)\\} more; Copy error includes them all\\.`",
+      "chinese": "`${$1} 另外還有 ${$2} 個；「複製錯誤訊息」會一併複製。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Copying didn't work. Try again.\"",
+      "chinese": "\"複製失敗，請再試一次。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} didn\\'t work\\. Try again\\.`",
+      "chinese": "`${$1}失敗，請再試一次。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "{label:\"Uninstall\",primary:!1",
+      "chinese": "{label:\"解除安裝\",primary:!1"
+    },
+    {
+      "original": "\"Uninstalling…\"",
+      "chinese": "\"正在解除安裝…\""
+    },
+    {
+      "original": "title:\"What you can do about this\"",
+      "chinese": "title:\"可以怎麼處理\""
+    },
+    {
+      "original": "children:[\"Installing plugin\"",
+      "chinese": "children:[\"安裝外掛程式\""
+    },
+    {
+      "original": "\"requires adding a new marketplace source:\"",
+      "chinese": "\"需要加入新的市集來源：\""
+    },
+    {
+      "original": "\"This link's marketplace wasn't added.\"",
+      "chinese": "\"這個連結的市集沒有加入。\""
+    },
+    {
+      "original": "\"Your Claude Process Wrapper setting starts a version of Claude Code that is too old to add a marketplace from a link, so nothing changed and the plugin wasn't installed. Update the Claude Code it starts, then open the link again.\"",
+      "chinese": "\"你的 Claude Process Wrapper 設定啟動的 Claude Code 版本太舊，無法從連結加入市集，因此沒有任何變更，外掛程式也沒有安裝。請更新它啟動的 Claude Code，再重新開啟這個連結。\""
+    },
+    {
+      "original": "\"You already have this marketplace.\"",
+      "chinese": "\"你已經有這個市集了。\""
+    },
+    {
+      "original": "\"Yours was added from the same address with a sign-in or other settings the link doesn't include, so the link's marketplace wasn't added. Install the plugin from the Plugins tab instead.\"",
+      "chinese": "\"你的市集是以相同位址加入的，但帶有連結沒有的登入或其他設定，因此連結的市集沒有加入。請改從「外掛程式」分頁安裝。\""
+    },
+    {
+      "original": "\"Your Claude Code settings already list a marketplace with this name.\"",
+      "chinese": "\"你的 Claude Code 設定裡已經有同名的市集。\""
+    },
+    {
+      "original": "\"That entry gives it a different source, so the link's marketplace wasn't added and the plugin wasn't installed. If you can edit that entry, change it, then open the link again.\"",
+      "chinese": "\"那筆設定指向不同的來源，因此連結的市集沒有加入，外掛程式也沒有安裝。若你可以編輯那筆設定，改好後再重新開啟這個連結。\""
+    },
+    {
+      "original": "\"Nothing changed and the plugin wasn't installed. Files for a marketplace with this name are most likely already in the folder shown below. Remove that marketplace on the Marketplaces tab, or delete the folder if it isn't listed, then open the link again.\"",
+      "chinese": "\"沒有任何變更，外掛程式也沒有安裝。同名市集的檔案很可能已經在下面這個資料夾裡。請到「市集」分頁移除該市集；若清單中沒有，就直接刪掉那個資料夾，然後重新開啟這個連結。\""
+    },
+    {
+      "original": "\"You already have a marketplace with this name.\"",
+      "chinese": "\"你已經有同名的市集了。\""
+    },
+    {
+      "original": "\"The link's marketplace comes from a different source, so it wasn't added and the plugin wasn't installed. If you trust the link's source below more than yours, remove yours on the Marketplaces tab, then open the link again.\"",
+      "chinese": "\"連結的市集來自不同的來源，因此沒有加入，外掛程式也沒有安裝。若你認為下面連結的來源比你原本的更可信，請到「市集」分頁移除你原本的，再重新開啟這個連結。\""
+    },
+    {
+      "original": "The link\\'s marketplace is ready, but \"\\$\\{([^{}]*)\\}\" couldn\\'t be selected automatically\\. Find the link\\'s source on the Marketplaces tab, and install \"\\$\\{([^{}]*)\\}\" only from the marketplace listed with it\\.",
+      "chinese": "連結的市集已就緒，但無法自動選取「${$1}」。請在「市集」分頁找到連結的來源，並只從它所屬的市集安裝「${$2}」。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Plugin \\$\\{([^{}]*)\\} is already installed\\.",
+      "chinese": "外掛程式 ${$1} 已經安裝。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Plugin \\$\\{([^{}]*)\\} not found in the marketplace\\.",
+      "chinese": "市集中找不到外掛程式 ${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" on a Sonnet model\"",
+      "chinese": "\"在 Sonnet 模型上\""
+    },
+    {
+      "original": "You may be seeing this for the first time\\$\\{([^{}]*)\\}: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result, which can sometimes flag non-cybersecurity work\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次${$1}遇到這種情況：${$2} 能力更強，防護機制也因此更嚴格，有時會誤標與資訊安全無關的工作。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "You may be seeing this for the first time\\$\\{([^{}]*)\\}: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result, which can sometimes flag biology-research-adjacent work\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次${$1}遇到這種情況：${$2} 能力更強，防護機制也因此更嚴格，有時會誤標與生物研究相關的工作。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "You may be seeing this for the first time\\$\\{([^{}]*)\\}: \\$\\{([^{}]*)\\} is more capable and has stronger safeguards as a result\\. We\\'re improving these safeguards to reduce the amount of incorrectly flagged messages\\.",
+      "chinese": "你可能是第一次${$1}遇到這種情況：${$2} 能力更強，防護機制也因此更嚴格。我們正在改進這些防護機制，減少被誤標的訊息。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Save report\"",
+      "chinese": "\"儲存報告\""
+    },
+    {
+      "original": "Couldn\\'t save the report to this computer: \\$\\{([^{}]*)\\}",
+      "chinese": "無法將報告儲存到這台電腦：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Saved your report to \\$\\{([^{}]*)\\}\\. Nothing was sent\\. Send this file to your Anthropic account representative or attach it to your support request\\.",
+      "chinese": "已將報告儲存到 ${$1}。沒有送出任何內容。請把這個檔案寄給你的 Anthropic 客戶代表，或附在支援請求中。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"two different claude.ai accounts are in use here.\"",
+      "chinese": "\"這裡使用了兩個不同的 claude.ai 帳戶。\""
+    },
+    {
+      "original": "\"Browser extension is not connected.\"",
+      "chinese": "\"瀏覽器擴充功能未連線。\""
+    },
+    {
+      "original": "\"no browser answered.\"",
+      "chinese": "\"沒有瀏覽器回應。\""
+    },
+    {
+      "original": "\"the browser gave no tab.\"",
+      "chinese": "\"瀏覽器沒有提供分頁。\""
+    },
+    {
+      "original": "Claude in Chrome could not open a browser tab: \\$\\{([^{}]*)\\} The message above was sent without one\\.",
+      "chinese": "Claude in Chrome 無法開啟瀏覽器分頁：${$1} 上面的訊息已在沒有分頁的情況下送出。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Archived sessions\"",
+      "chinese": "\"已封存的對話階段\""
+    },
+    {
+      "original": "\"Show folder\"",
+      "chinese": "\"顯示資料夾\""
+    },
+    {
+      "original": "\"Sender not recorded\"",
+      "chinese": "\"未記錄寄件者\""
+    },
+    {
+      "original": "\"Run dynamic workflows on every task (this session only)\"",
+      "chinese": "\"在每個任務上執行動態工作流程（僅限本對話階段）\""
+    },
+    {
+      "original": "\"This conversation is still open somewhere else. Using it in two places at once can mix up its messages.\"",
+      "chinese": "\"這個對話在其他地方也開著。同時在兩處使用可能會讓訊息錯亂。\""
+    },
+    {
+      "original": "\"Open here anyway\"",
+      "chinese": "\"仍要在這裡開啟\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}, so Claude reloaded with the file as last saved\\.`",
+      "chinese": "`${$1}，因此 Claude 以最後儲存的檔案內容重新載入。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Usage limit reached\"",
+      "chinese": "\"已達用量上限\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} · \\$\\{([^{}]*)\\} resets \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} · ${$2} 於 ${$3} 重置`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "seven_day_overage_included:\"Fable limit\"",
+      "chinese": "seven_day_overage_included:\"Fable 上限\""
+    },
+    {
+      "original": "case\"gateway\":return\"Cloud gateway\"",
+      "chinese": "case\"gateway\":return\"雲端閘道\""
+    },
+    {
+      "original": "default:return\"Third Party\"",
+      "chinese": "default:return\"第三方\""
+    },
+    {
+      "original": "case\"not-specified\":return\"Not Specified\"",
+      "chinese": "case\"not-specified\":return\"未指定\""
+    },
+    {
+      "original": "default:return\"Not authenticated\"",
+      "chinese": "default:return\"未驗證\""
+    },
+    {
+      "original": "/\\$\\{([^{}]*)\\} isn\\'t available in this environment\\.",
+      "chinese": "/${$1} 在這個環境中無法使用。",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

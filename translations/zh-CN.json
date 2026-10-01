@@ -1,10 +1,12 @@
 {
-  "version": "2.4.16",
+  "version": "2.4.17",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-02",
   "scanIgnore": [
     " new problem",
+    "${J}. This may or may not be related to the current task.",
+    "${jI}: AbortError: Tool permission stream closed before response received",
     "Alt",
     "Artifact",
     "Bash",
@@ -34,6 +36,7 @@
     "Open a new In-Editor Find Widget args",
     "OpenVSX",
     "Option",
+    "Other",
     "PowerShell",
     "Private Key",
     "Property 'weight' in key '${$}' must be a positive integer",
@@ -6697,6 +6700,584 @@
       "chinese": "/${$1} 在这个环境中无法使用。",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "{noAnswer:\"No answer\",declined:\"Declined\",sessionEnded:\"Session ended before an answer\",answered:\"Answered\"}",
+      "chinese": "{noAnswer:\"未作答\",declined:\"已婉拒\",sessionEnded:\"会话在作答前结束\",answered:\"已作答\"}"
+    },
+    {
+      "original": "(children:[A-Za-z0-9_$]+===1\\?)\"Question\":\"Questions\"",
+      "chinese": "$1\"问题\":\"问题\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "label:\"Other\",selected:!0",
+      "chinese": "label:\"其他\",selected:!0"
+    },
+    {
+      "original": "\"No preview for this option\"",
+      "chinese": "\"这个选项没有预览\""
+    },
+    {
+      "original": "Preview: \\$\\{([^{}]*)\\}",
+      "chinese": "预览：${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "?\"Browser tab\":",
+      "chinese": "?\"浏览器标签页\":"
+    },
+    {
+      "original": "`Browser tab: \\$\\{([^{}]*)\\}`",
+      "chinese": "`浏览器标签页：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "{label:\"Address\",text:",
+      "chinese": "{label:\"网址\",text:"
+    },
+    {
+      "original": "{label:\"Tab\",text:",
+      "chinese": "{label:\"标签页\",text:"
+    },
+    {
+      "original": "`Terminal output: \\$\\{([^{}]*)\\}`",
+      "chinese": "`终端输出：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Browser instructions\"",
+      "chinese": "\"浏览器指示\""
+    },
+    {
+      "original": "`Selected code: \\$\\{([^{}]*)\\}`",
+      "chinese": "`选中的代码：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\{label:\"Command\",text:([A-Za-z0-9_$]+)\\}",
+      "chinese": "{label:\"命令\",text:$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "{label:\"Command message\",text:",
+      "chinese": "{label:\"命令消息\",text:"
+    },
+    {
+      "original": "{label:\"Command contents\",text:",
+      "chinese": "{label:\"命令内容\",text:"
+    },
+    {
+      "original": "\"This plugin is already installed.\"",
+      "chinese": "\"这个插件已经安装了。\""
+    },
+    {
+      "original": "\"It's in your Installed list.\"",
+      "chinese": "\"它就在你的「已安装」列表里。\""
+    },
+    {
+      "original": "label:\"Show it\"",
+      "chinese": "label:\"显示它\""
+    },
+    {
+      "original": "This plugin isn\\'t in your copy of \"\\$\\{([^{}]*)\\}\"\\.",
+      "chinese": "你的「${$1}」副本里没有这个插件。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This plugin needs a plugin that is turned off.\"",
+      "chinese": "\"这个插件需要另一个已关闭的插件。\""
+    },
+    {
+      "original": "\"This plugin needs plugins that are turned off.\"",
+      "chinese": "\"这个插件需要其他已关闭的插件。\""
+    },
+    {
+      "original": "\"This plugin needs a plugin that isn't installed.\"",
+      "chinese": "\"这个插件需要另一个尚未安装的插件。\""
+    },
+    {
+      "original": "\"This plugin needs plugins that aren't installed.\"",
+      "chinese": "\"这个插件需要其他尚未安装的插件。\""
+    },
+    {
+      "original": "\"Turn both on\"",
+      "chinese": "\"两个都开启\""
+    },
+    {
+      "original": "\"Turn both off\"",
+      "chinese": "\"两个都关闭\""
+    },
+    {
+      "original": "`Turn all \\$\\{([^{}]*)\\} on`",
+      "chinese": "`全部 ${$1} 个都开启`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Turn all \\$\\{([^{}]*)\\} off`",
+      "chinese": "`全部 ${$1} 个都关闭`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "$.enabled?\"on\":\"off\"",
+      "chinese": "$.enabled?\"开启\":\"关闭\""
+    },
+    {
+      "original": "This plugin is set in \\$\\{([^{}]*)\\}, and that setting wins\\.",
+      "chinese": "这个插件在 ${$1} 中已设置，而且以该设置为准。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "This plugin is set in \\$\\{([^{}]*)\\}\\.",
+      "chinese": "这个插件在 ${$1} 中已设置。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Turn it \\$\\{([^{}]*)\\} there instead\\.`",
+      "chinese": "`请改在那里${$1}它。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Turn it \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$2}${$1}它`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "[\".claude/settings.json, which your team shares\",\"for everyone\"]",
+      "chinese": "[\".claude/settings.json（与团队共用）\",\"为所有人\"]"
+    },
+    {
+      "original": "[\".claude/settings.local.json, which is just yours\",\"just for you\"]",
+      "chinese": "[\".claude/settings.local.json（只属于你）\",\"只为你自己\"]"
+    },
+    {
+      "original": "[\"your user settings\",\"in your user settings\"]",
+      "chinese": "[\"你的用户设置\",\"在你的用户设置中\"]"
+    },
+    {
+      "original": "`This plugin can\\'t be turned \\$\\{([^{}]*)\\} here\\.`",
+      "chinese": "`这里无法${$1}这个插件。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Your organization's settings decide this plugin.\"",
+      "chinese": "\"这个插件由你的组织设置决定。\""
+    },
+    {
+      "original": "case\"install\":return\"installing this plugin\"",
+      "chinese": "case\"install\":return\"安装这个插件\""
+    },
+    {
+      "original": "`turning this plugin \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1}这个插件`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "case\"add-marketplace\":return\"adding this marketplace\"",
+      "chinese": "case\"add-marketplace\":return\"添加这个市场\""
+    },
+    {
+      "original": "case\"remove-marketplace\":return\"removing this marketplace\"",
+      "chinese": "case\"remove-marketplace\":return\"移除这个市场\""
+    },
+    {
+      "original": "Something went wrong while \\$\\{([^{}]*)\\}\\.",
+      "chinese": "${$1}时发生问题。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Turning on…\"",
+      "chinese": "\"正在开启…\""
+    },
+    {
+      "original": "\"Turning off…\"",
+      "chinese": "\"正在关闭…\""
+    },
+    {
+      "original": "\"Trying again…\"",
+      "chinese": "\"正在重试…\""
+    },
+    {
+      "original": "\"Refreshing the marketplace…\"",
+      "chinese": "\"正在刷新市场…\""
+    },
+    {
+      "original": "\"Copying didn't work. Click Copy error again.\"",
+      "chinese": "\"复制失败，请再点一次「复制错误信息」。\""
+    },
+    {
+      "original": "\"Uninstalling didn't work.\"",
+      "chinese": "\"卸载失败。\""
+    },
+    {
+      "original": "\"The list was not read.\"",
+      "chinese": "\"没有读取到列表。\""
+    },
+    {
+      "original": "\"The list of plugins you can install couldn't be loaded.\"",
+      "chinese": "\"无法加载可安装的插件列表。\""
+    },
+    {
+      "original": "\"Your plugins and marketplaces couldn't be loaded.\"",
+      "chinese": "\"无法加载你的插件与市场。\""
+    },
+    {
+      "original": "\"Disable for me\"",
+      "chinese": "\"只关闭我的\""
+    },
+    {
+      "original": "\"Disable for everyone\"",
+      "chinese": "\"为所有人关闭\""
+    },
+    {
+      "original": "\"This plugin is turned on for your whole team.\"",
+      "chinese": "\"这个插件已为整个团队开启。\""
+    },
+    {
+      "original": "\"It's turned on in .claude/settings.json, which your team shares, so uninstalling it removes it for everyone on your team who uses this project.\"",
+      "chinese": "\"它在与团队共用的 .claude/settings.json 中开启，因此卸载会让团队中所有使用这个项目的人都失去它。\""
+    },
+    {
+      "original": "\"It's turned on in .claude/settings.json, which your team shares, so uninstalling your copy would leave it on.\"",
+      "chinese": "\"它在与团队共用的 .claude/settings.json 中开启，因此只卸载你这份，它仍会是开启的。\""
+    },
+    {
+      "original": "\"Uninstall for everyone\"",
+      "chinese": "\"为所有人卸载\""
+    },
+    {
+      "original": "\"This plugin has saved data.\"",
+      "chinese": "\"这个插件有已保存的数据。\""
+    },
+    {
+      "original": "\"This plugin may have saved data.\"",
+      "chinese": "\"这个插件可能有已保存的数据。\""
+    },
+    {
+      "original": "Uninstalling it deletes \\$\\{([^{}]*)\\} of saved data unless you keep it\\.",
+      "chinese": "卸载会删除 ${$1} 的已保存数据，除非你选择保留。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Uninstalling it deletes any saved data unless you keep it.\"",
+      "chinese": "\"卸载会删除所有已保存的数据，除非你选择保留。\""
+    },
+    {
+      "original": "label:\"Keep\"",
+      "chinese": "label:\"保留\""
+    },
+    {
+      "original": "label:\"Delete\"",
+      "chinese": "label:\"删除\""
+    },
+    {
+      "original": "\"This plugin can't be uninstalled here.\"",
+      "chinese": "\"这个插件无法在这里卸载。\""
+    },
+    {
+      "original": "\"Can't be uninstalled here\"",
+      "chinese": "\"无法在这里卸载\""
+    },
+    {
+      "original": "`Why \\$\\{([^{}]*)\\} can\\'t be uninstalled here`",
+      "chinese": "`为什么 ${$1} 无法在这里卸载`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Your organization manages it. Ask your admin to remove it.\"",
+      "chinese": "\"它由你的组织管理，请联系管理员移除。\""
+    },
+    {
+      "original": "\"It's installed for another project. Open that project to uninstall it.\"",
+      "chinese": "\"它是为另一个项目安装的，请打开那个项目再卸载。\""
+    },
+    {
+      "original": "\"It's built in or loaded from a folder, so there is nothing to uninstall.\"",
+      "chinese": "\"它是内置的或从文件夹加载的，没有可卸载的项目。\""
+    },
+    {
+      "original": "\"This plugin wasn't uninstalled.\"",
+      "chinese": "\"这个插件没有被卸载。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} wasn\\'t uninstalled\\.`",
+      "chinese": "`${$1} 没有被卸载。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Try again, or copy the error to see what happened.\"",
+      "chinese": "\"请再试一次，或复制错误信息查看原因。\""
+    },
+    {
+      "original": "\"This plugin was uninstalled, but it's still on for you.\"",
+      "chinese": "\"这个插件已卸载，但对你仍是开启的。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} was uninstalled, but it\\'s still on for you\\.`",
+      "chinese": "`${$1} 已卸载，但对你仍是开启的。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Another installation or your team's settings turn it on, and turning it off just for you didn't work.\"",
+      "chinese": "\"另一份安装或你团队的设置把它开启了，而只为你自己关闭并没有成功。\""
+    },
+    {
+      "original": "\"This plugin is still on for you.\"",
+      "chinese": "\"这个插件对你仍是开启的。\""
+    },
+    {
+      "original": "\"Other plugins still use this plugin.\"",
+      "chinese": "\"其他插件仍在使用这个插件。\""
+    },
+    {
+      "original": "\"This plugin is no longer installed here.\"",
+      "chinese": "\"这个插件已经不在这里安装了。\""
+    },
+    {
+      "original": "`Configure \\$\\{([^{}]*)\\}`",
+      "chinese": "`设置 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Configure \\$\\{([^{}]*)\\}\\'s options`",
+      "chinese": "`设置 ${$1} 的选项`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Configure options\"",
+      "chinese": "\"设置选项\""
+    },
+    {
+      "original": "\"Save configuration\"",
+      "chinese": "\"保存配置\""
+    },
+    {
+      "original": "\"Back to list\"",
+      "chinese": "\"返回列表\""
+    },
+    {
+      "original": "\"This plugin's options weren't saved.\"",
+      "chinese": "\"这个插件的选项没有保存。\""
+    },
+    {
+      "original": "\"The plugin's options changed while this form was open. Go back and open them again.\"",
+      "chinese": "\"这份表单开着的时候，插件的选项变动过。请返回后重新打开。\""
+    },
+    {
+      "original": "\"Saving the options took too long.\"",
+      "chinese": "\"保存选项的时间过长。\""
+    },
+    {
+      "original": "\"Claude Code couldn't be started.\"",
+      "chinese": "\"无法启动 Claude Code。\""
+    },
+    {
+      "original": "\"Something went wrong while saving.\"",
+      "chinese": "\"保存时发生问题。\""
+    },
+    {
+      "original": "\"It's installed, but loading its options took too long.\"",
+      "chinese": "\"已安装，但加载它的选项时间过长。\""
+    },
+    {
+      "original": "\"It's installed, but Claude Code couldn't be started to load its options.\"",
+      "chinese": "\"已安装，但无法启动 Claude Code 来加载它的选项。\""
+    },
+    {
+      "original": "\"It's installed, but its options couldn't be read.\"",
+      "chinese": "\"已安装，但无法读取它的选项。\""
+    },
+    {
+      "original": "\"Loading the options took too long.\"",
+      "chinese": "\"加载选项的时间过长。\""
+    },
+    {
+      "original": "\"Something went wrong while loading.\"",
+      "chinese": "\"加载时发生问题。\""
+    },
+    {
+      "original": "\"This plugin's options couldn't be loaded.\"",
+      "chinese": "\"无法加载这个插件的选项。\""
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, is added, but its source or name can\\'t be used\\.",
+      "chinese": "它的市场 ${$1} 已添加，但来源或名称无法使用。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, is added, but its location is on a network drive or couldn\\'t be checked\\.",
+      "chinese": "它的市场 ${$1} 已添加，但位置在网络驱动器上，或是无法检查。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, is added, but it doesn\\'t match its entry in settings\\.",
+      "chinese": "它的市场 ${$1} 已添加，但与设置中的条目不符。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, is added but can\\'t be used\\.",
+      "chinese": "它的市场 ${$1} 已添加，但无法使用。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Add marketplace again\"",
+      "chinese": "\"重新添加市场\""
+    },
+    {
+      "original": "\"Remove this marketplace?\"",
+      "chinese": "\"要移除这个市场吗？\""
+    },
+    {
+      "original": "\"Scope: \"",
+      "chinese": "\"范围：\""
+    },
+    {
+      "original": "\"Bookmarks\"",
+      "chinese": "\"书签\""
+    },
+    {
+      "original": "\"Remove bookmark\"",
+      "chinese": "\"移除书签\""
+    },
+    {
+      "original": "\"Bookmark response\"",
+      "chinese": "\"将回复加入书签\""
+    },
+    {
+      "original": "\"Resize bookmarks panel\"",
+      "chinese": "\"调整书签面板大小\""
+    },
+    {
+      "original": "\"Bookmark a response with the bookmark button under it to keep it here.\"",
+      "chinese": "\"用回复下方的书签按钮把它加入书签，就会留在这里。\""
+    },
+    {
+      "original": "\"Click a bookmark to show it here.\"",
+      "chinese": "\"点击书签就会显示在这里。\""
+    },
+    {
+      "original": "\"Show in conversation\"",
+      "chinese": "\"在对话中显示\""
+    },
+    {
+      "original": "\"No longer shown in the conversation\"",
+      "chinese": "\"已不在对话中显示\""
+    },
+    {
+      "original": "\"Response can't be shown\"",
+      "chinese": "\"无法显示这条回复\""
+    },
+    {
+      "original": "\"This response can't be shown because its conversation history can't be found or read.\"",
+      "chinese": "\"无法显示这条回复，因为找不到或无法读取它的对话记录。\""
+    },
+    {
+      "original": "\"Show your bookmarked responses beside the conversation\"",
+      "chinese": "\"在对话旁显示你加入书签的回复\""
+    },
+    {
+      "original": "\"This bookmark can't be saved because this conversation's history can't be found.\"",
+      "chinese": "\"无法保存这个书签，因为找不到这个对话的记录。\""
+    },
+    {
+      "original": "\"This bookmark couldn't be written to disk.\"",
+      "chinese": "\"无法将这个书签写入磁盘。\""
+    },
+    {
+      "original": "\"This bookmark couldn't be saved because a file it needs couldn't be read.\"",
+      "chinese": "\"无法保存这个书签，因为它需要的文件读取失败。\""
+    },
+    {
+      "original": "\"this session has no saved transcript\"",
+      "chinese": "\"这个会话没有已保存的转录记录\""
+    },
+    {
+      "original": "\"this session's bookmarks could not be written\"",
+      "chinese": "\"无法写入这个会话的书签\""
+    },
+    {
+      "original": "\"Some of this agent's newer messages could not be read again, so a few may be missing.\"",
+      "chinese": "\"这个代理较新的消息有部分无法再次读取，因此可能会缺少几条。\""
+    },
+    {
+      "original": "\"Couldn't load this conversation's saved history, so it can't be continued.\"",
+      "chinese": "\"无法加载这个对话已保存的记录，因此无法继续。\""
+    },
+    {
+      "original": "`Message from ${",
+      "chinese": "`消息来自 ${"
+    },
+    {
+      "original": "local_memory_import:\"memory import\"",
+      "chinese": "local_memory_import:\"记忆导入\""
+    },
+    {
+      "original": "\"Delivered by a plugin hook; nothing else was sent.\"",
+      "chinese": "\"由插件钩子发送，没有发送其他内容。\""
+    },
+    {
+      "original": "\"No reply was recorded for this message before the session was reloaded.\"",
+      "chinese": "\"这条消息在会话重新加载前没有记录到回复。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} in any of your marketplaces`",
+      "chinese": "`不在你的任何市场中`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It needs \\$\\{([^{}]*)\\}, which \\$\\{([^{}]*)\\}\\. Add a marketplace that has \\$\\{([^{}]*)\\} first\\.`",
+      "chinese": "`它需要 ${$1}，而该项目${$2}。请先添加有 ${$3} 的市场。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It needs \\$\\{([^{}]*)\\}\\. \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\}, so add a marketplace that has \\$\\{([^{}]*)\\} first\\.`",
+      "chinese": "`它需要 ${$1}。${$2}${$3}，请先添加有 ${$4} 的市场。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It needs \\$\\{([^{}]*)\\}\\. Install \\$\\{([^{}]*)\\} first, then turn this plugin on\\.`",
+      "chinese": "`它需要 ${$1}。请先安装 ${$2}，再开启这个插件。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`This plugin is already \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`这个插件已经是${$1}的了。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The list was out of date.\"",
+      "chinese": "\"列表已经过期。\""
     },
     {
       "original": "\" for VS Code\"",

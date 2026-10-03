@@ -1,8 +1,8 @@
 {
-  "version": "2.4.17",
+  "version": "2.4.18",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-03",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -7278,6 +7278,262 @@
     {
       "original": "\"The list was out of date.\"",
       "chinese": "\"清單已經過期。\""
+    },
+    {
+      "original": "children:[F(uq,{}),\"Output\"]",
+      "chinese": "children:[F(uq,{}),\"輸出\"]"
+    },
+    {
+      "original": "\"Output is not available.\"",
+      "chinese": "\"無法取得輸出。\""
+    },
+    {
+      "original": "\"No output yet.\"",
+      "chinese": "\"還沒有輸出。\""
+    },
+    {
+      "original": "\"No output.\"",
+      "chinese": "\"沒有輸出。\""
+    },
+    {
+      "original": "children:[\"Showing the end of \",",
+      "chinese": "children:[\"僅顯示最後 \","
+    },
+    {
+      "original": ",\" of output.\"]",
+      "chinese": ",\" 的輸出。\"]"
+    },
+    {
+      "original": "\"No output in the reply\"",
+      "chinese": "\"回應中沒有輸出\""
+    },
+    {
+      "original": "Claude Code took too long to confirm \\$\\{([^{}]*)\\}",
+      "chinese": "Claude Code 未能及時確認${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Claude Code\\'s reply was too large to confirm \\$\\{([^{}]*)\\}",
+      "chinese": "Claude Code 的回應太大，無法確認${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ",\"the removal\")",
+      "chinese": ",\"移除\")"
+    },
+    {
+      "original": ",\"the save\")",
+      "chinese": ",\"儲存\")"
+    },
+    {
+      "original": ",\"the change\")",
+      "chinese": ",\"變更\")"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\. Try again, or go back to the list to see whether the hook was removed\\.`",
+      "chinese": "`${$1}。請再試一次，或回到清單查看勾點是否已移除。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\. Try again, or go back to the list to see whether the hook was saved\\.`",
+      "chinese": "`${$1}。請再試一次，或回到清單查看勾點是否已儲存。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}, and this session still shows the previous value\\. The switch shows what this session has now; try again, or reopen this dialog to check\\.`",
+      "chinese": "`${$1}，此對話階段仍顯示先前的值。開關顯示的是此對話階段目前的狀態；請再試一次，或重新開啟此對話框確認。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}, and this session still shows the previous value\\. Try again, or reopen this dialog to check\\.`",
+      "chinese": "`${$1}，此對話階段仍顯示先前的值。請再試一次，或重新開啟此對話框確認。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\. If the rule is still shown after you reopen this dialog, try again\\.`",
+      "chinese": "`${$1}。若重新開啟此對話框後仍看到該規則，請再試一次。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}\\. If the rule is not shown after you reopen this dialog, try again\\.`",
+      "chinese": "`${$1}。若重新開啟此對話框後仍未看到該規則，請再試一次。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"When on, Claude in Chrome connects in the sessions open in this window and in every new session, here and outside this editor. When off, it connects here only when you use @browser.\"",
+      "chinese": "\"開啟後，Claude in Chrome 會在這個視窗已開啟的對話階段以及每個新的對話階段中連線，無論在這個編輯器內外。關閉時，只有在你使用 @browser 時才會在這裡連線。\""
+    },
+    {
+      "original": "`Configure options for \\$\\{([^{}]*)\\}`",
+      "chinese": "`設定 ${$1} 的選項`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Install \\$\\{([^{}]*)\\} from \\$\\{([^{}]*)\\}`",
+      "chinese": "`從 ${$2} 安裝 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Update \\$\\{([^{}]*)\\}`",
+      "chinese": "`更新 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Updating \\$\\{([^{}]*)\\}`",
+      "chinese": "`正在更新 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Refresh marketplace \\$\\{([^{}]*)\\}`",
+      "chinese": "`重新整理市集 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Remove marketplace \\$\\{([^{}]*)\\}`",
+      "chinese": "`移除市集 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Removing marketplace \\$\\{([^{}]*)\\}`",
+      "chinese": "`正在移除市集 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The packages it lists couldn't be installed automatically. If it needs them, parts of it may not work.\"",
+      "chinese": "\"它列出的套件無法自動安裝。如果它需要這些套件，可能會有部分功能無法運作。\""
+    },
+    {
+      "original": "\"The packages it lists weren't installed. If it needs them, parts of it may not work. Updating the plugin tries again.\"",
+      "chinese": "\"它列出的套件沒有安裝。如果它需要這些套件，可能會有部分功能無法運作。更新這個外掛程式會再試一次。\""
+    },
+    {
+      "original": "\"This marketplace wasn't added.\"",
+      "chinese": "\"這個市集沒有加入。\""
+    },
+    {
+      "original": "\"Nothing changed.\"",
+      "chinese": "\"沒有任何變更。\""
+    },
+    {
+      "original": "\"This source can't be used.\"",
+      "chinese": "\"這個來源無法使用。\""
+    },
+    {
+      "original": "\"Check that it's a GitHub owner/repo, a git URL, a URL or path to a marketplace.json file, or a folder that exists. Copy the error to see why.\"",
+      "chinese": "\"請確認它是 GitHub 的 擁有者/儲存庫、git 網址、指向 marketplace.json 的網址或路徑，或是存在的資料夾。複製錯誤訊息可以看到原因。\""
+    },
+    {
+      "original": "\"This marketplace's location is on a network drive or couldn't be checked.\"",
+      "chinese": "\"這個市集的位置在網路磁碟機上，或是無法檢查。\""
+    },
+    {
+      "original": "To add it, list it under extraKnownMarketplaces in your Claude Code user settings, or ask an admin to list it in your organization\\'s settings\\. \\$\\{([^{}]*)\\}",
+      "chinese": "若要加入它，請在你的 Claude Code 使用者設定中把它列在 extraKnownMarketplaces 底下，或請管理員把它列進貴組織的設定。${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Your organization doesn't allow this marketplace.\"",
+      "chinese": "\"你的組織不允許這個市集。\""
+    },
+    {
+      "original": "\"This source has no marketplace file.\"",
+      "chinese": "\"這個來源沒有市集檔案。\""
+    },
+    {
+      "original": "\"This marketplace's source no longer has a marketplace file.\"",
+      "chinese": "\"這個市集的來源已經沒有市集檔案。\""
+    },
+    {
+      "original": "A folder or repository needs a \\.claude-plugin/marketplace\\.json file\\. \\$\\{([^{}]*)\\} Copy the error to see why\\.",
+      "chinese": "資料夾或儲存庫必須有 .claude-plugin/marketplace.json 檔案。${$1} 複製錯誤訊息可以看到原因。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"You can remove it from this tab if it has moved. Copy the error to see why.\"",
+      "chinese": "\"如果它已經搬走，可以在這個分頁把它移除。複製錯誤訊息可以看到原因。\""
+    },
+    {
+      "original": "\"This source's marketplace file isn't valid.\"",
+      "chinese": "\"這個來源的市集檔案無效。\""
+    },
+    {
+      "original": "\"This marketplace's file isn't valid.\"",
+      "chinese": "\"這個市集的檔案無效。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} Copy the error to see why\\.`",
+      "chinese": "`${$1} 複製錯誤訊息可以看到原因。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Copy the error to see why.\"",
+      "chinese": "\"複製錯誤訊息可以看到原因。\""
+    },
+    {
+      "original": "\"This marketplace is no longer added.\"",
+      "chinese": "\"這個市集已經不在清單中。\""
+    },
+    {
+      "original": "\"Your organization already provides a marketplace with this name.\"",
+      "chinese": "\"你的組織已經提供了同名的市集。\""
+    },
+    {
+      "original": "This marketplace can\\'t be \\$\\{([^{}]*)\\} here\\.",
+      "chinese": "這個市集無法在這裡${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"remove-marketplace\"?\"removed\":\"refreshed\"",
+      "chinese": "\"remove-marketplace\"?\"移除\":\"重新整理\""
+    },
+    {
+      "original": "\"Your organization provides it.\"",
+      "chinese": "\"它是由你的組織提供的。\""
+    },
+    {
+      "original": "\"You already have a marketplace with nearly the same name.\"",
+      "chinese": "\"你已經有名稱幾乎相同的市集了。\""
+    },
+    {
+      "original": "The names differ only in letter case or in characters folder names ignore, so both can\\'t be added\\. \\$\\{([^{}]*)\\} Copy the error to see which\\.",
+      "chinese": "兩個名稱只差在大小寫，或是差在資料夾名稱會忽略的字元，因此無法同時加入。${$1} 複製錯誤訊息可以看到是哪一個。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Settings already list a marketplace with this name.\"",
+      "chinese": "\"設定中已經列有同名的市集。\""
+    },
+    {
+      "original": "That entry names a different source\\. \\$\\{([^{}]*)\\}",
+      "chinese": "那筆設定指向不同的來源。${$1}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \\$\\{([^{}]*)\\}, is added, but its location is on a network drive, has \"\\.\" or \"\\.\\.\" in its path, or couldn\\'t be checked\\.",
+      "chinese": "它的市集 ${$1} 已加入，但位置在網路磁碟機上、路徑中含有「.」或「..」，或是無法檢查。",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

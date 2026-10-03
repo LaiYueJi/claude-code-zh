@@ -1140,6 +1140,10 @@ async function checkVersionChange(locator, translator, backup, config) {
     await extContext.globalState.update(KEY_LAST_VERSION, version);
     if (!last) return; // 首次安裝本擴充，不打擾
     if (extContext.globalState.get(KEY_RESTORED)) return; // 使用者選擇原版
+    // 漏翻掃描是維護翻譯包用的，預設不打擾一般使用者：
+    // 他們看到「有 N 條沒翻到」也只能等新版翻譯包，提示反而像壞掉。
+    // 想盯著 Claude 改版的人（作者、想自己補規則的人）把 scanOnUpdate 打開即可。
+    if (config.get('scanOnUpdate') !== true) return;
     // 版本已更新 → 靜默掃描，有漏翻才提示
     await scanUntranslated(locator, translator, backup, config, true);
 }

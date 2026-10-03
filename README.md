@@ -7,7 +7,7 @@ Claude Code 的側邊欄、對話框、按鈕、通知原本全是英文。安�
 - **繁體中文**：例如「外掛程式」「資料夾」「對話階段」「延伸思考」。
 - **簡體中文**：例如「插件」「文件夹」「会话」「扩展思考」。
 
-目前共 **1686 條**翻譯規則（繁簡各一套），涵蓋設定、權限、勾點、沙箱、記憶、外掛程式、用量統計等所有對話框。
+目前共 **1739 條**翻譯規則（繁簡各一套），涵蓋設定、權限、勾點、沙箱、記憶、外掛程式、用量統計等所有對話框。
 
 ## 🚀 安裝
 
@@ -69,6 +69,7 @@ A：可以。兩種語言共用同一份英文備份，切換時一律從英文�
 | `claudeCodeZh.showNotifications` | `true` | 顯示操作完成通知 |
 | `claudeCodeZh.autoUpdateTranslations` | `true` | 自動線上更新翻譯包 |
 | `claudeCodeZh.checkExtensionUpdate` | `true` | 檢查擴充功能是否有新版本 |
+| `claudeCodeZh.scanOnUpdate` | `false` | Claude Code 更新後掃描尚未翻譯的字串（維護翻譯包用） |
 | `claudeCodeZh.translationSourceUrls` | `[]` | 翻譯包線上來源，留空用內建（raw → jsDelivr） |
 | `claudeCodeZh.claudeCodeExtensionId` | `Anthropic.claude-code` | Claude Code 擴充功能 ID |
 | `claudeCodeZh.preTranslationRules` | `[]` | 前置自訂翻譯規則（最優先） |
@@ -111,7 +112,7 @@ A：可以。兩種語言共用同一份英文備份，切換時一律從英文�
 
 ```
 webview/index.js.bak（原始英文，基底）
-        │  前置規則 → 內建規則（依語言：zh-TW.json / zh-CN.json，各 1686 條）→ 後置規則
+        │  前置規則 → 內建規則（依語言：zh-TW.json / zh-CN.json，各 1739 條）→ 後置規則
         ▼
 webview/index.js（繁體或簡體中文）
 ```
@@ -133,7 +134,7 @@ globalStorage/translations/*.json（線上更新下載，通過驗證才採用�
 
 Claude Code 幾乎每天改版，介面字串也跟著變。本擴充功能內建了幾項工具，用來盯住這件事：
 
-- **漏翻自動偵測**：Claude Code 更新後自動掃描，找出仍是英文的介面字串。掃描涵蓋介面屬性值的四種寫法——字面值（`label:"…"`）、樣板字串（`` title:`…${變數}…` ``）、三元運算子（`label:x?"A":"B"`）與陣列元素（`children:[圖示,"文字"]`）——另涵蓋被 minify 提取成變數的字串（`label:dN`）與介面函式的引數（`showNotification(…)`）。
+- **漏翻自動偵測**：把設定 `claudeCodeZh.scanOnUpdate` 打開後，Claude Code 更新時會自動掃描，找出仍是英文的介面字串（預設關閉，因為一般使用者看到漏翻清單也只能等新版翻譯包；隨時可以從狀態列選單手動掃描）。掃描涵蓋介面屬性值的四種寫法——字面值（`label:"…"`）、樣板字串（`` title:`…${變數}…` ``）、三元運算子（`label:x?"A":"B"`）與陣列元素（`children:[圖示,"文字"]`）——另涵蓋被 minify 提取成變數的字串（`label:dN`）與介面函式的引數（`showNotification(…)`）。
 - **只醒目回報新增的**：介面字串數以千計，一次列出全部只會洗掉重點。掃描結果會把「上次沒有、這次才出現」的另立區塊排在最前面。
 - **失效規則偵測**：Claude 改寫英文原文時，舊規則會靜靜失效——畫面變回英文，漏翻掃描卻未必看得出來。本擴充功能只在「上次還對得上、這次忽然對不上」時提示，精準指出被改寫的字串。
 - **刻意不翻清單**：鍵碼表（`Alt`／`Ctrl`）、SQL 關鍵字、工具識別字（`class{name="Grep"}`）、品牌與指令這些判讀過確定不該翻的字串，列在翻譯包的 `scanIgnore` 中，掃描時排除。

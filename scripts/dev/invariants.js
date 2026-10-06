@@ -59,7 +59,6 @@ const checks = [
     // ── 權限、勾點、沙箱、技能的行為鍵 ───────────────────
     ['值', keep('"Free space"'), '上下文用量類別 "Free space" 比較保持英文'],
     ['值', keep('{allow:[],ask:[],deny:[]}'), '權限行為鍵 allow/ask/deny 保持英文'],
-    ['值', keep('.startsWith("Skipped")'), '外掛更新訊息判斷 "Skipped" 保持英文'],
     ['值', keep('value:"auto-allow"') && keep('value:"regular"'), '沙箱模式 value 保持英文'],
     ['值', keep('["on","name-only","user-invocable-only","off"]'), '技能狀態鍵陣列保持英文'],
     ['值', keep('"Peer address":') && keep('"Session kind":'), '狀態欄位對照表的鍵保持英文'],

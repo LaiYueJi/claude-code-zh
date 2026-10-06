@@ -1,8 +1,8 @@
 {
-  "version": "2.4.18",
+  "version": "2.4.19",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-06",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -54,6 +54,7 @@
     "WebFetch",
     "claude mcp add",
     "claude.ai/code",
+    "claudeCode.claudeProcessWrapper",
     "disableAllHooks",
     "example-tools",
     "git checkout ",
@@ -7534,6 +7535,320 @@
       "chinese": "它的市场 ${$1} 已添加，但位置在网络驱动器上、路径中含有「.」或「..」，或是无法检查。",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": ",\"Task ID\"]",
+      "chinese": ",\"任务 ID\"]"
+    },
+    {
+      "original": ",\"Tool use ID\"]",
+      "chinese": ",\"工具使用 ID\"]"
+    },
+    {
+      "original": ",\"Task type\"]",
+      "chinese": ",\"任务类型\"]"
+    },
+    {
+      "original": ",\"Output file\"]",
+      "chinese": ",\"输出文件\"]"
+    },
+    {
+      "original": ",\"Status\"]",
+      "chinese": ",\"状态\"]"
+    },
+    {
+      "original": ",\"Summary\"]",
+      "chinese": ",\"摘要\"]"
+    },
+    {
+      "original": ",\"Note\"]",
+      "chinese": ",\"备注\"]"
+    },
+    {
+      "original": ",\"Event\"]",
+      "chinese": ",\"事件\"]"
+    },
+    {
+      "original": "[\"result\",\"Result\"]",
+      "chinese": "[\"result\",\"结果\"]"
+    },
+    {
+      "original": ",\"Worktree\"]",
+      "chinese": ",\"工作树\"]"
+    },
+    {
+      "original": "[\"tool_uses\",\"Tool uses\"]",
+      "chinese": "[\"tool_uses\",\"工具调用次数\"]"
+    },
+    {
+      "original": "[\"duration_ms\",\"Duration (ms)\"]",
+      "chinese": "[\"duration_ms\",\"耗时（毫秒）\"]"
+    },
+    {
+      "original": ",\"Path\"]",
+      "chinese": ",\"路径\"]"
+    },
+    {
+      "original": ",\"Branch\"]",
+      "chinese": ",\"分支\"]"
+    },
+    {
+      "original": "=\"Other text\"",
+      "chinese": "=\"其他文字\""
+    },
+    {
+      "original": "=\"After the notification\"",
+      "chinese": "=\"通知之后\""
+    },
+    {
+      "original": "\"To fix this, reinstall the extension, or set\"",
+      "chinese": "\"要修复这个问题，请重新安装扩展，或将\""
+    },
+    {
+      "original": "\"To fix this, set \"",
+      "chinese": "\"要修复这个问题，请将 \""
+    },
+    {
+      "original": "\" to a program that runs Claude Code.\"",
+      "chinese": "\" 设为可以运行 Claude Code 的程序。\""
+    },
+    {
+      "original": "\"Message queued.\"",
+      "chinese": "\"消息已排入队列。\""
+    },
+    {
+      "original": "\"Continuing the step that was interrupted when the editor restarted its extensions.\"",
+      "chinese": "\"正在续接编辑器重新启动扩展时中断的步骤。\""
+    },
+    {
+      "original": "\"No reply was recorded for this message before the editor restarted its extensions.\"",
+      "chinese": "\"这条消息在编辑器重新启动扩展前没有记录到回复。\""
+    },
+    {
+      "original": "Claude Code stopped unexpectedly before it could confirm \\$\\{([^{}]*)\\}",
+      "chinese": "Claude Code 在确认${$1}之前意外停止",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Couldn’t check this folder for uncommitted changes before switching to \"",
+      "chinese": "\"切换到此分支前，无法检查这个文件夹有没有未提交的更改：\""
+    },
+    {
+      "original": "\"Downloading this plugin runs a command on your computer.\"",
+      "chinese": "\"下载这个插件会在你的电脑上运行命令。\""
+    },
+    {
+      "original": "This plugin is \\$\\{([^{}]*)\\} by running a command on your computer\\.",
+      "chinese": "这个插件是通过在你电脑上运行命令来${$1}的。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"update\"?\"updated\":\"installed\"",
+      "chinese": "\"update\"?\"更新\":\"安装\""
+    },
+    {
+      "original": "\"This plugin's command, or how its folder is used, changed since it was last accepted.\"",
+      "chinese": "\"自从上次接受之后，这个插件的命令或它文件夹的使用方式已经变了。\""
+    },
+    {
+      "original": "Claude Code couldn\\'t confirm that the \"\\$\\{([^{}]*)\\}\" marketplace is unchanged since you saw the command\\. The command it declares now is below\\.",
+      "chinese": "Claude Code 无法确认「${$1}」市场在你看到该命令之后没有变动。它目前声明的命令如下。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "Its marketplace, \"\\$\\{([^{}]*)\\}\", declares the command below\\.",
+      "chinese": "它的市场「${$1}」声明了下面这个命令。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"It makes the access details, such as a token, sent with the download from the address below.\"",
+      "chinese": "\"它会生成随下载一起发往下方地址的访问信息（例如令牌）。\""
+    },
+    {
+      "original": "\"The command gives Claude Code a folder, which is used where it is, without a copy.\"",
+      "chinese": "\"这个命令会给 Claude Code 一个文件夹，就地使用、不会复制一份。\""
+    },
+    {
+      "original": "\"The command gives Claude Code a folder, which is copied into Claude Code's plugin folder.\"",
+      "chinese": "\"这个命令会给 Claude Code 一个文件夹，并复制到 Claude Code 的插件文件夹中。\""
+    },
+    {
+      "original": "\"A record says it was accepted before, but that record is kept where it can't be relied on, so you're asked again.\"",
+      "chinese": "\"记录显示先前接受过，但那份记录存放的位置不可靠，因此再问你一次。\""
+    },
+    {
+      "original": "\"Only accept it if you trust that marketplace.\"",
+      "chinese": "\"只有在你信任那个市场时才接受。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} Don\\'t accept it unless you expected them\\.`",
+      "chinese": "`${$1} 除非这是你预期的，否则不要接受。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Characters other than plain English letters, digits, punctuation and spaces are shown as \\\\u{…} codes, because some could be invisible or look like other characters, and each backslash is shown twice.\"",
+      "chinese": "\"英文字母、数字、标点与空格以外的字符会以 \\\\u{…} 代码显示，因为其中有些可能是隐形的、或长得像别的字符；每个反斜杠也会显示两次。\""
+    },
+    {
+      "original": "\"Run command and update\"",
+      "chinese": "\"运行命令并更新\""
+    },
+    {
+      "original": "\"Run command and install\"",
+      "chinese": "\"运行命令并安装\""
+    },
+    {
+      "original": "\"Your organization doesn't allow the command this plugin's download needs.\"",
+      "chinese": "\"你的组织不允许这个插件下载所需的命令。\""
+    },
+    {
+      "original": "\"This plugin's download needs a command that wasn't shown.\"",
+      "chinese": "\"这个插件的下载需要一个未显示的命令。\""
+    },
+    {
+      "original": "\"Its command wasn't run. Try again to see it.\"",
+      "chinese": "\"它的命令没有运行。请再试一次以查看命令。\""
+    },
+    {
+      "original": "\"This plugin's download doesn't match what was shown.\"",
+      "chinese": "\"这个插件的下载与先前显示的不符。\""
+    },
+    {
+      "original": "\"Its command wasn't run. Try again to see the command it uses now.\"",
+      "chinese": "\"它的命令没有运行。请再试一次以查看它目前使用的命令。\""
+    },
+    {
+      "original": "This plugin couldn\\'t be \\$\\{([^{}]*)\\}\\.",
+      "chinese": "这个插件无法${$1}。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude Code stopped it because of a command or download it needs. Copy the error to see why.\"",
+      "chinese": "\"Claude Code 因为它需要的命令或下载而停止了这项操作。复制错误信息可以看到原因。\""
+    },
+    {
+      "original": "\"This plugin's command can't be accepted here.\"",
+      "chinese": "\"这个插件的命令无法在这里接受。\""
+    },
+    {
+      "original": "\"The command wasn't run. Claude Code couldn't tell which version of this plugin's marketplace the command comes from, so it can't check that the command you accept is the one that would run.\"",
+      "chinese": "\"命令没有运行。Claude Code 无法判断这个命令来自这个插件市场的哪个版本，因此无法确认你接受的命令就是实际会运行的那一个。\""
+    },
+    {
+      "original": "\"This plugin's command couldn't be run from here.\"",
+      "chinese": "\"这个插件的命令无法从这里运行。\""
+    },
+    {
+      "original": "\"The command wasn't run. Claude Code treated this request as coming from another Claude Code session, so it didn't count your acceptance. Copy the error to see what happened.\"",
+      "chinese": "\"命令没有运行。Claude Code 把这次请求视为来自另一个 Claude Code 会话，因此没有计入你的接受。复制错误信息可以看到发生了什么事。\""
+    },
+    {
+      "original": "\"The command wasn't run.\"",
+      "chinese": "\"命令没有运行。\""
+    },
+    {
+      "original": "\"updating this plugin\"",
+      "chinese": "\"更新这个插件\""
+    },
+    {
+      "original": "\"This plugin's marketplace couldn't be read.\"",
+      "chinese": "\"无法读取这个插件的市场。\""
+    },
+    {
+      "original": "\"Try again, or copy the error to see why.\"",
+      "chinese": "\"请再试一次，或复制错误信息查看原因。\""
+    },
+    {
+      "original": "\"This plugin can't be updated here.\"",
+      "chinese": "\"这个插件无法在这里更新。\""
+    },
+    {
+      "original": "\"It may be turned off in another settings file, or your organization's settings may not allow the command that updates it. Copy the error to see which.\"",
+      "chinese": "\"它可能在另一个设置文件中被关闭，或是你的组织设置不允许更新它所需的命令。复制错误信息可以看到是哪一种。\""
+    },
+    {
+      "original": "\"This plugin is turned off.\"",
+      "chinese": "\"这个插件已关闭。\""
+    },
+    {
+      "original": "\"Turn it on to update it. Your organization's settings can also block the command it needs, and then it still won't update.\"",
+      "chinese": "\"请先开启它才能更新。你的组织设置也可能拦下它需要的命令，那样仍然无法更新。\""
+    },
+    {
+      "original": "\"This plugin couldn't be updated.\"",
+      "chinese": "\"这个插件无法更新。\""
+    },
+    {
+      "original": "\"Claude Code refused the update. Copy the error to see why.\"",
+      "chinese": "\"Claude Code 拒绝了这次更新。复制错误信息可以看到原因。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} was not updated because the plugins that use it limit which version it can have\\.",
+      "chinese": "${$1} 没有更新，因为使用它的插件限制了它可以是哪个版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\} was not updated because its marketplace\\'s version file couldn\\'t be used\\.",
+      "chinese": "${$1} 没有更新，因为它的市场版本文件无法使用。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} was not updated\\.`",
+      "chinese": "`${$1} 没有更新。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "No newer version of \\$\\{([^{}]*)\\} was found\\.",
+      "chinese": "找不到 ${$1} 的更新版本。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Installing…\"",
+      "chinese": "\"正在安装…\""
+    },
+    {
+      "original": "\"Turning it on and updating…\"",
+      "chinese": "\"正在开启并更新…\""
+    },
+    {
+      "original": "=\"The names differ only in letter case or in characters folder names ignore, so both can't be added.\"",
+      "chinese": "=\"两个名称只差在大小写，或是差在文件夹名称会忽略的字符，因此无法同时添加。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\} Copy the error to see which\\.`",
+      "chinese": "`${$1} ${$2} 复制错误信息可以看到是哪一个。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} The link\\'s marketplace wasn\\'t added and the plugin wasn\\'t installed\\. To use the link\\'s instead, remove yours on the Marketplaces tab, then open the link again\\. The first name below is yours\\.`",
+      "chinese": "`${$1} 链接的市场没有添加，插件也没有安装。若要改用链接的那个，请到「市场」标签页移除你原本的，再重新打开这个链接。下面第一个名称是你原本的。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Ask an admin if you need it.\"",
+      "chinese": "\"如果你需要它，请联系管理员。\""
+    },
+    {
+      "original": "(children:\\[F\\([A-Za-z0-9_$]+,\\{\\}\\),)\"Output\"\\]",
+      "chinese": "$1\"输出\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "{label:\"Output\",tag:",
+      "chinese": "{label:\"输出\",tag:"
     },
     {
       "original": "\" for VS Code\"",

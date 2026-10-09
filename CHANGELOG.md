@@ -2,6 +2,19 @@
 
 本檔案記錄「Claude Code for VS Code 繁體／簡體中文語言包」的版本變更。
 
+## [2.4.20] - 2026-10-09
+
+### 新增（Claude Code 2.1.295，繁簡各 1 條）
+- 📤 送出檔案的工具卡片標題「已送出 」（後面接檔名清單，尾端的空白保留）。
+
+### 刻意不翻
+- `Haiku`／`Mythos`／`Opus`／`Sonnet` 是模型家族名。
+- `SubagentHandback`、`Name for the spawned agent.`、`Send the agent a message (SendMessage) to let it continue…` 等是送給模型的工具說明，不是介面文案。
+
+### 備註
+- 翻譯規則 1811 → **1812 條**（繁簡相同）。
+- 實測 2.1.295 繁簡：漏翻掃描皆為需處理 **0 條**；67 項行為不變式全數通過。
+
 ## [2.4.19] - 2026-10-06
 
 ### 新增（Claude Code 2.1.291，繁簡各 72 條）

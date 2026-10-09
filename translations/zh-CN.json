@@ -1,8 +1,8 @@
 {
-  "version": "2.4.19",
+  "version": "2.4.20",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-09",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -7849,6 +7849,10 @@
     {
       "original": "{label:\"Output\",tag:",
       "chinese": "{label:\"输出\",tag:"
+    },
+    {
+      "original": "toolNameText,children:\"Sent \"",
+      "chinese": "toolNameText,children:\"已发送 \""
     },
     {
       "original": "\" for VS Code\"",

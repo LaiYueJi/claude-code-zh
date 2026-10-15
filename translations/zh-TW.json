@@ -1,8 +1,8 @@
 {
-  "version": "2.4.20",
+  "version": "2.4.21",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-09",
+  "updatedAt": "2026-10-16",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -47,6 +47,7 @@
     "Shell",
     "Shift",
     "Tab",
+    "The subagent ended without delivering a report through ${}, so no report was delivered.",
     "URL",
     "Unfold editor argument",
     "Unknown",
@@ -7853,6 +7854,228 @@
     {
       "original": "toolNameText,children:\"Sent \"",
       "chinese": "toolNameText,children:\"已送出 \""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% of your usage was at max effort",
+      "chinese": "${$1}% 的用量用在最高思考強度",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Max effort thinks much longer on every step. Save it for the hardest tasks and use a lower level for everyday work (model picker).\"",
+      "chinese": "\"最高強度會在每一步都想得更久。請留給最困難的任務，日常工作用較低的強度就好（在模型選單調整）。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% of your usage came from workflows",
+      "chinese": "${$1}% 的用量來自工作流程",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"A workflow fans a task out to many agents, and each one runs its own requests. Save them for big tasks. Ultracode starts one on every task; the model picker turns it off.\"",
+      "chinese": "\"工作流程會把一個任務分散給多個代理，每個代理都會發出自己的請求。請留給大型任務使用。Ultracode 會在每個任務都啟動一個工作流程；可在模型選單關閉。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% of your usage went to always-on context over 40k tokens",
+      "chinese": "${$1}% 的用量花在超過 40k token 的常駐上下文",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"CLAUDE.md files, MCP tools, skills and memory are sent with every request. Run /context to see what takes up space, then trim or turn off what you don't need.\"",
+      "chinese": "\"CLAUDE.md 檔案、MCP 工具、技能與記憶會隨每個請求一起送出。執行 /context 可以看出哪些占了空間，再精簡或關閉用不到的部分。\""
+    },
+    {
+      "original": "\\$\\{([^{}]*)\\}% of your usage went to tool results over 10k tokens",
+      "chinese": "${$1}% 的用量花在超過 10k token 的工具結果",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"A large result is paid for again on every later request until it's compacted or cleared. Ask for narrower reads, searches and command output, or hand noisy work to a subagent.\"",
+      "chinese": "\"大型結果在壓縮或清除前，之後每個請求都會再計費一次。請改用範圍更小的讀取、搜尋與指令輸出，或把雜訊多的工作交給子代理。\""
+    },
+    {
+      "original": "\"Waiting for your plugins…\"",
+      "chinese": "\"正在等待你的外掛程式…\""
+    },
+    {
+      "original": "\"This was shown before your plugins checked it. Text they would hide may have been visible.\"",
+      "chinese": "\"這段內容在外掛程式檢查之前就顯示了，原本會被隱藏的文字可能已經出現過。\""
+    },
+    {
+      "original": "\"This response can't be shown because your plugins check each response in the conversation, and this one is no longer there.\"",
+      "chinese": "\"無法顯示這則回應，因為你的外掛程式會逐一檢查對話中的回應，而這一則已經不在對話裡了。\""
+    },
+    {
+      "original": "\"Can't copy this response yet. Your plugins are still checking it. Try again in a moment.\"",
+      "chinese": "\"還不能複製這則回應，你的外掛程式還在檢查。請稍候再試。\""
+    },
+    {
+      "original": "\"Hidden by a plugin\"",
+      "chinese": "\"已被外掛程式隱藏\""
+    },
+    {
+      "original": "\"Resize plugin pane\"",
+      "chinese": "\"調整外掛程式面板大小\""
+    },
+    {
+      "original": "\"Plugin field\"",
+      "chinese": "\"外掛程式欄位\""
+    },
+    {
+      "original": "\"Plugin choice\"",
+      "chinese": "\"外掛程式選項\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} plugin: \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} 外掛程式：${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"From\"",
+      "chinese": "\"來自\""
+    },
+    {
+      "original": "\"Edited by\"",
+      "chinese": "\"編輯者\""
+    },
+    {
+      "original": "return[\"a plugin\"]",
+      "chinese": "return[\"某個外掛程式\"]"
+    },
+    {
+      "original": "let J=[\"the \"]",
+      "chinese": "let J=[\"外掛程式 \"]"
+    },
+    {
+      "original": "?\", \":Z===$.length-2?\" and \":$.length===1?\" plugin\":\" plugins\"",
+      "chinese": "?\"、\":Z===$.length-2?\" 和 \":$.length===1?\"\":\"\""
+    },
+    {
+      "original": "`Prompt from \\$\\{([^{}]*)\\}`",
+      "chinese": "`提示來自${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is asking you a question\\.`",
+      "chinese": "`${$1}正在問你一個問題。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is requesting permission to use \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`${$1}正在請求使用 ${$2} 的權限。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} earlier \\$\\{([^{}]*)\\} from the \\$\\{([^{}]*)\\} plugin`",
+      "chinese": "`來自 ${$3} 外掛程式、較早的 ${$1} ${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "+\" no longer shown\"",
+      "chinese": "+\" 已不再顯示\""
+    },
+    {
+      "original": "\"Picture too heavy to draw\"",
+      "chinese": "\"圖片太大，無法繪製\""
+    },
+    {
+      "original": "\"Picture cannot be drawn\"",
+      "chinese": "\"無法繪製這張圖片\""
+    },
+    {
+      "original": "\"Picture not shown in this editor\"",
+      "chinese": "\"這個編輯器不顯示圖片\""
+    },
+    {
+      "original": "\"Drawing cut: too many pictures in this panel\"",
+      "chinese": "\"繪製已中止：這個面板的圖片太多\""
+    },
+    {
+      "original": "\"Picture not drawn yet\"",
+      "chinese": "\"圖片尚未繪製\""
+    },
+    {
+      "original": "`Drawing cut at this panel\\'s limit of \\$\\{([^{}]*)\\}`",
+      "chinese": "`繪製已中止，已達這個面板的上限 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} elements`",
+      "chinese": "`${$1} 個元素`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} KB of text`",
+      "chinese": "`${$1} KB 的文字`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} levels of nesting`",
+      "chinese": "`${$1} 層巢狀`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} pictures`",
+      "chinese": "`${$1} 張圖片`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Type /fast on in the chat to turn it back on once usage credits are available again.\"",
+      "chinese": "\"等用量點數恢復之後，在對話中輸入 /fast on 即可重新開啟。\""
+    },
+    {
+      "original": "\"Fast mode was turned off because usage credits are unavailable. Type /fast on in the chat to turn it back on once they are available again.\"",
+      "chinese": "\"快速模式已關閉，因為目前無法使用用量點數。等點數恢復之後，在對話中輸入 /fast on 即可重新開啟。\""
+    },
+    {
+      "original": "\"Usage credits are unavailable, and fast mode may still be on. Type /fast off in the chat to turn it off.\"",
+      "chinese": "\"目前無法使用用量點數，而快速模式可能仍是開啟的。在對話中輸入 /fast off 即可關閉。\""
+    },
+    {
+      "original": "\"Usage credits are unavailable, so each fast request is refused and sent again at standard speed. Type /fast off in the chat to turn fast mode off.\"",
+      "chinese": "\"目前無法使用用量點數，因此每個快速請求都會被拒絕，並以標準速度重新送出。在對話中輸入 /fast off 即可關閉快速模式。\""
+    },
+    {
+      "original": "\"Ran at once, while Claude was working.\"",
+      "chinese": "\"已立即執行（Claude 當時正在工作）。\""
+    },
+    {
+      "original": "\"Sign in to claude.ai to use voice dictation\"",
+      "chinese": "\"登入 claude.ai 即可使用語音聽寫\""
+    },
+    {
+      "original": "\"Voice dictation is unavailable without a claude.ai sign-in\"",
+      "chinese": "\"未登入 claude.ai 時無法使用語音聽寫\""
+    },
+    {
+      "original": "=([A-Za-z0-9_$]+)===\"live\"\\?\"message\":\"saved message\"",
+      "chinese": "=$1===\"live\"?\"訊息\":\"已儲存的訊息\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Couldn\\'t display a \\$\\{([^{}]*)\\} here\\.`",
+      "chinese": "`這裡無法顯示${$1}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Couldn\\'t display \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\}s here\\.`",
+      "chinese": "`這裡無法顯示 ${$1} 則${$2}。`",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

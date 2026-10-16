@@ -1,5 +1,5 @@
 {
-  "version": "2.4.21",
+  "version": "2.4.22",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-10-16",
@@ -53,6 +53,8 @@
     "Unknown",
     "VS Code",
     "WebFetch",
+    "\\\\angl",
+    "\\\\fbox",
     "claude mcp add",
     "claude.ai/code",
     "claudeCode.claudeProcessWrapper",
@@ -8076,6 +8078,58 @@
       "chinese": "`这里无法显示 ${$1} 条${$2}。`",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "return`use ${J}`",
+      "chinese": "return`使用 ${J}`"
+    },
+    {
+      "original": "`Claude is requesting permission to \\$\\{([^{}]*)\\}`",
+      "chinese": "`Claude 正在请求${$1}的权限`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Claude is requesting permission to \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`Claude 正在请求${$1}的权限。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is requesting permission to \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`${$1}正在请求${$2}的权限。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "children:\"Get more usage\"",
+      "chinese": "children:\"获取更多用量\""
+    },
+    {
+      "original": "?\"Dismiss warning\":",
+      "chinese": "?\"关闭警告\":"
+    },
+    {
+      "original": "=\"Open it anyway\"",
+      "chinese": "=\"仍要打开\""
+    },
+    {
+      "original": "\"Your last conversation\"",
+      "chinese": "\"你上次的对话\""
+    },
+    {
+      "original": " was not reopened\\. It did not finish opening the last \\$\\{([^{}]*)\\} times, and opening it again may stop Claude Code from responding here\\.",
+      "chinese": "没有重新打开。它最近 ${$1} 次都没有打开完成，再打开一次可能会让 Claude Code 在这里停止响应。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Failed to typeset math:\"",
+      "chinese": "\"数学公式排版失败：\""
+    },
+    {
+      "original": "\"Failed to load math rendering:\"",
+      "chinese": "\"数学公式渲染加载失败：\""
     },
     {
       "original": "\" for VS Code\"",

@@ -1,8 +1,8 @@
 {
-  "version": "2.4.22",
+  "version": "2.4.23",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-20",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8130,6 +8130,60 @@
     {
       "original": "\"Failed to load math rendering:\"",
       "chinese": "\"數學公式渲染載入失敗：\""
+    },
+    {
+      "original": "\"Waiting for your permission, and so is an agent it started: see the request below\"",
+      "chinese": "\"正在等待你的許可，它啟動的代理也在等待：請看下方的請求\""
+    },
+    {
+      "original": "\"Waiting for your permission: see the request below\"",
+      "chinese": "\"正在等待你的許可：請看下方的請求\""
+    },
+    {
+      "original": "`Working in the background: \\$\\{([^{}]*)\\}`",
+      "chinese": "`正在背景執行：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ":\"Working in the background\"",
+      "chinese": ":\"正在背景執行\""
+    },
+    {
+      "original": "\\?`Failed: \\$\\{([^{}]*)\\}`",
+      "chinese": "?`失敗：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" · an agent it started is waiting for your permission: see the request below\"",
+      "chinese": "\" · 它啟動的代理正在等待你的許可：請看下方的請求\""
+    },
+    {
+      "original": "\" · an agent it started is still working\"",
+      "chinese": "\" · 它啟動的代理仍在工作\""
+    },
+    {
+      "original": "\" · an agent it started failed\"",
+      "chinese": "\" · 它啟動的代理失敗了\""
+    },
+    {
+      "original": "\" · an agent it started was stopped\"",
+      "chinese": "\" · 它啟動的代理已被停止\""
+    },
+    {
+      "original": " · type /tasks to see its transcript`",
+      "chinese": " · 輸入 /tasks 可查看它的對話紀錄`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This sign-in is only for standalone Claude Design (claude.ai/design). It goes away when standalone closes, by December 14, 2026. Until then it still works, so sign in if /design-sync or /design consent sent you here.\"",
+      "chinese": "\"這個登入只適用於獨立版 Claude Design（claude.ai/design）。獨立版關閉後它就會消失，期限是 2026 年 12 月 14 日。在那之前仍然可用，所以如果你是被 /design-sync 或 /design 的同意流程導到這裡，請登入。\""
+    },
+    {
+      "original": ",\" Details:\"",
+      "chinese": ",\"　詳細說明：\""
     },
     {
       "original": "\" for VS Code\"",

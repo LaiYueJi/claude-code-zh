@@ -79,8 +79,18 @@ const checks = [
     ['值', keep('"Tool permission request failed"'), '工具權限錯誤的比對值保持英文'],
     ['值', keep('this.name="ActionFailed"'), '外掛操作錯誤的 Error.name 保持英文'],
 
+    // ── 反查表：Object.keys(Ml).find((J)=>Ml[J]===$) 以值回推鍵，翻了反查就失效 ──
+    ['值', keep('empty_session:"This session has no conversation to open here yet.'), '工作階段無法開啟的反查表保持英文'],
+    ['值', keepRx(/Object\.keys\(Ml\)\.find\(\([A-Za-z0-9_$]+\)=>Ml\[[A-Za-z0-9_$]+\]===\$\)/g), 'Ml 反查仍以英文原文比對'],
+
+    // ── 用量修正（usage fix）的比較值與內部錯誤 ──────────────
+    ['值', keep('startsWith("/effort ")'), '送出用量修正前比對的 /effort 前綴保持英文'],
+    ['值', keep('Error("fix withdrawn")'), '用量修正已撤回的內部 Error 訊息保持英文'],
+    ['值', keepRx(/==="unknown"/g), '拿 "unknown" 當比較值的位置保持英文'],
+
     // ── 送給模型的內容 ─────────────────────────────────
     ['值', keep('"[Request interrupted by user]"'), '送給模型的中斷訊息保持英文'],
+    ['值', keep('[Request interrupted: the session ended before this agent finished.'), '代理未結束就中斷時送給模型的訊息保持英文'],
     ['值', keep('[Tool call did not complete: the turn was ended'), '送給模型的合成工具結果保持英文'],
     ['值', keep('"The user doesn\'t want to take this action right now. STOP what you are doing'), '拒絕動作時送給模型的指示保持英文'],
     ['值', keep('"Monitor event:"'), '訊息協定標記 Monitor event: 保持英文'],
@@ -91,6 +101,11 @@ const checks = [
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 
     // ── 顯示位置確實翻到 ───────────────────────────────
+    ['顯示', n(tw ? '"正在執行啟動勾點"' : '"正在运行启动勾点"') >= 1, '啟動勾點狀態文字已翻譯'],
+    // Grep 工具標頭的 `in ${J.path}` 與旁邊的 glob:／type: 一致刻意留英文，故只盯 m／h／d 這三種時間格式
+    ['顯示', n(tw ? ' 分鐘後`' : ' 分钟后`') >= 1 && !/`in \$\{[A-Za-z_$][\w$]*\}[mhd]`/.test(c), '重設時間格式已翻譯'],
+    ['顯示', n(tw ? '概估值 · 僅計入' : '概估值 · 仅计入') >= 1, '用量面板的概估說明已翻譯'],
+    ['顯示', n(tw ? '"修正這一項"' : '"修正这一项"') >= 1, '用量修正按鈕已翻譯'],
     ['顯示', n(tw ? '"權限規則"' : '"权限规则"') >= 1, '權限規則標題已翻譯'],
     ['顯示', n(tw ? 'value:"command",label:"指令"' : 'value:"command",label:"命令"') === 1, '勾點類型選項已翻譯'],
     ['顯示', n(tw ? '{allow:"允許",ask:"詢問",deny:"拒絕"}' : '{allow:"允许",ask:"询问",deny:"拒绝"}') === 1, '權限行為標籤已翻譯'],

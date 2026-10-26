@@ -1,8 +1,8 @@
 {
-  "version": "2.4.23",
+  "version": "2.4.24",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-26",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8184,6 +8184,222 @@
     {
       "original": ",\" Details:\"",
       "chinese": ",\"　詳細說明：\""
+    },
+    {
+      "original": "\"Your seat type doesn't include usage credits\"",
+      "chinese": "\"你的席次類型不含用量點數\""
+    },
+    {
+      "original": "\"Your usage allocation has been disabled by your admin\"",
+      "chinese": "\"你的用量配額已被管理員停用\""
+    },
+    {
+      "original": "\"Your group's usage limit is set to $0\"",
+      "chinese": "\"你所屬群組的用量上限被設為 $0\""
+    },
+    {
+      "original": "`in \\$\\{([A-Za-z_$][\\w$]*)\\}m`",
+      "chinese": "`${$1} 分鐘後`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`in \\$\\{([A-Za-z_$][\\w$]*)\\}h`",
+      "chinese": "`${$1} 小時後`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`in \\$\\{Math\\.floor\\(([A-Za-z_$][\\w$]*)\\/24\\)\\}d`",
+      "chinese": "`${Math.floor($1/24)} 天後`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`in \\$\\{([A-Za-z_$][\\w$]*)\\}d`",
+      "chinese": "`${$1} 天後`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(if\\(([A-Za-z_$][\\w$]*)<=0\\)return)\"soon\"",
+      "chinese": "$1\"即將\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(if\\(([A-Za-z_$][\\w$]*)<1\\)return)\"soon\"",
+      "chinese": "$1\"即將\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` · your \\$\\{([^{}]*)\\} resets \\$\\{([^{}]*)\\}`",
+      "chinese": "` · 你的${$1} ${$2}重設`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Running start-up hooks.\"",
+      "chinese": "\"正在執行啟動勾點。\""
+    },
+    {
+      "original": "\"Running start-up hooks\"",
+      "chinese": "\"正在執行啟動勾點\""
+    },
+    {
+      "original": "\"Side question: \"",
+      "chinese": "\"側邊提問：\""
+    },
+    {
+      "original": "`Dictation stopped: no speech recognized for \\$\\{([^{}]*)\\} seconds\\. Your text so far is kept\\.`",
+      "chinese": "`聽寫已停止：有 ${$1} 秒未辨識到語音。目前已輸入的文字會保留。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Dictation stopped at its \\$\\{([^{}]*)\\}-minute limit\\. Your text so far is kept\\.`",
+      "chinese": "`聽寫已達 ${$1} 分鐘的上限而停止。目前已輸入的文字會保留。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The usage fix wasn’t fully sent. Open usage and try again.\"",
+      "chinese": "\"用量修正沒有完整送出。請開啟用量頁面再試一次。\""
+    },
+    {
+      "original": "`Fix \\$\\{([^{}]*)\\} of \\$\\{([^{}]*)\\}`",
+      "chinese": "`修正 ${$2} 項中的 ${$1} 項`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Fix this\"",
+      "chinese": "\"修正這一項\""
+    },
+    {
+      "original": "\"Fix both\"",
+      "chinese": "\"兩項都修正\""
+    },
+    {
+      "original": "`Fix all \\$\\{([^{}]*)\\}`",
+      "chinese": "`修正全部 ${$1} 項`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Compact before you step away\"",
+      "chinese": "\"離開前先壓縮對話\""
+    },
+    {
+      "original": "\"Start fresh when you switch tasks\"",
+      "chinese": "\"切換任務時開新對話\""
+    },
+    {
+      "original": "\"Give simple subagents a cheaper model\"",
+      "chinese": "\"較單純的子代理改用較便宜的模型\""
+    },
+    {
+      "original": "\"Run fewer sessions at once\"",
+      "chinese": "\"減少同時執行的對話階段\""
+    },
+    {
+      "original": "\"Stop sessions you no longer need\"",
+      "chinese": "\"停掉不再需要的對話階段\""
+    },
+    {
+      "original": "\"Save max effort for hard tasks\"",
+      "chinese": "\"最高思考強度留給困難的任務\""
+    },
+    {
+      "original": "\"Save workflows for big tasks\"",
+      "chinese": "\"工作流程留給大型任務\""
+    },
+    {
+      "original": "\"See what fills your context\"",
+      "chinese": "\"看看是什麼占滿了上下文\""
+    },
+    {
+      "original": "\"Ask for narrower reads and searches\"",
+      "chinese": "\"請它縮小讀取與搜尋的範圍\""
+    },
+    {
+      "original": "\"Approximate · sessions on this machine only\"",
+      "chinese": "\"概估值 · 僅計入這台機器上的對話階段\""
+    },
+    {
+      "original": "\" · shares overlap\"",
+      "chinese": "\" · 占比會互相重疊\""
+    },
+    {
+      "original": "\"What went well?\"",
+      "chinese": "\"哪裡做得不錯？\""
+    },
+    {
+      "original": "\"Tell us more\"",
+      "chinese": "\"再多告訴我們一些\""
+    },
+    {
+      "original": "\"Add a note (optional)\"",
+      "chinese": "\"補充說明（選填）\""
+    },
+    {
+      "original": "\"Send request\"",
+      "chinese": "\"送出請求\""
+    },
+    {
+      "original": "`Settings file failed to parse: ",
+      "chinese": "`設定檔解析失敗："
+    },
+    {
+      "original": "?.file??\"unknown\"",
+      "chinese": "?.file??\"不明\""
+    },
+    {
+      "original": " \\(\\+\\$\\{([^{}]*)\\} more \\$\\{([^{}]*)\\}\\)",
+      "chinese": "（另有 ${$1} 個檔案）",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\. Permission rules and other settings from \\$\\{([^{}]*)\\?\"these files\":\"this file\"\\} are not in effect\\.",
+      "chinese": "。${$1?\"這些檔案\":\"這個檔案\"}中的權限規則與其他設定不會生效。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`This conversation is still open somewhere else\\. Using it in two places at once can mix up its messages\\. If the extension restarted recently, a Claude process from before the restart may still be finishing\\. It usually ends on its own within about \\$\\{([^{}]*)\\} minutes\\. This notice stays until you choose \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`這個對話在別的地方還開著。同時在兩處使用可能會讓訊息混在一起。如果擴充功能剛剛重新啟動過，重啟前的 Claude 處理程序可能還在收尾，通常會在大約 ${$1} 分鐘內自行結束。這則提示會持續顯示，直到你選擇「${$2}」。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " spend limit\"}",
+      "chinese": " 消費上限\"}"
+    },
+    {
+      "original": "\"Continuing the step that was interrupted when the window reloaded.\"",
+      "chinese": "\"正在續接視窗重新載入時中斷的步驟。\""
+    },
+    {
+      "original": "\"Feedback is turned off by your organization's policy or this environment's settings.\"",
+      "chinese": "\"意見回饋已被你的組織政策或這個環境的設定關閉。\""
+    },
+    {
+      "original": "\"Auto mode lets Claude handle permission prompts automatically. Claude checks each tool call for risky actions and prompt injection before executing, runs the ones it assesses as lower-risk, and blocks the rest.\"",
+      "chinese": "\"自動模式讓 Claude 自動處理權限提示。Claude 會在執行前檢查每次工具呼叫有沒有風險動作與提示詞注入，自行執行它判定風險較低的，其餘的一律阻擋。\""
+    },
+    {
+      "original": "\"Auto mode is now Claude Code's default permission mode.\"",
+      "chinese": "\"自動模式現在是 Claude Code 的預設權限模式。\""
+    },
+    {
+      "original": "\"Auto mode is enabled\"",
+      "chinese": "\"自動模式已啟用\""
+    },
+    {
+      "original": "default:\"manual mode\",plan:\"plan mode\",acceptEdits:\"accept edits\",dontAsk:\"don't ask\",bypassPermissions:\"bypass permissions\"",
+      "chinese": "default:\"手動模式\",plan:\"規劃模式\",acceptEdits:\"接受編輯\",dontAsk:\"不詢問\",bypassPermissions:\"繞過權限驗證\""
     },
     {
       "original": "\" for VS Code\"",

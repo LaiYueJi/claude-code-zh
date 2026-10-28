@@ -1,8 +1,8 @@
 {
-  "version": "2.4.24",
+  "version": "2.4.25",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-10-28",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -2991,7 +2991,7 @@
     },
     {
       "original": "\"Resets \"",
-      "chinese": "\"重設於 \""
+      "chinese": "\"重設時間：\""
     },
     {
       "original": "\"Day\"",
@@ -6675,7 +6675,7 @@
     },
     {
       "original": "`\\$\\{([^{}]*)\\} · \\$\\{([^{}]*)\\} resets \\$\\{([^{}]*)\\}`",
-      "chinese": "`${$1} · ${$2} 於 ${$3} 重置`",
+      "chinese": "`${$1} · ${$2}重設時間：${$3}`",
       "regex": true,
       "flags": "g"
     },
@@ -8235,7 +8235,7 @@
     },
     {
       "original": "` · your \\$\\{([^{}]*)\\} resets \\$\\{([^{}]*)\\}`",
-      "chinese": "` · 你的${$1} ${$2}重設`",
+      "chinese": "` · 你的${$1}重設時間：${$2}`",
       "regex": true,
       "flags": "g"
     },
@@ -8400,6 +8400,72 @@
     {
       "original": "default:\"manual mode\",plan:\"plan mode\",acceptEdits:\"accept edits\",dontAsk:\"don't ask\",bypassPermissions:\"bypass permissions\"",
       "chinese": "default:\"手動模式\",plan:\"規劃模式\",acceptEdits:\"接受編輯\",dontAsk:\"不詢問\",bypassPermissions:\"繞過權限驗證\""
+    },
+    {
+      "original": "(if\\([A-Za-z_$][\\w$]*<60000\\)return)\"soon\"",
+      "chinese": "$1\"即將\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`at \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} at \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} ${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "five_hour:\"5-hour limit\"",
+      "chinese": "five_hour:\"5 小時用量上限\""
+    },
+    {
+      "original": "??\"limit\"",
+      "chinese": "??\"用量上限\""
+    },
+    {
+      "original": "post_turn_memory:\"memory save\"",
+      "chinese": "post_turn_memory:\"記憶儲存\""
+    },
+    {
+      "original": "mcpMount:\"Remote Control server mount\"",
+      "chinese": "mcpMount:\"遠端控制伺服器掛載\""
+    },
+    {
+      "original": "\"Running UserPromptSubmit hooks.\"",
+      "chinese": "\"正在執行 UserPromptSubmit 勾點。\""
+    },
+    {
+      "original": "\"Running UserPromptSubmit hooks\"",
+      "chinese": "\"正在執行 UserPromptSubmit 勾點\""
+    },
+    {
+      "original": "\"Restored files go back whole, losing later changes by anyone. Bash changes to other files are not undone.\"",
+      "chinese": "\"還原的檔案會整個回到先前的狀態，之後任何人所做的變更都會跟著消失。Bash 對其他檔案造成的變更則不會還原。\""
+    },
+    {
+      "original": "\"Couldn’t switch to \"",
+      "chinese": "\"無法切換到 \""
+    },
+    {
+      "original": "\" To try again, choose Okay, then click Checkout on the “Branch checkout skipped” line.\"",
+      "chinese": "\" 若要重試，請選擇「好」，然後在「已略過分支簽出 (checkout)」那一行按「簽出」。\""
+    },
+    {
+      "original": "children:\\[\"… \",([^,\\]]+),\" more\"\\]",
+      "chinese": "children:[\"… 還有 \",$1,\" 項\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "children:\\[\"and \",([^,\\]]+),\" more\"\\]",
+      "chinese": "children:[\"另外還有 \",$1,\" 個檔案\"]",
+      "regex": true,
+      "flags": "g"
     },
     {
       "original": "\" for VS Code\"",

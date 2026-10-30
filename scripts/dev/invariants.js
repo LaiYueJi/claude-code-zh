@@ -46,8 +46,8 @@ const checks = [
     ['值', keepRx(/name="PowerShell";commandLabel="PowerShell"/g), 'PowerShell 工具類別 name 保持英文'],
     ['值', keepRx(/name="WebFetch"/g), 'WebFetch 工具類別 name 保持英文'],
     ['值', keep('?"Agent":'), 'Task→Agent 工具名對映保持英文'],
-    ['值', keep('$[$.Idle=0]="Idle"'), 'Monaco Idle 列舉保持英文'],
-    ['值', keepRx(/\$\[\$\.Event=\d+\]="Event"/g), 'Monaco Event 列舉保持英文'],
+    ['值', keepRx(/([A-Za-z0-9_$]+)\[\1\.Idle=0\]="Idle"/g), 'Monaco Idle 列舉保持英文'],
+    ['值', keepRx(/([A-Za-z0-9_$]+)\[\1\.Event=\d+\]="Event"/g), 'Monaco Event 列舉保持英文'],
     ['值', keep('case"Type":return'), 'Monaco InlayHint "Type" 比較保持英文'],
     ['值', keep('["If","EndIf"]'), 'Monaco If 關鍵字保持英文'],
     ['值', keep('"Declare","Default","Delegate"'), 'Monaco VB Default 關鍵字保持英文'],
@@ -66,7 +66,7 @@ const checks = [
     ['值', keep('{value:"both",label:') && keep('{value:"code",label:'), '回溯選項 value 保持英文'],
     ['值', keep('local_agent:') && keep('mcp_task:'), '任務種類鍵保持英文'],
     ['值', keep('hostCredential:'), '設定來源鍵保持英文'],
-    ['值', keep('G("interrupt")') && keep('G("continue")'), '自動模式按鈕的 interrupt／continue 值保持英文'],
+    ['值', keepRx(/onClick:\(\)=>[A-Za-z0-9_$]+\("interrupt"\)/g) && keepRx(/onClick:\(\)=>[A-Za-z0-9_$]+\("continue"\)/g), '自動模式按鈕的 interrupt／continue 值保持英文'],
 
     // ── 拿 CLI 原文比對的字串 ───────────────────────────
     ['值', keep('==="Saving a file is not available here"'), '匯出比較值保持英文'],
@@ -82,7 +82,7 @@ const checks = [
     // ── 反查表：Object.keys(Ml).find((J)=>Ml[J]===$) 以值回推鍵，翻了反查就失效 ──
     ['值', keep('empty_session:"This session has no conversation to open here yet.'), '工作階段無法開啟的反查表保持英文'],
     // 表名是 minify 出來的、每次改版都會變，用反向參照比對而不是寫死名字
-    ['值', keepRx(/Object\.keys\(([A-Za-z0-9_$]+)\)\.find\(\([A-Za-z0-9_$]+\)=>\1\[[A-Za-z0-9_$]+\]===\$\)/g), '以值回推鍵的反查仍以英文原文比對'],
+    ['值', keepRx(/Object\.keys\(([A-Za-z0-9_$]+)\)\.find\(\([A-Za-z0-9_$]+\)=>\1\[[A-Za-z0-9_$]+\]===[A-Za-z0-9_$]+\)/g), '以值回推鍵的反查仍以英文原文比對'],
 
     // ── 用量修正（usage fix）的比較值與內部錯誤 ──────────────
     ['值', keep('startsWith("/effort ")'), '送出用量修正前比對的 /effort 前綴保持英文'],

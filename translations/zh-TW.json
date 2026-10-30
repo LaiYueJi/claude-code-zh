@@ -1,8 +1,8 @@
 {
-  "version": "2.4.25",
+  "version": "2.4.26",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-30",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8464,6 +8464,148 @@
     {
       "original": "children:\\[\"and \",([^,\\]]+),\" more\"\\]",
       "chinese": "children:[\"另外還有 \",$1,\" 個檔案\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Clear side questions from this editor\"",
+      "chinese": "\"清除這個編輯器的側邊提問\""
+    },
+    {
+      "original": "\"Couldn't save your change to session groups. If the change is missing now or after a restart, make it again.\"",
+      "chinese": "\"你對對話階段群組的變更沒有儲存成功。如果現在或重新啟動後看不到這項變更，請再做一次。\""
+    },
+    {
+      "original": "\\[\"Add \",([A-Za-z0-9_$]+\\[[A-Za-z0-9_$]+\\]\\.toLowerCase\\(\\)),\" rule\"\\]",
+      "chinese": "[\"新增\",$1,\"規則\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\[\"(?:Remove|移除) \",([A-Za-z0-9_$]+)\\.behavior,\" rule\\?\"\\]",
+      "chinese": "[\"移除「\",$1.behavior,\"」規則？\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(in [A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+\\[[A-Za-z0-9_$]+\\]:)\"task\"\\}",
+      "chinese": "$1\"任務\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.plugin\\([A-Za-z0-9_$]+\\.pluginId\\)\\],[A-Za-z0-9_$]+=[A-Za-z0-9_$]+\\.enabled\\?)\"on\":\"off\"",
+      "chinese": "$1\"開啟\":\"關閉\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(children:\\[[A-Za-z0-9_$]+\\([A-Za-z0-9_$]+,\\{\\}\\),)\"Output\"\\]",
+      "chinese": "$1\"輸出\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(let [A-Za-z0-9_$]+=)\\[\"the \"\\]",
+      "chinese": "$1[\"外掛程式 \"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\?\", \":([A-Za-z0-9_$]+)===([A-Za-z0-9_$]+)\\.length-2\\?\" and \":([A-Za-z0-9_$]+)\\.length===1\\?\" plugin\":\" plugins\"",
+      "chinese": "?\"、\":$1===$2.length-2?\" 和 \":$3.length===1?\"\":\"\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "return`use \\$\\{([^{}]*)\\}`",
+      "chinese": "return`使用 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It's turned on in .claude/settings.json, which your team shares, so turning it off there turns it off for everyone who uses this project.",
+      "chinese": "`它是在 .claude/settings.json 裡開啟的，而這個檔案由你的團隊共用，所以在那裡關掉，會讓使用這個專案的每個人都關掉。"
+    },
+    {
+      "original": "`It's off in your .claude/settings.local.json, but settings this dialog can't change keep it on.",
+      "chinese": "`它在你的 .claude/settings.local.json 裡是關閉的，但有這個對話框改不到的設定讓它保持開啟。"
+    },
+    {
+      "original": "`It's now off for your team in .claude/settings.json, but other settings still turn it on for you, most likely your own .claude/settings.local.json.",
+      "chinese": "`它現在已經在 .claude/settings.json 裡為你的團隊關閉了，但仍有其他設定為你開啟它，最可能是你自己的 .claude/settings.local.json。"
+    },
+    {
+      "original": "` Cancel leaves \\$\\{([^{}]*)\\} as \\$\\{([^{}]*)\\?\"it is\":\"they are\"\\}\\.`",
+      "chinese": "` 按「取消」則讓 ${$1} 維持原樣。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"wasn't\":\"weren't\"\\} changed\\.`",
+      "chinese": "` ${$1} 沒有變動。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"wasn't\":\"weren't\"\\} changed\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} 沒有變動。${$3}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This plugin is still on.\"",
+      "chinese": "\"這個外掛程式仍是開啟的。\""
+    },
+    {
+      "original": "\"None of its plugins are installed.\"",
+      "chinese": "\"它的外掛程式一個都沒安裝。\""
+    },
+    {
+      "original": "`This usually also uninstalls ",
+      "chinese": "`通常也會一併解除安裝"
+    },
+    {
+      "original": "\"its installed plugin\"",
+      "chinese": "\"它已安裝的外掛程式\""
+    },
+    {
+      "original": "`its \\$\\{([^{}]*)\\} installed plugins`",
+      "chinese": "`它已安裝的 ${$1} 個外掛程式`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\}, \\$\\{([^{}]*)\\}, and deletes what \\$\\{([^{}]*)\\} saved\\.`",
+      "chinese": "}，${$1}，並刪除它們儲存的資料。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Refreshing the marketplace downloads its latest list, then the install continues.\"",
+      "chinese": "\"重新整理市集會下載它最新的清單，然後繼續安裝。\""
+    },
+    {
+      "original": "`This plugin isn't in \"\\$\\{([^{}]*)\\}\"\\.`",
+      "chinese": "`「${$1}」裡沒有這個外掛程式。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The marketplace doesn't list a plugin by that name, even after a refresh.\"",
+      "chinese": "\"即使重新整理過，市集裡也沒有這個名稱的外掛程式。\""
+    },
+    {
+      "original": "\"This plugin couldn't be selected automatically.\"",
+      "chinese": "\"無法自動選取這個外掛程式。\""
+    },
+    {
+      "original": "\"The link's marketplace was added. On the Plugins tab, install this plugin only from the marketplace with the source below; the Marketplaces tab shows each one's source.\"",
+      "chinese": "\"連結的市集已經新增了。請在「外掛程式」分頁中，只從下方標示來源的那個市集安裝這個外掛程式；「市集」分頁會顯示每個市集的來源。\""
+    },
+    {
+      "original": "`Failed to turn Ultracode \\$\\{([^{}]*)\\?\"on\":\"off\"\\}: \\$\\{([^{}]*)\\}`",
+      "chinese": "`無法${$1?\"開啟\":\"關閉\"} Ultracode：${$2}`",
       "regex": true,
       "flags": "g"
     },

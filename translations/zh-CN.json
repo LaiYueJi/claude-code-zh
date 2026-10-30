@@ -1,8 +1,8 @@
 {
-  "version": "2.4.25",
+  "version": "2.4.26",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-30",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8464,6 +8464,148 @@
     {
       "original": "children:\\[\"and \",([^,\\]]+),\" more\"\\]",
       "chinese": "children:[\"另外还有 \",$1,\" 个文件\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Clear side questions from this editor\"",
+      "chinese": "\"清除这个编辑器的侧边提问\""
+    },
+    {
+      "original": "\"Couldn't save your change to session groups. If the change is missing now or after a restart, make it again.\"",
+      "chinese": "\"你对会话阶段分组的更改没有保存成功。如果现在或重新启动后看不到这项更改，请再做一次。\""
+    },
+    {
+      "original": "\\[\"Add \",([A-Za-z0-9_$]+\\[[A-Za-z0-9_$]+\\]\\.toLowerCase\\(\\)),\" rule\"\\]",
+      "chinese": "[\"添加\",$1,\"规则\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\[\"(?:Remove|移除) \",([A-Za-z0-9_$]+)\\.behavior,\" rule\\?\"\\]",
+      "chinese": "[\"移除「\",$1.behavior,\"」规则？\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(in [A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+\\[[A-Za-z0-9_$]+\\]:)\"task\"\\}",
+      "chinese": "$1\"任务\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.plugin\\([A-Za-z0-9_$]+\\.pluginId\\)\\],[A-Za-z0-9_$]+=[A-Za-z0-9_$]+\\.enabled\\?)\"on\":\"off\"",
+      "chinese": "$1\"开启\":\"关闭\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(children:\\[[A-Za-z0-9_$]+\\([A-Za-z0-9_$]+,\\{\\}\\),)\"Output\"\\]",
+      "chinese": "$1\"输出\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(let [A-Za-z0-9_$]+=)\\[\"the \"\\]",
+      "chinese": "$1[\"插件 \"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\?\", \":([A-Za-z0-9_$]+)===([A-Za-z0-9_$]+)\\.length-2\\?\" and \":([A-Za-z0-9_$]+)\\.length===1\\?\" plugin\":\" plugins\"",
+      "chinese": "?\"、\":$1===$2.length-2?\" 和 \":$3.length===1?\"\":\"\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "return`use \\$\\{([^{}]*)\\}`",
+      "chinese": "return`使用 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It's turned on in .claude/settings.json, which your team shares, so turning it off there turns it off for everyone who uses this project.",
+      "chinese": "`它是在 .claude/settings.json 里开启的，而这个文件由你的团队共用，所以在那里关掉，会让使用这个项目的每个人都关掉。"
+    },
+    {
+      "original": "`It's off in your .claude/settings.local.json, but settings this dialog can't change keep it on.",
+      "chinese": "`它在你的 .claude/settings.local.json 里是关闭的，但有这个对话框改不到的设置让它保持开启。"
+    },
+    {
+      "original": "`It's now off for your team in .claude/settings.json, but other settings still turn it on for you, most likely your own .claude/settings.local.json.",
+      "chinese": "`它现在已经在 .claude/settings.json 里为你的团队关闭了，但仍有其他设置为你开启它，最可能是你自己的 .claude/settings.local.json。"
+    },
+    {
+      "original": "` Cancel leaves \\$\\{([^{}]*)\\} as \\$\\{([^{}]*)\\?\"it is\":\"they are\"\\}\\.`",
+      "chinese": "` 按「取消」则让 ${$1} 维持原样。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"wasn't\":\"weren't\"\\} changed\\.`",
+      "chinese": "` ${$1} 没有变动。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"wasn't\":\"weren't\"\\} changed\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1} 没有变动。${$3}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This plugin is still on.\"",
+      "chinese": "\"这个插件仍是开启的。\""
+    },
+    {
+      "original": "\"None of its plugins are installed.\"",
+      "chinese": "\"它的插件一个都没安装。\""
+    },
+    {
+      "original": "`This usually also uninstalls ",
+      "chinese": "`通常也会一并卸载"
+    },
+    {
+      "original": "\"its installed plugin\"",
+      "chinese": "\"它已安装的插件\""
+    },
+    {
+      "original": "`its \\$\\{([^{}]*)\\} installed plugins`",
+      "chinese": "`它已安装的 ${$1} 个插件`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\}, \\$\\{([^{}]*)\\}, and deletes what \\$\\{([^{}]*)\\} saved\\.`",
+      "chinese": "}，${$1}，并删除它们保存的数据。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Refreshing the marketplace downloads its latest list, then the install continues.\"",
+      "chinese": "\"刷新市场会下载它最新的列表，然后继续安装。\""
+    },
+    {
+      "original": "`This plugin isn't in \"\\$\\{([^{}]*)\\}\"\\.`",
+      "chinese": "`「${$1}」里没有这个插件。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The marketplace doesn't list a plugin by that name, even after a refresh.\"",
+      "chinese": "\"即使刷新过，市场里也没有这个名称的插件。\""
+    },
+    {
+      "original": "\"This plugin couldn't be selected automatically.\"",
+      "chinese": "\"无法自动选取这个插件。\""
+    },
+    {
+      "original": "\"The link's marketplace was added. On the Plugins tab, install this plugin only from the marketplace with the source below; the Marketplaces tab shows each one's source.\"",
+      "chinese": "\"链接的市场已经添加了。请在「插件」标签页中，只从下方标示来源的那个市场安装这个插件；「市场」标签页会显示每个市场的来源。\""
+    },
+    {
+      "original": "`Failed to turn Ultracode \\$\\{([^{}]*)\\?\"on\":\"off\"\\}: \\$\\{([^{}]*)\\}`",
+      "chinese": "`无法${$1?\"开启\":\"关闭\"} Ultracode：${$2}`",
       "regex": true,
       "flags": "g"
     },

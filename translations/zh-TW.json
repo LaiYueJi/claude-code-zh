@@ -1,8 +1,8 @@
 {
-  "version": "2.4.26",
+  "version": "2.4.27",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-11-02",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -1057,30 +1057,6 @@
     {
       "original": "\"Installed\"",
       "chinese": "\"已安裝\""
-    },
-    {
-      "original": "\"install_plugin\"",
-      "chinese": "\"安裝外掛程式\""
-    },
-    {
-      "original": "\"uninstall_plugin\"",
-      "chinese": "\"解除安裝外掛程式\""
-    },
-    {
-      "original": "\"set_plugin_enabled\"",
-      "chinese": "\"設定外掛程式啟用狀態\""
-    },
-    {
-      "original": "\"add_marketplace\"",
-      "chinese": "\"加入市集\""
-    },
-    {
-      "original": "\"remove_marketplace\"",
-      "chinese": "\"移除市集\""
-    },
-    {
-      "original": "\"refresh_marketplace\"",
-      "chinese": "\"重新整理市集\""
     },
     {
       "original": "\"Search plugins…\"",

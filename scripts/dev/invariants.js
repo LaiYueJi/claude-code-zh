@@ -98,6 +98,9 @@ const checks = [
     ['值', keep('"The user did not answer the questions."'), '問題未作答時送給模型的說明保持英文'],
     ['值', keep('"Your questions have been answered: "'), '問題已作答時送給模型的前綴保持英文'],
 
+    // ── 介面與擴充後端之間的請求代號，翻了後端會回 Unknown request type ──
+    ['值', keepRx(/sendRequest\(\{type:"[a-z_]+"/g), '送給擴充後端的請求代號保持英文'],
+
     // ── 品牌名 ────────────────────────────────────────
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 

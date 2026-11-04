@@ -1,8 +1,8 @@
 {
-  "version": "2.4.27",
+  "version": "2.4.28",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-04",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8582,6 +8582,46 @@
     {
       "original": "`Failed to turn Ultracode \\$\\{([^{}]*)\\?\"on\":\"off\"\\}: \\$\\{([^{}]*)\\}`",
       "chinese": "`無法${$1?\"開啟\":\"關閉\"} Ultracode：${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Cloud gateway\"",
+      "chinese": "\"雲端閘道\""
+    },
+    {
+      "original": "\"Sign in to Cloud gateway\"",
+      "chinese": "\"登入雲端閘道\""
+    },
+    {
+      "original": "\"Sign in to the gateway in your settings\"",
+      "chinese": "\"在你的設定中登入閘道\""
+    },
+    {
+      "original": "\"Use your Claude subscription (Individual, Team, or Enterprise)\"",
+      "chinese": "\"使用你的 Claude 訂閱（個人、團隊或企業）\""
+    },
+    {
+      "original": "\"Login method pre-selected: Claude subscription (claude.ai account)\"",
+      "chinese": "\"已預先選定登入方式：Claude 訂閱（claude.ai 帳戶）\""
+    },
+    {
+      "original": "\"Login method pre-selected: API usage billing (Anthropic Console)\"",
+      "chinese": "\"已預先選定登入方式：按 API 使用量計費（Anthropic Console）\""
+    },
+    {
+      "original": "\"Login is managed by your organization and must be completed in the terminal.\"",
+      "chinese": "\"登入由你的組織管理，必須在終端機中完成。\""
+    },
+    {
+      "original": "label:\"Copy\",className:([A-Za-z0-9_$]+)\\.questionCopy",
+      "chinese": "label:\"複製\",className:$1.questionCopy",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} from your prompt`",
+      "chinese": "`${$1}（來自你的提示詞）`",
       "regex": true,
       "flags": "g"
     },

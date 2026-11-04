@@ -101,6 +101,9 @@ const checks = [
     // ── 介面與擴充後端之間的請求代號，翻了後端會回 Unknown request type ──
     ['值', keepRx(/sendRequest\(\{type:"[a-z_]+"/g), '送給擴充後端的請求代號保持英文'],
 
+    // ── 拿來剝前綴的字串：內容由搜尋工具產生，翻了 startsWith 就比不到，前綴會原樣顯示 ──
+    ['值', keep('"The search stopped before it finished, most likely at its time limit'), '搜尋中斷前綴保持英文'],
+
     // ── 品牌名 ────────────────────────────────────────
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 

@@ -15,9 +15,14 @@ const KEY_DEAD_RULES = 'deadRules';        // 上次掃描時已對不上的規�
 const KEY_SEEN_UNTRANSLATED = 'seenUntranslated'; // 上次掃描時已知的漏翻字串（同樣只回報「新增的」）
 const KEY_LAST_UPDATE_CHECK = 'lastUpdateCheck';  // 上次線上檢查更新的時間戳
 const KEY_SKIPPED_VERSION = 'skippedExtVersion';  // 使用者選擇略過的擴充功能版本
+const KEY_LAST_AUTO_RELOAD = 'lastAutoReload';    // 上次自動重載介面的時間戳（防無限重載）
 
 // 自動檢查更新的最小間隔：開太頻繁沒有意義（翻譯包大約隨 Claude 改版才會動）
 const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
+
+// 兩次「自動重載介面」之間的最短間隔。自動重載有 Claude 分頁時走的是重新載入視窗，
+// 重載後本擴充又會啟動一次；萬一某個判斷出錯，就會變成無限重開。這道閘門是最後的保險。
+const AUTO_RELOAD_GUARD_MS = 60 * 1000;
 
 // 偵測未翻譯字串時要掃描的介面屬性（比對「prop:值」）
 // children 於 2.3.0 納入：側邊提問面板整區文案都寫成 children:"文字"，舊版掃描一條都看不到。
@@ -109,14 +114,16 @@ async function activate(context) {
 
     register('claudeCodeZh.showMenu', () => showQuickMenu(locator, translator, backup, config));
 
+    // 這兩處都要 await：套用後可能立刻重新載入視窗，沒寫進去的話「還原」狀態會留著，
+    // 下次啟動就不會自動套用了。
     register('claudeCodeZh.applyTranslation', async () => {
-        context.globalState.update(KEY_RESTORED, false); // 使用者主動套用 → 解除「還原」狀態
+        await context.globalState.update(KEY_RESTORED, false); // 使用者主動套用 → 解除「還原」狀態
         await applyTranslation(locator, translator, backup, config);
         updateStatusBar(locator, backup, translator, config);
     });
 
     register('claudeCodeZh.reloadTranslation', async () => {
-        context.globalState.update(KEY_RESTORED, false);
+        await context.globalState.update(KEY_RESTORED, false);
         await applyTranslation(locator, translator, backup, config, false, true);
         updateStatusBar(locator, backup, translator, config);
     });
@@ -483,10 +490,20 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
         if (baseContent == null) baseContent = fs.readFileSync(mainFilePath, 'utf8');
 
         const translated = await translator.translate(baseContent);
+
+        // 譯文與磁碟上的內容一模一樣 → 什麼都沒變，不必重寫也不必重載。
+        // 強制重套（翻譯包簽章變了）常常落在這裡：簽章變了不代表產出會變。
+        // 少了這道判斷，每次啟動都會「套用成功 → 自動重載視窗 → 再套用」無限輪迴。
+        if (fs.readFileSync(mainFilePath, 'utf8') === translated) {
+            if (extContext) await extContext.globalState.update(KEY_LAST_TRANSLATION, translator.getSignature());
+            return false;
+        }
+
         fs.writeFileSync(mainFilePath, translated, 'utf8');
 
-        // 記錄本次套用的翻譯包簽章，供下次啟動判斷是否需因翻譯包更新而重新套用
-        if (extContext) extContext.globalState.update(KEY_LAST_TRANSLATION, translator.getSignature());
+        // 記錄本次套用的翻譯包簽章，供下次啟動判斷是否需因翻譯包更新而重新套用。
+        // 一定要 await：後面可能立刻重新載入視窗，沒寫進去的話下次啟動又會判定成「包變了」。
+        if (extContext) await extContext.globalState.update(KEY_LAST_TRANSLATION, translator.getSignature());
 
         // 寫入的是磁碟上的檔案，已載入的 webview 仍是舊內容 → 標記待重載
         webviewStale = true;
@@ -584,6 +601,15 @@ async function reloadClaudeUi(locator, translator, backup, config) {
 async function offerUiReload(locator, translator, backup, config) {
     const s = S(config);
     if (config.get('autoReloadClaudeUi')) {
+        // 有 Claude 開在編輯器分頁時，自動重載走的是「重新載入視窗」——重載後本擴充又會重新啟動。
+        // 萬一哪天又出現「套用→重載→再套用」的情況，這道閘門讓它最多只發生一次，
+        // 不會把使用者鎖在無限重開裡；真的還沒生效，手動按一次重載即可。
+        if (extContext && Date.now() - (extContext.globalState.get(KEY_LAST_AUTO_RELOAD) || 0) < AUTO_RELOAD_GUARD_MS) {
+            console.warn('剛剛才自動重載過，這次跳過，避免無限重載');
+            updateStatusBar(locator, backup, translator, config);
+            return;
+        }
+        if (extContext) await extContext.globalState.update(KEY_LAST_AUTO_RELOAD, Date.now());
         await reloadWebviews(config, true);
         updateStatusBar(locator, backup, translator, config);
         return;

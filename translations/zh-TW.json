@@ -1,8 +1,8 @@
 {
-  "version": "2.4.28",
+  "version": "2.4.29",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-11-04",
+  "updatedAt": "2026-11-08",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -48,6 +48,7 @@
     "Shift",
     "Tab",
     "The subagent ended without delivering a report through ${}, so no report was delivered.",
+    "This agent called ${} again after",
     "URL",
     "Unfold editor argument",
     "Unknown",
@@ -8624,6 +8625,128 @@
       "chinese": "`${$1}（來自你的提示詞）`",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "\"Checking installed plugins…\"",
+      "chinese": "\"正在檢查已安裝的外掛程式…\""
+    },
+    {
+      "original": "`Checking installed plugins for \\$\\{([^{}]*)\\}`",
+      "chinese": "`正在檢查 ${$1} 已安裝的外掛程式`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`The list of installed plugins couldn't be read. Removing this marketplace usually also uninstalls ",
+      "chinese": "`無法讀取已安裝的外掛程式清單。移除這個市集通常也會一併解除安裝"
+    },
+    {
+      "original": "\"any of its installed plugins\"",
+      "chinese": "\"它所安裝的任何外掛程式\""
+    },
+    {
+      "original": "`its installed plugins, including \\$\\{([^{}]*)\\},`",
+      "chinese": "`它已安裝的外掛程式（包含 ${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " and deletes what they saved.",
+      "chinese": "，並刪除它們儲存的資料。"
+    },
+    {
+      "original": "\"Send to project\"",
+      "chinese": "\"傳送到專案\""
+    },
+    {
+      "original": "`Create the Claude Project “\\$\\{([^{}]*)\\}” and send this message\\?`",
+      "chinese": "`建立 Claude 專案「${$1}」並送出這則訊息？`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Send this message to the Claude Project “\\$\\{([^{}]*)\\}”\\?`",
+      "chinese": "`要把這則訊息送到 Claude 專案「${$1}」嗎？`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Scroll to the end of the message before approving it.\"",
+      "chinese": "\"請先捲動到訊息結尾，再決定是否核准。\""
+    },
+    {
+      "original": "`This folder’s GitHub origin, \\$\\{([^{}]*)\\}, is added as the project’s repository, so its threads start from what’s on GitHub\\.`",
+      "chinese": "`這個資料夾的 GitHub 來源 ${$1} 已加入為專案的儲存庫，因此它的討論串會以 GitHub 上的內容為起點。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Allow this search\"",
+      "chinese": "\"允許這次搜尋？\""
+    },
+    {
+      "original": "\"Not signed in to the Cloud gateway.\"",
+      "chinese": "\"尚未登入雲端閘道。\""
+    },
+    {
+      "original": "signInLabel:\"Sign in\"",
+      "chinese": "signInLabel:\"登入\""
+    },
+    {
+      "original": "\"Cloud gateway session expired.\"",
+      "chinese": "\"雲端閘道的登入已過期。\""
+    },
+    {
+      "original": "\"Signed in. Send your message again.\"",
+      "chinese": "\"已登入。請重新送出你的訊息。\""
+    },
+    {
+      "original": "\"Sign in with the Cloud gateway to continue.\"",
+      "chinese": "\"請使用雲端閘道登入以繼續。\""
+    },
+    {
+      "original": "\"Usage is paused for your organization. For help, please contact support.\"",
+      "chinese": "\"你所屬組織的用量已暫停。如需協助，請聯絡支援人員。\""
+    },
+    {
+      "original": "\"The window reloaded during plan mode, and plan mode is now off, so Claude did not continue on its own. To keep planning, choose Plan on the mode button below before you send your next message.\"",
+      "chinese": "\"視窗在規劃模式期間重新載入，規劃模式現在已關閉，所以 Claude 沒有自行繼續。若要繼續規劃，請先用下方的模式按鈕選擇「規劃模式」，再送出下一則訊息。\""
+    },
+    {
+      "original": "\"The editor restarted its extensions during plan mode, and plan mode is now off, so Claude did not continue on its own. To keep planning, choose Plan on the mode button below before you send your next message.\"",
+      "chinese": "\"編輯器在規劃模式期間重新啟動了擴充功能，規劃模式現在已關閉，所以 Claude 沒有自行繼續。若要繼續規劃，請先用下方的模式按鈕選擇「規劃模式」，再送出下一則訊息。\""
+    },
+    {
+      "original": "\"Your prompt\"",
+      "chinese": "\"你的提示詞\""
+    },
+    {
+      "original": "\"shorten it to send\"",
+      "chinese": "\"請縮短後再送出\""
+    },
+    {
+      "original": "\"That paste\"",
+      "chinese": "\"這次貼上的內容\""
+    },
+    {
+      "original": "\"nothing was added, paste less of it\"",
+      "chinese": "\"沒有加入任何內容，請少貼一些\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\} over the limit of \\$\\{([^{}]*)\\} · \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1}比 ${$4} 字元的上限多了 ${$2} 個字 · ${$5}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " · still over the limit of \\$\\{([^{}]*)\\} characters · shorten it to send`",
+      "chinese": " · 仍超過 ${$1} 字元的上限 · 請縮短後再送出`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Submitting this report will send the entire current conversation to Anthropic for future improvements to our products and models.\"",
+      "chinese": "\"送出這份回報時，會把目前的整段對話一併傳給 Anthropic，用於日後改善我們的產品與模型。\""
     },
     {
       "original": "\" for VS Code\"",

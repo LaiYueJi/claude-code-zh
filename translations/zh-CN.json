@@ -1,8 +1,8 @@
 {
-  "version": "2.4.28",
+  "version": "2.4.29",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-04",
+  "updatedAt": "2026-11-08",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -48,6 +48,7 @@
     "Shift",
     "Tab",
     "The subagent ended without delivering a report through ${}, so no report was delivered.",
+    "This agent called ${} again after",
     "URL",
     "Unfold editor argument",
     "Unknown",
@@ -8624,6 +8625,128 @@
       "chinese": "`${$1}（来自你的提示词）`",
       "regex": true,
       "flags": "g"
+    },
+    {
+      "original": "\"Checking installed plugins…\"",
+      "chinese": "\"正在检查已安装的插件…\""
+    },
+    {
+      "original": "`Checking installed plugins for \\$\\{([^{}]*)\\}`",
+      "chinese": "`正在检查 ${$1} 已安装的插件`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`The list of installed plugins couldn't be read. Removing this marketplace usually also uninstalls ",
+      "chinese": "`无法读取已安装的插件列表。移除这个市场通常也会一并卸载"
+    },
+    {
+      "original": "\"any of its installed plugins\"",
+      "chinese": "\"它所安装的任何插件\""
+    },
+    {
+      "original": "`its installed plugins, including \\$\\{([^{}]*)\\},`",
+      "chinese": "`它已安装的插件（包含 ${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " and deletes what they saved.",
+      "chinese": "，并删除它们保存的数据。"
+    },
+    {
+      "original": "\"Send to project\"",
+      "chinese": "\"发送到项目\""
+    },
+    {
+      "original": "`Create the Claude Project “\\$\\{([^{}]*)\\}” and send this message\\?`",
+      "chinese": "`创建 Claude 项目「${$1}」并发送这条消息？`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Send this message to the Claude Project “\\$\\{([^{}]*)\\}”\\?`",
+      "chinese": "`要把这条消息发送到 Claude 项目「${$1}」吗？`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Scroll to the end of the message before approving it.\"",
+      "chinese": "\"请先滚动到消息结尾，再决定是否批准。\""
+    },
+    {
+      "original": "`This folder’s GitHub origin, \\$\\{([^{}]*)\\}, is added as the project’s repository, so its threads start from what’s on GitHub\\.`",
+      "chinese": "`这个文件夹的 GitHub 来源 ${$1} 已添加为项目的仓库，因此它的话题会以 GitHub 上的内容为起点。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Allow this search\"",
+      "chinese": "\"允许这次搜索？\""
+    },
+    {
+      "original": "\"Not signed in to the Cloud gateway.\"",
+      "chinese": "\"尚未登录云端网关。\""
+    },
+    {
+      "original": "signInLabel:\"Sign in\"",
+      "chinese": "signInLabel:\"登录\""
+    },
+    {
+      "original": "\"Cloud gateway session expired.\"",
+      "chinese": "\"云端网关的登录已过期。\""
+    },
+    {
+      "original": "\"Signed in. Send your message again.\"",
+      "chinese": "\"已登录。请重新发送你的消息。\""
+    },
+    {
+      "original": "\"Sign in with the Cloud gateway to continue.\"",
+      "chinese": "\"请使用云端网关登录以继续。\""
+    },
+    {
+      "original": "\"Usage is paused for your organization. For help, please contact support.\"",
+      "chinese": "\"你所属组织的用量已暂停。如需帮助，请联系支持人员。\""
+    },
+    {
+      "original": "\"The window reloaded during plan mode, and plan mode is now off, so Claude did not continue on its own. To keep planning, choose Plan on the mode button below before you send your next message.\"",
+      "chinese": "\"窗口在规划模式期间重新加载，规划模式现在已关闭，所以 Claude 没有自行继续。若要继续规划，请先用下方的模式按钮选择「规划模式」，再发送下一条消息。\""
+    },
+    {
+      "original": "\"The editor restarted its extensions during plan mode, and plan mode is now off, so Claude did not continue on its own. To keep planning, choose Plan on the mode button below before you send your next message.\"",
+      "chinese": "\"编辑器在规划模式期间重新启动了扩展，规划模式现在已关闭，所以 Claude 没有自行继续。若要继续规划，请先用下方的模式按钮选择「规划模式」，再发送下一条消息。\""
+    },
+    {
+      "original": "\"Your prompt\"",
+      "chinese": "\"你的提示词\""
+    },
+    {
+      "original": "\"shorten it to send\"",
+      "chinese": "\"请缩短后再发送\""
+    },
+    {
+      "original": "\"That paste\"",
+      "chinese": "\"这次粘贴的内容\""
+    },
+    {
+      "original": "\"nothing was added, paste less of it\"",
+      "chinese": "\"没有加入任何内容，请少粘一些\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} is \\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\} over the limit of \\$\\{([^{}]*)\\} · \\$\\{([^{}]*)\\}`",
+      "chinese": "`${$1}比 ${$4} 字符的上限多了 ${$2} 个字 · ${$5}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " · still over the limit of \\$\\{([^{}]*)\\} characters · shorten it to send`",
+      "chinese": " · 仍超过 ${$1} 字符的上限 · 请缩短后再发送`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Submitting this report will send the entire current conversation to Anthropic for future improvements to our products and models.\"",
+      "chinese": "\"提交这份报告时，会把当前的整段对话一并发送给 Anthropic，用于日后改进我们的产品与模型。\""
     },
     {
       "original": "\" for VS Code\"",

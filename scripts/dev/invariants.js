@@ -104,6 +104,12 @@ const checks = [
     // ── 拿來剝前綴的字串：內容由搜尋工具產生，翻了 startsWith 就比不到，前綴會原樣顯示 ──
     ['值', keep('"The search stopped before it finished, most likely at its time limit'), '搜尋中斷前綴保持英文'],
 
+    // ── 截斷標記：用 endsWith 比對，而且旁邊寫死 55＝這串英文的長度，翻了會算錯位置 ──
+    ['值', keep('[Message truncated - exceeded 50,000 character limit]'), '訊息截斷標記保持英文'],
+
+    // ── 送給模型的子代理說明（整組，同組其他幾句也在 scanIgnore 裡）──
+    ['值', keep('`This agent called ${'), '子代理重複回報的說明保持英文'],
+
     // ── 品牌名 ────────────────────────────────────────
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 

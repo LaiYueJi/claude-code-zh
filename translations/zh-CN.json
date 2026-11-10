@@ -1,8 +1,8 @@
 {
-  "version": "2.4.30",
+  "version": "2.4.31",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-08",
+  "updatedAt": "2026-11-10",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8747,6 +8747,78 @@
     {
       "original": "\"Submitting this report will send the entire current conversation to Anthropic for future improvements to our products and models.\"",
       "chinese": "\"提交这份报告时，会把当前的整段对话一并发送给 Anthropic，用于日后改进我们的产品与模型。\""
+    },
+    {
+      "original": "(Added|新增) to \\.vscode/extensions\\.json\\. Commit it to share the suggestion\\.",
+      "chinese": "已加入 .vscode/extensions.json。提交它就能把这个建议分享给其他人。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Couldn't update .vscode/extensions.json, so nothing was written.\"",
+      "chinese": "\"无法更新 .vscode/extensions.json，因此没有写入任何内容。\""
+    },
+    {
+      "original": "\"Suggest Claude Code to people who open this repo?\"",
+      "chinese": "\"要向打开这个仓库的人推荐 Claude Code 吗？\""
+    },
+    {
+      "original": "\"Review change\"",
+      "chinese": "\"查看更改\""
+    },
+    {
+      "original": "\"Don't show again\"",
+      "chinese": "\"不再显示\""
+    },
+    {
+      "original": "(Added|新增) \\$\\{([^{}]*)\\} to \\$\\{([^{}]*)\\} config\\. It will be available in new sessions\\.",
+      "chinese": "已将 ${$2} 加入 ${$3} 配置，新的会话就能使用。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Claude Code has both \\$\\{([^{}]*)\\} and \\$\\{([^{}]*)\\}, so it may not use the credential you expect\\.`",
+      "chinese": "`Claude Code 同时有 ${$1} 和 ${$2}，因此它用的凭证可能不是你预期的那个。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " Keep one and remove the other, then start a new conversation (restart your editor if you removed one from your shell).",
+      "chinese": " 请留下一个、移除另一个，然后开始新的会话（如果你移除的是 shell 里那个，请重新启动编辑器）。"
+    },
+    {
+      "original": " To use only \\$\\{([^{}]*)\\}, \\$\\{([^{}]*)\\} to remove the saved key, then start a new conversation\\.`",
+      "chinese": " 若只要使用 ${$1}，请${$2}以移除已保存的密钥，然后开始新的会话。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"sign out (/logout)\"",
+      "chinese": "\"登出（/logout）\""
+    },
+    {
+      "original": "'run \"claude auth logout\" in a terminal'",
+      "chinese": "'在终端执行 \"claude auth logout\"'"
+    },
+    {
+      "original": "\"your claude.ai login\"",
+      "chinese": "\"你的 claude.ai 登录\""
+    },
+    {
+      "original": "\"an Anthropic profile\"",
+      "chinese": "\"一份 Anthropic 配置文件\""
+    },
+    {
+      "original": "\"an API key saved by /login\"",
+      "chinese": "\"由 /login 保存的 API 密钥\""
+    },
+    {
+      "original": "\"an apiKeyHelper setting\"",
+      "chinese": "\"apiKeyHelper 设置\""
+    },
+    {
+      "original": "\"Toggle fast mode for faster responses\"",
+      "chinese": "\"切换快速模式，获得更快的响应\""
     },
     {
       "original": "\" for VS Code\"",

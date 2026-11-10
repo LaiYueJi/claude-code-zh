@@ -110,6 +110,10 @@ const checks = [
     // ── 送給模型的子代理說明（整組，同組其他幾句也在 scanIgnore 裡）──
     ['值', keep('`This agent called ${'), '子代理重複回報的說明保持英文'],
 
+    // ── 憑證來源代碼：IGe() 的 case 標籤，同時也拿來比較（api_key_source／token_source）──
+    ['值', keep('case"/login managed key":') && keep('!=="/login managed key"'), '憑證來源代碼 /login managed key 保持英文'],
+    ['值', keepRx(/case"claude\.ai":/g) && keepRx(/case"profile":/g) && keepRx(/case"apiKeyHelper":/g), 'IGe 的憑證來源 case 標籤保持英文'],
+
     // ── 品牌名 ────────────────────────────────────────
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 

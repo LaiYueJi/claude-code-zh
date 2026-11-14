@@ -1,8 +1,8 @@
 {
-  "version": "2.4.31",
+  "version": "2.4.32",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-10",
+  "updatedAt": "2026-11-14",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8819,6 +8819,186 @@
     {
       "original": "\"Toggle fast mode for faster responses\"",
       "chinese": "\"切换快速模式，获得更快的响应\""
+    },
+    {
+      "original": "\"It is off because its enabledPlugins entry is a version list, and only true turns it on.\"",
+      "chinese": "\"它被关闭了，因为它在 enabledPlugins 里的设置是版本列表，只有 true 才会开启。\""
+    },
+    {
+      "original": "\"Its Claude Code version range isn't valid, so it's ignored.\"",
+      "chinese": "\"它指定的 Claude Code 版本范围无效，因此被忽略。\""
+    },
+    {
+      "original": "\"It needs another version of Claude Code, but loads anyway because it's read from a local folder.\"",
+      "chinese": "\"它需要其他版本的 Claude Code，但因为是从本机文件夹读取，仍然会加载。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} isn\\'t loaded`",
+      "chinese": "`${$1} 未加载`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Not loaded\"",
+      "chinese": "\"未加载\""
+    },
+    {
+      "original": "\"This plugin needs another version of Claude Code.\"",
+      "chinese": "\"这个插件需要其他版本的 Claude Code。\""
+    },
+    {
+      "original": "\"This plugin, or a plugin it needs, says it works only with other versions of Claude Code. Copy the error to see which.\"",
+      "chinese": "\"这个插件，或它需要的某个插件，声明只能在其他版本的 Claude Code 上运行。复制错误信息可以看出是哪一个。\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} was not updated because the marketplace\\'s version needs another version of Claude Code\\.`",
+      "chinese": "`${$1} 没有更新，因为市场上的版本需要其他版本的 Claude Code。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`It needs \\$\\{([^{}]*)\\}, which needs another version of Claude Code\\.`",
+      "chinese": "`它需要 ${$1}，而后者需要其他版本的 Claude Code。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Plugins from this source can run code on your computer, with access to your files and shell. Only continue if you trust it.\"",
+      "chinese": "\"来自这个来源的插件可以在你的电脑上运行代码，并访问你的文件与 shell。只有在你信任它时才继续。\""
+    },
+    {
+      "original": "\"Trust marketplace and continue\"",
+      "chinese": "\"信任这个市场并继续\""
+    },
+    {
+      "original": "\"Remote Control is off, so this session can’t be sent\"",
+      "chinese": "\"远程控制已关闭，因此无法发送这个会话阶段\""
+    },
+    {
+      "original": "\"This command needs Remote Control so a Claude Project can read this session.\"",
+      "chinese": "\"这个命令需要远程控制，Claude 项目才能读取这个会话阶段。\""
+    },
+    {
+      "original": "\"Turning on Remote Control…\"",
+      "chinese": "\"正在开启远程控制…\""
+    },
+    {
+      "original": "\"Turn on Remote Control\"",
+      "chinese": "\"开启远程控制\""
+    },
+    {
+      "original": "\"Not now\"",
+      "chinese": "\"暂时不要\""
+    },
+    {
+      "original": "\"If the browser didn't open, or shows a connection error for localhost, visit this URL:\"",
+      "chinese": "\"如果浏览器没有打开，或显示 localhost 连接错误，请前往这个网址：\""
+    },
+    {
+      "original": "\"Sign-in URL\"",
+      "chinese": "\"登录网址\""
+    },
+    {
+      "original": "\"Then paste the code it shows you:\"",
+      "chinese": "\"然后粘贴它显示的代码：\""
+    },
+    {
+      "original": "\"If the program is missing or damaged, reinstall the extension, or set \"",
+      "chinese": "\"如果程序丢失或损坏，请重新安装扩展，或将 \""
+    },
+    {
+      "original": "\"Your organization's managed settings (allowedProviders) leave no sign-in you can use here. Ask your administrator.\"",
+      "chinese": "\"你所属组织的受管理设置（allowedProviders）没有留下你能在这里使用的登录方式。请询问你的管理员。\""
+    },
+    {
+      "original": "\"Anthropic Console (no API key)\"",
+      "chinese": "\"Anthropic Console（不需 API 密钥）\""
+    },
+    {
+      "original": "\"Pay for API usage without creating an API key\"",
+      "chinese": "\"不必创建 API 密钥也能按 API 使用量付费\""
+    },
+    {
+      "original": "\"Check which models your subagents use\"",
+      "chinese": "\"检查你的子代理用的是哪些模型\""
+    },
+    {
+      "original": "\"Review sessions active over many hours\"",
+      "chinese": "\"查看持续很多小时的会话阶段\""
+    },
+    {
+      "original": "\"share covers whole sessions, not only subagents\"",
+      "chinese": "\"占比是以整个会话阶段计算，不只是子代理\""
+    },
+    {
+      "original": "\"whole sessions with requests in 8 or more separate hours\"",
+      "chinese": "\"在 8 个以上不同小时都有发送请求的整个会话阶段\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"runs on your\":\"requires\"\\} usage credits\\.`",
+      "chinese": "`${$1}${$2?\"使用你的\":\"需要\"}用量点数。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} \\$\\{([^{}]*)\\?\"runs on\":\"requires\"\\} usage credits\\.`",
+      "chinese": "`${$1}${$2?\"使用\":\"需要\"}用量点数。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Fable was included in your plan ",
+      "chinese": "`Fable 原本包含在你的方案中"
+    },
+    {
+      "original": "`as a promotion until \\$\\{([^{}]*)\\}`",
+      "chinese": "`（促销至 ${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ", and now \\$\\{([^{}]*)\\?\"runs on your\":\"requires\"\\} usage credits\\.`",
+      "chinese": "，现在${$1?\"使用你的\":\"需要\"}用量点数。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} now runs on usage credits`",
+      "chinese": "`${$1} 现在以用量点数运行`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} runs on usage credits\\. You have \\$\\{([^{}]*)\\} in credits\\.`",
+      "chinese": "`${$1} 以用量点数运行。你目前的点数余额是 ${$2}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\. You have \\$\\{([^{}]*)\\} in credits`",
+      "chinese": "`，你目前的点数余额是 ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\", billed separately from your plan\"",
+      "chinese": "\"，与你的方案分开计费\""
+    },
+    {
+      "original": "?\"usage credits\":",
+      "chinese": "?\"用量点数\":"
+    },
+    {
+      "original": "\"Action completed\"",
+      "chinese": "\"操作已完成\""
+    },
+    {
+      "original": "\"Command output\"",
+      "chinese": "\"命令输出\""
+    },
+    {
+      "original": "\"[hidden for privacy]\"",
+      "chinese": "\"[已隐藏以保护隐私]\""
     },
     {
       "original": "\" for VS Code\"",

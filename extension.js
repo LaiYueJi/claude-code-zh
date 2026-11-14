@@ -590,7 +590,11 @@ async function reloadClaudeUi(locator, translator, backup, config) {
     const ok = await reloadWebviews(config);
     updateStatusBar(locator, backup, translator, config);
     if (ok && config.get('showNotifications') !== false) {
-        vscode.window.showInformationMessage(s.uiReloaded);
+        // 就地重載走的是 VS Code 的 reloadWebviewAction：指令本身一定會成功回來，
+        // 但 webview 偶爾會重新註冊 service worker 失敗，畫面變成「Error loading webview」。
+        // 我們無法從擴充功能這邊偵測，所以直接附上重新載入視窗的按鈕當作一鍵補救。
+        const choice = await vscode.window.showInformationMessage(s.uiReloaded, s.btnReloadNow);
+        if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
     }
 }
 

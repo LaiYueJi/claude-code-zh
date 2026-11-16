@@ -1,8 +1,8 @@
 {
-  "version": "2.4.32",
+  "version": "2.4.33",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-16",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -9007,6 +9007,102 @@
     {
       "original": "\" extension\"",
       "chinese": "\"（擴充功能）\""
+    }
+  ],
+  "hostTranslations": [
+    {
+      "original": "\"Trust this folder in Claude Code?\"",
+      "chinese": "\"要在 Claude Code 中信任這個資料夾嗎？\""
+    },
+    {
+      "original": "\"Trust folder\"",
+      "chinese": "\"信任資料夾\""
+    },
+    {
+      "original": "\"Don’t trust\"",
+      "chinese": "\"不信任\""
+    },
+    {
+      "original": "\"Claude Code couldn’t check whether this folder is trusted, so this session uses your own settings and leaves out the folder’s settings and MCP servers.\"",
+      "chinese": "\"Claude Code 無法確認這個資料夾是否受信任，因此這個對話階段只會使用你自己的設定，不會套用資料夾裡的設定與 MCP 伺服器。\""
+    },
+    {
+      "original": "\"This folder’s path holds hidden characters, so Claude Code can’t ask you to trust it here. This session uses your own settings and leaves out the folder’s settings and MCP servers. Trust it in a terminal to use them.\"",
+      "chinese": "\"這個資料夾的路徑含有隱藏字元，Claude Code 無法在這裡詢問你是否信任它。這個對話階段只會使用你自己的設定，不會套用資料夾裡的設定與 MCP 伺服器。若要使用，請在終端機中信任它。\""
+    },
+    {
+      "original": "\"Claude Code reads the folder’s .claude/settings.json and .mcp.json before each session. They can run programs on your computer: hooks, environment variables, helper commands and MCP servers. Trust the folder only if you created it or know who did.\"",
+      "chinese": "\"Claude Code 會在每個對話階段開始前讀取這個資料夾的 .claude/settings.json 與 .mcp.json。它們可以在你的電腦上執行程式：勾點、環境變數、輔助指令與 MCP 伺服器。只有在這個資料夾是你自己建立的、或你清楚是誰建立的情況下，才信任它。\""
+    },
+    {
+      "original": "\"If you don’t trust it, Claude Code uses your own settings here and leaves the folder’s settings and MCP servers unused. Reload the window to be asked again.\"",
+      "chinese": "\"如果你選擇不信任，Claude Code 只會使用你自己的設定，資料夾裡的設定與 MCP 伺服器都不會啟用。重新載入視窗就會再問一次。\""
+    },
+    {
+      "original": "\"Claude Code doesn’t keep this answer for your home folder, so it asks again in each new window.\"",
+      "chinese": "\"Claude Code 不會為你的家目錄記住這個選擇，因此每開一個新視窗都會再問一次。\""
+    },
+    {
+      "original": "This folder is part of the repository at \\$\\{([^{}]*)\\}\\. Trusting it trusts the whole repository\\.",
+      "chinese": "這個資料夾屬於位於 ${$1} 的儲存庫。信任它等於信任整個儲存庫。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Couldn't open that file. Its path is in the Claude Code output logs.\"",
+      "chinese": "\"無法開啟那個檔案。它的路徑在 Claude Code 的輸出記錄裡。\""
+    },
+    {
+      "original": "\"This session tab is still connecting — try again in a moment.\"",
+      "chinese": "\"這個對話分頁還在連線中，請稍候再試。\""
+    },
+    {
+      "original": "\"This session tab cannot be renamed until it finishes opening.\"",
+      "chinese": "\"這個對話分頁要等開啟完成後才能重新命名。\""
+    },
+    {
+      "original": "\"This session could not be renamed.\"",
+      "chinese": "\"這個對話無法重新命名。\""
+    },
+    {
+      "original": "\"No active Claude Code session tab to mark as unread.\"",
+      "chinese": "\"沒有可標示為未讀的 Claude Code 對話分頁。\""
+    },
+    {
+      "original": "\"No active Claude Code session tab to rename.\"",
+      "chinese": "\"沒有可重新命名的 Claude Code 對話分頁。\""
+    },
+    {
+      "original": "\"No active Claude Code session tab to add to a group.\"",
+      "chinese": "\"沒有可加入群組的 Claude Code 對話分頁。\""
+    },
+    {
+      "original": "\"No open Claude Code conversation to focus.\"",
+      "chinese": "\"沒有開啟中的 Claude Code 對話可以聚焦。\""
+    },
+    {
+      "original": "\"Successfully logged out from Claude\"",
+      "chinese": "\"已成功登出 Claude\""
+    },
+    {
+      "original": "\"Failed to logout completely. Some credentials may remain.\"",
+      "chinese": "\"未能完全登出，可能還有部分憑證殘留。\""
+    },
+    {
+      "original": "\"Invalid plugin installation URL. The plugin parameter is required.\"",
+      "chinese": "\"外掛程式安裝網址無效，必須提供 plugin 參數。\""
+    },
+    {
+      "original": "\"The command to accept is no longer available. Try again to see it.\"",
+      "chinese": "\"要接受的指令已經不存在了，請再試一次以重新顯示。\""
+    },
+    {
+      "original": "\"Claude in Chrome: Install the browser extension to control Chrome from Claude Code\"",
+      "chinese": "\"Claude in Chrome：安裝瀏覽器擴充功能，即可從 Claude Code 控制 Chrome\""
+    },
+    {
+      "original": "\"Secondary Sidebar not supported in this version of VSCode. Please update your VSCode to use. Opening in Activity Bar instead.\"",
+      "chinese": "\"這個版本的 VS Code 不支援次要側邊欄，請更新 VS Code 後再使用。這次改為在活動列開啟。\""
     }
   ]
 }

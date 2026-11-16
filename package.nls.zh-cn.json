@@ -35,5 +35,7 @@
   "cfg.rules.regex": "是否使用正则表达式匹配",
   "cfg.rules.flags": "正则表达式标志（如 'gi'）",
   "cfg.postTranslationRules": "后置翻译规则（在内置规则之后执行，可覆盖内置翻译）",
-  "cmd.reloadClaudeUi.short": "重载 Claude 界面"
+  "cmd.reloadClaudeUi.short": "重载 Claude 界面",
+  "cfg.translateHost": "一并翻译 Claude Code 主程序（extension.js）：信任文件夹对话框与由 VS Code 直接显示的通知。万一改坏导致无法启用，会自动还原。",
+  "cmd.retryHostTranslation": "重新尝试主程序翻译"
 }

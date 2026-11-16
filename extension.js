@@ -1,5 +1,6 @@
 const vscode = require('vscode');
 const fs = require('fs');
+const vm = require('vm');
 const Locator = require('./lib/locator');
 const Translator = require('./lib/translator');
 const BackupManager = require('./lib/backup');
@@ -16,6 +17,12 @@ const KEY_SEEN_UNTRANSLATED = 'seenUntranslated'; // 上次掃描時已知的漏
 const KEY_LAST_UPDATE_CHECK = 'lastUpdateCheck';  // 上次線上檢查更新的時間戳
 const KEY_SKIPPED_VERSION = 'skippedExtVersion';  // 使用者選擇略過的擴充功能版本
 const KEY_LAST_AUTO_RELOAD = 'lastAutoReload';    // 上次自動重載介面的時間戳（防無限重載）
+// ── 擴充主程式（extension.js）翻譯的狀態 ──
+// 改壞主程式會讓 Claude Code 整個無法啟用，所以寫入前後都要留下痕跡：
+// PENDING 記著「這次改寫還沒驗證過」，下次啟動時確認 Claude Code 能不能啟用；
+// DISABLED 記著「哪個 Claude Code 版本失敗過」，避免壞掉→還原→再壞掉的無限輪迴。
+const KEY_HOST_PENDING = 'hostPatchPending';
+const KEY_HOST_DISABLED = 'hostPatchDisabledFor';
 
 // 自動檢查更新的最小間隔：開太頻繁沒有意義（翻譯包大約隨 Claude 改版才會動）
 const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
@@ -164,6 +171,17 @@ async function activate(context) {
     register('claudeCodeZh.resetTranslationPack', () =>
         resetTranslationPack(updater, locator, translator, backup, config));
 
+    // 主程式翻譯壞掉被自動停用後，用這個指令解除停用再試一次
+    register('claudeCodeZh.retryHostTranslation', async () => {
+        const s = S(config);
+        await context.globalState.update(KEY_HOST_DISABLED, undefined);
+        const ok = await applyHostTranslation(locator, translator, backup, config);
+        const choice = await vscode.window.showInformationMessage(
+            s.hostRetryArmed, s.btnReloadNow, s.btnLater);
+        if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+        return ok;
+    });
+
     // ── 監聽 Claude Code 安裝/更新 → 自動重新套用並掃描新字串 ──
     context.subscriptions.push(vscode.extensions.onDidChange(async () => {
         const claudeExt = vscode.extensions.getExtension(
@@ -197,9 +215,14 @@ async function activate(context) {
     // ── 啟動時自動套用（除非使用者已手動還原成原版） ──
     if (config.get('autoApplyOnStartup') && !context.globalState.get(KEY_RESTORED)) {
         setTimeout(async () => {
+            // 先驗上一輪的主程式改寫有沒有把 Claude Code 弄壞，再動這一輪——
+            // 順序反了會把上次的證據覆蓋掉，壞掉就永遠查不出來。
+            await verifyHostPatch(locator, backup, config);
             // 翻譯包簽章（語言＋版本＋日期＋條數＋來源）有變 → 強制重新套用，讓更新後的翻譯生效
             const packChanged = context.globalState.get(KEY_LAST_TRANSLATION) !== translator.getSignature();
             const applied = await applyTranslation(locator, translator, backup, config, true, packChanged);
+            // 主程式的文字由 VS Code 直接顯示，不必重載 webview，下次視窗重新載入就生效
+            await applyHostTranslation(locator, translator, backup, config);
             updateStatusBar(locator, backup, translator, config);
             await checkVersionChange(locator, translator, backup, config);
             // 這一刻才寫入檔案 → 視窗還原時載入的 Claude 介面必定還是套用前那份
@@ -524,6 +547,98 @@ async function applyTranslation(locator, translator, backup, config, silent = fa
 }
 
 /**
+ * 驗證上一次的主程式改寫有沒有把 Claude Code 弄壞。
+ *
+ * 寫入 extension.js 前會留下 KEY_HOST_PENDING，所以只要這個標記還在，就表示
+ * 改寫過但還沒確認過結果。這裡主動叫 Claude Code 啟用：activate() 在啟用函式
+ * 丟例外時會 reject，正好當成「改壞了」的信號。
+ *
+ * 壞掉就立刻還原官方原版，並把失敗的 Claude Code 版本記起來不再自動重試——
+ * 否則會變成「套用→壞掉→還原→再套用」的無限輪迴。
+ *
+ * 一定要在這一輪重新套用之前先跑，否則會把上次的證據直接覆蓋掉。
+ */
+async function verifyHostPatch(locator, backup, config) {
+    if (!extContext) return;
+    const pending = extContext.globalState.get(KEY_HOST_PENDING);
+    if (!pending) return;
+
+    const s = S(config);
+    const claudeExt = vscode.extensions.getExtension(
+        config.get('claudeCodeExtensionId') || 'Anthropic.claude-code'
+    );
+    if (!claudeExt) return; // Claude Code 被移除了，沒什麼好驗的
+
+    try {
+        await claudeExt.activate();
+        await extContext.globalState.update(KEY_HOST_PENDING, undefined); // 啟用正常，這次改寫算過關
+    } catch (error) {
+        console.error('套用主程式翻譯後 Claude Code 無法啟用，正在還原：', error);
+        const claudePath = await locator.findClaudeCodeExtension();
+        const hostFile = claudePath && locator.findHostFile(claudePath);
+        if (hostFile) await backup.restoreBackup(hostFile);
+        await extContext.globalState.update(KEY_HOST_PENDING, undefined);
+        await extContext.globalState.update(KEY_HOST_DISABLED, pending.claudeVersion || 'unknown');
+        const choice = await vscode.window.showWarningMessage(
+            s.hostReverted, s.btnReloadNow, s.btnLater);
+        if (choice === s.btnReloadNow) vscode.commands.executeCommand('workbench.action.reloadWindow');
+    }
+}
+
+/**
+ * 套用擴充主程式（extension.js）的翻譯。
+ *
+ * 這個檔案由 VS Code 直接執行，改壞不是「某句話沒翻到」而是 Claude Code 整個
+ * 無法啟用，因此比 webview 多兩道保險：
+ *   1. 寫入前先用 vm.Script 編譯一次（只解析不執行），過不了就放棄這次改寫。
+ *   2. 寫入前留下待驗證標記，下次啟動由 verifyHostPatch() 確認能不能啟用。
+ */
+async function applyHostTranslation(locator, translator, backup, config) {
+    if (!extContext) return false;
+    if (config.get('translateHost') === false) return false;
+    if (translator.getHostCount() === 0) return false;
+
+    const s = S(config);
+    const version = locator.getClaudeCodeVersion() || 'unknown';
+    // 這個版本曾經改壞過就不再自動重試，等使用者按「重新嘗試」
+    if (extContext.globalState.get(KEY_HOST_DISABLED) === version) return false;
+
+    try {
+        const claudePath = await locator.findClaudeCodeExtension();
+        if (!claudePath) return false;
+        const hostFile = locator.findHostFile(claudePath);
+        if (!hostFile) return false;
+
+        if (config.get('createBackup') !== false && !backup.hasBackup(hostFile)) {
+            await backup.createBackup(hostFile);
+        }
+        let base = backup.readBackup(hostFile);
+        if (base == null) base = fs.readFileSync(hostFile, 'utf8');
+
+        const translated = await translator.translateHost(base);
+        if (fs.readFileSync(hostFile, 'utf8') === translated) return false; // 內容沒變
+
+        // 只解析編譯、不執行：字串替換弄壞引號或括號在這裡就會擋下來
+        try {
+            new vm.Script(translated, { filename: hostFile });
+        } catch (error) {
+            console.error('主程式翻譯後語法檢查失敗，放棄改寫：', error);
+            if (config.get('showNotifications') !== false) {
+                vscode.window.showWarningMessage(s.hostSyntaxFail);
+            }
+            return false;
+        }
+
+        await extContext.globalState.update(KEY_HOST_PENDING, { claudeVersion: version, at: Date.now() });
+        fs.writeFileSync(hostFile, translated, 'utf8');
+        return true;
+    } catch (error) {
+        console.error('套用主程式翻譯失敗：', error);
+        return false;
+    }
+}
+
+/**
  * 就地重載所有 webview，讓已載入的 Claude 介面吃到磁碟上的新內容。
  *
  * 翻譯改的是 webview/index.js，但 Claude 的檢視與編輯器面板都設了 retainContextWhenHidden，
@@ -642,8 +757,15 @@ async function restoreOriginal(locator, backup, config) {
         const restored = await backup.restoreBackup(mainFilePath);
         if (!restored) { vscode.window.showErrorMessage(s.errNoBackup); return; }
 
+        // 主程式也改寫過就一起還原，否則會留下半套中文
+        const hostFile = locator.findHostFile(claudePath);
+        if (hostFile && backup.hasBackup(hostFile)) await backup.restoreBackup(hostFile);
+
         // 記住「已還原」，讓啟動/更新時不再自動套用
-        if (extContext) await extContext.globalState.update(KEY_RESTORED, true);
+        if (extContext) {
+            await extContext.globalState.update(KEY_RESTORED, true);
+            await extContext.globalState.update(KEY_HOST_PENDING, undefined);
+        }
 
         if (config.get('showNotifications') !== false) {
             const choice = await vscode.window.showInformationMessage(

@@ -35,5 +35,7 @@
   "cfg.rules.regex": "是否使用正規表達式比對",
   "cfg.rules.flags": "正規表達式旗標（如 'gi'）",
   "cfg.postTranslationRules": "後置翻譯規則（在內建規則之後執行，可覆蓋內建翻譯）",
-  "cmd.reloadClaudeUi.short": "重載 Claude 介面"
+  "cmd.reloadClaudeUi.short": "重載 Claude 介面",
+  "cfg.translateHost": "一併翻譯 Claude Code 主程式（extension.js）：信任資料夾對話框與由 VS Code 直接顯示的通知。萬一改壞導致無法啟用，會自動還原。",
+  "cmd.retryHostTranslation": "重新嘗試主程式翻譯"
 }

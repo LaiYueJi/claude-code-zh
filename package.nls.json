@@ -35,5 +35,7 @@
   "cfg.rules.regex": "是否使用正規表達式比對",
   "cfg.rules.flags": "正規表達式旗標（如 'gi'）",
   "cfg.postTranslationRules": "後置翻譯規則（在內建規則之後執行，可覆蓋內建翻譯）",
-  "cmd.reloadClaudeUi.short": "重載 Claude 介面"
+  "cmd.reloadClaudeUi.short": "重載 Claude 介面",
+  "cfg.translateHost": "Also translate the Claude Code extension host (extension.js): the trust-folder dialog and notifications shown by VS Code itself. Automatically reverted if it breaks activation.",
+  "cmd.retryHostTranslation": "Retry extension host translation"
 }

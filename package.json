@@ -2,7 +2,7 @@
   "name": "claude-code-zh",
   "displayName": "Claude Code for VS Code 繁體／簡體中文語言包",
   "description": "Claude Code for VS Code 中文化擴充功能：繁體中文與簡體中文雙語，可自動偵測系統語言或手動切換，含狀態列快速指令選單。",
-  "version": "2.4.32",
+  "version": "2.4.33",
   "publisher": "LaiYueJi",
   "license": "MIT",
   "icon": "logo.png",
@@ -109,6 +109,11 @@
         "category": "Claude Code 中文化"
       },
       {
+        "command": "claudeCodeZh.retryHostTranslation",
+        "title": "%cmd.retryHostTranslation%",
+        "category": "Claude Code 中文化"
+      },
+      {
         "command": "claudeCodeZh.openCommandPalette",
         "title": "%cmd.openCommandPalette%",
         "category": "Claude Code 中文化"
@@ -212,6 +217,11 @@
           "type": "boolean",
           "default": false,
           "description": "%cfg.scanOnUpdate%"
+        },
+        "claudeCodeZh.translateHost": {
+          "type": "boolean",
+          "default": true,
+          "description": "%cfg.translateHost%"
         },
         "claudeCodeZh.translationSourceUrls": {
           "type": "array",

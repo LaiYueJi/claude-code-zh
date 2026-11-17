@@ -3,7 +3,7 @@
 掃描器只看介面屬性（title、label…），這些位置它看不到。
 
 用法：python scripts/dev/puresweep.py <套完規則的 index.js>
-（先用 scratchpad 的 emit.js 或 ctx.js 同樣的方式產生套完規則的檔案）
+（套完規則的檔案用 node scripts/dev/emit.js 產生）
 """
 import io, os, re, sys
 

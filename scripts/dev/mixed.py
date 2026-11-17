@@ -3,7 +3,7 @@
 這種多半是規則只翻到一半。
 
 用法：python scripts/dev/mixed.py <套完規則的 index.js>
-（先用 scratchpad 的 emit.js 或 ctx.js 同樣的方式產生套完規則的檔案）
+（套完規則的檔案用 node scripts/dev/emit.js 產生）
 """
 import io, os, re, sys
 

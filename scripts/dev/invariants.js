@@ -114,6 +114,11 @@ const checks = [
     ['值', keep('case"/login managed key":') && keep('!=="/login managed key"'), '憑證來源代碼 /login managed key 保持英文'],
     ['值', keepRx(/case"claude\.ai":/g) && keepRx(/case"profile":/g) && keepRx(/case"apiKeyHelper":/g), 'IGe 的憑證來源 case 標籤保持英文'],
 
+    // ── 日期格式化：只有「純顯示」的幾處改中文語系，拿來組字串再比較／解析的必須維持 en-US ──
+    // Nj() 用 formatToParts 組出 YYYY-MM-DD，之後 slice(0,4) 比年份、整串比是否同一天
+    ['值', keepRx(/[A-Za-z0-9_$]+\("en-US",[A-Za-z0-9_$]+\([A-Za-z0-9_$]+,[A-Za-z0-9_$]+\.timeZone\)\)\.formatToParts/g), '組 YYYY-MM-DD 用的日期格式化維持 en-US'],
+    ['值', keep('Intl.NumberFormat("en-US",{style:"currency"'), '貨幣格式化維持 en-US'],
+
     // ── 品牌名 ────────────────────────────────────────
     ['值', keep('"Amazon Bedrock"') && keep('"Google Vertex AI"') && keep('"Microsoft Foundry"'), '雲端供應商品牌名保持英文'],
 
@@ -122,6 +127,9 @@ const checks = [
     // 重設時間的格式函式每次改版都換寫法（2.1.310 的 tj／NC5 → 2.1.312 的 lW），
     // 所以不盯特定譯文，只確認「還沒翻的形狀」一個都不剩。
     ['顯示', !/\)return"soon"/.test(c) && !/`at \$\{[^{}]*\}`/.test(c) && !/`in \$\{[A-Za-z_$][\w$]*\}[mhd]`/.test(c), '重設時間格式已翻譯'],
+    // 時間與日期本身也要是中文（週一、下午），否則會出現「重設時間：Mon, Nov 23 8:00 PM」
+    ['顯示', new RegExp(`\\[[A-Za-z0-9_$]+\\],"${LANG}",`).test(c)
+        && new RegExp(`\\("${LANG}",[A-Za-z0-9_$]+\\([A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+:\\{`).test(c), '時間與日期改用中文語系顯示'],
     ['顯示', n(tw ? '概估值 · 僅計入' : '概估值 · 仅计入') >= 1, '用量面板的概估說明已翻譯'],
     ['顯示', n(tw ? '"修正這一項"' : '"修正这一项"') >= 1, '用量修正按鈕已翻譯'],
     ['顯示', n(tw ? '"權限規則"' : '"权限规则"') >= 1, '權限規則標題已翻譯'],

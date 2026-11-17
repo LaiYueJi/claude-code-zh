@@ -1,8 +1,8 @@
 {
-  "version": "2.4.33",
+  "version": "2.4.34",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -8999,6 +8999,304 @@
     {
       "original": "\"[hidden for privacy]\"",
       "chinese": "\"[已隱藏以保護隱私]\""
+    },
+    {
+      "original": "(,[A-Za-z0-9_$]+\\[[A-Za-z0-9_$]+\\],)\"en-US\"(,[A-Za-z0-9_$]+\\))",
+      "chinese": "$1\"zh-TW\"$2",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"en-US\"(,[A-Za-z0-9_$]+\\([A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+:\\{\\.\\.\\.[A-Za-z0-9_$]+,year:\"numeric\"\\})",
+      "chinese": "\"zh-TW\"$1",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "toLocaleDateString(\"en-US\",{month:\"long\",day:\"numeric\",timeZone:\"UTC\"})",
+      "chinese": "toLocaleDateString(\"zh-TW\",{month:\"long\",day:\"numeric\",timeZone:\"UTC\"})"
+    },
+    {
+      "original": "`Prompt cache warm, about \\$\\{([^{}]*)\\} min left\\.`",
+      "chinese": "`提示快取仍有效，大約還剩 ${$1} 分鐘。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Prompt cache does not cover the compacted conversation.\"",
+      "chinese": "\"提示快取不涵蓋壓縮後的對話。\""
+    },
+    {
+      "original": "`Prompt cache likely expired \\(idle \\$\\{([^{}]*)\\}\\)\\.`",
+      "chinese": "`提示快取可能已過期（已閒置 ${$1}）。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"The conversation was compacted, so your next message will re-cache it.\"",
+      "chinese": "\"對話已經壓縮過，因此你的下一則訊息會重新建立快取。\""
+    },
+    {
+      "original": "?\"the conversation\":",
+      "chinese": "?\"整段對話\":"
+    },
+    {
+      "original": "`about \\$\\{([^{}]*)\\} tokens`",
+      "chinese": "`約 ${$1} 個 token`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Idle \\$\\{([^{}]*)\\}\\. The prompt cache has likely expired, so your next message will re-cache \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`已閒置 ${$1}。提示快取可能已過期，因此你的下一則訊息會重新快取${$2}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\}(?: requires usage credits| 需要用量點數| 需要用量点数)\\. Buy at \\$\\{([^{}]*)\\}\\. Switched to your default model for this session`",
+      "chinese": "`${$1} 需要用量點數，可到 ${$2} 購買。這個對話階段已切換為你的預設模型`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Switched to your default model, now your saved default\\. \\$\\{([^{}]*)\\}(?: requires usage credits| 需要用量點數| 需要用量点数)\\.`",
+      "chinese": "`已切換為你的預設模型，並儲存為預設值。${$1} 需要用量點數。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Switched to your default model for this session\\. \\$\\{([^{}]*)\\}(?: requires usage credits| 需要用量點數| 需要用量点数)\\.`",
+      "chinese": "`這個對話階段已切換為你的預設模型。${$1} 需要用量點數。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Switched to your default model\\. \\$\\{([^{}]*)\\}(?: requires usage credits| 需要用量點數| 需要用量点数)\\.`",
+      "chinese": "`已切換為你的預設模型。${$1} 需要用量點數。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(?:Removed|移除) \\$\\{([^{}]*)\\} from \\$\\{([^{}]*)\\} config\\. Running sessions keep it until restarted\\.",
+      "chinese": "已從 ${$2} 設定移除 ${$1}。執行中的對話階段要重新啟動後才會生效。",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ", and this session still shows the previous state. Try again, or reopen this dialog to check.",
+      "chinese": "，此對話階段仍顯示先前的狀態。請再試一次，或重新開啟此對話框確認。"
+    },
+    {
+      "original": "`that \"\\$\\{([^{}]*)\\}\" was added to the excluded commands`",
+      "chinese": "`「${$1}」已加入排除的指令`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "; check the Sandbox dialog`",
+      "chinese": "；請到沙箱對話框確認`"
+    },
+    {
+      "original": "\"Saved to your user settings, but this session still shows the previous value. A project or managed setting may be overriding it, or the session hasn't picked the change up yet.\"",
+      "chinese": "\"已儲存到你的使用者設定，但此對話階段仍顯示先前的值。可能有專案或受管理的設定覆寫了它，或是此對話階段尚未套用這項變更。\""
+    },
+    {
+      "original": "\"Couldn't load this conversation's earlier messages. New messages start a new conversation.\"",
+      "chinese": "\"無法載入這個對話先前的訊息。新訊息會開始一個新的對話。\""
+    },
+    {
+      "original": "\"Claude is asking you a question.\"",
+      "chinese": "\"Claude 正在問你一個問題。\""
+    },
+    {
+      "original": "\"Claude has finished a plan and is waiting for your review.\"",
+      "chinese": "\"Claude 已完成計畫，正在等你檢視。\""
+    },
+    {
+      "original": "\"The agent's earlier messages could not be read; showing what has arrived in this window.\"",
+      "chinese": "\"無法讀取這個代理較早的訊息，這裡顯示的是這個視窗收到的部分。\""
+    },
+    {
+      "original": "\"Could not move this to the background. It may have just finished or already be running in the background.\"",
+      "chinese": "\"無法把它移到背景。它可能剛好執行完畢，或是已經在背景執行了。\""
+    },
+    {
+      "original": "\"Moving to the background is turned off for this session.\"",
+      "chinese": "\"這個對話階段已關閉移到背景的功能。\""
+    },
+    {
+      "original": "\"Could not move this to the background. Try again.\"",
+      "chinese": "\"無法把它移到背景，請再試一次。\""
+    },
+    {
+      "original": "\"Nothing is sent. Your feedback, environment info, and the current session transcript are saved on this computer as one file, with known API keys and tokens removed. Send that file to your Anthropic account representative or attach it to your support request.\"",
+      "chinese": "\"不會送出任何資料。你的意見、環境資訊與目前對話階段的紀錄會存成這台電腦上的一個檔案，並移除已知的 API 金鑰與權杖。請把那個檔案寄給你的 Anthropic 客戶代表，或附在你的支援請求裡。\""
+    },
+    {
+      "original": "`Environment variables must be KEY=value \\(line \\$\\{([^{}]*)\\}\\)\\.`",
+      "chinese": "`環境變數必須寫成 KEY=value（第 ${$1} 行）。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Plugins can run code on your computer, with access to your files and shell. Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change.\"",
+      "chinese": "\"外掛程式可以在你的電腦上執行程式碼，並存取你的檔案與 shell。安裝、更新或使用外掛程式前，請確認你信任它。Anthropic 無法控制外掛程式內含的 MCP 伺服器、檔案或其他軟體，也無法驗證它們是否會如預期運作或日後不會變更。\""
+    },
+    {
+      "original": "\"A file it lists is outside the plugin folder.\"",
+      "chinese": "\"它列出的某個檔案位於外掛程式資料夾之外。\""
+    },
+    {
+      "original": "\"Its source needs you to sign in.\"",
+      "chinese": "\"它的來源需要你先登入。\""
+    },
+    {
+      "original": "\"Its source couldn't be reached.\"",
+      "chinese": "\"無法連上它的來源。\""
+    },
+    {
+      "original": "\"It needs another version of Claude Code.\"",
+      "chinese": "\"它需要其他版本的 Claude Code。\""
+    },
+    {
+      "original": "\"It sets this session's agent, which still works but will stop in a future release.\"",
+      "chinese": "\"它設定了這個對話階段的代理，目前仍可運作，但未來的版本會停止支援。\""
+    },
+    {
+      "original": "\"It was stopped. Try again, or copy the error to see what happened.\"",
+      "chinese": "\"它被中止了。請再試一次，或複製錯誤訊息查看發生了什麼事。\""
+    },
+    {
+      "original": "\"This plugin's source couldn't be reached.\"",
+      "chinese": "\"無法連上這個外掛程式的來源。\""
+    },
+    {
+      "original": "\"Check your connection, then try again.\"",
+      "chinese": "\"請檢查網路連線後再試一次。\""
+    },
+    {
+      "original": "\"Check the source, then try again, or copy the error to see what happened.\"",
+      "chinese": "\"請檢查來源後再試一次，或複製錯誤訊息查看發生了什麼事。\""
+    },
+    {
+      "original": "\"This plugin's dependencies can't be installed.\"",
+      "chinese": "\"無法安裝這個外掛程式的相依套件。\""
+    },
+    {
+      "original": "\"A plugin it needs is missing, or the versions don't fit together. Copy the error to see which.\"",
+      "chinese": "\"它需要的某個外掛程式不存在，或是版本彼此不相容。複製錯誤訊息可以看出是哪一個。\""
+    },
+    {
+      "original": "\"Your organization doesn't allow this plugin.\"",
+      "chinese": "\"你的組織不允許使用這個外掛程式。\""
+    },
+    {
+      "original": "\"Your organization doesn't allow plugins from this plugin's marketplace.\"",
+      "chinese": "\"你的組織不允許使用這個市集的外掛程式。\""
+    },
+    {
+      "original": "\"This plugin needs a plugin your organization doesn't allow.\"",
+      "chinese": "\"這個外掛程式需要一個你的組織不允許的外掛程式。\""
+    },
+    {
+      "original": "\"This plugin is already installed from another marketplace.\"",
+      "chinese": "\"這個外掛程式已經從另一個市集安裝了。\""
+    },
+    {
+      "original": "\"Uninstall the copy in your Installed list first.\"",
+      "chinese": "\"請先解除安裝「已安裝」清單裡的那一份。\""
+    },
+    {
+      "original": "\"A plugin couldn't be installed alongside another one.\"",
+      "chinese": "\"有個外掛程式無法與另一個並存安裝。\""
+    },
+    {
+      "original": "\"This plugin, or a plugin it needs, would use the same folder as another plugin. Copy the error to see which one and what to do.\"",
+      "chinese": "\"這個外掛程式，或它需要的某個外掛程式，會和另一個外掛程式使用同一個資料夾。複製錯誤訊息可以看出是哪一個以及該怎麼處理。\""
+    },
+    {
+      "original": "\"Refreshing the marketplace downloads its latest list, then the install runs again.\"",
+      "chinese": "\"重新整理市集會下載它最新的清單，然後再安裝一次。\""
+    },
+    {
+      "original": "\"Settings elsewhere decide this plugin. Copy the error to see which.\"",
+      "chinese": "\"這個外掛程式由其他地方的設定決定。複製錯誤訊息可以看出是哪一個。\""
+    },
+    {
+      "original": "\"A plugin your organization requires uses it.\"",
+      "chinese": "\"你的組織要求的某個外掛程式會用到它。\""
+    },
+    {
+      "original": "\"Your organization requires this plugin.\"",
+      "chinese": "\"你的組織要求使用這個外掛程式。\""
+    },
+    {
+      "original": "\"More than one marketplace has a plugin of this name. Copy the error to see which.\"",
+      "chinese": "\"不只一個市集有這個名稱的外掛程式。複製錯誤訊息可以看出是哪些。\""
+    },
+    {
+      "original": "\"This session was started with settings that decide this plugin.\"",
+      "chinese": "\"這個對話階段啟動時帶的設定決定了這個外掛程式。\""
+    },
+    {
+      "original": "\"Turn them off first. Copy the error to see which.\"",
+      "chinese": "\"請先把它們關掉。複製錯誤訊息可以看出是哪些。\""
+    },
+    {
+      "original": "\"This plugin needs plugins that are missing or turned off.\"",
+      "chinese": "\"這個外掛程式需要的外掛程式不存在或已關閉。\""
+    },
+    {
+      "original": "\"Copy the error to see which.\"",
+      "chinese": "\"複製錯誤訊息可以看出是哪些。\""
+    },
+    {
+      "original": "successTitle:\"edited a file with Claude\"",
+      "chinese": "successTitle:\"用 Claude 編輯了檔案\""
+    },
+    {
+      "original": "successTitle:\"highlighted code and prompted Claude\"",
+      "chinese": "successTitle:\"選取程式碼並向 Claude 提問\""
+    },
+    {
+      "original": "successTitle:\"created a CLAUDE.md file\"",
+      "chinese": "successTitle:\"建立了 CLAUDE.md 檔案\""
+    },
+    {
+      "original": "successTitle:\"used Auto-Accept mode\"",
+      "chinese": "successTitle:\"用過自動接受模式\""
+    },
+    {
+      "original": "successTitle:\"used Plan mode\"",
+      "chinese": "successTitle:\"用過規劃模式\""
+    },
+    {
+      "original": "\"Claude knows which file you're viewing in VS Code, and can see what's selected. Highlight code in the editor, then prompt Claude to edit it.\"",
+      "chinese": "\"Claude 知道你在 VS Code 裡正在看哪個檔案，也看得到你選取的內容。在編輯器中選取程式碼，再請 Claude 編輯它。\""
+    },
+    {
+      "original": "\"Create a CLAUDE.md file and add permanent instructions for Claude. Every time you prompt Claude, it'll receive these instructions. Include rules for how to interact, coding norms, and details about your project.\"",
+      "chinese": "\"建立 CLAUDE.md 檔案，寫下要 Claude 永遠遵守的指示。每次你向 Claude 提問，它都會收到這些指示。可以寫互動方式的規則、程式撰寫慣例，以及專案的細節。\""
+    },
+    {
+      "original": "\"By default, Claude asks you before editing a file. Press Shift-Tab or click the mode picker to switch to Auto-Accept mode. Then, send a prompt and watch Claude edit without stopping!\"",
+      "chinese": "\"預設情況下，Claude 編輯檔案前會先問你。按 Shift-Tab 或點模式選擇器切換到自動接受模式，接著送出提示詞，看 Claude 不間斷地編輯！\""
+    },
+    {
+      "original": "\"Press Shift-Tab twice, or click the mode picker twice, to cycle into Plan Mode. This forces Claude to write a detailed plan before it can edit any code.\"",
+      "chinese": "\"按兩次 Shift-Tab，或點兩次模式選擇器，就能切換到規劃模式。這會要求 Claude 先寫出詳細的計畫，才能編輯任何程式碼。\""
+    },
+    {
+      "original": "suggestions:[\"Update or create a helpful README\",\"Write a test for a recent change\",\"Explore the codebase and suggest a change\",\"Just create a sample file\"]",
+      "chinese": "suggestions:[\"更新或建立一份實用的 README\",\"為最近的變更寫一個測試\",\"瀏覽程式碼庫並建議一項變更\",\"直接建立一個範例檔案\"]"
+    },
+    {
+      "original": "suggestions:[\"What does this code do?\",\"Does this look right?\",\"Can you refactor this into smaller pieces?\"]",
+      "chinese": "suggestions:[\"這段程式碼在做什麼？\",\"這樣寫對嗎？\",\"可以把它重構成更小的區塊嗎？\"]"
+    },
+    {
+      "original": "suggestions:[\"Explore this codebase and document it in CLAUDE.md\",\"In CLAUDE.md, remember that I always prefer...\"]",
+      "chinese": "suggestions:[\"瀏覽這個程式碼庫，並把它記錄在 CLAUDE.md\",\"在 CLAUDE.md 裡記住我一向偏好⋯\"]"
     },
     {
       "original": "\" for VS Code\"",

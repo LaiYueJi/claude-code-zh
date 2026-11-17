@@ -1,5 +1,5 @@
 {
-  "version": "2.4.34",
+  "version": "2.4.35",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
   "updatedAt": "2026-11-17",
@@ -9297,6 +9297,76 @@
     {
       "original": "suggestions:[\"Explore this codebase and document it in CLAUDE.md\",\"In CLAUDE.md, remember that I always prefer...\"]",
       "chinese": "suggestions:[\"浏览这个代码库，并把它记录在 CLAUDE.md\",\"在 CLAUDE.md 里记住我一向偏好⋯\"]"
+    },
+    {
+      "original": "label:\"Estimated cost\"",
+      "chinese": "label:\"预估费用\""
+    },
+    {
+      "original": "`\\$\\{([^{}]*)\\} runs on usage credits, purchased separately from your plan\\.`",
+      "chinese": "`${$1} 以用量点数运行，点数需另外购买，不包含在你的套餐内。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Request usage credits from your admin\"",
+      "chinese": "\"向管理员申请用量点数\""
+    },
+    {
+      "original": "\"the tracked path is (or became) a link or other non-regular file, its directory changed since the checkpoint, it is behind a link in a folder that sandboxed commands can write, or its backup could not be safely read\"",
+      "chinese": "\"其路径是（或后来变成）链接或其他非常规文件、所在文件夹在检查点之后有变动、路径途经的链接位于沙箱命令可写入的文件夹里，或是备份无法安全读取\""
+    },
+    {
+      "original": "\"Enter the OAuth code\"",
+      "chinese": "\"请输入 OAuth 授权码\""
+    },
+    {
+      "original": "\"Failed to submit OAuth code\"",
+      "chinese": "\"提交 OAuth 授权码失败\""
+    },
+    {
+      "original": ":\"Login failed\"",
+      "chinese": ":\"登录失败\""
+    },
+    {
+      "original": "problem:\"That's the address of a page, not the code. Open the URL above in your browser, and paste the code it shows.\"",
+      "chinese": "problem:\"这是网页的地址，不是授权码。请在浏览器中打开上方的网址，再粘贴页面显示的授权码。\""
+    },
+    {
+      "original": "problem:\"That's a web address, not the code. If it's a sign-in link, open it in your browser. If a page then shows a code, paste it here.\"",
+      "chinese": "problem:\"这是网址，不是授权码。如果是登录链接，请在浏览器中打开；之后页面若显示授权码，再粘贴到这里。\""
+    },
+    {
+      "original": "problem:\"That looks like a verification code. Enter it in your browser, on the page that asks for it. If a page then shows a longer code, paste it here.\"",
+      "chinese": "problem:\"这看起来是验证码。请到浏览器里要求输入验证码的页面输入；之后页面若显示较长的授权码，再粘贴到这里。\""
+    },
+    {
+      "original": "problem:\"That doesn't look like the full code. Copy all of it, including the # in the middle.\"",
+      "chinese": "problem:\"这看起来不是完整的授权码。请整段复制，包括中间的 #。\""
+    },
+    {
+      "original": "problem:\"That code looks like it's from another sign-in attempt. Open the URL above in your browser, and paste the code it shows.\"",
+      "chinese": "problem:\"这组授权码似乎来自另一次登录。请在浏览器中打开上方的网址，再粘贴页面显示的授权码。\""
+    },
+    {
+      "original": "()=>\"It sets subagentStatusLine, which still works in the terminal but will stop in a future release.\"",
+      "chinese": "()=>\"它设置了 subagentStatusLine，目前在终端中仍可运行，但未来的版本会停止支持。\""
+    },
+    {
+      "original": "\"Copy the last response to clipboard (/copy 2 for the one before)\"",
+      "chinese": "\"将最新一条回复复制到剪贴板（/copy 2 可复制前一条）\""
+    },
+    {
+      "original": "description:\"Turn on plan mode or view the plan\"",
+      "chinese": "description:\"启用规划模式，或查看计划\""
+    },
+    {
+      "original": "description:\"Export this session to a file or clipboard\"",
+      "chinese": "description:\"将当前会话导出为文件或复制到剪贴板\""
+    },
+    {
+      "original": "description:\"Show version, account, model, MCP servers and setup warnings\"",
+      "chinese": "description:\"显示版本、账户、模型、MCP 服务器与设置警告\""
     },
     {
       "original": "\" for VS Code\"",

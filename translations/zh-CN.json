@@ -1,11 +1,12 @@
 {
-  "version": "2.4.35",
+  "version": "2.4.36",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-19",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
+    "${Sqt}. Anything it wrote at the end of that run was not delivered, because it gets one report until its background work ends. So the report does not answer the message you sent it.",
     "${jI}: AbortError: Tool permission stream closed before response received",
     "Alt",
     "Artifact",
@@ -49,6 +50,7 @@
     "Tab",
     "The subagent ended without delivering a report through ${}, so no report was delivered.",
     "This agent called ${} again after",
+    "This agent ran again after its ${lj} report",
     "URL",
     "Unfold editor argument",
     "Unknown",
@@ -9366,6 +9368,46 @@
     },
     {
       "original": "description:\"Show version, account, model, MCP servers and setup warnings\"",
+      "chinese": "description:\"显示版本、账户、模型、MCP 服务器与设置警告\""
+    },
+    {
+      "original": "`Claude Code is not using \\$\\{([^{}]*)\\}, because \\$\\{([^{}]*)\\} takes priority\\.`",
+      "chinese": "`Claude Code 没有使用 ${$1}，因为 ${$2} 的优先级更高。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"your Anthropic profile\"",
+      "chinese": "\"你的 Anthropic 配置文件\""
+    },
+    {
+      "original": "\"Pay for API usage. Creates an API key in your organization’s Claude Code workspace.\"",
+      "chinese": "\"按 API 使用量付费。会在你组织的 Claude Code 工作区创建一个 API 密钥。\""
+    },
+    {
+      "original": "\"A hook says:\"",
+      "chinese": "\"钩子消息：\""
+    },
+    {
+      "original": "`Fable was included in \\$\\{([A-Za-z0-9_$]+)===\"seat\"\\?\"standard seats\":\\1===\"plan\"\\?\"Pro\":\"your plan\"\\} (\\$\\{[A-Za-z0-9_$]+\\?`[^`]*`:\"[^\"]*\"\\})",
+      "chinese": "`Fable 原本$2包含在${$1===\"seat\"?\"标准席位\":$1===\"plan\"?\" Pro 套餐\":\"你的套餐\"}中",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`If you continue, \\$\\{([^{}]*)\\} will use credits without asking again\\.`",
+      "chinese": "`继续的话，${$1} 之后会直接使用点数，不再询问。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\}: not loaded`",
+      "chinese": "`${$1}：未加载`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"Show version, account, model, MCP servers, and setup warnings\"",
       "chinese": "description:\"显示版本、账户、模型、MCP 服务器与设置警告\""
     },
     {

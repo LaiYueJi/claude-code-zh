@@ -1,8 +1,8 @@
 {
-  "version": "2.4.36",
+  "version": "2.4.37",
   "description": "Claude Code for VS Code 繁體中文翻譯規則",
   "locale": "zh-TW",
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-20",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -9411,6 +9411,242 @@
       "chinese": "description:\"顯示版本、帳戶、模型、MCP 伺服器與設定警告\""
     },
     {
+      "original": "\"an unidentified session\"",
+      "chinese": "\"一個無法識別的對話階段\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} \\(calls itself @\\$\\{([A-Za-z0-9_$]+)\\}\\)`",
+      "chinese": "`${$1}（自稱 @${$2}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Still holding the message from \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`仍攔著來自 ${$1} 的訊息。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Held a message from \\$\\{([^{}]*)\\}\\. Claude has not seen it\\.`",
+      "chinese": "`已攔下來自 ${$1} 的訊息，Claude 還沒看到。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Released the held message from \\$\\{([^{}]*)\\} to Claude\\.`",
+      "chinese": "`已把攔下的 ${$1} 訊息交給 Claude。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Dropped the held message from \\$\\{([^{}]*)\\} without delivering it\\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`已捨棄攔下的 ${$1} 訊息，沒有轉交${$2}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\": it waited too long, or too many messages were held. Ask the sender to send it again\"",
+      "chinese": "\"：等待太久，或攔下的訊息太多。請傳送端重新傳一次\""
+    },
+    {
+      "original": "\": this session no longer accepts messages from other sessions\"",
+      "chinese": "\"：這個對話階段已不再接受其他對話階段的訊息\""
+    },
+    {
+      "original": "\": the session ended\"",
+      "chinese": "\"：對話階段已結束\""
+    },
+    {
+      "original": "\": the limits on messages from other sessions stopped it\"",
+      "chinese": "\"：被其他對話階段訊息的數量限制擋下\""
+    },
+    {
+      "original": "`The message will be dropped if it waits too long \\(5 minutes by default\\)\\. To deliver messages without review, \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\. To make later messages wait longer instead, set \"dialogExpiry\" to \"10m\" or \"never\" in that file\\.`",
+      "chinese": "`訊息等待太久（預設 5 分鐘）就會被捨棄。若要不經審核直接轉交訊息，請${$1}。這樣 Claude 可能在你讀到訊息之前就依訊息行動。若想讓之後的訊息等久一點，請在同一個檔案裡把 \"dialogExpiry\" 設為 \"10m\" 或 \"never\"。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` One of the two sessions bypasses permission prompts and the other does not\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`兩個對話階段中，一個略過權限詢問，另一個沒有。${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` This session bypasses permission prompts, and the sender did not state its permission mode\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`這個對話階段略過權限詢問，而傳送端沒有說明它的權限模式。${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` Your \"crossSessionInbound\" setting is \"hold\"\\. To deliver messages without review, \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\.`",
+      "chinese": "`你的 \"crossSessionInbound\" 設定是 \"hold\"。若要不經審核直接轉交訊息，請${$1}。這樣 Claude 可能在你讀到訊息之前就依訊息行動。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` This project sets \"crossSessionInbound\" to \"hold\" in \\.claude/settings\\.json or \\.claude/settings\\.local\\.json, and a project can be stricter than your own setting\\. To deliver messages without review, remove it there and \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\.`",
+      "chinese": "`這個專案在 .claude/settings.json 或 .claude/settings.local.json 中把 \"crossSessionInbound\" 設為 \"hold\"，而專案設定可以比你自己的設定更嚴格。若要不經審核直接轉交訊息，請先從那裡移除，再${$1}。這樣 Claude 可能在你讀到訊息之前就依訊息行動。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "' Your organization set \"crossSessionInbound\" to \"hold\". Ask your admin to change it.'",
+      "chinese": "'你的組織把 \"crossSessionInbound\" 設為 \"hold\"。請向管理員要求修改。'"
+    },
+    {
+      "original": "` Your user settings, this project's settings, or --settings has an unrecognized \"crossSessionInbound\" value. Set it to \"accept\", \"hold\", or \"refuse\".`",
+      "chinese": "`你的使用者設定、這個專案的設定或 --settings 中有無法辨識的 \"crossSessionInbound\" 值。請設為 \"accept\"、\"hold\" 或 \"refuse\"。`"
+    },
+    {
+      "original": "' The \"crossSessionInbound\" setting controls which messages are held.'",
+      "chinese": "'哪些訊息會被攔下，由 \"crossSessionInbound\" 設定決定。'"
+    },
+    {
+      "original": "`set \"crossSessionInbound\" to \"accept\" in Claude Code's user settings file (all your sessions on this computer)`",
+      "chinese": "`在 Claude Code 的使用者設定檔中把 \"crossSessionInbound\" 設為 \"accept\"（適用於這台電腦上你所有的對話階段）`"
+    },
+    {
+      "original": "children:\"Open user settings file\"",
+      "chinese": "children:\"開啟使用者設定檔\""
+    },
+    {
+      "original": "`Couldn't open your settings file\\. Check that you can write to its folder, then try again\\. \\(\\$\\{([^{}]*)\\}\\)`",
+      "chinese": "`無法開啟你的設定檔。請確認你有它所在資料夾的寫入權限，然後再試一次。（${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"So far, how have you used AI for coding?\"",
+      "chinese": "\"到目前為止，你是怎麼用 AI 寫程式的？\""
+    },
+    {
+      "original": "new:\"Not much yet\"",
+      "chinese": "new:\"還不太常用\""
+    },
+    {
+      "original": "chat:\"Autocomplete or chat\"",
+      "chinese": "chat:\"自動完成或聊天\""
+    },
+    {
+      "original": "agents:\"Agents that make changes for me\"",
+      "chinese": "agents:\"會直接幫我改程式的代理\""
+    },
+    {
+      "original": "\"How do you want to work with Claude at first?\"",
+      "chinese": "\"一開始想怎麼和 Claude 合作？\""
+    },
+    {
+      "original": "label:\"Let Claude work on its own\"",
+      "chinese": "label:\"讓 Claude 自己做\""
+    },
+    {
+      "original": "description:\"Works through your task and shows you what changed\"",
+      "chinese": "description:\"完成你的任務，再告訴你改了什麼\""
+    },
+    {
+      "original": "label:\"Check in on bigger changes\"",
+      "chinese": "label:\"較大的變更先問我\""
+    },
+    {
+      "original": "description:\"Asks Claude to share its plan and wait on multi-file or risky work\"",
+      "chinese": "description:\"遇到多檔案或有風險的工作時，請 Claude 先說明計畫並等你確認\""
+    },
+    {
+      "original": "label:\"Review each step\"",
+      "chinese": "label:\"每一步都檢視\""
+    },
+    {
+      "original": "description:\"Asks Claude to stop after each step and show you the change\"",
+      "chinese": "description:\"請 Claude 每做完一步就停下來，給你看變更\""
+    },
+    {
+      "original": "description:\"Works through your task, with a few extra check-ins at first\"",
+      "chinese": "description:\"完成你的任務，一開始會多確認幾次\""
+    },
+    {
+      "original": "checked_in:\"That's 5 sessions. Claude will check in less from now on.\"",
+      "chinese": "checked_in:\"已經 5 個對話階段了，之後 Claude 會少問一些。\""
+    },
+    {
+      "original": "explained_only:\"That's 5 sessions. Claude will explain less from now on.\"",
+      "chinese": "explained_only:\"已經 5 個對話階段了，之後 Claude 會少解釋一些。\""
+    },
+    {
+      "original": "checked_in:\"Keep check-ins\"",
+      "chinese": "checked_in:\"繼續確認\""
+    },
+    {
+      "original": "explained_only:\"Keep explanations\"",
+      "chinese": "explained_only:\"繼續解釋\""
+    },
+    {
+      "original": "\"How Claude works with you at first\"",
+      "chinese": "\"Claude 一開始的合作方式\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)=\"Turn off\",([A-Za-z0-9_$]+)=\"You can't turn this on again\\.\"",
+      "chinese": "$1=\"關閉\",$2=\"關閉後就無法再開啟。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "ariaLabel:\"Previous question\"",
+      "chinese": "ariaLabel:\"上一題\""
+    },
+    {
+      "original": "ariaLabel:\"Next question\"",
+      "chinese": "ariaLabel:\"下一題\""
+    },
+    {
+      "original": ",\" of 2\"]",
+      "chinese": ",\" / 2\"]"
+    },
+    {
+      "original": "\"Sign in to your organization\"",
+      "chinese": "\"登入你的組織\""
+    },
+    {
+      "original": "\"Only if your administrators manage Claude Code in Anthropic's Enterprise Admin Console.\"",
+      "chinese": "\"只有在你的管理員透過 Anthropic Enterprise Admin Console 管理 Claude Code 時才需要。\""
+    },
+    {
+      "original": "\"Sign in to your organization to apply its Claude Code settings here. You need this only if your administrators manage Claude Code in Anthropic's Enterprise Admin Console. This is an organization sign-in, not a claude.ai login. Your organization can set up a cloud provider connection. If it has one, Claude Code may use it instead of your own.\"",
+      "chinese": "\"登入你的組織，就能在這裡套用組織的 Claude Code 設定。只有在你的管理員透過 Anthropic Enterprise Admin Console 管理 Claude Code 時才需要。這是組織登入，不是 claude.ai 登入。你的組織可以設定雲端供應商連線；如果有設定，Claude Code 可能會改用它，而不是你自己的。\""
+    },
+    {
+      "original": "\"Choose your organization in the browser\"",
+      "chinese": "\"在瀏覽器中選擇你的組織\""
+    },
+    {
+      "original": "\"aria-label\":\"Details of the request\"",
+      "chinese": "\"aria-label\":\"請求的詳細內容\""
+    },
+    {
+      "original": "\"aria-label\":\"Why Claude Code asks\"",
+      "chinese": "\"aria-label\":\"Claude Code 為什麼詢問\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)\\?\"Checking…\":\"Review trust\"",
+      "chinese": "$1?\"檢查中⋯\":\"檢視信任設定\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`You're now using usage credits\\$\\{([A-Za-z0-9_$]+)\\.resetsAt\\?` · Your \\$\\{([^{}]*)\\} resets \\$\\{",
+      "chinese": "`你現在正在使用用量點數${$1.resetsAt?` · 你的${$2}重設時間：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"View and manage this session's background work\"",
+      "chinese": "description:\"檢視並管理這個對話階段的背景工作\""
+    },
+    {
+      "original": "[\"Unix socket entries with no effect on Linux\",",
+      "chinese": "[\"在 Linux 上無效的 Unix socket 項目\","
+    },
+    {
       "original": "\" for VS Code\"",
       "chinese": "\"（VS Code 版）\""
     },
@@ -9513,6 +9749,26 @@
     {
       "original": "\"Secondary Sidebar not supported in this version of VSCode. Please update your VSCode to use. Opening in Activity Bar instead.\"",
       "chinese": "\"這個版本的 VS Code 不支援次要側邊欄，請更新 VS Code 後再使用。這次改為在活動列開啟。\""
+    },
+    {
+      "original": "\"Claude Code couldn’t check whether this folder is trusted, so this session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands and skills.\"",
+      "chinese": "\"Claude Code 無法確認這個資料夾是否受信任，因此這個對話階段只會使用你自己的設定，不會套用資料夾裡的設定、MCP 伺服器、CLAUDE.md、指令與技能。\""
+    },
+    {
+      "original": "\"This folder’s path holds hidden characters, so Claude Code can’t ask you to trust it here. This session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands and skills. Trust it in a terminal, then reload the window, to use them.\"",
+      "chinese": "\"這個資料夾的路徑含有隱藏字元，Claude Code 無法在這裡詢問你是否信任它。這個對話階段只會使用你自己的設定，不會套用資料夾裡的設定、MCP 伺服器、CLAUDE.md、指令與技能。若要使用，請先在終端機中信任它，再重新載入視窗。\""
+    },
+    {
+      "original": "\"Folder trusted from now on. Start a new session: this one started without the folder’s settings.\"",
+      "chinese": "\"已信任這個資料夾，往後都有效。請開始新的對話階段：目前這個對話階段啟動時沒有載入資料夾的設定。\""
+    },
+    {
+      "original": "\"If you don’t trust it, Claude Code uses your own settings here and leaves the folder’s settings, MCP servers, CLAUDE.md, commands and skills unused. To be asked again, choose Review trust in the Claude Code panel or reload the window.\"",
+      "chinese": "\"如果你選擇不信任，Claude Code 只會使用你自己的設定，資料夾裡的設定、MCP 伺服器、CLAUDE.md、指令與技能都不會啟用。若要再被詢問一次，請在 Claude Code 面板中選擇「檢視信任設定」，或重新載入視窗。\""
+    },
+    {
+      "original": "\"Claude Code doesn’t keep this answer for your home folder, so it asks again in each new window. If you don’t trust it, your own settings, CLAUDE.md, commands and skills in its .claude folder still load.\"",
+      "chinese": "\"Claude Code 不會為你的家目錄記住這個選擇，因此每開一個新視窗都會再問一次。即使選擇不信任，家目錄 .claude 資料夾裡你自己的設定、CLAUDE.md、指令與技能仍會載入。\""
     }
   ]
 }

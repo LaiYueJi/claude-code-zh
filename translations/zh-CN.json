@@ -1,8 +1,8 @@
 {
-  "version": "2.4.36",
+  "version": "2.4.37",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-20",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
@@ -9411,6 +9411,242 @@
       "chinese": "description:\"显示版本、账户、模型、MCP 服务器与设置警告\""
     },
     {
+      "original": "\"an unidentified session\"",
+      "chinese": "\"一个无法识别的会话阶段\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} \\(calls itself @\\$\\{([A-Za-z0-9_$]+)\\}\\)`",
+      "chinese": "`${$1}（自称 @${$2}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Still holding the message from \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`仍拦着来自 ${$1} 的消息。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Held a message from \\$\\{([^{}]*)\\}\\. Claude has not seen it\\.`",
+      "chinese": "`已拦下来自 ${$1} 的消息，Claude 还没看到。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Released the held message from \\$\\{([^{}]*)\\} to Claude\\.`",
+      "chinese": "`已把拦下的 ${$1} 消息交给 Claude。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Dropped the held message from \\$\\{([^{}]*)\\} without delivering it\\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`已丢弃拦下的 ${$1} 消息，没有转交${$2}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\": it waited too long, or too many messages were held. Ask the sender to send it again\"",
+      "chinese": "\"：等待太久，或拦下的消息太多。请发送方重新发一次\""
+    },
+    {
+      "original": "\": this session no longer accepts messages from other sessions\"",
+      "chinese": "\"：这个会话阶段已不再接受其他会话阶段的消息\""
+    },
+    {
+      "original": "\": the session ended\"",
+      "chinese": "\"：会话阶段已结束\""
+    },
+    {
+      "original": "\": the limits on messages from other sessions stopped it\"",
+      "chinese": "\"：被其他会话阶段消息的数量限制挡下\""
+    },
+    {
+      "original": "`The message will be dropped if it waits too long \\(5 minutes by default\\)\\. To deliver messages without review, \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\. To make later messages wait longer instead, set \"dialogExpiry\" to \"10m\" or \"never\" in that file\\.`",
+      "chinese": "`消息等待太久（默认 5 分钟）就会被丢弃。若要不经审核直接转交消息，请${$1}。这样 Claude 可能在你读到消息之前就依消息行动。若想让之后的消息等久一点，请在同一个文件里把 \"dialogExpiry\" 设为 \"10m\" 或 \"never\"。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` One of the two sessions bypasses permission prompts and the other does not\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`两个会话阶段中，一个跳过权限询问，另一个没有。${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` This session bypasses permission prompts, and the sender did not state its permission mode\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`这个会话阶段跳过权限询问，而发送方没有说明它的权限模式。${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` Your \"crossSessionInbound\" setting is \"hold\"\\. To deliver messages without review, \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\.`",
+      "chinese": "`你的 \"crossSessionInbound\" 设置是 \"hold\"。若要不经审核直接转交消息，请${$1}。这样 Claude 可能在你读到消息之前就依消息行动。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` This project sets \"crossSessionInbound\" to \"hold\" in \\.claude/settings\\.json or \\.claude/settings\\.local\\.json, and a project can be stricter than your own setting\\. To deliver messages without review, remove it there and \\$\\{([^{}]*)\\}\\. Claude may then act on messages before you have read them\\.`",
+      "chinese": "`这个项目在 .claude/settings.json 或 .claude/settings.local.json 中把 \"crossSessionInbound\" 设为 \"hold\"，而项目设置可以比你自己的设置更严格。若要不经审核直接转交消息，请先从那里移除，再${$1}。这样 Claude 可能在你读到消息之前就依消息行动。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "' Your organization set \"crossSessionInbound\" to \"hold\". Ask your admin to change it.'",
+      "chinese": "'你的组织把 \"crossSessionInbound\" 设为 \"hold\"。请向管理员要求修改。'"
+    },
+    {
+      "original": "` Your user settings, this project's settings, or --settings has an unrecognized \"crossSessionInbound\" value. Set it to \"accept\", \"hold\", or \"refuse\".`",
+      "chinese": "`你的用户设置、这个项目的设置或 --settings 中有无法识别的 \"crossSessionInbound\" 值。请设为 \"accept\"、\"hold\" 或 \"refuse\"。`"
+    },
+    {
+      "original": "' The \"crossSessionInbound\" setting controls which messages are held.'",
+      "chinese": "'哪些消息会被拦下，由 \"crossSessionInbound\" 设置决定。'"
+    },
+    {
+      "original": "`set \"crossSessionInbound\" to \"accept\" in Claude Code's user settings file (all your sessions on this computer)`",
+      "chinese": "`在 Claude Code 的用户设置文件中把 \"crossSessionInbound\" 设为 \"accept\"（适用于这台电脑上你所有的会话阶段）`"
+    },
+    {
+      "original": "children:\"Open user settings file\"",
+      "chinese": "children:\"打开用户设置文件\""
+    },
+    {
+      "original": "`Couldn't open your settings file\\. Check that you can write to its folder, then try again\\. \\(\\$\\{([^{}]*)\\}\\)`",
+      "chinese": "`无法打开你的设置文件。请确认你有它所在文件夹的写入权限，然后再试一次。（${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"So far, how have you used AI for coding?\"",
+      "chinese": "\"到目前为止，你是怎么用 AI 写代码的？\""
+    },
+    {
+      "original": "new:\"Not much yet\"",
+      "chinese": "new:\"还不太常用\""
+    },
+    {
+      "original": "chat:\"Autocomplete or chat\"",
+      "chinese": "chat:\"自动补全或聊天\""
+    },
+    {
+      "original": "agents:\"Agents that make changes for me\"",
+      "chinese": "agents:\"会直接帮我改代码的代理\""
+    },
+    {
+      "original": "\"How do you want to work with Claude at first?\"",
+      "chinese": "\"一开始想怎么和 Claude 合作？\""
+    },
+    {
+      "original": "label:\"Let Claude work on its own\"",
+      "chinese": "label:\"让 Claude 自己做\""
+    },
+    {
+      "original": "description:\"Works through your task and shows you what changed\"",
+      "chinese": "description:\"完成你的任务，再告诉你改了什么\""
+    },
+    {
+      "original": "label:\"Check in on bigger changes\"",
+      "chinese": "label:\"较大的改动先问我\""
+    },
+    {
+      "original": "description:\"Asks Claude to share its plan and wait on multi-file or risky work\"",
+      "chinese": "description:\"遇到多文件或有风险的工作时，请 Claude 先说明计划并等你确认\""
+    },
+    {
+      "original": "label:\"Review each step\"",
+      "chinese": "label:\"每一步都查看\""
+    },
+    {
+      "original": "description:\"Asks Claude to stop after each step and show you the change\"",
+      "chinese": "description:\"请 Claude 每做完一步就停下来，给你看改动\""
+    },
+    {
+      "original": "description:\"Works through your task, with a few extra check-ins at first\"",
+      "chinese": "description:\"完成你的任务，一开始会多确认几次\""
+    },
+    {
+      "original": "checked_in:\"That's 5 sessions. Claude will check in less from now on.\"",
+      "chinese": "checked_in:\"已经 5 个会话阶段了，之后 Claude 会少问一些。\""
+    },
+    {
+      "original": "explained_only:\"That's 5 sessions. Claude will explain less from now on.\"",
+      "chinese": "explained_only:\"已经 5 个会话阶段了，之后 Claude 会少解释一些。\""
+    },
+    {
+      "original": "checked_in:\"Keep check-ins\"",
+      "chinese": "checked_in:\"继续确认\""
+    },
+    {
+      "original": "explained_only:\"Keep explanations\"",
+      "chinese": "explained_only:\"继续解释\""
+    },
+    {
+      "original": "\"How Claude works with you at first\"",
+      "chinese": "\"Claude 一开始的合作方式\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)=\"Turn off\",([A-Za-z0-9_$]+)=\"You can't turn this on again\\.\"",
+      "chinese": "$1=\"关闭\",$2=\"关闭后就无法再开启。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "ariaLabel:\"Previous question\"",
+      "chinese": "ariaLabel:\"上一题\""
+    },
+    {
+      "original": "ariaLabel:\"Next question\"",
+      "chinese": "ariaLabel:\"下一题\""
+    },
+    {
+      "original": ",\" of 2\"]",
+      "chinese": ",\" / 2\"]"
+    },
+    {
+      "original": "\"Sign in to your organization\"",
+      "chinese": "\"登录你的组织\""
+    },
+    {
+      "original": "\"Only if your administrators manage Claude Code in Anthropic's Enterprise Admin Console.\"",
+      "chinese": "\"只有在你的管理员通过 Anthropic Enterprise Admin Console 管理 Claude Code 时才需要。\""
+    },
+    {
+      "original": "\"Sign in to your organization to apply its Claude Code settings here. You need this only if your administrators manage Claude Code in Anthropic's Enterprise Admin Console. This is an organization sign-in, not a claude.ai login. Your organization can set up a cloud provider connection. If it has one, Claude Code may use it instead of your own.\"",
+      "chinese": "\"登录你的组织，就能在这里应用组织的 Claude Code 设置。只有在你的管理员通过 Anthropic Enterprise Admin Console 管理 Claude Code 时才需要。这是组织登录，不是 claude.ai 登录。你的组织可以设置云服务商连接；如果有设置，Claude Code 可能会改用它，而不是你自己的。\""
+    },
+    {
+      "original": "\"Choose your organization in the browser\"",
+      "chinese": "\"在浏览器中选择你的组织\""
+    },
+    {
+      "original": "\"aria-label\":\"Details of the request\"",
+      "chinese": "\"aria-label\":\"请求的详细内容\""
+    },
+    {
+      "original": "\"aria-label\":\"Why Claude Code asks\"",
+      "chinese": "\"aria-label\":\"Claude Code 为什么询问\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)\\?\"Checking…\":\"Review trust\"",
+      "chinese": "$1?\"检查中⋯\":\"查看信任设置\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`You're now using usage credits\\$\\{([A-Za-z0-9_$]+)\\.resetsAt\\?` · Your \\$\\{([^{}]*)\\} resets \\$\\{",
+      "chinese": "`你现在正在使用用量点数${$1.resetsAt?` · 你的${$2}重置时间：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"View and manage this session's background work\"",
+      "chinese": "description:\"查看并管理这个会话阶段的后台工作\""
+    },
+    {
+      "original": "[\"Unix socket entries with no effect on Linux\",",
+      "chinese": "[\"在 Linux 上无效的 Unix socket 条目\","
+    },
+    {
       "original": "\" for VS Code\"",
       "chinese": "\"（VS Code 版）\""
     },
@@ -9442,7 +9678,7 @@
     },
     {
       "original": "\"Claude Code reads the folder’s .claude/settings.json and .mcp.json before each session. They can run programs on your computer: hooks, environment variables, helper commands and MCP servers. Trust the folder only if you created it or know who did.\"",
-      "chinese": "\"Claude Code 会在每个会话阶段开始前读取这个文件夹的 .claude/settings.json 与 .mcp.json。它们可以在你的电脑上运行程序：挂钩、环境变量、辅助命令与 MCP 服务器。只有在这个文件夹是你自己创建的、或你清楚是谁创建的情况下，才信任它。\""
+      "chinese": "\"Claude Code 会在每个会话阶段开始前读取这个文件夹的 .claude/settings.json 与 .mcp.json。它们可以在你的电脑上运行程序：钩子、环境变量、辅助命令与 MCP 服务器。只有在这个文件夹是你自己创建的、或你清楚是谁创建的情况下，才信任它。\""
     },
     {
       "original": "\"If you don’t trust it, Claude Code uses your own settings here and leaves the folder’s settings and MCP servers unused. Reload the window to be asked again.\"",
@@ -9513,6 +9749,26 @@
     {
       "original": "\"Secondary Sidebar not supported in this version of VSCode. Please update your VSCode to use. Opening in Activity Bar instead.\"",
       "chinese": "\"这个版本的 VS Code 不支持次要侧边栏，请更新 VS Code 后再使用。这次改为在活动栏打开。\""
+    },
+    {
+      "original": "\"Claude Code couldn’t check whether this folder is trusted, so this session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands and skills.\"",
+      "chinese": "\"Claude Code 无法确认这个文件夹是否受信任，因此这个会话阶段只会使用你自己的设置，不会应用文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能。\""
+    },
+    {
+      "original": "\"This folder’s path holds hidden characters, so Claude Code can’t ask you to trust it here. This session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands and skills. Trust it in a terminal, then reload the window, to use them.\"",
+      "chinese": "\"这个文件夹的路径含有隐藏字符，Claude Code 无法在这里询问你是否信任它。这个会话阶段只会使用你自己的设置，不会应用文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能。若要使用，请先在终端中信任它，再重新加载窗口。\""
+    },
+    {
+      "original": "\"Folder trusted from now on. Start a new session: this one started without the folder’s settings.\"",
+      "chinese": "\"已信任这个文件夹，往后都有效。请开始新的会话阶段：当前这个会话阶段启动时没有加载文件夹的设置。\""
+    },
+    {
+      "original": "\"If you don’t trust it, Claude Code uses your own settings here and leaves the folder’s settings, MCP servers, CLAUDE.md, commands and skills unused. To be asked again, choose Review trust in the Claude Code panel or reload the window.\"",
+      "chinese": "\"如果你选择不信任，Claude Code 只会使用你自己的设置，文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能都不会启用。若要再被询问一次，请在 Claude Code 面板中选择「查看信任设置」，或重新加载窗口。\""
+    },
+    {
+      "original": "\"Claude Code doesn’t keep this answer for your home folder, so it asks again in each new window. If you don’t trust it, your own settings, CLAUDE.md, commands and skills in its .claude folder still load.\"",
+      "chinese": "\"Claude Code 不会为你的主目录记住这个选择，因此每开一个新窗口都会再问一次。即使选择不信任，主目录 .claude 文件夹里你自己的设置、CLAUDE.md、命令与技能仍会加载。\""
     }
   ]
 }

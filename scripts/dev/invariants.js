@@ -42,7 +42,7 @@ const checks = [
     ['值', keep('["Read","Grep","Search"'), '唯讀工具 Set 保持英文'],
     ['值', keep('"Const","Continue","CSByte"'), 'Monaco VB 關鍵字表保持英文'],
     ['值', keepRx(/=\"Agent\";var [A-Za-z0-9_$]+=/g), 'Agent 工具識別常數保持英文'],
-    ['值', keepRx(/name="Bash";commandLabel="bash"/g), 'Bash 工具類別 name 保持英文'],
+    ['值', keepRx(/name="Bash";(?:[A-Za-z]+=[^;{}]*;)*commandLabel="bash"/g), 'Bash 工具類別 name 保持英文'],
     ['值', keepRx(/name="PowerShell";commandLabel="PowerShell"/g), 'PowerShell 工具類別 name 保持英文'],
     ['值', keepRx(/name="WebFetch"/g), 'WebFetch 工具類別 name 保持英文'],
     ['值', keep('?"Agent":'), 'Task→Agent 工具名對映保持英文'],

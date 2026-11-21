@@ -1,13 +1,14 @@
 {
-  "version": "2.4.37",
+  "version": "2.4.38",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "scanIgnore": [
     " new problem",
     "${J}. This may or may not be related to the current task.",
     "${Sqt}. Anything it wrote at the end of that run was not delivered, because it gets one report until its background work ends. So the report does not answer the message you sent it.",
     "${jI}: AbortError: Tool permission stream closed before response received",
+    "Advisor",
     "Alt",
     "Artifact",
     "Bash",
@@ -9647,6 +9648,374 @@
       "chinese": "[\"在 Linux 上无效的 Unix socket 条目\","
     },
     {
+      "original": "\"Auto mode can learn your environment: set it up?\"",
+      "chinese": "\"自动模式可以学习你的环境，要设置吗？\""
+    },
+    {
+      "original": "\"Switch to bypass permissions?\"",
+      "chinese": "\"要切换为绕过权限验证吗？\""
+    },
+    {
+      "original": "\"Setup teaches auto mode about your repos, tools, and services. It takes about a minute, in a terminal.\"",
+      "chinese": "\"设置会让自动模式认识你的仓库、工具与服务，大约一分钟，会在终端中进行。\""
+    },
+    {
+      "original": "\"In bypass permissions mode, Claude Code will not ask for your approval before running potentially dangerous commands.\"",
+      "chinese": "\"在绕过权限验证模式下，Claude Code 运行可能有危险的命令前不会先征求你的同意。\""
+    },
+    {
+      "original": "\"Another prompt is waiting under this one. Switching mode can answer it without showing it.\"",
+      "chinese": "\"这个提示底下还有另一个提示在等待。切换模式可能会直接回答它，而不会显示出来。\""
+    },
+    {
+      "original": "label:e!==\"auto\"?\"Switch to auto mode and run its setup\"",
+      "chinese": "label:e!==\"auto\"?\"切换为自动模式并运行设置\""
+    },
+    {
+      "original": "\"Set up auto mode for your environment\"",
+      "chinese": "\"为你的环境设置自动模式\""
+    },
+    {
+      "original": "\"Run auto mode setup\"",
+      "chinese": "\"运行自动模式设置\""
+    },
+    {
+      "original": "answer:\"auto\",label:\"Switch to auto mode\"",
+      "chinese": "answer:\"auto\",label:\"切换为自动模式\""
+    },
+    {
+      "original": "answer:\"plan\",label:\"Switch to plan mode\"",
+      "chinese": "answer:\"plan\",label:\"切换为规划模式\""
+    },
+    {
+      "original": "answer:\"manual\",label:\"Switch to manual mode\"",
+      "chinese": "answer:\"manual\",label:\"切换为手动模式\""
+    },
+    {
+      "original": "`Stay in \\$\\{([^{}]*)\\}`",
+      "chinese": "`维持${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Use bypass permissions \\$\\{([^{}]*)\\}`",
+      "chinese": "`使用绕过权限验证${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "label:\"Always start in bypass permissions when your settings ask for it\"",
+      "chinese": "label:\"设置要求时，一律以绕过权限验证启动\""
+    },
+    {
+      "original": "function ([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\)\\{return \\2===0\\?\"for this session\":`for \\$\\{\\2\\} \\$\\{\\2===1\\?\"day\":\"days\"\\}`\\}",
+      "chinese": "function $1($2){return $2===0?\"（仅限这个会话阶段）\":`（${$2} 天）`}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Why bypass permissions instead of auto mode? (optional)\"",
+      "chinese": "\"为什么选择绕过权限验证，而不是自动模式？（选填）\""
+    },
+    {
+      "original": "label:\"Auto mode blocks safe work\"",
+      "chinese": "label:\"自动模式会挡下安全的工作\""
+    },
+    {
+      "original": "label:\"Auto mode is too slow\"",
+      "chinese": "label:\"自动模式太慢\""
+    },
+    {
+      "original": "label:\"Unattended runs\"",
+      "chinese": "label:\"要无人看管地运行\""
+    },
+    {
+      "original": "label:\"Sandboxed setup\"",
+      "chinese": "label:\"环境本身已有沙箱\""
+    },
+    {
+      "original": "answer:\"other\",label:\"Other\"",
+      "chinese": "answer:\"other\",label:\"其他\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+\\|\\|[A-Za-z0-9_$]+)\\?\"Closing…\":([A-Za-z0-9_$]+)&&\"What you typed or pasted here was dropped\\.\"",
+      "chinese": "$1?\"正在关闭⋯\":$2&&\"你在这里输入或粘贴的内容已被丢弃。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)=\\{default:\"manual mode\",acceptEdits:\"Edit automatically mode\",plan:\"plan mode\",auto:\"auto mode\",dontAsk:\"don't ask mode\",bypassPermissions:\"bypass permissions\"\\}",
+      "chinese": "$1={default:\"手动模式\",acceptEdits:\"自动编辑模式\",plan:\"规划模式\",auto:\"自动模式\",dontAsk:\"不询问模式\",bypassPermissions:\"绕过权限验证模式\"}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Switched to \\$\\{([^{}]*)\\}`:`Stayed in \\$\\{([^{}]*)\\}`",
+      "chinese": "`已切换为${$1}`:`维持${$2}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "` · couldn't switch to \\$\\{([^{}]*)\\}`",
+      "chinese": "` · 无法切换为${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\" · starting setup in a terminal\"",
+      "chinese": "\" · 正在终端中开始设置\""
+    },
+    {
+      "original": "\", now and whenever your settings ask for it\"",
+      "chinese": "\"，现在起以及设置要求时都会如此\""
+    },
+    {
+      "original": "\"Started in auto mode instead of bypass permissions · choose Bypass permissions in the mode menu to switch back\"",
+      "chinese": "\"改以自动模式启动，而不是绕过权限验证 · 若要切换回去，请在模式菜单中选择「绕过权限验证」\""
+    },
+    {
+      "original": "`Failed to open auto mode's setup: \\$\\{([^{}]*)\\}\\. You can run /auto-mode-setup in Claude Code in a terminal instead\\.`",
+      "chinese": "`无法打开自动模式设置：${$1}。你也可以改在终端的 Claude Code 中运行 /auto-mode-setup。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "start:\"What are you starting with?\"",
+      "chinese": "start:\"你想从哪里开始？\""
+    },
+    {
+      "original": "pickRepo:\"Pick a repo and Claude suggests where to start.\"",
+      "chinese": "pickRepo:\"选一个仓库，Claude 会建议从哪里着手。\""
+    },
+    {
+      "original": "openRepo:\"Open a repo and Claude suggests where to start.\"",
+      "chinese": "openRepo:\"打开一个仓库，Claude 会建议从哪里着手。\""
+    },
+    {
+      "original": "somethingNew:\"Something new\"",
+      "chinese": "somethingNew:\"做点新东西\""
+    },
+    {
+      "original": "noCodeYet:\"I don’t have code for this yet\"",
+      "chinese": "noCodeYet:\"我还没有这个的代码\""
+    },
+    {
+      "original": "askAgain:\"Claude can’t see your code until you pick a repo\"",
+      "chinese": "askAgain:\"在你选好仓库之前，Claude 看不到你的代码\""
+    },
+    {
+      "original": "sendAnyway:\"Send without one\"",
+      "chinese": "sendAnyway:\"不选，直接发送\""
+    },
+    {
+      "original": "nothingChanges:\"Nothing in your repo changes until you pick a task.\"",
+      "chinese": "nothingChanges:\"在你选定任务之前，仓库不会有任何改动。\""
+    },
+    {
+      "original": "onTheWay:\"Suggestions are on the way. You can type at any time.\"",
+      "chinese": "onTheWay:\"建议生成中，你随时都可以输入。\""
+    },
+    {
+      "original": "mayType:\"You can type at any time.\"",
+      "chinese": "mayType:\"你随时都可以输入。\""
+    },
+    {
+      "original": "find:\"Find something to work on\"",
+      "chinese": "find:\"找点事情来做\""
+    },
+    {
+      "original": "nothingFound:\"Nothing more to suggest here right now.\"",
+      "chinese": "nothingFound:\"目前这里没有更多建议了。\""
+    },
+    {
+      "original": "pickTask:\"Pick one and Claude gets started\"",
+      "chinese": "pickTask:\"选一个，Claude 就会开始动手\""
+    },
+    {
+      "original": "somethingElse:\"Something else\"",
+      "chinese": "somethingElse:\"其他事情\""
+    },
+    {
+      "original": "orPlaceholder:\"Or describe something to build, change, or fix\"",
+      "chinese": "orPlaceholder:\"或描述你想创建、修改或修复的东西\""
+    },
+    {
+      "original": "placeholder:\"Describe something to build, change, or fix\"",
+      "chinese": "placeholder:\"描述你想创建、修改或修复的东西\""
+    },
+    {
+      "original": "children:\"Open folder\"",
+      "chinese": "children:\"打开文件夹\""
+    },
+    {
+      "original": "children:\"Example of what Claude suggests\"",
+      "chinese": "children:\"Claude 建议的示例\""
+    },
+    {
+      "original": "title:\"Fix refunds that can pay out twice\"",
+      "chinese": "title:\"修复可能重复退款的问题\""
+    },
+    {
+      "original": "reason:\"refund.py sends a new request on each retry\"",
+      "chinese": "reason:\"refund.py 每次重试都会发送新的请求\""
+    },
+    {
+      "original": "shortReason:\"refund.py, new request on each retry\"",
+      "chinese": "shortReason:\"refund.py：每次重试都发送新请求\""
+    },
+    {
+      "original": "result:\"14 refund tests pass\"",
+      "chinese": "result:\"14 项退款测试通过\""
+    },
+    {
+      "original": "(children:\\[[A-Za-z0-9_$]+\\.askAgain,)\"\\.\",\" \",",
+      "chinese": "$1\"。\",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "closeTooltip:\"Dismiss warning\"",
+      "chinese": "closeTooltip:\"关闭警告\""
+    },
+    {
+      "original": "closeTooltip:\"Hide until you reload the window\"",
+      "chinese": "closeTooltip:\"隐藏到重新加载窗口为止\""
+    },
+    {
+      "original": "children:\\[\"Next: \",([A-Za-z0-9_$]+)\\.title,\"\\. \",",
+      "chinese": "children:[\"下一步：\",$1.title,\"。\",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(onClick:\\(\\)=>void [A-Za-z0-9_$]+\\.start\\(0\\),)children:\"Start\"",
+      "chinese": "$1children:\"开始\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"So far, how have you used AI?\"",
+      "chinese": "\"到目前为止，你是怎么使用 AI 的？\""
+    },
+    {
+      "original": "\"This tells Claude how much help to offer for your first five sessions.\"",
+      "chinese": "\"这会告诉 Claude 在你前五个会话阶段要提供多少协助。\""
+    },
+    {
+      "original": "tried:\"Agents, still learning\"",
+      "chinese": "tried:\"用过代理，还在摸索\""
+    },
+    {
+      "original": "agents:\"Agents, very comfortable\"",
+      "chinese": "agents:\"代理用得很熟练\""
+    },
+    {
+      "original": "\"This tells Claude when to check with you for your first five sessions.\"",
+      "chinese": "\"这会告诉 Claude 在你前五个会话阶段什么时候该先问你。\""
+    },
+    {
+      "original": "`The default\\. \\$\\{([^{}]*)\\}`",
+      "chinese": "`默认选项。${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "check:\"When you started, you set Claude to ask before big changes. Keep this on?\"",
+      "chinese": "check:\"你一开始设置 Claude 在大幅改动前先询问。要继续保持吗？\""
+    },
+    {
+      "original": "step:\"When you started, you set Claude to stop after each step. Keep this on?\"",
+      "chinese": "step:\"你一开始设置 Claude 每做完一步就停下来。要继续保持吗？\""
+    },
+    {
+      "original": "help:\"When you started, you set Claude to confirm what you mean and suggest next steps. Keep this on?\"",
+      "chinese": "help:\"你一开始设置 Claude 先确认你的意思，并建议下一步。要继续保持吗？\""
+    },
+    {
+      "original": "check_and_help:\"When you started, you set Claude to ask before big changes and confirm what you mean. Keep this on?\"",
+      "chinese": "check_and_help:\"你一开始设置 Claude 在大幅改动前先询问，并确认你的意思。要继续保持吗？\""
+    },
+    {
+      "original": "step_and_help:\"When you started, you set Claude to stop after each step and confirm what you mean. Keep this on?\"",
+      "chinese": "step_and_help:\"你一开始设置 Claude 每做完一步就停下来，并确认你的意思。要继续保持吗？\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)=\"Turns off unless you keep it\\.\",([A-Za-z0-9_$]+)=\"Keep\",([A-Za-z0-9_$]+=\"[^\"]*\"),([A-Za-z0-9_$]+)=\"Turn off\",([A-Za-z0-9_$]+)=\"You can’t turn this on again here\\.\"",
+      "chinese": "$1=\"除非你选择保留，否则会自动关闭。\",$2=\"保留\",$3,$4=\"关闭\",$5=\"关闭后就无法在这里重新开启。\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Open in this window\":([A-Za-z0-9_$]+)===\"terminal\"\\?\"Open in a terminal\":\\1===\"vscode\"\\?\"Open in another VS Code window\":\\1===\"desktop\"\\?\"Open in Claude Desktop\":\"Open in another Claude process\"",
+      "chinese": "\"在这个窗口中打开\":$1===\"terminal\"?\"在终端中打开\":$1===\"vscode\"?\"在另一个 VS Code 窗口中打开\":$1===\"desktop\"?\"在 Claude Desktop 中打开\":\"在另一个 Claude 进程中打开\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} — awaiting input`:([A-Za-z0-9_$]+)===\"running\"\\?`\\$\\{\\1\\} — running`",
+      "chinese": "`${$1} — 等待输入中`:$2===\"running\"?`${$1} — 运行中`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"Continue this conversation in a copy of it\"",
+      "chinese": "description:\"在这段对话的副本中继续\""
+    },
+    {
+      "original": "\"Claude is still working. Fork the conversation once it has finished.\"",
+      "chinese": "\"Claude 还在工作中，请等它完成后再分支对话。\""
+    },
+    {
+      "original": "\"There is no conversation to fork yet.\"",
+      "chinese": "\"目前还没有可以分支的对话。\""
+    },
+    {
+      "original": "Error(\"Not connected. Try again in a moment.\")",
+      "chinese": "Error(\"尚未连接，请稍后再试。\")"
+    },
+    {
+      "original": "\"This session still runs without the folder’s CLAUDE.md and settings. If you trusted the folder, start a new session to load them.\"",
+      "chinese": "\"这个会话阶段仍没有加载文件夹的 CLAUDE.md 与设置。如果你已信任这个文件夹，请开始新的会话阶段来加载。\""
+    },
+    {
+      "original": "`Advisor unavailable\\$\\{",
+      "chinese": "`Advisor 无法使用${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Advisor declined to advise on this request\"",
+      "chinese": "\"Advisor 拒绝对这个请求提供建议\""
+    },
+    {
+      "original": "\"Advisor has reviewed the conversation\"",
+      "chinese": "\"Advisor 已查看这段对话\""
+    },
+    {
+      "original": "label:\"Move up\",neighbor",
+      "chinese": "label:\"上移\",neighbor"
+    },
+    {
+      "original": "label:\"Move down\",neighbor",
+      "chinese": "label:\"下移\",neighbor"
+    },
+    {
+      "original": "\"aria-label\":\"Stop\",onClick:()=>void ",
+      "chinese": "\"aria-label\":\"停止\",onClick:()=>void "
+    },
+    {
+      "original": "(\\[[A-Za-z0-9_$]+,)\"In place\"\\]",
+      "chinese": "$1\"就地运行\"]",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} \\(\\$\\{([A-Za-z0-9_$]+)\\} scope\\)`",
+      "chinese": "`${$1}（${$2} 范围）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
       "original": "\" for VS Code\"",
       "chinese": "\"（VS Code 版）\""
     },
@@ -9769,6 +10138,30 @@
     {
       "original": "\"Claude Code doesn’t keep this answer for your home folder, so it asks again in each new window. If you don’t trust it, your own settings, CLAUDE.md, commands and skills in its .claude folder still load.\"",
       "chinese": "\"Claude Code 不会为你的主目录记住这个选择，因此每开一个新窗口都会再问一次。即使选择不信任，主目录 .claude 文件夹里你自己的设置、CLAUDE.md、命令与技能仍会加载。\""
+    },
+    {
+      "original": "\"Claude Code couldn’t check whether this folder is trusted, so this session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands, and skills.\"",
+      "chinese": "\"Claude Code 无法确认这个文件夹是否受信任，因此这个会话阶段只会使用你自己的设置，不会应用文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能。\""
+    },
+    {
+      "original": "\"This folder’s path holds hidden characters, so Claude Code can’t ask you to trust it here. This session uses your own settings and leaves out the folder’s settings, MCP servers, CLAUDE.md, commands, and skills. Trust it in a terminal, then reload the window, to use them.\"",
+      "chinese": "\"这个文件夹的路径含有隐藏字符，Claude Code 无法在这里询问你是否信任它。这个会话阶段只会使用你自己的设置，不会应用文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能。若要使用，请先在终端中信任它，再重新加载窗口。\""
+    },
+    {
+      "original": "\"Sign-in runs outside this folder; relative paths may fail. Claude Code couldn’t check whether the folder is trusted. If sign-in fails, try again, or use a full path in NODE_EXTRA_CA_CERTS and similar variables.\"",
+      "chinese": "\"登录流程会在这个文件夹以外运行，相对路径可能会失效。Claude Code 无法确认这个文件夹是否受信任。如果登录失败，请再试一次，或在 NODE_EXTRA_CA_CERTS 这类变量中改用完整路径。\""
+    },
+    {
+      "original": "\"If you don’t trust it, Claude Code still uses your own user-level settings, hooks, MCP servers, CLAUDE.md, commands, and skills. It leaves unused what belongs to this folder as a project, such as a CLAUDE.md or .mcp.json at its top level.\"",
+      "chinese": "\"如果你选择不信任，Claude Code 仍会使用你自己的用户级设置、钩子、MCP 服务器、CLAUDE.md、命令与技能，只是不会启用这个文件夹作为项目的内容，例如它最上层的 CLAUDE.md 或 .mcp.json。\""
+    },
+    {
+      "original": "\"If you don’t trust it, Claude Code uses your own settings here and leaves the folder’s settings, MCP servers, CLAUDE.md, commands, and skills unused.\"",
+      "chinese": "\"如果你选择不信任，Claude Code 只会使用你自己的设置，文件夹里的设置、MCP 服务器、CLAUDE.md、命令与技能都不会启用。\""
+    },
+    {
+      "original": "} To be asked again, choose Review trust in the Claude Code panel or reload the window.`",
+      "chinese": "}若要再被询问一次，请在 Claude Code 面板中选择「查看信任设置」，或重新加载窗口。`"
     }
   ]
 }

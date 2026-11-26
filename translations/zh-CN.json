@@ -1,10 +1,11 @@
 {
-  "version": "2.4.38",
+  "version": "2.4.39",
   "description": "Claude Code for VS Code 简体中文翻译规则",
   "locale": "zh-CN",
-  "updatedAt": "2026-11-21",
+  "updatedAt": "2026-11-26",
   "scanIgnore": [
     " new problem",
+    "${Ige} A note or to-do in it may be someone else's: if doing one needs anything from outside this file, even something already in this chat, ask the user first.",
     "${J}. This may or may not be related to the current task.",
     "${Sqt}. Anything it wrote at the end of that run was not delivered, because it gets one report until its background work ends. So the report does not answer the message you sent it.",
     "${jI}: AbortError: Tool permission stream closed before response received",
@@ -10016,6 +10017,372 @@
       "flags": "g"
     },
     {
+      "original": "\"Allow fetching this URL?\"",
+      "chinese": "\"允许获取此网址？\""
+    },
+    {
+      "original": "children:\"Allow unsandboxed fallback\"",
+      "chinese": "children:\"允许退回沙箱外运行\""
+    },
+    {
+      "original": "(toggleLabel,(?:\\.\\.\\.void 0,)?children:)\"Enabled by default\"",
+      "chinese": "$1\"默认启用\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Thought for \\$\\{Math\\.round\\(([A-Za-z0-9_$]+)\\/1000\\)\\}s`",
+      "chinese": "`已思考 ${Math.round($1/1000)} 秒`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ".message||\"Login failed\"",
+      "chinese": ".message||\"登录失败\""
+    },
+    {
+      "original": "\"% in this period. Try the other period.\"",
+      "chinese": "\"% 的项目。试试另一个时间范围。\""
+    },
+    {
+      "original": "`\\$\\{Math\\.round\\(([A-Za-z0-9_$]+)\\)\\}% context used, click to compact`",
+      "chinese": "`已使用 ${Math.round($1)}% 上下文，点击即可压缩`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "children:[\"Compacted chat\",",
+      "chinese": "children:[\"已压缩的对话\","
+    },
+    {
+      "original": "` · \\$\\{([A-Za-z0-9_$]+)\\.trigger===\"manual\"\\?\"manual\":\"auto\"\\} · \\$\\{([^{}]*)\\}k tokens freed`",
+      "chinese": "` · ${$1.trigger===\"manual\"?\"手动\":\"自动\"} · 已释放 ${$2}k 个 token`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Version: \\$\\{([A-Za-z0-9_$]+)\\}`",
+      "chinese": "`版本：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Scope: \\$\\{([A-Za-z0-9_$]+)\\}`",
+      "chinese": "`范围：${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Prefer the Terminal experience? \"",
+      "chinese": "\"更喜欢终端体验吗？\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\.description\\}\\. Click to change\\$\\{([A-Za-z0-9_$]+)\\?\"\":\", or press Shift\\+Tab to cycle\"\\}\\.`",
+      "chinese": "`${$1.description}。点击以修改${$2?\"\":\"，或按 Shift+Tab 循环切换\"}。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"View account info and usage\"",
+      "chinese": "description:\"查看账户信息与用量\""
+    },
+    {
+      "original": "(,[A-Za-z0-9_$]+=[A-Za-z0-9_$]+,[A-Za-z0-9_$]+=)\" for \",([A-Za-z0-9_$]+=[A-Za-z0-9_$]+&&[A-Za-z0-9_$]+\\([A-Za-z0-9_$]+,\\{children:\\[)\", and access to \",",
+      "chinese": "$1\" 用于 \",$2\"，并可访问 \",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "(\\.mode===\"acceptEdits\"&&)\", and all edits this session\"",
+      "chinese": "$1\"，以及本次会话阶段中的所有编辑\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This tells Claude how much help to offer.\"",
+      "chinese": "\"这会告诉 Claude 要提供多少协助。\""
+    },
+    {
+      "original": "\"This tells Claude when to check with you while you get started.\"",
+      "chinese": "\"这会告诉 Claude 在你刚开始使用时，什么时候该先问你。\""
+    },
+    {
+      "original": "description:\"Works through your task, and asks when something’s unclear\"",
+      "chinese": "description:\"完成你的任务，遇到不清楚的地方会先问你\""
+    },
+    {
+      "original": "\"The default. Works through your task and shows you what changed\"",
+      "chinese": "\"默认选项。完成你的任务，再告诉你改了什么\""
+    },
+    {
+      "original": "pickTask:\"Choose one to work on with Claude\"",
+      "chinese": "pickTask:\"选一件事和 Claude 一起做\""
+    },
+    {
+      "original": "`Checking \\$\\{([A-Za-z0-9_$]+)\\.repo\\}`",
+      "chinese": "`正在检查 ${$1.repo}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "successTitle:\"let Claude edit automatically\"",
+      "chinese": "successTitle:\"让 Claude 自动编辑过\""
+    },
+    {
+      "original": "\"Click the mode picker and choose Edit automatically. Shift+Tab in the message box cycles through the modes too. Then send a prompt and watch Claude edit without stopping.\"",
+      "chinese": "\"点击模式选择器并选择「自动编辑」，在消息框按 Shift+Tab 也能循环切换模式。接着发送提示，看 Claude 不间断地编辑。\""
+    },
+    {
+      "original": "\"Click the mode picker and choose Plan. Shift+Tab in the message box cycles through the modes too. Claude then writes a detailed plan before it edits any code.\"",
+      "chinese": "\"点击模式选择器并选择「规划」，在消息框按 Shift+Tab 也能循环切换模式。Claude 会先写出详细计划，才开始编辑代码。\""
+    },
+    {
+      "original": "footer:\"In Manual mode, Claude asks for approval before each edit.\"",
+      "chinese": "footer:\"在手动模式下，Claude 每次编辑前都会先征求你的同意。\""
+    },
+    {
+      "original": "\" \",\"to switch modes\"]",
+      "chinese": "\" \",\"切换模式\"]"
+    },
+    {
+      "original": "\"Couldn't show this part.\"",
+      "chinese": "\"无法显示这个部分。\""
+    },
+    {
+      "original": "\"Couldn’t load the diff view or code colors. You can click a diff to try again, or reload the window.\"",
+      "chinese": "\"无法加载差异视图或代码配色。你可以点一下差异再试一次，或重新加载窗口。\""
+    },
+    {
+      "original": "\"Couldn’t search all files. Press Esc to close, then send.\"",
+      "chinese": "\"无法搜索所有文件。请按 Esc 关闭，再发送。\""
+    },
+    {
+      "original": "\"Microphone access is off\"",
+      "chinese": "\"麦克风访问已关闭\""
+    },
+    {
+      "original": "`Microphone access is off\\. Turn it on in \\$\\{([^{}]*)\\}\\.`",
+      "chinese": "`麦克风访问已关闭，请到「${$1}」开启。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "case\"macos\":return\"System Settings → Privacy & Security → Microphone\";case\"windows\":return\"Settings → Privacy & security → Microphone\";case\"linux\":return\"your system settings\"",
+      "chinese": "case\"macos\":return\"系统设置 → 隐私与安全性 → 麦克风\";case\"windows\":return\"设置 → 隐私和安全性 → 麦克风\";case\"linux\":return\"系统设置\""
+    },
+    {
+      "original": "\"No matching plugins.\"",
+      "chinese": "\"没有匹配的插件。\""
+    },
+    {
+      "original": "\"The self-paced /loop stopped. Run /loop again to restart it.\"",
+      "chinese": "\"自动安排节奏的 /loop 已停止。再运行一次 /loop 即可重新开始。\""
+    },
+    {
+      "original": "\"Waiting for your answer…\"",
+      "chinese": "\"正在等你回答…\""
+    },
+    {
+      "original": "`Running \\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\.pendingToolName\\)\\}…`",
+      "chinese": "`正在运行 ${$1($2.pendingToolName)}…`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"A /clear is still queued. Stop Claude, wait until it is idle, then try again from this chat in Session history.\"",
+      "chinese": "\"还有一个 /clear 在排队。请停止 Claude，等它空闲后，再从「会话记录」中的这段对话重试。\""
+    },
+    {
+      "original": "\"A message is still queued. Stop Claude, then try again.\"",
+      "chinese": "\"还有消息在排队。请停止 Claude 后再试一次。\""
+    },
+    {
+      "original": "\"Claude Code hasn't started yet. To restore code, try again once it has.\"",
+      "chinese": "\"Claude Code 还没启动。请等它启动后再还原代码。\""
+    },
+    {
+      "original": "\"Couldn't rename the session. Try again.\"",
+      "chinese": "\"无法重命名这个会话阶段，请再试一次。\""
+    },
+    {
+      "original": "\"Couldn't rename the session because no saved history was found.\"",
+      "chinese": "\"找不到已保存的记录，因此无法重命名这个会话阶段。\""
+    },
+    {
+      "original": "closeTooltip:\"Dismiss size notice\"",
+      "chinese": "closeTooltip:\"关闭大小提醒\""
+    },
+    {
+      "original": "\"Enter ignored: Find lost the keyboard. You can reopen Find, type, or click the message box.\"",
+      "chinese": "\"已忽略 Enter：「查找」失去了键盘焦点。你可以重新打开「查找」、直接输入，或点一下消息框。\""
+    },
+    {
+      "original": "`It needs \\$\\{([A-Za-z0-9_$]+)\\}, which \\$\\{([A-Za-z0-9_$]+)\\?\"is\":\"are\"\\} turned off\\. Turn \\$\\{\\2\\?\\1:\"them\"\\} on too\\?`",
+      "chinese": "`它需要 ${$1}，而${$2?\"它\":\"它们\"}目前是关闭的。要一并开启吗？`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\\[([A-Za-z0-9_$]+),([A-Za-z0-9_$]+)\\]=([A-Za-z0-9_$]+)\\?\\[\"on\",\"off\"\\]:\\[\"off\",\"on\"\\];return ([A-Za-z0-9_$]+)\\(`This plugin is still \\$\\{\\2\\}\\.`,`It's \\$\\{\\1\\} in your user settings, but other settings keep it \\$\\{\\2\\} here, most likely this project's \\.claude/settings\\.json or \\.claude/settings\\.local\\.json\\. Change it there\\.`",
+      "chinese": "[$1,$2]=$3?[\"开启\",\"关闭\"]:[\"关闭\",\"开启\"];return $4(`这个插件仍是${$2}状态。`,`它在你的用户设置中是${$1}，但其他设置让它在这里维持${$2}，最可能是这个项目的 .claude/settings.json 或 .claude/settings.local.json。请到那里修改。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"This session doesn't read this folder's settings, so changes here wouldn't apply. You can set them in your own settings (~/.claude/settings.json). If you trust this folder later, start a new session.\"",
+      "chinese": "\"这个会话阶段不会读取这个文件夹的设置，所以在这里修改不会生效。你可以改在自己的设置（~/.claude/settings.json）中设置。如果之后信任了这个文件夹，请开始新的会话阶段。\""
+    },
+    {
+      "original": "\"The last request was refused. Select Cancel to see why. If your sign-in expired, sign in again.\"",
+      "chinese": "\"上一个请求被拒绝了。选择「取消」可以查看原因；如果登录已过期，请重新登录。\""
+    },
+    {
+      "original": "\"Send feedback and keep planning\"",
+      "chinese": "\"发送意见并继续规划\""
+    },
+    {
+      "original": "`Switch model \\(\\$\\{([A-Za-z0-9_$]+)\\}\\)`",
+      "chinese": "`切换模型（${$1}）`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Switched to \\$\\{([A-Za-z0-9_$]+)\\.slice\\(([A-Za-z0-9_$]+)\\.length\\)\\}`",
+      "chinese": "`已切换为 ${$1.slice($2.length)}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "shortLabel:Fe?\"Switched model\"",
+      "chinese": "shortLabel:Fe?\"已切换模型\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+===\"kickback\"\\?[A-Za-z0-9_$]+\\?[A-Za-z0-9_$]+\\.dialogTitle:`[^`]*`:)\"Terminal opened\"",
+      "chinese": "$1\"已打开终端\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": ":\"Refresh and continue\"",
+      "chinese": ":\"刷新并继续\""
+    },
+    {
+      "original": ":\"Continue without refreshing\"",
+      "chinese": ":\"不刷新，直接继续\""
+    },
+    {
+      "original": ".showNotification(s(i||\"another conversation\")",
+      "chinese": ".showNotification(s(i||\"另一段对话\")"
+    },
+    {
+      "original": "\\(([A-Za-z0-9_$]+)\\?`In \\$\\{\\1\\}: \\$\\{([A-Za-z0-9_$]+)\\}`:\\2\\)",
+      "chinese": "($1?`${$1}：${$2}`:$2)",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "i(N.error??\"unknown error\")",
+      "chinese": "i(N.error??\"未知的错误\")"
+    },
+    {
+      "original": "`about \\$\\{Math\\.round\\(([A-Za-z0-9_$]+)\\/1e5\\)\\*100\\} KB`",
+      "chinese": "`约 ${Math.round($1/1e5)*100} KB`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`about \\$\\{([A-Za-z0-9_$]+)<9\\.95\\?",
+      "chinese": "`约 ${$1<9.95?",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"which may be too much for Claude to read. If you send that, messages in this session can fail.\"",
+      "chinese": "\"Claude 可能读不了这么多。如果发送，这个会话阶段的消息可能会失败。\""
+    },
+    {
+      "original": "`The selection is \\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\)\\}, \\$\\{([A-Za-z0-9_$]+)\\} Select less text or remove the selection\\.`",
+      "chinese": "`选取的文字有 ${$1($2)}，${$3}请少选一点，或移除选取。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`The attached text file is \\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\)\\}, \\$\\{([A-Za-z0-9_$]+)\\} Attach a smaller file or remove it\\.`",
+      "chinese": "`附加的文本文件有 ${$1($2)}，${$3}请改附较小的文件，或把它移除。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`The attached text files are \\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\)\\}, \\$\\{([A-Za-z0-9_$]+)\\} Remove a text file\\.`",
+      "chinese": "`附加的文本文件共有 ${$1($2)}，${$3}请移除一个文本文件。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`The selection and the attached text \\$\\{([A-Za-z0-9_$]+)\\?\"file\":\"files\"\\} are \\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+\\+[A-Za-z0-9_$]+)\\)\\}, \\$\\{([A-Za-z0-9_$]+)\\} Select less text, remove \\$\\{\\1\\?\"the\":\"a\"\\} text file, or both\\.`",
+      "chinese": "`选取的文字加上附加的文本文件共有 ${$2($3)}，${$4}请少选一点、移除${$1?\"\":\"一个\"}文本文件，或两者都做。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`This session holds a very large \\$\\{([A-Za-z0-9_$]+)\\.what\\} \\(\\$\\{([A-Za-z0-9_$]+)\\(([A-Za-z0-9_$]+)\\.characters\\)\\}\\), so messages here can keep failing\\. Start a new session and send less text\\.`",
+      "chinese": "`这个会话阶段含有非常大的${$1.what}（${$2($3.characters)}），这里的消息可能会一直失败。请开始新的会话阶段，并发送较少的文字。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Send /compact to shorten this session. If that fails, start a new one.\"",
+      "chinese": "\"发送 /compact 缩短这个会话阶段；如果失败，请开始新的会话阶段。\""
+    },
+    {
+      "original": "(what:[A-Za-z0-9_$]+\\.type===\"document\"\\?)\"attached text file\":([A-Za-z0-9_$]+\\.selection>0\\?)\"selection\":\"message\"",
+      "chinese": "$1\"附加文本文件\":$2\"选取内容\":\"消息\"",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "([A-Za-z0-9_$]+=\\{what:)\"message\",characters:0,weighed:0\\}",
+      "chinese": "$1\"消息\",characters:0,weighed:0}",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Press Enter to compact now.\"",
+      "chinese": "\"按 Enter 立即压缩。\""
+    },
+    {
+      "original": "\"Key ignored. You can click, or press Ctrl/Cmd+F to go back to Find.\"",
+      "chinese": "\"已忽略按键。你可以点一下，或按 Ctrl/Cmd+F 回到「查找」。\""
+    },
+    {
+      "original": "`Esc to cancel · \\$\\{([A-Za-z0-9_$]+)\\}`",
+      "chinese": "`按 Esc 取消 · ${$1}`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Pause typing, then answer\"",
+      "chinese": "\"先停止输入，再回答\""
+    },
+    {
+      "original": "\"Press Up or Down first, or click\"",
+      "chinese": "\"请先按上或下方向键，或直接点选\""
+    },
+    {
+      "original": "`\\$\\{([A-Za-z0-9_$]+)\\} Escape declines the request\\.`",
+      "chinese": "`${$1}按 Esc 会拒绝这个请求。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "description:\"Send feedback to Anthropic or report a bug\"",
+      "chinese": "description:\"发送意见给 Anthropic 或报告错误\""
+    },
+    {
+      "original": "??\"unknown error\"",
+      "chinese": "??\"未知的错误\""
+    },
+    {
       "original": "\" for VS Code\"",
       "chinese": "\"（VS Code 版）\""
     },
@@ -10162,6 +10529,100 @@
     {
       "original": "} To be asked again, choose Review trust in the Claude Code panel or reload the window.`",
       "chinese": "}若要再被询问一次，请在 Claude Code 面板中选择「查看信任设置」，或重新加载窗口。`"
+    },
+    {
+      "original": "\"Claude Code reads the folder’s .claude/settings.json and .mcp.json before each session. They can run programs on your computer: hooks, environment variables, helper commands, and MCP servers. Trust the folder only if you created it or know who did.\"",
+      "chinese": "\"Claude Code 会在每个会话阶段开始前读取这个文件夹的 .claude/settings.json 与 .mcp.json。它们可以在你的电脑上运行程序：钩子、环境变量、辅助命令与 MCP 服务器。只有在这个文件夹是你自己创建的、或你清楚是谁创建的情况下，才信任它。\""
+    },
+    {
+      "original": "\"Logged out of Claude\"",
+      "chinese": "\"已退出 Claude\""
+    },
+    {
+      "original": "\"Couldn’t finish logging out. Some credentials may remain on this computer. Show the logs, then try again.\"",
+      "chinese": "\"无法完成退出登录，这台电脑上可能仍留有部分凭证。请查看日志后再试一次。\""
+    },
+    {
+      "original": "([A-Za-z0-9_$]+)=\"Open page\",([A-Za-z0-9_$]+)=\"Show logs\",",
+      "chinese": "$1=\"打开页面\",$2=\"显示日志\",",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": " If you signed in with a Claude account, that login may still work until you revoke it at \\$\\{",
+      "chinese": "如果你是用 Claude 账户登录，在你到以下网址撤销之前，那个登录可能仍然有效：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Failed to sign out: \\$\\{",
+      "chinese": "`退出登录失败：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Couldn't rename the session. Try again.\"",
+      "chinese": "\"无法重命名这个会话阶段，请再试一次。\""
+    },
+    {
+      "original": "\"Couldn't rename the session because no saved history was found.\"",
+      "chinese": "\"找不到已保存的记录，因此无法重命名这个会话阶段。\""
+    },
+    {
+      "original": "\"Session is already open. Your prompt was not applied — enter it manually.\"",
+      "chinese": "\"会话阶段已经打开，你的提示没有应用，请手动输入。\""
+    },
+    {
+      "original": "\"Invalid plugin installation URL. The plugin name can't be used in a link, so nothing was installed.\"",
+      "chinese": "\"插件安装网址无效：插件名称不能用在链接中，因此没有安装任何东西。\""
+    },
+    {
+      "original": "\"Invalid plugin installation URL. The link contains a '#', so nothing was installed.\"",
+      "chinese": "\"插件安装网址无效：链接含有「#」，因此没有安装任何东西。\""
+    },
+    {
+      "original": "\"Invalid plugin installation URL. The marketplace can't be used in a link, so nothing was installed.\"",
+      "chinese": "\"插件安装网址无效：这个市场不能用在链接中，因此没有安装任何东西。\""
+    },
+    {
+      "original": "\"Only https links open from Claude Code here.\"",
+      "chinese": "\"从 Claude Code 这里只能打开 https 链接。\""
+    },
+    {
+      "original": "`Open \\$\\{new URL\\(([A-Za-z0-9_$]+)\\)\\.host\\} in your browser\\? Claude may have chosen this address\\.`",
+      "chinese": "`要在浏览器中打开 ${new URL($1).host} 吗？这个网址可能是 Claude 选的。`",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Claude’s edit still waits. Click in its text and save, or use Accept.\"",
+      "chinese": "\"Claude 的编辑还在等待。点一下它的文字并保存，或使用 Accept。\""
+    },
+    {
+      "original": "\"The terminal could not start the claude command, usually because the Claude Code CLI is not installed or not on your PATH. The copy built into this extension runs only in its panel. Install the CLI or add it to your PATH, then try again.\"",
+      "chinese": "\"终端无法启动 claude 命令，通常是因为没有安装 Claude Code CLI，或它不在 PATH 里。扩展内置的那一份只能在它的面板中运行。请安装 CLI 或把它加进 PATH，然后再试一次。\""
+    },
+    {
+      "original": "`Failed to run Claude Code: \\$\\{",
+      "chinese": "`无法运行 Claude Code：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Failed to start MCP server: \\$\\{",
+      "chinese": "`无法启动 MCP 服务器：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "`Failed to activate Claude Code extension: \\$\\{",
+      "chinese": "`无法启用 Claude Code 扩展：${",
+      "regex": true,
+      "flags": "g"
+    },
+    {
+      "original": "\"Finish or close the open merge editor first. Choose Don't Save to keep the conflict markers that Claude needs.\"",
+      "chinese": "\"请先完成或关闭打开中的合并编辑器。选择「不保存」可保留 Claude 需要的冲突标记。\""
     }
   ]
 }

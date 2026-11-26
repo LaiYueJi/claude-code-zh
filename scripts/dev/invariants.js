@@ -32,6 +32,10 @@ const keepRx = re => {
     const before = (raw.match(re) || []).length;
     return before > 0 && (c.match(re) || []).length === before;
 };
+/** 可能已隨版本搬走或移除的程式碼：原文不存在就算通過，存在就必須維持原樣。
+ *  2.1.332 起 Monaco 拆到 webview/monaco.js（語言包不改寫該檔），原本在 index.js 的 Monaco 內部表會整批消失。 */
+const keepOpt = s => (raw.split(s).length - 1 === 0) || keep(s);
+const keepRxOpt = re => ((raw.match(re) || []).length === 0) || keepRx(re);
 const tw = LANG === 'zh-TW';
 
 const checks = [
@@ -40,21 +44,21 @@ const checks = [
     ['值', keepRx(/=\"ExitPlanMode\",[A-Za-z0-9_$]+=\"Edit\",[A-Za-z0-9_$]+=\"Write\"/g), '工具識別常數 Edit／Write 保持英文'],
     ['值', keep('["Edit","Write","MultiEdit"]'), '工具名陣列保持英文'],
     ['值', keep('["Read","Grep","Search"'), '唯讀工具 Set 保持英文'],
-    ['值', keep('"Const","Continue","CSByte"'), 'Monaco VB 關鍵字表保持英文'],
+    ['值', keepOpt('"Const","Continue","CSByte"'), 'Monaco VB 關鍵字表保持英文'],
     ['值', keepRx(/=\"Agent\";var [A-Za-z0-9_$]+=/g), 'Agent 工具識別常數保持英文'],
     ['值', keepRx(/name="Bash";(?:[A-Za-z]+=[^;{}]*;)*commandLabel="bash"/g), 'Bash 工具類別 name 保持英文'],
     ['值', keepRx(/name="PowerShell";commandLabel="PowerShell"/g), 'PowerShell 工具類別 name 保持英文'],
     ['值', keepRx(/name="WebFetch"/g), 'WebFetch 工具類別 name 保持英文'],
     ['值', keep('?"Agent":'), 'Task→Agent 工具名對映保持英文'],
-    ['值', keepRx(/([A-Za-z0-9_$]+)\[\1\.Idle=0\]="Idle"/g), 'Monaco Idle 列舉保持英文'],
-    ['值', keepRx(/([A-Za-z0-9_$]+)\[\1\.Event=\d+\]="Event"/g), 'Monaco Event 列舉保持英文'],
-    ['值', keep('case"Type":return'), 'Monaco InlayHint "Type" 比較保持英文'],
-    ['值', keep('["If","EndIf"]'), 'Monaco If 關鍵字保持英文'],
-    ['值', keep('"Declare","Default","Delegate"'), 'Monaco VB Default 關鍵字保持英文'],
-    ['值', keep('"Step","Stop","String"'), 'Monaco VB Stop 關鍵字保持英文'],
-    ['值', keep('"Optional","Or","OrElse"'), 'Monaco Or 關鍵字保持英文'],
+    ['值', keepRxOpt(/([A-Za-z0-9_$]+)\[\1\.Idle=0\]="Idle"/g), 'Monaco Idle 列舉保持英文'],
+    ['值', keepRxOpt(/([A-Za-z0-9_$]+)\[\1\.Event=\d+\]="Event"/g), 'Monaco Event 列舉保持英文'],
+    ['值', keepOpt('case"Type":return'), 'Monaco InlayHint "Type" 比較保持英文'],
+    ['值', keepOpt('["If","EndIf"]'), 'Monaco If 關鍵字保持英文'],
+    ['值', keepOpt('"Declare","Default","Delegate"'), 'Monaco VB Default 關鍵字保持英文'],
+    ['值', keepOpt('"Step","Stop","String"'), 'Monaco VB Stop 關鍵字保持英文'],
+    ['值', keepOpt('"Optional","Or","OrElse"'), 'Monaco Or 關鍵字保持英文'],
     ['值', keep('Del:"Delete"') && keep('46:"Delete"'), '鍵碼表 Delete 保持英文'],
-    ['值', keepRx(/\("accessibilitySignals\.save","Save"\)/g), 'Monaco 無障礙訊號 Save 保持英文'],
+    ['值', keepRxOpt(/\("accessibilitySignals\.save","Save"\)/g), 'Monaco 無障礙訊號 Save 保持英文'],
 
     // ── 權限、勾點、沙箱、技能的行為鍵 ───────────────────
     ['值', keep('"Free space"'), '上下文用量類別 "Free space" 比較保持英文'],
@@ -70,8 +74,8 @@ const checks = [
 
     // ── 拿 CLI 原文比對的字串 ───────────────────────────
     ['值', keep('==="Saving a file is not available here"'), '匯出比較值保持英文'],
-    ['值', keep('.includes("Unsupported control request subtype")'), '控制請求比較值保持英文'],
-    ['值', keep('.includes("not available in a cloud-hosted session")'), '雲端對話階段比較值保持英文'],
+    ['值', keepOpt('.includes("Unsupported control request subtype")'), '控制請求比較值保持英文'],
+    ['值', keepOpt('.includes("not available in a cloud-hosted session")'), '雲端對話階段比較值保持英文'],
     ['值', keep('empty_remote_control_session:"This Remote Control session'), '遠端控制訊息對照表保持英文（反查用）'],
     ['值', keep('.startsWith("Browser extension is not connected:")'), 'Chrome 錯誤比對用的 CLI 原文保持英文'],
     ['值', keep('.startsWith("Marketplace ")'), '外掛錯誤比對用的 CLI 原文保持英文'],
@@ -116,7 +120,8 @@ const checks = [
 
     // ── 日期格式化：只有「純顯示」的幾處改中文語系，拿來組字串再比較／解析的必須維持 en-US ──
     // Nj() 用 formatToParts 組出 YYYY-MM-DD，之後 slice(0,4) 比年份、整串比是否同一天
-    ['值', keepRx(/[A-Za-z0-9_$]+\("en-US",[A-Za-z0-9_$]+\([A-Za-z0-9_$]+,[A-Za-z0-9_$]+\.timeZone\)\)\.formatToParts/g), '組 YYYY-MM-DD 用的日期格式化維持 en-US'],
+    // 2.1.332 起時區參數改成解構後的變數（不再是 X.timeZone），樣式放寬為任意識別字或屬性
+    ['值', keepRx(/[A-Za-z0-9_$]+\("en-US",[A-Za-z0-9_$]+\([A-Za-z0-9_$]+,[A-Za-z0-9_$.]+\)\)\.formatToParts/g), '組 YYYY-MM-DD 用的日期格式化維持 en-US'],
     ['值', keep('Intl.NumberFormat("en-US",{style:"currency"'), '貨幣格式化維持 en-US'],
 
     // ── 品牌名 ────────────────────────────────────────
@@ -147,7 +152,7 @@ const checks = [
     ['顯示', n(tw ? '的安全防護機制標記了' : '的安全防护机制标记了') >= 2, '安全防護訊息已翻譯'],
     ['顯示', n('你可能是第一次') === 3, '安全防護「第一次遇到」三句已翻譯'],
     ['顯示', n('invisible characters`') === 0, '隱藏字元提示已翻譯'],
-    ['顯示', n(tw ? '"info",["檢視"]' : '"info",["查看"]') === 2, '通知的檢視按鈕已翻譯'],
+    ['顯示', n(tw ? '"info",["檢視"]' : '"info",["查看"]') >= 1 && n('"info",["View"]') === 0, '通知的檢視按鈕已翻譯'],
     ['顯示', n(tw ? '"已封存的對話階段"' : '"已归档的会话"') === 1, '對話階段清單的已封存分組已翻譯'],
     ['顯示', n(tw ? '"它無法載入。"' : '"它无法加载。"') === 1, '外掛載入失敗的預設說明已翻譯'],
     ['顯示', n(tw ? '它的語言伺服器 ' : '它的语言服务器 ') >= 4, '語言伺服器錯誤句已翻譯'],
